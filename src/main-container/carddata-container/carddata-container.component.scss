@@ -1,0 +1,17 @@
+*{
+    padding: 2px 0;
+}
+
+img{
+    max-width: 200px;
+    display:block;
+    border-radius: 5px;
+    // border: 1px black solid;
+    // box-shadow: 2px 1px 1px rgba($color: black, $alpha: 0.3);
+    transition: all 0.2s;
+}
+
+img:hover{
+    transform: scale(1.1);
+    z-index: 1;
+}
