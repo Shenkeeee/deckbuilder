@@ -1,8 +1,104 @@
-#deck-container{
-    position: absolute;
+* {
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    // background-color: #222;
+    padding: 10px;
+    color: white
+}
+
+#deck-container {
+    position: relative;
+    width: 350px;
+    // background-color: beige;
+}
+
+#deck-list-container {
+    padding: 0;
+}
+
+#search-filter-container {
+    z-index: 1;
+    position: relative;
     display: flex;
-    justify-content: right;
-    width: 30dvw;
-    top: 20px;
-    right: 20px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#deck-info-container {
+    display: flex;
+}
+
+#card-count {
+    display: flex;
+    align-items: center;
+}
+
+.class-indicator-holder {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+#card-list-container {
+    height: 500px;
+
+    img {
+        height: 20px;
+        width: 94%;
+        // background-size: contain;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    * {
+        display: none;
+    }
+}
+
+
+// Slide in animation
+
+#filters-container {
+    position: absolute;
+    // width: 150px;
+    top: 78px;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    /* Adjust as needed */
+    padding: 10px;
+}
+
+/* Define Angular animation */
+.triggerable {
+    position: relative;
+}
+
+.visible {
+    animation: slideIn 0.2s ease-out;
+    display: block;
+}
+
+.hidden {
+    // animation: slideOut 0.3s ease-out;
+    display: none;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
 }

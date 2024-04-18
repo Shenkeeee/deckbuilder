@@ -1,13 +1,5 @@
-#main-container{
-    // position: fixed;
-    background-color: grey;
-    height: 100dvh;
-    width: 100dvw;
-    z-index: -1;
-}
-
-#card-collection-container{
-    position: absolute;
-    top:50px;
-    left: 50px;
+#main-container {
+    position: relative;
+    height: 100%;
+    overflow-y: scroll;
 }

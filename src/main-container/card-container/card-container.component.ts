@@ -17,7 +17,7 @@ export class CardContainerComponent {
   cardInstances: CardInstance[] = [];
 
   constructor() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 20; i++) {
       let newCard: Card = {
         Color: 'Multicolor',
         CardType: 'Varázslat',

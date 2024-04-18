@@ -1,3 +1,96 @@
 <div id="deck-container">
-    <p>deck-container works!</p>
+    <div id="search-filter-container">
+        <input type="text" id="search-field" placeholder="Search card...">
+        <button id="filter-button" (click)="toggleFilters()">Filters</button>
+    </div>
+
+    <div id="deck-list-container">
+
+
+
+        <!-- Filters -->
+
+        <div id="filters-container" [class]="filtersContainerClass">
+            <!-- TYPE -->
+            <div>
+                <h4>TYPE</h4>
+                <div>Champion IconCHAMPION</div>
+                <div>Spell IconSPELL</div>
+                <div>Follower IconFOLLOWER</div>
+                <div>Landmark IconLANDMARK</div>
+                <div>Equipment IconEQUIPMENT</div>
+            </div>
+
+            <!-- FORMAT -->
+            <div>
+                <h4>FORMAT</h4>
+                <div>Eternal Format IconETERNALS</div>
+            </div>
+
+            <!-- MANA -->
+            <div style="display: flex;">
+                <h4>MANA</h4>
+                <div>0</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div>7</div>
+                <div>8+</div>
+            </div>
+
+            <!-- RARITY -->
+            <div>
+                <h4>RARITY</h4>
+                <div>Common Rarity IconCOMMON</div>
+                <div>Rare Rarity IconRARE</div>
+                <div>Epic Rarity IconEPIC</div>
+            </div>
+
+            <!-- SET -->
+            <div>
+                <h4>SET</h4>
+                <div>Foundations Set IconFOUNDATIONS</div>
+                <div>Rising Tides Set IconRISING TIDES</div>
+                <div>Call Of The Mountain Set IconCALL OF THE MOUNTAIN</div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div id="deck-name-container">
+            <input type="text" id="deck-name-field" placeholder="Deck name...">
+        </div>
+
+        <div id="copy-deck-container">
+            <button id="copy-deck-button">Copy Deck Code</button>
+        </div>
+
+        <div id="deck-info-container">
+            <div id="card-count">0/30 Cards</div>
+            <div class="class-indicator-holder">
+                <div class="class-indicator">A: 0</div>
+                <div class="class-indicator">B: 0</div>
+                <div class="class-indicator">C: 0</div>
+                <div class="class-indicator">D: 0</div>
+                <div class="class-indicator">E: 0</div>
+            </div>
+        </div>
+        <div id="card-list-container">
+            <img src="/assets/pics/additional/logo.png" alt="">
+            <img src="/assets/pics/additional/logo.png" alt="">
+            <img src="/assets/pics/additional/logo.png" alt="">
+            <img src="/assets/pics/additional/logo.png" alt="">
+        </div>
+        <div id="import-deck-container">
+            <input type="text" id="import-deck-field" placeholder="Import deck code...">
+            <button id="import-deck-button">Import Deck</button>
+        </div>
+    </div>
 </div>
