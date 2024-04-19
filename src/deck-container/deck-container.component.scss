@@ -79,27 +79,34 @@
 }
 
 .hidden {
-    // animation: slideOut 0.3s ease-out;
-    display: none;
+    animation: slideOut 0.2s ease-out;
+    animation-fill-mode: forwards;
+
 }
 
 @keyframes slideIn {
     from {
-        transform: translateY(-100%);
+        opacity: 0;
+        transform: translateY(-10%);
     }
 
     to {
+        opacity: 1;
         transform: translateY(0);
     }
 }
 
 @keyframes slideOut {
     from {
+        opacity: 1;
         transform: translateY(0);
+        display: block;
     }
 
     to {
-        transform: translateY(-100%);
+        opacity: 0;
+        transform: translateY(-10%);
+        display: none;
     }
 }
 
