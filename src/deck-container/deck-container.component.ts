@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { CardHandlerService } from '../services/card-handler.service';
+import { FormsModule, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-deck-container',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './deck-container.component.html',
   styleUrl: './deck-container.component.scss'
 
 })
-export class DeckContainerComponent {
+export class DeckContainerComponent implements OnInit {
   showFilters: boolean = false;
   filtersContainerClass: string = 'hidden';
+  inputValueMsg=""
+  inputValue: string = '';
 
   constructor(private cardHandlerService: CardHandlerService) { }
+
+  ngOnInit(): void {
+    this.cardHandlerService.inputMsgObservable.subscribe(inputValueMsg => this.inputValueMsg = inputValueMsg)
+  }
 
   toggleFilters() {
     this.showFilters = !this.showFilters;
@@ -21,10 +28,12 @@ export class DeckContainerComponent {
     this.filtersContainerClass = this.showFilters ? 'visible' : 'hidden';
   }
 
-  async updateAvailableCards() {
-    await this.cardHandlerService.updateAvailableCards()
-    console.log(await this.cardHandlerService.getAvailableCardsLength());
+  updateAvailableCards() {
+    this.cardHandlerService.updateAvailableCards();
+    // console.log(await this.cardHandlerService.getAvailableCardsLength());
     this.cardHandlerService.updateShownCards();
+    this.cardHandlerService.inputValueMsg.next(this.inputValue);
+    console.log(this.inputValue);
   }
 
 }

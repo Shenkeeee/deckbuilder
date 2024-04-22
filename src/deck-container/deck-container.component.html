@@ -1,6 +1,6 @@
 <div id="deck-container">
     <div id="search-filter-container">
-        <input type="text" id="search-field" (change)="updateAvailableCards()" placeholder="Search card...">
+        <input type="text" id="search-field" [(ngModel)]="inputValue" (input)="updateAvailableCards()" placeholder="Search card...">
         <button id="filter-button" (click)="toggleFilters()">Filters</button>
     </div>
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { DatabaseHandlerService } from './database-handler.service';
 import { Card } from '../main-container/carddata-container/card';
 import { CardInstance } from '../main-container/carddata-container/card-instance';
-// import { CardContainerComponent } from '../main-container/card-container/card-container.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,13 @@ export class CardHandlerService {
   // for showing
   cardInstances: CardInstance[] = [];
   cardInstanceNum = 20
+  // observable
+  inputValueMsg = new BehaviorSubject<string>("def");
+  inputMsgObservable = this.inputValueMsg.asObservable();
+  cards = new BehaviorSubject<string[]>([ ]);
+  cardsObservable = this.cards.asObservable();
+  cardInstancesOBSVAL = new BehaviorSubject<CardInstance[]>([]);
+  cardInstancesOBSOBS = this.cardInstancesOBSVAL.asObservable();
 
   constructor(private databaseHandlerService: DatabaseHandlerService) { }
 
@@ -47,6 +54,7 @@ export class CardHandlerService {
   updateAvailableCards(): string[] {
     this.getAllCards().then(cards => {
       this.availableCards = cards
+      this.cards.next(cards);
       // console.log("updateAvailableCards:");
       // console.log(this.availableCards);
       return cards;
@@ -61,6 +69,11 @@ export class CardHandlerService {
     return this.availableCards.length
   }
 
+  getAvailableCardsOBSLength(): number {
+    this.updateAvailableCards();
+    return this.cards.value.length;
+  }
+
   getAllCardsLength(): number {
     this.updateAllCards();
     return this.allCards.length
@@ -69,11 +82,11 @@ export class CardHandlerService {
 
   // Showing cards
   updateShownCards() {
-    // console.log(this.getAvailableCardsLength());
-    if (this.getAvailableCardsLength() != 0) {
-      this.cardInstanceNum = this.getAvailableCardsLength()
+    console.log(this.getAvailableCardsOBSLength());
+    if (this.getAvailableCardsOBSLength() != 0) {
+      this.cardInstanceNum = this.getAvailableCardsOBSLength()
     }
-
+    this.cardInstances = [];
     for (let i = 0; i < this.cardInstanceNum; i++) {
       let newCard: Card = {
         Color: 'Multicolor',
@@ -92,8 +105,8 @@ export class CardHandlerService {
       };
       this.cardInstances.push(new CardInstance(newCard));
     }
-    // this.cardContainerComponent.cardInstances = this.cardInstances;
-    return this.cardInstances
+    this.cardInstancesOBSVAL.next(this.cardInstances);
+    return this.cardInstances;
   }
 }
 
