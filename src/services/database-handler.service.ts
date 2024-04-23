@@ -14,10 +14,8 @@ export class DatabaseHandlerService {
     this.db = getFirestore();
   }
 
-  async getCards() {
-    const cards = [];
-    cards.push("0");
-    // cards.push({ id: 0, data: 0 });
+  async getCards(): Promise<{ id: string, data: any }[]>{
+    const cards: { id: string, data: any }[] = [];
     const cardsCollection = collection(this.db, 'dop');
     const querySnapshot = await getDocs(cardsCollection)
       .then((querySnapshot) =>
@@ -25,8 +23,7 @@ export class DatabaseHandlerService {
           cards.push({ id: doc.id, data: doc.data() });
         }));;
 
-    cards.splice(0, 1)
-    console.log(cards[0])
+    // console.log(cards[0]);
     return cards
   }
 }
