@@ -17,6 +17,7 @@ export class DatabaseHandlerService {
   async getCards() {
     const cards = [];
     cards.push("0");
+    // cards.push({ id: 0, data: 0 });
     const cardsCollection = collection(this.db, 'dop');
     const querySnapshot = await getDocs(cardsCollection)
       .then((querySnapshot) =>
@@ -25,7 +26,7 @@ export class DatabaseHandlerService {
         }));;
 
     cards.splice(0, 1)
-    // console.log(cards)
+    console.log(cards[0])
     return cards
   }
 }

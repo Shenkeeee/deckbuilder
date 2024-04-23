@@ -5,6 +5,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     flex: 1;
+    min-width: calc(100vw - 415px);  
+
 }
 
 .card-container{
