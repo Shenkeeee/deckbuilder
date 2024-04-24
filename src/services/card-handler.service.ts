@@ -18,7 +18,7 @@ export class CardHandlerService {
 
   // Observables
   // name input field 
-  inputValueMsg = new BehaviorSubject<string>("def");
+  inputValueMsg = new BehaviorSubject<string>("");
   inputMsgObservable = this.inputValueMsg.asObservable();
 
   //for data
@@ -71,19 +71,23 @@ export class CardHandlerService {
         CardNumber: this.cards.value[i].data["sorszam"],
         ImagePath: "feherszint.png_resize.jpg",
       };
-      this.cardInstances.push(new CardInstance(newCard));
+      // Filtering by name
+      if(this.matchesNameFilter(newCard.Name)){
+        this.cardInstances.push(new CardInstance(newCard));
+      }
     }
     
-    // Filtering by name
-    this.filterCardsByName();
-    console.log(this.cardInstanceNum);
-
     this.cardInstancesOBSVAL.next(this.cardInstances);
     return this.cardInstancesOBSVAL.value;
   }
 
-  filterCardsByName() {
-
+  matchesNameFilter(cardName?: string): boolean {
+    if(!cardName)
+      return false;    
+    // if no filter then it matches it
+    if(!this.inputValueMsg.value || this.inputValueMsg.value === "")
+      return true;
+    return cardName.toLowerCase().includes(this.inputValueMsg.value.toLowerCase());
   }
 }
 

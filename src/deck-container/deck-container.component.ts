@@ -29,11 +29,9 @@ export class DeckContainerComponent implements OnInit {
   }
 
   updateAvailableCards() {
-    this.cardHandlerService.updateAvailableCardsData();
-    // console.log(await this.cardHandlerService.getAvailableCardsLength());
-    this.cardHandlerService.updateShownCards();
     this.cardHandlerService.inputValueMsg.next(this.inputValue);
-    console.log(this.inputValue);
+    this.cardHandlerService.updateShownCards();
+    // console.log(this.inputValue);
   }
 
 }

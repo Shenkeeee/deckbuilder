@@ -15,7 +15,7 @@ import { CardHandlerService } from '../../services/card-handler.service';
 
 
 export class CardContainerComponent implements OnInit {
-  cardInstances: CardInstance[] = [];
+  // cardInstances: CardInstance[] = [];
   cardInstancesOBSVALCHILD: CardInstance[] = [];
   inputValueMsg:string = ""
 
@@ -29,7 +29,8 @@ export class CardContainerComponent implements OnInit {
 
   updateShownCards(){
     this.cardHandlerService.updateAvailableCardsData();
-    this.cardHandlerService.updateShownCards().then(cards => this.cardInstances = cards);
+    // this.cardHandlerService.updateShownCards().then(cards => this.cardInstances = cards);
+    this.cardHandlerService.updateShownCards();
   }
 
 }
