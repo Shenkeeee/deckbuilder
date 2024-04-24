@@ -52,10 +52,9 @@ export class CardHandlerService {
 
   // Update the shown cards based on the ones in the db
   async updateShownCards(): Promise<CardInstance[]>{
-    this.cardInstances = [];
     // Filling up with all the cards
     await this.getCardsLength().then(num => this.cardInstanceNum = num);
-    // console.log(this.cardInstanceNum);
+    this.cardInstances = [];
     for (let i = 0; i < this.cardInstanceNum; i++) {
       let newCard: Card = {
         Color: this.cards.value[i].data["szin"],
@@ -74,9 +73,10 @@ export class CardHandlerService {
       };
       this.cardInstances.push(new CardInstance(newCard));
     }
-
+    
     // Filtering by name
     this.filterCardsByName();
+    console.log(this.cardInstanceNum);
 
     this.cardInstancesOBSVAL.next(this.cardInstances);
     return this.cardInstancesOBSVAL.value;
