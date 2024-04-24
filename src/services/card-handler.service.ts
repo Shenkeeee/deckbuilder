@@ -10,13 +10,11 @@ import { UntypedFormBuilder } from '@angular/forms';
 })
 
 export class CardHandlerService {
-  // availableCards: string[] = []
   // allCards: { id: string, data: any }[] = [];
-
 
   // for showing - we need this to update the observable when its fully filled and not fill the observable directly
   cardInstances: CardInstance[] = [];
-  cardInstanceNum = 20
+  cardInstanceNum = 0;
 
 
   // Observables
@@ -40,36 +38,9 @@ export class CardHandlerService {
     return returnable;
   }
 
-  // getAllCardsAsCards(): string[] {
-  //   this.databaseHandlerService.getCards().then(cards => {
-  //     return cards;
-  //   }).catch(error => {
-  //     console.error('Error fetching cards:', error);
-  //   });
-  //   return [];
-  // }
-
-  // updateAllCards(): string[] {
-  //   this.databaseHandlerService.getCards().then(cards => {
-  //     this.allCards = cards;
-  //     // console.log("updateAllcards:");
-  //     // console.log(this.allCards);
-  //     return cards;
-  //   }).catch(error => {
-  //     console.error('Error fetching cards:', error);
-  //   });
-  //   return [];
-  // }
-
   updateAvailableCardsData(): string[] {
     this.getAllCards().then(cards => {
-      // this.availableCards = cards
-
       this.cards.next(cards);
-      // this.cardInstanceNum = this.getCardsLength();
-      // this.updateShownCards();
-      // console.log("updateAvailableCards:");
-      // console.log(this.availableCards);
       return cards;
     }).catch(error => {
       console.error('Error fetching cards:', error);
