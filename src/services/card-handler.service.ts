@@ -3,7 +3,6 @@ import { DatabaseHandlerService } from './database-handler.service';
 import { Card } from '../main-container/carddata-container/card';
 import { CardInstance } from '../main-container/carddata-container/card-instance';
 import { BehaviorSubject } from 'rxjs';
-import { UntypedFormBuilder } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -38,27 +37,25 @@ export class CardHandlerService {
     return returnable;
   }
 
-  updateAvailableCardsData(): string[] {
-    this.getAllCards().then(cards => {
+  async updateAvailableCardsData() {
+    await this.getAllCards().then(cards => {
       this.cards.next(cards);
-      return cards;
     }).catch(error => {
       console.error('Error fetching cards:', error);
     });
-    return []
   }
 
-  getCardsLength(): number {
-    this.updateAvailableCardsData();
+  async getCardsLength(): Promise<number> {
+    await this.updateAvailableCardsData();
     return this.cards.value.length;
   }
 
   // Update the shown cards based on the ones in the db
-  updateShownCards(){
+  async updateShownCards(): Promise<CardInstance[]>{
     this.cardInstances = [];
-
-    this.cardInstanceNum = this.getCardsLength();
-
+    // Filling up with all the cards
+    await this.getCardsLength().then(num => this.cardInstanceNum = num);
+    // console.log(this.cardInstanceNum);
     for (let i = 0; i < this.cardInstanceNum; i++) {
       let newCard: Card = {
         Color: this.cards.value[i].data["szin"],
@@ -77,8 +74,16 @@ export class CardHandlerService {
       };
       this.cardInstances.push(new CardInstance(newCard));
     }
+
+    // Filtering by name
+    this.filterCardsByName();
+
     this.cardInstancesOBSVAL.next(this.cardInstances);
     return this.cardInstancesOBSVAL.value;
+  }
+
+  filterCardsByName() {
+
   }
 }
 
