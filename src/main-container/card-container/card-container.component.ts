@@ -24,13 +24,13 @@ export class CardContainerComponent implements OnInit {
   constructor(private cardHandlerService: CardHandlerService) {}
 
   ngOnInit(): void {
-    this.updateShownCards();
     this.cardHandlerService.inputMsgObservable.subscribe(inputValueMsg => this.inputValueMsg = inputValueMsg);
-    // this.cardHandlerService.cardsObservable.subscribe(cards => this.cards = cards);
     this.cardHandlerService.cardInstancesOBSOBS.subscribe(cardInstancesOBSVAL => this.cardInstancesOBSVALCHILD = cardInstancesOBSVAL);  
+    this.updateShownCards();
   }
 
   updateShownCards(){
+    this.cardHandlerService.updateAvailableCardsData();
     this.cardInstances = this.cardHandlerService.updateShownCards();
   }
 

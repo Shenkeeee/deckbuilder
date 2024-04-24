@@ -11,19 +11,28 @@ import { UntypedFormBuilder } from '@angular/forms';
 
 export class CardHandlerService {
   // availableCards: string[] = []
-  allCards: { id: string, data: any }[] = [];
+  // allCards: { id: string, data: any }[] = [];
 
-  // for showing
+
+  // for showing - we need this to update the observable when its fully filled and not fill the observable directly
   cardInstances: CardInstance[] = [];
   cardInstanceNum = 20
-  // observable
+
+
+  // Observables
+  // name input field 
   inputValueMsg = new BehaviorSubject<string>("def");
   inputMsgObservable = this.inputValueMsg.asObservable();
+
+  //for data
   cards = new BehaviorSubject<{ id: string, data: any }[]>([]);
   cardsObservable = this.cards.asObservable();
+
+  //for showing
   cardInstancesOBSVAL = new BehaviorSubject<CardInstance[]>([]);
   cardInstancesOBSOBS = this.cardInstancesOBSVAL.asObservable();
 
+  
   constructor(private databaseHandlerService: DatabaseHandlerService) { }
 
   async getAllCards(): Promise<{ id: string, data: any }[]> {
@@ -31,33 +40,34 @@ export class CardHandlerService {
     return returnable;
   }
 
-  getAllCardsAsCards(): string[] {
-    this.databaseHandlerService.getCards().then(cards => {
-      return cards;
-    }).catch(error => {
-      console.error('Error fetching cards:', error);
-    });
-    return [];
-  }
+  // getAllCardsAsCards(): string[] {
+  //   this.databaseHandlerService.getCards().then(cards => {
+  //     return cards;
+  //   }).catch(error => {
+  //     console.error('Error fetching cards:', error);
+  //   });
+  //   return [];
+  // }
 
-  updateAllCards(): string[] {
-    this.databaseHandlerService.getCards().then(cards => {
-      this.allCards = cards;
-      // console.log("updateAllcards:");
-      // console.log(this.allCards);
-      return cards;
-    }).catch(error => {
-      console.error('Error fetching cards:', error);
-    });
-    return [];
-  }
+  // updateAllCards(): string[] {
+  //   this.databaseHandlerService.getCards().then(cards => {
+  //     this.allCards = cards;
+  //     // console.log("updateAllcards:");
+  //     // console.log(this.allCards);
+  //     return cards;
+  //   }).catch(error => {
+  //     console.error('Error fetching cards:', error);
+  //   });
+  //   return [];
+  // }
 
-  updateAvailableCards(): string[] {
+  updateAvailableCardsData(): string[] {
     this.getAllCards().then(cards => {
       // this.availableCards = cards
 
       this.cards.next(cards);
-      this.updateShownCards();
+      // this.cardInstanceNum = this.getCardsLength();
+      // this.updateShownCards();
       // console.log("updateAvailableCards:");
       // console.log(this.availableCards);
       return cards;
@@ -67,32 +77,18 @@ export class CardHandlerService {
     return []
   }
 
-  getAvailableCardsLength(): number {
-    this.updateAvailableCards();
-    return this.allCards.length;
-  }
-
-  getAvailableCardsOBSLength(): number {
-    this.updateAvailableCards();
+  getCardsLength(): number {
+    this.updateAvailableCardsData();
     return this.cards.value.length;
   }
 
-  getAllCardsLength(): number {
-    this.updateAllCards();
-    return this.allCards.length;
-  }
-
+  // Update the shown cards based on the ones in the db
   updateShownCards(){
     this.cardInstances = [];
 
-    // if (this.getAvailableCardsOBSLength() != 0) {
-    //   this.cardInstanceNum = this.getAvailableCardsOBSLength();
-    // }
+    this.cardInstanceNum = this.getCardsLength();
 
-    for (let i = 0; i < this.cards.value.length; i++) {
-      // console.log("card", this.cards.value);
-      // console.log("0:", this.cards.value[0].data["laphuzo+"]);
-      // console.log("1:", this.cards.value[1]);
+    for (let i = 0; i < this.cardInstanceNum; i++) {
       let newCard: Card = {
         Color: this.cards.value[i].data["szin"],
         CardType: this.cards.value[i].data["laptipus"],
@@ -109,43 +105,9 @@ export class CardHandlerService {
         ImagePath: "feherszint.png_resize.jpg",
       };
       this.cardInstances.push(new CardInstance(newCard));
-      this.cardInstancesOBSVAL.next(this.cardInstances);
     }
-    return this.cardInstances;
+    this.cardInstancesOBSVAL.next(this.cardInstances);
+    return this.cardInstancesOBSVAL.value;
   }
-
-
-  // Showing cards
-  // updateShownCards() {
-  //   // console.log(this.getAvailableCardsOBSLength());
-  //   if (this.getAvailableCardsOBSLength() != 0) {
-  //     this.cardInstanceNum = this.getAvailableCardsOBSLength()
-  //   }
-  //   this.cardInstances = [];
-  //   for (let i = 0; i < this.cardInstanceNum; i++) {
-  //     let newCard: Card = {
-  //       // Color: this.cardInstancesOBSVAL.value.at(i)?.card.Color,
-  //       Color: "Multi",
-  //       CardType: 'Varázslat',
-  //       Subtype: 'Sima',
-  //       Name: 'Dreams of Purgatory ' + (i + 1),
-  //       ManaCost: 9,
-  //       PowerToughness: '',
-  //       Ability: 'Ha még nincs 4 Karaktered a Portálban, egy altípussal rendelkező Karaktert a kezedből egyből a Portálba tehetsz. Száműzd ezt a lapot',
-  //       PlusMana: '2 R',
-  //       PlusCardDraw: '2',
-  //       Spirit: 'S3',
-  //       Release: 'dop23/001',
-  //       CardNumber: '',
-  //       ImagePath: "feherszint.png_resize.jpg",
-  //     };
-  //     this.cardInstances.push(new CardInstance(newCard));
-  //   }
-  //   // console.log(this.cardInstancesOBSVAL.value);
-  //   console.log(this.cardInstancesOBSVAL.value.at(1));
-
-  //   // this.cardInstancesOBSVAL.next(this.cardInstances);
-  //   return this.cardInstances;
-  // }
 }
 
