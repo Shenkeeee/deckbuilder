@@ -9,24 +9,25 @@
     padding: 10px;
 }
 
-#menu {
+.menu {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-#menu li {
-    margin-right: 15px;
+.menu li {
+    // margin-right: 15px;
+    margin-inline: 7px;
 }
 
-#menu li a {
+.menu li a {
     text-decoration: none;
     font-weight: bold; 
     color: white;
 }
 
-#menu li a:hover {
+.menu li a:hover {
     color: #E61543;
 }
 

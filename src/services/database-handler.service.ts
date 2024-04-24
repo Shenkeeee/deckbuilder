@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
+import * as Papa from 'papaparse'; // Import PapaParse library for CSV parsing
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class DatabaseHandlerService {
     this.db = getFirestore();
   }
 
-  async getCards(): Promise<{ id: string, data: any }[]>{
+  async getCards(): Promise<{ id: string, data: any }[]> {
     const cards: { id: string, data: any }[] = [];
     const cardsCollection = collection(this.db, 'dop');
     const querySnapshot = await getDocs(cardsCollection)
@@ -23,9 +24,54 @@ export class DatabaseHandlerService {
           cards.push({ id: doc.id, data: doc.data() });
         }));;
 
-    // console.log(cards[0]);
-    return cards
+    return cards;
   }
+
+
+  // Function to upload data from a CSV file to the database
+  async uploadDataFromCSV(file: File): Promise<void> {
+    const parseConfig = {
+      complete: async (results: any) => {
+        for (let row of results.data) {
+          // Format the data as needed and upload it to the database
+          const formattedData = this.formatData(row);
+          await this.uploadData(formattedData);
+        }
+      }
+    };
+    Papa.parse(file, parseConfig);
+  }
+
+
+  // Function to format the data from CSV row
+  formatData(row: any): any {
+    return {
+      Color: row[0],
+      CardType: row[1],
+      Subtype: row[2],
+      Name: row[3],
+      ManaCost: row[4],
+      PowerToughness: row[5],
+      Ability: row[6],
+      PlusMana: row[7],
+      PlusCardDraw: row[8],
+      Spirit: row[9],
+      Release: row[10],
+      CardNumber: row[11]
+    };
+  }
+
+
+  // Function to upload formatted data to the database
+  async uploadData(data: any): Promise<void> {
+    try {
+      const docRef = await addDoc(collection(this.db, 'dop_2023'), data);
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
+
 }
 
 
@@ -39,6 +85,6 @@ const firebaseConfig = {
   appId: "1:314364670997:web:77051ac4961f66afb68a1c",
   hostingSite: "agilisdeckbuilder"
 };
- 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
