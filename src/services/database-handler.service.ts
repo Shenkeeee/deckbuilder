@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import * as Papa from 'papaparse'; // Import PapaParse library for CSV parsing
 
 @Injectable({
@@ -27,6 +27,28 @@ export class DatabaseHandlerService {
     return cards;
   }
 
+  // to be tested - it adds an ID field
+  async modifyCard(cardId: string, newData: any): Promise<void> {
+    try {
+      const docRef = doc(this.db, 'dop', cardId);
+      await updateDoc(docRef, newData.data);
+      // console.log(docRef);
+      console.log(newData);
+      console.log(`Card ${cardId} successfully modified.`);
+    } catch (error) {
+      console.error('Error modifying card:', error);
+    }
+  }
+
+  async deleteCard(cardId: string): Promise<void> {
+    try {
+      const docRef = doc(this.db, 'dop', cardId);
+      await deleteDoc(docRef);
+      console.log(`Card ${cardId} successfully deleted.`);
+    } catch (error) {
+      console.error("Error deleting card:", error)
+    }
+  }
 
   // Function to upload data from a CSV file to the database
   async uploadDataFromCSV(file: File): Promise<void> {

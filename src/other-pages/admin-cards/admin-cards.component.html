@@ -25,15 +25,17 @@
                 <td>{{ card.data["altipus"] !== "null" ? card.data["altipus"] : '' }}</td>
                 <td>{{ card.data["nev"] !== "null" ? card.data["nev"] : '' }}</td>
                 <td>{{ card.data["mana-koltseg"] !== "null" ? card.data["mana-koltseg"] : '' }}</td>
-                <td class="tamado-vedo">{{ card.data["tamado-vedo"] !== "null" ? card.data["tamado-vedo"] : '' }}</td>
+                <td class="tamado-vedo">{{ card.data["tamado-vedo"] !== "null" ? card.data["tamado-vedo"] : '' }}
+                </td>
                 <td class="kepesseg">{{ card.data["kepesseg"] !== "null" ? card.data["kepesseg"] : '' }}</td>
                 <td class="manaplusz">{{ card.data["mana+"] !== "null" ? card.data["mana+"] : '' }}</td>
                 <td class="laphuzoplusz">{{ card.data["laphuzo+"] !== "null" ? card.data["laphuzo+"] : '' }}</td>
                 <td class="spirit">{{ card.data["spirit"] !== "null" ? card.data["spirit"] : '' }}</td>
                 <td class="megjelenes">{{ card.data["megjelenes"] !== "null" ? card.data["megjelenes"] : '' }}</td>
                 <td>{{ card.data["sorszam"] !== "null" ? card.data["sorszam"] : '' }}</td>
-                <td><button>M</button><button>D</button></td>
+                <td><button (click)="openEditPopup(card)">M</button><button (click)="openDeletePopup(card)">D</button>
+                </td>
             </tr>
-        </ng-container>        
+        </ng-container>
     </table>
 </div>

@@ -29,7 +29,8 @@ button:hover{
 table {
     margin-top: 20px;
     // display: flexbox;
-    flex: 0 0 auto;
+    // flex: 0 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
 }
