@@ -13,6 +13,7 @@ export class CardHandlerService {
 
   // for showing - we need this to update the observable when its fully filled and not fill the observable directly
   cardInstances: CardInstance[] = [];
+  allcardInstances: CardInstance[] = [];
   cardInstanceNum = 0;
 
 
@@ -21,11 +22,15 @@ export class CardHandlerService {
   inputValueMsg = new BehaviorSubject<string>("");
   inputMsgObservable = this.inputValueMsg.asObservable();
 
-  //for data
+
+  // allCards = new BehaviorSubject<{ id: string, data: any }[]>([]);
+  // allCardsObservable = this.allCards.asObservable();
+  
+  // for data of all
   cards = new BehaviorSubject<{ id: string, data: any }[]>([]);
   cardsObservable = this.cards.asObservable();
 
-  //for showing
+  // for showing of filtered
   cardInstancesOBSVAL = new BehaviorSubject<CardInstance[]>([]);
   cardInstancesOBSOBS = this.cardInstancesOBSVAL.asObservable();
 
@@ -37,7 +42,7 @@ export class CardHandlerService {
     return returnable;
   }
 
-  async updateAvailableCardsData() {
+  async updateCardsData() {
     await this.getAllCards().then(cards => {
       this.cards.next(cards);
     }).catch(error => {
@@ -46,7 +51,7 @@ export class CardHandlerService {
   }
 
   async getCardsLength(): Promise<number> {
-    await this.updateAvailableCardsData();
+    await this.updateCardsData();
     return this.cards.value.length;
   }
 

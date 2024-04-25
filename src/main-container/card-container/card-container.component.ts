@@ -28,7 +28,7 @@ export class CardContainerComponent implements OnInit {
   }
 
   updateShownCards(){
-    this.cardHandlerService.updateAvailableCardsData();
+    // this.cardHandlerService.updateCardsData();
     // this.cardHandlerService.updateShownCards().then(cards => this.cardInstances = cards);
     this.cardHandlerService.updateShownCards();
   }

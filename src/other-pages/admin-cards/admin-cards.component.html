@@ -1,1 +1,39 @@
-<p>admin-cards works!</p>
+<div id="admin-cards-wrapper">
+    <h2>Kártyák kezelése</h2>
+    <button>Feltöltés</button>
+
+    <table>
+        <tr>
+            <th>Szín</th>
+            <th>Laptípus</th>
+            <th>Altípus</th>
+            <th>Név</th>
+            <th>Mana-költség</th>
+            <th class="tamado-vedo">Támadó-védő</th>
+            <th class="kepesseg">Képesség</th>
+            <th class="manaplusz">Mana+</th>
+            <th class="laphuzoplusz">Laphúzó+</th>
+            <th class="spirit">Spririt</th>
+            <th class="megjelenes">Megjelenés</th>
+            <th>Sorszám</th>
+            <th>Módosítás</th>
+        </tr>
+        <ng-container *ngFor="let card of cards">
+            <tr>
+                <td>{{ card.data["szin"] !== "null" ? card.data["szin"] : '' }}</td>
+                <td>{{ card.data["laptipus"] !== "null" ? card.data["laptipus"] : '' }}</td>
+                <td>{{ card.data["altipus"] !== "null" ? card.data["altipus"] : '' }}</td>
+                <td>{{ card.data["nev"] !== "null" ? card.data["nev"] : '' }}</td>
+                <td>{{ card.data["mana-koltseg"] !== "null" ? card.data["mana-koltseg"] : '' }}</td>
+                <td class="tamado-vedo">{{ card.data["tamado-vedo"] !== "null" ? card.data["tamado-vedo"] : '' }}</td>
+                <td class="kepesseg">{{ card.data["kepesseg"] !== "null" ? card.data["kepesseg"] : '' }}</td>
+                <td class="manaplusz">{{ card.data["mana+"] !== "null" ? card.data["mana+"] : '' }}</td>
+                <td class="laphuzoplusz">{{ card.data["laphuzo+"] !== "null" ? card.data["laphuzo+"] : '' }}</td>
+                <td class="spirit">{{ card.data["spirit"] !== "null" ? card.data["spirit"] : '' }}</td>
+                <td class="megjelenes">{{ card.data["megjelenes"] !== "null" ? card.data["megjelenes"] : '' }}</td>
+                <td>{{ card.data["sorszam"] !== "null" ? card.data["sorszam"] : '' }}</td>
+                <td><button>M</button><button>D</button></td>
+            </tr>
+        </ng-container>        
+    </table>
+</div>
