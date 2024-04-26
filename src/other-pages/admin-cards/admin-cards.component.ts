@@ -54,7 +54,24 @@ export class AdminCardsComponent implements OnInit {
     }
 
     // delete cards in database - currently disabled
-    // this.databaseHandlerService.deleteCard(cardId);
+    this.databaseHandlerService.deleteCard(cardId);
+  }
+
+  // uploadCards(file: File) {
+  //   this.databaseHandlerService.uploadDataFromCSV(file);
+  // }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      // File is selected, you can now process it
+      console.log("uploading is currently disabled")
+      // this.databaseHandlerService.uploadDataFromCSV(file);
+    }
+  }
+
+  deleteAllCards(){
+    this.databaseHandlerService.deleteAllCards();
   }
   
   openEditPopup(card: any): void {

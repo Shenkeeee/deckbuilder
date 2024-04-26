@@ -4,12 +4,10 @@
         <!-- <form class="form-group" action="login" method="POST"> -->
         <div class="form-group">
             <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" [(ngModel)]="email" required>
             <label for="password">Jelszó:</label>
-            <input type="password" id="password" name="password" required>
-            <!-- <input type="submit" value="Login"> -->
-            <!-- <button> <a href="">Create!</a></button> -->
-            <a href="/" class="button-link">Alkotás!</a>
+            <input type="password" id="password" name="password" [(ngModel)]="password" required>
+            <button (click)="login()">Alkotás!</button>
         </div>
     </div>
 </div>

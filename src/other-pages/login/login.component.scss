@@ -22,6 +22,7 @@
     text-align: center;
 }
 
+// form
 .form-group label {
     display: block;
     margin-bottom: 5px;
@@ -30,7 +31,7 @@
 
 .form-group input, button {
     width: 500px;
-    color: white;
+    color: black;
     height: 45px;
     display: block;
     margin: 10px;
@@ -38,7 +39,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     margin: 5px 0;
-    padding: 0 10px;
+    padding: 0 5px;
 }
 
 
@@ -52,27 +53,10 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-inline: 5px;
+    margin-top: 12px;
 }
 
 .form-group input[type="submit"]:hover, button:hover {
     background-color: #0056b3;
-}
-
-
-// "a" használathoz
-.button-link {
-    margin-top: 10px;
-    display: block;
-    line-height: 50px;
-    text-align: center;
-    background-color: #007bff; /* Button color */
-    color: #fff; /* Text color */
-    text-decoration: none; /* Remove underline */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s ease; /* Smooth transition */
-}
-
-.button-link:hover {
-    background-color: #0056b3; /* Darker button color on hover */
 }

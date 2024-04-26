@@ -1,6 +1,7 @@
 <div id="admin-cards-wrapper">
     <h2>Kártyák kezelése</h2>
-    <button>Feltöltés</button>
+    <h3>Feltöltés</h3>
+    <input type="file" accept=".csv" (change)="onFileSelected($event)">
 
     <table>
         <tr>
@@ -38,4 +39,5 @@
             </tr>
         </ng-container>
     </table>
+    <button id="delete-all-button" (click)="deleteAllCards()">Összes törlése</button>
 </div>
