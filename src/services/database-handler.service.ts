@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
+import { getAuth } from 'firebase/auth';
 import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc, setDoc } from 'firebase/firestore';
 import * as Papa from 'papaparse'; // Import PapaParse library for CSV parsing
+import { BehaviorSubject } from 'rxjs';
 
 
 // web app's Firebase configuration
@@ -22,12 +24,24 @@ const app = initializeApp(firebaseConfig);
   providedIn: 'root'
 })
 
+
 export class DatabaseHandlerService {
+  app!: any;
   private db;
-  private workDoc = 'dop_2023';
+  // private workDoc = 'dop_2023';
+  private workDoc = 'dop';
+
+  user = new BehaviorSubject<any>(getAuth().currentUser);
+  userObs = this.user.asObservable();
+
 
   constructor() {
+    if(!this.app){
+      this.app = initializeApp(firebaseConfig);
+    }
     this.db = getFirestore();
+    console.log(getAuth());
+    this.user.next(getAuth().currentUser);
   }
 
 
@@ -127,5 +141,9 @@ export class DatabaseHandlerService {
   initializeApp(){
     initializeApp(firebaseConfig);
   }
+
+  // initializeUser(){
+  //   initializeApp(firebaseConfig);
+  // }
 
 }

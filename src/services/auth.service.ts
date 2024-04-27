@@ -1,5 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from 'firebase/auth';
+import { Injectable } from '@angular/core';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, Auth} from 'firebase/auth';
 import { DatabaseHandlerService } from './database-handler.service';
 
 const auth = getAuth();
@@ -8,13 +8,15 @@ const auth = getAuth();
   providedIn: 'root',
 })
 
-export class AuthService implements OnInit {
+export class AuthService {
 
-  constructor(private databaseHandlerService: DatabaseHandlerService) { }
+  user: any;
 
-  ngOnInit(): void {
-    // this.databaseHandlerService.initializeApp();
-  }
+  constructor(private databaseHandlerService: DatabaseHandlerService) {
+    //  this.databaseHandlerService.initializeApp();
+    this.databaseHandlerService.userObs.subscribe(user => this.user = user);
+    console.log(this.user);
+   }
 
   register(email: string, password: string): Promise<any> {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -26,6 +28,18 @@ export class AuthService implements OnInit {
 
   signOut(): Promise<any>{
     return signOut(auth);
+  }
+
+  isLoggedIn() {
+    console.log(auth.currentUser);
+    return this.user ? true : false;
+  }
+
+  isAdmin() {
+    if(this.isLoggedIn() && auth.currentUser?.email === "mate.subicz@gmail.com"){
+      return true
+    }
+    return false
   }
 
 }
