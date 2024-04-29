@@ -20,21 +20,19 @@ input {
 
 // button
 button {
-    padding: 10px;
-    background-color: darkgray;
-    color: white;
-    border-radius: 5px;
-    border: none;
+    height: 30px;
+    width: 30px;
     margin: 2px;
-    cursor: pointer;
 }
 
-button:hover{
-    background-color: rgba(0, 0, 0, 0.5);
+span{
+    width: 30px;
 }
 
 #delete-all-button {
     background-color: rgba(255, 5, 5, 0.5);
+    width: 200px;
+    height: 40px;
 }
 
 // table

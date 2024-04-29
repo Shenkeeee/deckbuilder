@@ -35,10 +35,13 @@
                 <td class="spirit">{{ card.data["spirit"] !== "null" ? card.data["spirit"] : '' }}</td>
                 <td class="megjelenes">{{ card.data["megjelenes"] !== "null" ? card.data["megjelenes"] : '' }}</td>
                 <td>{{ card.data["sorszam"] !== "null" ? card.data["sorszam"] : '' }}</td>
-                <td><button (click)="openEditPopup(card)">M</button><button (click)="openDeletePopup(card)">D</button>
+                <td><button (click)="openEditPopup(card)" mat-flat-button color="accent"> <mat-icon
+                            matSuffix>edit</mat-icon></button>
+                    <button mat-flat-button color="warn" (click)="openDeletePopup(card)"><mat-icon
+                            matSuffix>delete</mat-icon></button>
                 </td>
             </tr>
         </ng-container>
     </table>
-    <button id="delete-all-button" (click)="deleteAllCards()">Összes törlése</button>
+    <button mat-flat-button color="warn" id="delete-all-button" (click)="deleteAllCards()">Összes törlése</button>
 </div>

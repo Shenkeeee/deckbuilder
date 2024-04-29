@@ -1,55 +1,82 @@
 <div class="popup">
-    <h2>Kártya szerkesztése</h2>
+    <h2 mat-dialog-title>Kártya szerkesztése</h2>
     <form>
-        <label for="szin">Szín:</label>
-        <input type="text" id="szin" name="szin" [(ngModel)]="editedCardData.data['szin']"
-            [attr.disabled]="!editable ? 'disabled' : null">
+        <mat-dialog-content>
+            <mat-form-field>
+                <mat-label for="szin">Szín:</mat-label>
+                <input type="text" matInput id="szin" name="szin" [(ngModel)]="editedCardData.data['szin']"
+                    [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="laptipus">Laptípus:</mat-label>
+                <input type="text" matInput id="laptipus" name="laptipus" [(ngModel)]="editedCardData.data['laptipus']"
+                    [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
 
-        <label for="laptipus">Laptípus:</label>
-        <input type="text" id="laptipus" name="laptipus" [(ngModel)]="editedCardData.data['laptipus']"
-            [attr.disabled]="!editable ? 'disabled' : null">
+            <mat-form-field>
+                <mat-label for="altipus">Altípus:</mat-label>
+                <input type="text" matInput id="altipus" name="altipus" [(ngModel)]="editedCardData.data['altipus']"
+                    [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
 
-        <label for="altipus">Altípus:</label>
-        <input type="text" id="altipus" name="altipus" [(ngModel)]="editedCardData.data['altipus']"
-            [attr.disabled]="!editable ? 'disabled' : null">
+            <mat-form-field>
+                <mat-label for="nev">Név:</mat-label>
+                <input type="text" matInput id="nev" name="nev" [(ngModel)]="editedCardData.data['nev']"
+                    [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
 
-        <label for="nev">Név:</label>
-        <input type="text" id="nev" name="nev" [(ngModel)]="editedCardData.data['nev']"
-            [attr.disabled]="!editable ? 'disabled' : null">
+            <mat-form-field>
+                <mat-label for="mana-koltseg">Mana költség:</mat-label>
+                <input type="text" matInput id="mana-koltseg" name="mana-koltseg"
+                    [(ngModel)]="editedCardData.data['mana-koltseg']" [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
 
-        <label for="mana-koltseg">Mana költség:</label>
-        <input type="text" id="mana-koltseg" name="mana-koltseg" [(ngModel)]="editedCardData.data['mana-koltseg']"
-            [attr.disabled]="!editable ? 'disabled' : null">
+            <mat-form-field>
+                <mat-label for="tamado-vedo">Támadó-védő:</mat-label>
+                <input type="text" matInput id="tamado-vedo" name="tamado-vedo"
+                    [(ngModel)]="editedCardData.data['tamado-vedo']" [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
 
-        <label for="tamado-vedo">Támadó-védő:</label>
-        <input type="text" id="tamado-vedo" name="tamado-vedo" [(ngModel)]="editedCardData.data['tamado-vedo']"
-            [attr.disabled]="!editable ? 'disabled' : null">
+            <mat-form-field>
+                <mat-label for="kepesseg">Képesség:</mat-label>
+                <input type="text" matInput id="kepesseg" name="kepesseg" [(ngModel)]="editedCardData.data['kepesseg']"
+                    [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
 
-        <label for="kepesseg">Képesség:</label>
-        <input type="text" id="kepesseg" name="kepesseg" [(ngModel)]="editedCardData.data['kepesseg']"
-            [attr.disabled]="!editable ? 'disabled' : null">
+            <mat-form-field>
+                <mat-label for="mana-plusz">Mana+:</mat-label>
+                <input type="text" matInput id="mana-plusz" name="mana-plusz" [(ngModel)]="editedCardData.data['mana+']"
+                    [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
 
-        <label for="mana-plusz">Mana+:</label>
-        <input type="text" id="mana-plusz" name="mana-plusz" [(ngModel)]="editedCardData.data['mana+']"
-            [attr.disabled]="!editable ? 'disabled' : null">
+            <mat-form-field>
+                <mat-label for="laphuzo-plusz">Laphúzó+:</mat-label>
+                <input type="text" matInput id="laphuzo-plusz" name="laphuzo-plusz"
+                    [(ngModel)]="editedCardData.data['laphuzo+']" [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
 
-        <label for="laphuzo-plusz">Laphúzó+:</label>
-        <input type="text" id="laphuzo-plusz" name="laphuzo-plusz" [(ngModel)]="editedCardData.data['laphuzo+']"
-            [attr.disabled]="!editable ? 'disabled' : null">
+            <mat-form-field>
+                <mat-label for="spirit">Spirit:</mat-label>
+                <input type="text" matInput id="spirit" name="spirit" [(ngModel)]="editedCardData.data['spirit']"
+                    [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
 
-        <label for="spirit">Spirit:</label>
-        <input type="text" id="spirit" name="spirit" [(ngModel)]="editedCardData.data['spirit']"
-            [attr.disabled]="!editable ? 'disabled' : null">
+            <mat-form-field>
+                <mat-label for="megjelenes">Megjelenés:</mat-label>
+                <input type="text" matInput id="megjelenes" name="megjelenes"
+                    [(ngModel)]="editedCardData.data['megjelenes']" [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
 
-        <label for="megjelenes">Megjelenés:</label>
-        <input type="text" id="megjelenes" name="megjelenes" [(ngModel)]="editedCardData.data['megjelenes']"
-            [attr.disabled]="!editable ? 'disabled' : null">
-
-        <label for="sorszam">Sorszám:</label>
-        <input type="text" id="sorszam" name="sorszam" [(ngModel)]="editedCardData.data['sorszam']"
-            [attr.disabled]="!editable ? 'disabled' : null">
-
-        <button type="button" (click)="onSave()" [attr.disabled]="!editable ? 'disabled' : null">Mentés</button>
-        <button type="button" (click)="onCancel()">Mégse</button>
+            <mat-form-field>
+                <mat-label for="sorszam">Sorszám:</mat-label>
+                <input type="text" matInput id="sorszam" name="sorszam" [(ngModel)]="editedCardData.data['sorszam']"
+                    [attr.disabled]="!editable ? 'disabled' : null">
+            </mat-form-field>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button mat-flat-button color="primary" type="button" (click)="onSave()"
+                [attr.disabled]="!editable ? 'disabled' : null">Mentés</button>
+            <button mat-flat-button color="primary" type="button" (click)="onCancel()">Mégse</button>
+        </mat-dialog-actions>
     </form>
 </div>

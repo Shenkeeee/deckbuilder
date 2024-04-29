@@ -1,4 +1,3 @@
-Szín,Laptípus,Altípus,Név,Mana költség,Támadó/Védő,Képesség, +Mana, +Laphúzó,Spirit,Megjelenés,Sorszám
 Multicolor,Varázslat,Sima,Dreams of Purgatory,9,,"Ha még nincs 4 Karaktered a Portálban, egy altípussal rendelkező Karaktert a kezedből egyből a Portálba tehetsz. Száműzd ezt a lapot",2 R,2,S3,,dop23/001
 Multicolor,Karakter,,Doppelganger,5,1 / 1,"Aktívan jön. Lejövetelkor lemásolhatod ellenfeled egyik Karakterének értékeit, és hozzáadhatod Erősítésként. ",2 R,2,S3,,dop23/002
 Multicolor,Varázslat,Instant,Remember the Rain,2 R,-,Egy maximum 2-es kijátszású passzív Karaktert Száműzhetsz,2 R,2,1,Nyeremény,dop23/003

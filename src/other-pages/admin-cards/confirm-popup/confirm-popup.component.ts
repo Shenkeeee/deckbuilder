@@ -1,12 +1,19 @@
 // import { Component } from '@angular/core';
 import { Component, EventEmitter, Input, Output, OnInit, Inject } from '@angular/core';
-import { FormsModule } from '@angular/forms'
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
+import {
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-confirm-popup',
   standalone: true,
-  imports: [],
+  imports: [MatButtonModule, MatDialogContent, MatDialogTitle, MatDialogActions],
   templateUrl: './confirm-popup.component.html',
   styleUrl: './confirm-popup.component.scss'
 })

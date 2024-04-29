@@ -1,7 +1,11 @@
 <div id="deck-container">
     <div id="search-filter-container">
-        <input type="text" id="search-field" [(ngModel)]="inputValue" (input)="updateAvailableCards()" placeholder="Search card...">
-        <button id="filter-button" (click)="toggleFilters()">Filters</button>
+        <mat-form-field>
+            <mat-label for="search-field">Card name:</mat-label>
+            <input type="text" matInput id="search-field" [(ngModel)]="inputValue" (input)="updateAvailableCards()"
+                placeholder="Doppelganger">
+        </mat-form-field>
+        <button mat-flat-button id="filter-button" (click)="toggleFilters()">Filters</button>
     </div>
 
     <div id="deck-list-container">
@@ -12,20 +16,20 @@
         <!-- Filters -->
         <div id="filters-container" [class]="filtersContainerClass">
             <!-- TYPE -->
-            <div>
-                <h4>TYPE</h4>
-                <button>CHAMPION</button>
-                <button>SPELL</button>
-                <button>FOLLOWER</button>
-                <button>LANDMARK</button>
-                <button>EQUIPMENT</button>
-            </div>
+            <h4>TYPE</h4>
+            <mat-chip-listbox>
+                <mat-chip-option>CHAMPION</mat-chip-option>
+                <mat-chip-option>SPELL</mat-chip-option>
+                <mat-chip-option>FOLLOWER</mat-chip-option>
+                <mat-chip-option>LANDMARK</mat-chip-option>
+                <mat-chip-option>EQUIPMENT</mat-chip-option>
+            </mat-chip-listbox>
 
             <!-- FORMAT -->
-            <div>
+            <!-- <div>
                 <h4>FORMAT</h4>
                 <button>ETERNALS</button>
-            </div>
+            </div> -->
 
             <!-- MANA -->
             <div>
@@ -33,30 +37,36 @@
             </div>
 
             <div id="mana-list-container">
-                <button>0</button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>7</button>
-                <button>8+</button>
+                <mat-chip-listbox>
+                    <mat-chip-option>0</mat-chip-option>
+                    <mat-chip-option>1</mat-chip-option>
+                    <mat-chip-option>2</mat-chip-option>
+                    <mat-chip-option>3</mat-chip-option>
+                    <mat-chip-option>4</mat-chip-option>
+                    <mat-chip-option>5</mat-chip-option>
+                    <mat-chip-option>6</mat-chip-option>
+                    <mat-chip-option>7</mat-chip-option>
+                    <mat-chip-option>8+</mat-chip-option>
+                </mat-chip-listbox>
             </div>
             <!-- RARITY -->
             <div>
                 <h4>RARITY</h4>
-                <button>COMMON</button>
-                <button>RARE</button>
-                <button>EPIC</button>
+                <mat-chip-listbox>
+                    <mat-chip-option>COMMON</mat-chip-option>
+                    <mat-chip-option>RARE</mat-chip-option>
+                    <mat-chip-option>EPIC</mat-chip-option>
+                </mat-chip-listbox>
             </div>
 
             <!-- SET -->
             <div>
                 <h4>SET</h4>
-                <button>FOUNDATIONS</button>
-                <button>RISING TIDES</button>
-                <button>CALL OF THE MOUNTAIN</button>
+                <mat-chip-listbox>
+                    <mat-chip-option>FOUNDATIONS</mat-chip-option>
+                    <mat-chip-option>RISING TIDES</mat-chip-option>
+                    <mat-chip-option>CALL OF THE MOUNTAIN</mat-chip-option>
+                </mat-chip-listbox>
             </div>
         </div>
 
@@ -66,22 +76,25 @@
 
 
         <div id="deck-name-container">
-            <input type="text" id="deck-name-field" placeholder="Deck name...">
+            <mat-form-field>
+                <mat-label for="deck-name-field">Deck Name:</mat-label>
+                <input matInput type="text" id="deck-name-field" placeholder="Deck 1">
+            </mat-form-field>
         </div>
 
         <div id="copy-deck-container">
-            <button id="copy-deck-button">Copy Deck Code</button>
+            <button mat-flat-button id="copy-deck-button">Copy Deck Code</button>
         </div>
 
         <div id="deck-info-container">
             <div id="card-count">0/30 Cards</div>
-            <div class="class-indicator-holder">
+            <!-- <div class="class-indicator-holder">
                 <div class="class-indicator">A: 0</div>
                 <div class="class-indicator">B: 0</div>
                 <div class="class-indicator">C: 0</div>
                 <div class="class-indicator">D: 0</div>
                 <div class="class-indicator">E: 0</div>
-            </div>
+            </div> -->
         </div>
         <div id="card-list-container">
             <img src="/assets/pics/additional/logo.png" alt="">
@@ -90,8 +103,11 @@
             <img src="/assets/pics/additional/logo.png" alt="">
         </div>
         <div id="import-deck-container">
-            <input type="text" id="import-deck-field" placeholder="Import deck code...">
-            <button id="import-deck-button">Import Deck</button>
+            <mat-form-field>
+                <mat-label for="import-deck-field">Deck code:</mat-label>
+                <input matInput type="text" id="import-deck-field" placeholder="Import deck code...">
+            </mat-form-field>
+            <button mat-flat-button id="import-deck-button" name="import-deck-button">Import Deck</button>
         </div>
     </div>
 </div>

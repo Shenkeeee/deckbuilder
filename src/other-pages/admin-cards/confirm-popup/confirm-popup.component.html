@@ -1,6 +1,10 @@
-<div class="popup">
-    <h2>Művelet megerősítése</h2>
-    <p>Biztosan el szeretné végezni a műveletet?</p>
-    <button (click)="onConfirm()">Igen</button>
-    <button (click)="onCancel()">Mégse</button>
-</div>
+<mat-dialog-content>
+    <div class="popup">
+        <h2 mat-dialog-title>Művelet megerősítése</h2>
+        <p>Biztosan el szeretné végezni a műveletet?</p>
+        <mat-dialog-actions>
+            <button mat-flat-button color="warn" (click)="onConfirm()">Igen</button>
+            <button mat-flat-button color="primary" (click)="onCancel()">Mégse</button>
+        </mat-dialog-actions>
+    </div>
+</mat-dialog-content>

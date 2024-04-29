@@ -1,12 +1,21 @@
 import { Component, EventEmitter, Input, Output, OnInit, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms'
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormField } from '@angular/material/input';
 
+import {
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+} from '@angular/material/dialog';
 @Component({
   selector: 'app-card-edit-popup',
   templateUrl: './card-edit-popup.component.html',
   styleUrls: ['./card-edit-popup.component.scss'],
-  imports: [FormsModule],
+  imports: [FormsModule, MatButtonModule, MatInputModule, MatFormField, MatDialogTitle, MatDialogContent, MatDialogActions],
   standalone: true
 })
 export class CardEditPopupComponent implements OnInit {
@@ -18,14 +27,14 @@ export class CardEditPopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public cardData: any
   ) {
   }
-  
+
   ngOnInit(): void {
     this.editedCardData = JSON.parse(JSON.stringify(this.cardData));; // Deep Clone cardData to editedCardData
-    
+
     this.filterNullValues();
   }
 
-  
+
   filterNullValues() {
     for (let key in this.editedCardData.data) {
       if (this.editedCardData.data[key] === "null") {

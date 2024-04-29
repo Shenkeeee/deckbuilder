@@ -1,26 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog'
 import { CardHandlerService } from '../../services/card-handler.service';
 import { DatabaseHandlerService } from '../../services/database-handler.service';
 import { CardEditPopupComponent } from './card-edit-popup/card-edit-popup.component';
 import { ConfirmPopupComponent } from './confirm-popup/confirm-popup.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-admin-cards',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './admin-cards.component.html',
   styleUrl: './admin-cards.component.scss'
 })
 
-export class AdminCardsComponent implements OnInit {
+export class AdminCardsComponent implements OnInit, OnChanges {
   cards?: { id: string; data: any; }[];
 
   constructor(private cardHandlerService: CardHandlerService, private dialog: MatDialog, private databaseHandlerService: DatabaseHandlerService) { }
 
   async ngOnInit() {
     this.cardHandlerService.cardsObservable.subscribe(cards => this.cards = cards);
+    await this.cardHandlerService.updateCardsData();
+  }
+  async ngOnChanges() {
     await this.cardHandlerService.updateCardsData();
   }
 
@@ -65,8 +70,8 @@ export class AdminCardsComponent implements OnInit {
     const file: File = event.target.files[0];
     if (file) {
       // File is selected, you can now process it
-      console.log("uploading is currently disabled")
-      // this.databaseHandlerService.uploadDataFromCSV(file);
+      // console.log("uploading is currently disabled")
+      this.databaseHandlerService.uploadDataFromCSV(file);
     }
   }
 
