@@ -7,11 +7,12 @@ import { CardEditPopupComponent } from './card-edit-popup/card-edit-popup.compon
 import { ConfirmPopupComponent } from './confirm-popup/confirm-popup.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule, MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-admin-cards',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule, MatProgressSpinner],
   templateUrl: './admin-cards.component.html',
   styleUrl: './admin-cards.component.scss'
 })
@@ -69,16 +70,40 @@ export class AdminCardsComponent implements OnInit, OnChanges {
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
-      // File is selected, you can now process it
-      // console.log("uploading is currently disabled")
-      this.databaseHandlerService.uploadDataFromCSV(file);
+      const dialogRef = this.dialog.open(ConfirmPopupComponent, {
+        data: file
+      });
+
+      dialogRef.afterClosed().subscribe((uploadable: any) => {
+        if (uploadable) {
+          const spinnerRef = this.dialog.open(MatProgressSpinner, {
+            disableClose: true, // Prevent closing the spinner dialog
+            panelClass: 'spinner-overlay' // Apply custom styles for the overlay
+          });
+          this.databaseHandlerService.uploadDataFromCSV(file).then(
+            () => {
+              // Hide the spinner once the upload is complete
+              spinnerRef.close();
+              window.location.reload();
+            },
+            (error: any) => {
+              // Handle error if upload fails
+              console.error('Error uploading file:', error);
+              spinnerRef.close(); // Close the spinner in case of error
+            }
+          );;
+        }
+        else {
+          event.target.value = null;
+        }
+      });
     }
   }
 
-  deleteAllCards(){
-    this.databaseHandlerService.deleteAllCards();
+  async deleteAllCards() {
+    await this.databaseHandlerService.deleteAllCards();
   }
-  
+
   openEditPopup(card: any): void {
     const dialogRef = this.dialog.open(CardEditPopupComponent, {
       data: card
@@ -99,6 +124,33 @@ export class AdminCardsComponent implements OnInit, OnChanges {
     dialogRef.afterClosed().subscribe((deletedData: any) => {
       if (deletedData) {
         this.deleteCard(card.id);
+      }
+    });
+  }
+
+  openDeleteAllPopup(card: any): void {
+    const dialogRef = this.dialog.open(ConfirmPopupComponent, {
+      data: card
+    });
+
+    dialogRef.afterClosed().subscribe((deletedData: any) => {
+      if (deletedData) {
+        const spinnerRef = this.dialog.open(MatProgressSpinner, {
+          disableClose: true, // Prevent closing the spinner dialog
+          panelClass: 'primary-spinner-overlay', // Apply custom styles for the overlay
+        });
+        this.deleteAllCards().then(
+          () => {
+            // Hide the spinner once the upload is complete
+            spinnerRef.close();
+            window.location.reload();
+          },
+          (error: any) => {
+            // Handle error if upload fails
+            console.error('Error deleting cards:', error);
+            spinnerRef.close(); // Close the spinner in case of error
+          }
+        );;
       }
     });
   }

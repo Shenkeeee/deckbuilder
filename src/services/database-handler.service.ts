@@ -36,7 +36,7 @@ export class DatabaseHandlerService {
 
 
   constructor() {
-    if(!this.app){
+    if (!this.app) {
       this.app = initializeApp(firebaseConfig);
     }
     this.db = getFirestore();
@@ -57,16 +57,17 @@ export class DatabaseHandlerService {
     return cards;
   }
 
-
-  async deleteAllCards() {
+  async deleteAllCards(): Promise<void> {
     const cardsCollection = collection(this.db, this.workDoc);
-    await getDocs(cardsCollection)
-      .then((querySnapshot) =>
-        querySnapshot.forEach((doc) => {
-          this.deleteCard(doc.id);
-        }));;
-  }
+    const querySnapshot = await getDocs(cardsCollection);
+    const deletePromises: Promise<void>[] = [];
 
+    querySnapshot.forEach((doc) => {
+      deletePromises.push(this.deleteCard(doc.id));
+    });
+
+    await Promise.all(deletePromises);
+  }
 
   // to be tested - it adds an ID field (maybe)
   async modifyCard(cardId: string, newData: any): Promise<void> {
@@ -94,16 +95,23 @@ export class DatabaseHandlerService {
 
   // Function to upload data from a CSV file to the database
   async uploadDataFromCSV(file: File): Promise<void> {
-    const parseConfig = {
-      complete: async (results: any) => {
-        for (let row of results.data) {
-          // Format the data as needed and upload it to the database
-          const formattedData = this.formatData(row);
-          await this.uploadData(formattedData);
+    return new Promise<void>((resolve, reject) => {
+      const parseConfig = {
+        complete: async (results: any) => {
+          try {
+            for (let row of results.data) {
+              // Format the data as needed and upload it to the database
+              const formattedData = this.formatData(row);
+              await this.uploadData(formattedData);
+            }
+            resolve(); // Resolve the promise when all data is uploaded
+          } catch (error) {
+            reject(error); // Reject the promise if an error occurs
+          }
         }
-      }
-    };
-    Papa.parse(file, parseConfig);
+      };
+      Papa.parse(file, parseConfig);
+    });
   }
 
 
@@ -138,7 +146,7 @@ export class DatabaseHandlerService {
     }
   }
 
-  initializeApp(){
+  initializeApp() {
     initializeApp(firebaseConfig);
   }
 
