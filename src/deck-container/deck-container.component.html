@@ -1,11 +1,11 @@
 <div id="deck-container">
     <div id="search-filter-container">
         <mat-form-field>
-            <mat-label for="search-field">Card name:</mat-label>
+            <mat-label for="search-field">Kártyanév:</mat-label>
             <input type="text" matInput id="search-field" [(ngModel)]="inputValue" (input)="updateAvailableCards()"
                 placeholder="Doppelganger">
         </mat-form-field>
-        <button mat-flat-button id="filter-button" (click)="toggleFilters()">Filters</button>
+        <button mat-flat-button id="filter-button" (click)="toggleFilters()">Szűrők</button>
     </div>
 
     <div id="deck-list-container">
@@ -15,29 +15,79 @@
 
         <!-- Filters -->
         <div id="filters-container" [class]="filtersContainerClass">
-            <!-- TYPE -->
-            <h4>TYPE</h4>
-            <mat-chip-listbox>
-                <mat-chip-option>CHAMPION</mat-chip-option>
-                <mat-chip-option>SPELL</mat-chip-option>
-                <mat-chip-option>FOLLOWER</mat-chip-option>
-                <mat-chip-option>LANDMARK</mat-chip-option>
-                <mat-chip-option>EQUIPMENT</mat-chip-option>
+
+            <!-- Típus -->
+            <!-- <h4>Típus</h4> -->
+            <mat-form-field>
+                <mat-label>Típus</mat-label>
+                <mat-select multiple>
+                    <mat-option>Karakter</mat-option>
+                    <mat-option>Varázslat</mat-option>
+                    <mat-option>Spirit</mat-option>
+                    <mat-option>Portál Csapda</mat-option>
+                    <mat-option>Vezető</mat-option>
+                    <mat-option>Level Up</mat-option>
+                    <mat-option>Aura</mat-option>
+                    <mat-option>Zóna</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- Altípus -->
+            <h4>Altípus</h4>
+            <mat-chip-listbox multiple>
+                <mat-chip-option>Nincs</mat-chip-option>
+                <mat-chip-option>Sima</mat-chip-option>
+                <mat-chip-option>Instant</mat-chip-option>
+                <mat-chip-option>Veterán</mat-chip-option>
+                <mat-chip-option>Elit</mat-chip-option>
+                <mat-chip-option>Calm</mat-chip-option>
+                <mat-chip-option>Horror</mat-chip-option>
             </mat-chip-listbox>
 
-            <!-- FORMAT -->
-            <!-- <div>
-                <h4>FORMAT</h4>
-                <button>ETERNALS</button>
-            </div> -->
+            <!-- Altípus -->
+            <!-- <mat-form-field>
+                <mat-label>Altípus</mat-label>
+                <mat-select multiple>
+                    <mat-option>Nincs</mat-option>
+                    <mat-option>Sima</mat-option>
+                    <mat-option>Instant</mat-option>
+                    <mat-option>Veterán</mat-option>
+                    <mat-option>Elit</mat-option>
+                    <mat-option>Calm</mat-option>
+                    <mat-option>Horror</mat-option>
+                </mat-select>
+            </mat-form-field> -->
 
-            <!-- MANA -->
+            <!-- Szín -->
+            <!-- <h4>Szín</h4>
+            <mat-chip-listbox multiple>
+                <mat-chip-option>Multicolor</mat-chip-option>
+                <mat-chip-option>Sárga</mat-chip-option>
+                <mat-chip-option>Piros</mat-chip-option>
+                <mat-chip-option>Magenta</mat-chip-option>
+                <mat-chip-option>Zöld</mat-chip-option>
+                <mat-chip-option>Fehér</mat-chip-option>
+                <mat-chip-option>Fekete</mat-chip-option>
+                <mat-chip-option>Lila</mat-chip-option>
+                <mat-chip-option>Kék</mat-chip-option>
+            </mat-chip-listbox> -->
+
+            <!-- Megjelenés -->
+            <h4>Megjelenés</h4>
+            <mat-chip-listbox multiple>
+                <mat-chip-option>Sima</mat-chip-option>
+                <mat-chip-option>Kezdőpakli</mat-chip-option>
+                <mat-chip-option>Nyeremény</mat-chip-option>
+                <mat-chip-option>Kiegészítő</mat-chip-option>
+            </mat-chip-listbox>
+
+            <!-- Mana -->
             <div>
-                <h4>MANA</h4>
+                <h4>Mana</h4>
             </div>
 
             <div id="mana-list-container">
-                <mat-chip-listbox>
+                <mat-chip-listbox multiple>
                     <mat-chip-option>0</mat-chip-option>
                     <mat-chip-option>1</mat-chip-option>
                     <mat-chip-option>2</mat-chip-option>
@@ -49,25 +99,37 @@
                     <mat-chip-option>8+</mat-chip-option>
                 </mat-chip-listbox>
             </div>
-            <!-- RARITY -->
+
+            <!-- Spirit -->
             <div>
-                <h4>RARITY</h4>
-                <mat-chip-listbox>
-                    <mat-chip-option>COMMON</mat-chip-option>
-                    <mat-chip-option>RARE</mat-chip-option>
-                    <mat-chip-option>EPIC</mat-chip-option>
+                <h4>Spirit</h4>
+                <mat-chip-listbox multiple>
+                    <mat-chip-option>1</mat-chip-option>
+                    <mat-chip-option>2</mat-chip-option>
+                    <mat-chip-option>3</mat-chip-option>
                 </mat-chip-listbox>
             </div>
 
-            <!-- SET -->
-            <div>
-                <h4>SET</h4>
+            <!-- Mana+ -->
+            <!-- <div>
+                <h4>Mana+</h4>
                 <mat-chip-listbox>
-                    <mat-chip-option>FOUNDATIONS</mat-chip-option>
-                    <mat-chip-option>RISING TIDES</mat-chip-option>
-                    <mat-chip-option>CALL OF THE MOUNTAIN</mat-chip-option>
+                    <mat-chip-option>1</mat-chip-option>
+                    <mat-chip-option>2</mat-chip-option>
+                    <mat-chip-option>3</mat-chip-option>
                 </mat-chip-listbox>
-            </div>
+            </div> -->
+
+            <!-- Laphúzó+ -->
+            <!-- <div>
+                <h4>Laphúzó+</h4>
+                <mat-chip-listbox>
+                    <mat-chip-option>1</mat-chip-option>
+                    <mat-chip-option>2</mat-chip-option>
+                    <mat-chip-option>3</mat-chip-option>
+                </mat-chip-listbox>
+            </div> -->
+
         </div>
 
 
@@ -77,17 +139,27 @@
 
         <div id="deck-name-container">
             <mat-form-field>
-                <mat-label for="deck-name-field">Deck Name:</mat-label>
+                <mat-label for="deck-name-field">Deck Név:</mat-label>
                 <input matInput type="text" id="deck-name-field" placeholder="Deck 1">
             </mat-form-field>
         </div>
 
         <div id="copy-deck-container">
-            <button mat-flat-button id="copy-deck-button">Copy Deck Code</button>
+            <button mat-flat-button id="copy-deck-button">Deck kód másolása</button>
         </div>
 
+        <!-- Formátum -->
+        <mat-form-field>
+            <mat-label>Formátum</mat-label>
+            <mat-select (selectionChange)="updateCardNumber()" [(ngModel)]="selectedFormat" [(value)]="selectedFormat">
+                <mat-option value="standard" default>Standard</mat-option>
+                <mat-option value="rush">Rush</mat-option>
+                <mat-option value="dual">Duál</mat-option>
+            </mat-select>
+        </mat-form-field>
+
         <div id="deck-info-container">
-            <div id="card-count">0/30 Cards</div>
+            <div id="card-count">0/{{cardsNum}} Kártya</div>
             <!-- <div class="class-indicator-holder">
                 <div class="class-indicator">A: 0</div>
                 <div class="class-indicator">B: 0</div>
@@ -104,10 +176,10 @@
         </div>
         <div id="import-deck-container">
             <mat-form-field>
-                <mat-label for="import-deck-field">Deck code:</mat-label>
-                <input matInput type="text" id="import-deck-field" placeholder="Import deck code...">
+                <mat-label for="import-deck-field">Deck kód:</mat-label>
+                <input matInput type="text" id="import-deck-field" placeholder="kód">
             </mat-form-field>
-            <button mat-flat-button id="import-deck-button" name="import-deck-button">Import Deck</button>
+            <button mat-flat-button id="import-deck-button" name="import-deck-button">Deck importálása</button>
         </div>
     </div>
 </div>

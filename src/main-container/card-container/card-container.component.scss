@@ -59,36 +59,46 @@
     padding: 2px;
 }
 
-nav,
-ul,
-li {
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    margin-left: 8px;
-    margin-right: 8px;
+.mat-chip-option {
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 6px 9px;
+    border: 1px white solid;
 }
 
-ul{
-    border-bottom: 1px solid black;
-    border-radius: 10px;
-    padding-bottom: 5px;
+#multicolor {
+    background-color: #c87bfc; /* rózsaszín */
 }
 
-button{
-    background-color: #222;
-    color: white;
-    margin-top: 5px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px black solid;
-    width: 40px;
-    height: 40px;
-    box-shadow: 1px 1px 2px rgba($color: black, $alpha: 0.3);
-    transition: all 0.2s;
+#sarga {
+    background-color: #FFFF00; /* sárga */
 }
 
-button:hover{
-    background-color: #333;
-    transform: scale(1.05);
+#piros {
+    background-color: #FF0000; /* piros */
+}
+
+#magenta {
+    background-color: #FF00FF; /* rózsaszín */
+}
+
+#zold {
+    background-color: #008000; /* zöld */
+}
+
+#feher {
+    background-color: #FFFFFF; /* fehér */
+}
+
+#fekete {
+    background-color: #000000; /* fekete */
+}
+
+#lila {
+    background-color: #800080; /* lila */
+}
+
+#kek {
+    background-color: #0000FF; /* kék */
 }

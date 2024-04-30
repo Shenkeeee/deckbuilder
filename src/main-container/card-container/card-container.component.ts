@@ -5,10 +5,12 @@ import { CardInstance } from "../carddata-container/card-instance";
 import { Card } from "../carddata-container/card";
 import { CardHandlerService } from '../../services/card-handler.service';
 
+import { MatChipsModule } from '@angular/material/chips';
+
 @Component({
   selector: 'app-card-container',
   standalone: true,
-  imports: [CarddataContainerComponent, CommonModule],
+  imports: [CarddataContainerComponent, CommonModule, MatChipsModule],
   templateUrl: './card-container.component.html',
   styleUrl: './card-container.component.scss'
 })

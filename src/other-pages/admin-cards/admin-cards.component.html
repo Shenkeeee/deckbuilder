@@ -1,8 +1,11 @@
 <div class="bgHolder"></div>
 <div id="admin-cards-wrapper">
     <h2>Kártyák kezelése</h2>
-    <h3>Feltöltés</h3>
-    <input type="file" accept=".csv" (change)="onFileSelected($event)">
+    <!-- <h3>Feltöltés</h3> -->
+    <!-- <input type="file" accept=".csv" (change)="onFileSelected($event)"> -->
+
+    <button type="button" id="file-button" mat-flat-button color="primary" (click)="fileInput.click()">Feltöltés</button>
+    <input hidden (change)="onFileSelected($event)" #fileInput accept=".csv" type="file" id="file">
 
     <table>
         <tr>
@@ -35,7 +38,7 @@
                 <td class="spirit">{{ card.data["spirit"] !== "null" ? card.data["spirit"] : '' }}</td>
                 <td class="megjelenes">{{ card.data["megjelenes"] !== "null" ? card.data["megjelenes"] : '' }}</td>
                 <td>{{ card.data["sorszam"] !== "null" ? card.data["sorszam"] : '' }}</td>
-                <td><button (click)="openEditPopup(card)" mat-flat-button color="accent"> <mat-icon
+                <td><button (click)="openEditPopup(card)" mat-flat-button color="primary"> <mat-icon
                             matSuffix>edit</mat-icon></button>
                     <button mat-flat-button color="warn" (click)="openDeletePopup(card)"><mat-icon
                             matSuffix>delete</mat-icon></button>
