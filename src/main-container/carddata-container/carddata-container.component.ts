@@ -16,4 +16,13 @@ export class CarddataContainerComponent {
   constructor() {
   
   }
+
+  // async isFileExists(imagePath: string): Promise<boolean> {
+  //   return new Promise<boolean>((resolve, reject) => {
+  //     const img = new Image();
+  //     img.onload = () => console.log("yes"); resolve(true); // Image loaded successfully
+  //     img.onerror = () => console.log("no"); resolve(false); // Error loading image (file does not exist)
+  //     img.src = `assets/pics/${imagePath}.png`; // Try to load the image
+  //   });
+  // }
 }

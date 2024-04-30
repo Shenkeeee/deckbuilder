@@ -1,3 +1,12 @@
 <!-- <h2>{{ cardInstance.card.Name }}</h2>
   <p>Mana Cost: {{ cardInstance.card.ManaCost }}</p> -->
-<img src="assets/pics/{{ cardInstance.card.ImagePath }}" alt="">
+
+<img
+  [src]="cardInstance.card.ImagePath ? 'assets/pics/' + cardInstance.card.ImagePath + '.png' : 'assets/pics/feherszint.png_resize.jpg'"
+  alt="{{cardInstance.card.ImagePath}}">
+
+
+  <!-- Ellenőrizzük, hogy az image path értéke nem üres és a fájl létezik -->
+<!-- <img *ngIf="cardInstance.card.ImagePath && isFileExists(cardInstance.card.ImagePath)" [src]="'assets/pics/' + cardInstance.card.ImagePath + '.png'" alt=""> -->
+<!-- Ha nincs megadva képfájl vagy nem létezik, akkor használjuk az alapértelmezett képet -->
+<!-- <img *ngIf="!cardInstance.card.ImagePath || !isFileExists(cardInstance.card.ImagePath)" src="assets/pics/feherszint.png_resize.jpg" alt=""> -->

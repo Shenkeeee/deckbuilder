@@ -74,7 +74,7 @@ export class CardHandlerService {
         Spirit: this.cards.value[i].data["spirit"],
         Release: this.cards.value[i].data["megjelenes"],
         CardNumber: this.cards.value[i].data["sorszam"],
-        ImagePath: "feherszint.png_resize.jpg",
+        ImagePath: this.cards.value[i].id,
       };
       // Filtering by name
       if(this.matchesNameFilter(newCard.Name)){

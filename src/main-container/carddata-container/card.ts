@@ -11,5 +11,5 @@ export interface Card {
     Spirit?: string;
     Release?: string;
     CardNumber?: string;
-    ImagePath?: string
+    ImagePath?: string;
 }
