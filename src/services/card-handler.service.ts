@@ -22,6 +22,8 @@ export class CardHandlerService {
   inputValueMsg = new BehaviorSubject<string>("");
   inputMsgObservable = this.inputValueMsg.asObservable();
 
+  selectedColors = new BehaviorSubject<string[]>([]);
+  selectedColorsObs = this.selectedColors.asObservable();
 
   // allCards = new BehaviorSubject<{ id: string, data: any }[]>([]);
   // allCardsObservable = this.allCards.asObservable();
@@ -58,7 +60,10 @@ export class CardHandlerService {
   // Update the shown cards based on the ones in the db
   async updateShownCards(): Promise<CardInstance[]>{
     // Filling up with all the cards
-    await this.getCardsLength().then(num => this.cardInstanceNum = num);
+    if(this.cardInstanceNum === 0) {
+      console.log("fetching");
+      await this.getCardsLength().then(num => this.cardInstanceNum = num);
+    }
     this.cardInstances = [];
     for (let i = 0; i < this.cardInstanceNum; i++) {
       let newCard: Card = {
@@ -77,7 +82,7 @@ export class CardHandlerService {
         ImagePath: this.cards.value[i].id,
       };
       // Filtering by name
-      if(this.matchesNameFilter(newCard.Name)){
+      if(this.matchesNameFilter(newCard.Name) && this.matchesColorFilter(newCard.Color)){
         this.cardInstances.push(new CardInstance(newCard));
       }
     }
@@ -93,6 +98,19 @@ export class CardHandlerService {
     if(!this.inputValueMsg.value || this.inputValueMsg.value === "")
       return true;
     return cardName.toLowerCase().includes(this.inputValueMsg.value.toLowerCase());
+  }
+  
+  matchesColorFilter(colorName?: string): boolean {
+    if(!colorName)
+      return false;    
+    // if no filter then it matches it
+    if(!this.selectedColors.value || this.selectedColors.value.length === 0)
+      return true;
+    const removeAccents = (str: string) => {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    };
+    // console.log(colorName, " : ", this.selectedColors.value);
+    return this.selectedColors.value.includes(removeAccents(colorName.toLowerCase()));
   }
 }
 

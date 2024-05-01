@@ -1,15 +1,43 @@
 <nav id="cards-navbar-container">
+    <!-- <mat-chip-listbox multiple (selectionChange)="onColorChanges($event)">
+        <mat-chip-option class="mat-chip-option" id="multicolor">Multicolor</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="dual">Duál</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="sarga">Sárga</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="piros">Piros</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="magenta">Magenta</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="zold">Zöld</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="feher">Fehér</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="fekete">Fekete</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="lila">Lila</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="kek">Kék</mat-chip-option>               
+    </mat-chip-listbox> -->
+       
+    <!-- <mat-chip-listbox multiple>
+        <mat-chip-option class="mat-chip-option" id="multicolor" (click)="onColorChanges('multicolor')"></mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="dual" (click)="onColorChanges('dual')"></mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="sarga" (click)="onColorChanges('sarga')"></mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="piros" (click)="onColorChanges('piros')"></mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="magenta" (click)="onColorChanges('magenta')"></mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="zold" (click)="onColorChanges('zold')"></mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="feher" (click)="onColorChanges('feher')"></mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="fekete" (click)="onColorChanges('fekete')"></mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="lila" (click)="onColorChanges('lila')"></mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="kek" (click)="onColorChanges('kek')"></mat-chip-option>               
+    </mat-chip-listbox> -->
+    
     <mat-chip-listbox multiple>
-        <mat-chip-option class="mat-chip-option" id="multicolor"></mat-chip-option>
-        <mat-chip-option class="mat-chip-option" id="sarga"></mat-chip-option>
-        <mat-chip-option class="mat-chip-option" id="piros"></mat-chip-option>
-        <mat-chip-option class="mat-chip-option" id="magenta"></mat-chip-option>
-        <mat-chip-option class="mat-chip-option" id="zold"></mat-chip-option>
-        <mat-chip-option class="mat-chip-option" id="feher"></mat-chip-option>
-        <mat-chip-option class="mat-chip-option" id="fekete"></mat-chip-option>
-        <mat-chip-option class="mat-chip-option" id="lila"></mat-chip-option>
-        <mat-chip-option class="mat-chip-option" id="kek"></mat-chip-option>               
+        <mat-chip-option class="mat-chip-option" id="multicolor" (click)="onColorChanges('multicolor')">Multicolor</mat-chip-option>
+        <!-- <mat-chip-option class="mat-chip-option" id="dual" (click)="onColorChanges('dual')">Duál</mat-chip-option> -->
+        <mat-chip-option class="mat-chip-option" id="sarga" (click)="onColorChanges('sarga')">Sárga</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="piros" (click)="onColorChanges('piros')">Piros</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="magenta" (click)="onColorChanges('magenta')">Magenta</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="zold" (click)="onColorChanges('zold')">Zöld</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="feher" (click)="onColorChanges('feher')">Fehér</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="fekete" (click)="onColorChanges('fekete')">Fekete</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="lila" (click)="onColorChanges('lila')">Lila</mat-chip-option>
+        <mat-chip-option class="mat-chip-option" id="kek" (click)="onColorChanges('kek')">Kék</mat-chip-option>               
     </mat-chip-listbox>
+    
 </nav>
 
 <div id="card-holder-container">
