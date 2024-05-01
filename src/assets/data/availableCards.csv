@@ -1,0 +1,172 @@
+Multicolor,Varázslat,Sima,Dreams of Purgatory,9,,"Ha még nincs 4 Karaktered a Portálban, egy altípussal rendelkező Karaktert a kezedből egyből a Portálba tehetsz. Száműzd ezt a lapot",2 R,2,S3,,dop23/001
+Multicolor,Karakter,,Doppelganger,5,1 / 1,"Aktívan jön. Lejövetelkor lemásolhatod ellenfeled egyik Karakterének értékeit, és hozzáadhatod Erősítésként. ",2 R,2,S3,,dop23/002
+Multicolor,Varázslat,Instant,Remember the Rain,2 R,-,Egy maximum 2-es kijátszású passzív Karaktert Száműzhetsz,2 R,2,1,Nyeremény,dop23/003
+Multicolor,Varázslat,Sima,Quick Search,2 R,-,Keress ki a paklidból egy maximum 3-as kijátszású Multicolor Karaktert és hozd passzívan a játékba,2 R,1,1,Nyeremény,dop23/004
+Multicolor,Varázslat,Sima,Relegation Orbs /99,4 R ,,"Száműzd a kezedből maximum 3 Karakteredet, amelyeknek van Altípusa - Aktiválhatod a Kasztképességüket",2,1,1,,dop23/005
+Multicolor,Spirit,,Giant Lotus,0,-,Spirit - Ha Portálkapuba kerül egy Karaktered                                        3: Kikereshetsz egy Karaktert a paklidból                    9: Kikereshetsz egy Karaktert a pakldiból és ingyen játékba hozhatod                                                                  ,,,,,dop23/006
+Multicolor,Spirit,,Enchanted Rose,0,-,Spirit: Ha kijátszol egy Sima Varázslatot                                    3: Egy Manaként lerakott Varázslatodat a kezedbe veheted                                                                       9: Ingyen kijátszhatsz egy Varázslatot a temetődből,,,,,dop23/007
+Multicolor,Spirit,,Unique Moonflower,0,-,Spirit: Ha kijátszol egy Aura lapot                                             3: Egyik Aurád +1 +1 Erősítést kap                                                           9: Ingyen kijátszhatsz egy Aurát a kezedből +2 +2 Erősítéssel,,,,,dop23/008
+Multicolor,Varázslat,Sima,Pulverization,2 R,-,Dobj a kezedből 2 lapot a temetődbe: Megkaphatod a Spirit pontjait,1,1,2,,dop23/009
+Multicolor,Varázslat,Instant,Bright Nova,2 R,-,Ellenfél minden Karaktere -2 Támadás a kör végéig,2 R,1,1,Kezdőpakli,dop23/010
+Multicolor,Varázslat,Instant,Energy Sacrifice,3 R,-,Minden játékos Száműzze a paklija felső lapját. Egy Portálkapuban lévő Karakterbe sebezhetsz 3-at,2 R,1,1,Kezdőpakli,dop23/011
+Multicolor,Varázslat,Sima,Effective Exchange,3 R,-,"Vedd kézbe egyik Mana vagy Laphúzó lapodat, ezt pedig a helyére teheted",1 R,1,1,Nyeremény,dop23/012
+Multicolor,Varázslat,Instant,Tree of Return,3,,Száműzd a felső lapod a paklid tetejéről: Maximum 3 Multicolor Karaktert visszakeverhetsz a temetődből a paklidba,2 R,1,2,,dop23/013
+Multicolor,Varázslat,Instant,Unexpected Surprise,3 R,-,Ebben a körben senki nem játszhat ki több Varázslatot és nem hozhat játékba Tokent. Száműzd ezt a lapot,1 R,1,1,Nyeremény,dop23/014
+Multicolor,Varázslat,Sima,Another One,3 R,-,"Ha összesen több, mint 4 Karakter átjutott a Portálon, ellenfél egyik Karakterét Gyengítsd 1 Életerőre",2 R,1,2,Nyeremény,dop23/015
+Multicolor,Varázslat,Sima,Forced Waiting,4,-,Egy Portálkapuban lévő Karakter a következő körében még nem juthat át a Portálon,1,1,3,,dop23/016
+Multicolor,Varázslat,Instant,Passage Cave  ,4 R,-,"Ha még nincs 2 Portálon átjutott Karaktered, a Karaktered egyből bekerülhet a Portálkapuból a Portálba",1 R,1,3,Nyeremény,dop23/017
+Multicolor,Karakter,-,Comet Miner,1 R,1 / 2,"Aktívan jön. Ha meghal, kaphatsz egy bármilyen Manát",2 R,1,2,Kezdőpakli,dop23/018
+Multicolor,Karakter,,Young Outcaster,1,1 / 1,"Aktívan jön. Lejövetelkor +1 +1 Erősítést kap, ha nincs ellenfelednek Karaktere az összes játékban lévő lapja között",1,1,2,,dop23/019
+Multicolor,Karakter ,-,Material Changer,1 R,1 / 2,"Aktívan jön. Ha meghal, csatolhatod Laphúzóként",2 R,1,1,Kezdőpakli,dop23/020
+Multicolor,Karakter,-,Multiverse Hunter,2 R,2 / 1,"Aktívan jön. Ha Karaktert öl, húzhatsz egy lapot",1 R,1,2,Kezdőpakli,dop23/021
+Multicolor,Karakter,,Resurgent Warrior,2,2 / 1,"Aktívan jön. Amikor meghal, 1 Manáért visszakeverheted a paklidba",2,1,1,,dop23/022
+Multicolor,Karakter ,-,Subtance Changer,2 R,2 / 1,"Aktívan jön. Ha meghal, csatolhatod Manaként",1 R,1,2,Kezdőpakli,dop23/023
+Multicolor,Karakter,-,Nebula Returnal,3 R,3 / 1,"Aktívan jön. Ha van játékban másik Multicolor Karaktered amikor meghal, visszaveheted a kezedbe",1 R,1,3,Nyeremény,dop23/024
+Multicolor,Karakter,-,Void Defender,3 R,2 / 1,"Aktívan jön. Lejövetelkor kap +0 +3 Erősítést, ha ellenfele Spirit 1 vagy 3-as Karakter",2 R,1,3,Nyeremény,dop23/025
+Multicolor,Karakter,-,Portal Warden,3,1 / 3,Aktívan jön. Támadhat Portálkapuban lévő Karaktert is,1,1,1,,dop23/026
+Multicolor,Karakter,,Dimensional Slayer,3,2 / 2,Aktívan jön. Lejövetelkor támadhat bármelyik Zónába,2,1,1,,dop23/027
+Multicolor,Karakter,-,Spirit Warrior,3 R,1 / 2,"Aktívan jön. Lejövetelkor +2 +1 Erősítést kap, ha legalább 6 pont van egy Spirit lapon",1,1,3,,dop23/028
+Multicolor,Portál Csapda,-,Blossom Gate,1 R,-,"Ha ellenfeled a Portálkapuba kerül, az egyik Spirit lapra rátehetsz, egy másikról pedig elvehetsz 3 pontot",2,1,1,,dop23/029
+Multicolor,Portál Csapda,-,Broken Visitor,1 R,-,"Ha ellenfél a Portálkapuba kerül, játékba hozhatsz egy Tokent +1 +1 Erősítéssel",1 R,1,2,Nyeremény,dop23/030
+Multicolor,Portál Csapda,-,Otherworld Spirit,1 R,-,"Ha ellenfél a Portálkapuba kerül, ingyen kijátszhatsz a temetődből egy Aurát",2 R,1,3,Kezdőpakli,dop23/031
+Multicolor,Portál Csapda,-,Gateway Overload,1 R,-,"Ha ellenfél a Portálkapuba kerül, Száműzheted egy Mana vagy Laphúzó lapját, amelyikből legalább 2 van neki",2 R,1,1,Kezdőpakli,dop23/032
+Multicolor,Portál Csapda,-,World Destruction,1 R,-,"Ha ellenfél a Portálkapuba kerül, a temetőbe küldhetsz egy Aura vagy egy Zóna lapot",2 R,1,1,Nyeremény,dop23/033
+Multicolor,Portál Csapda,-,Damaged Gateway,1 R,-,"Ha ellenfél a Portálkapuba kerül, sebezhetsz 2-t egy másik Karakterbe",1 R,1,1,Kezdőpakli,dop23/034
+Multicolor,Portál Csapda,-,Gateway Extract,1 R,-,"Ha ellenfél a Portálkapuba kerül, kaphatsz összesen 3 Manát a Vezetőd színeiből",1 R,1,2,Kezdőpakli,dop23/035
+Multicolor,Portál Csapda,,Out of Turn,1,,"Ha ellenfél a Portálkapuba kerül, aktiválhatod a képességét maximum 2 Mana vagy Laphúzónak lerakott Portál Csapda lapodnak, majd Száműzd azokat",1 R,1,S2, ,dop23/036
+Duál - Fehér - Sárga,Vezető,-,Fehér+Sárga Vezető,-,-,Szintlépés: Ha legalább 3 Aura lapod van a temetődben,-,-,,Kezdőpakli,dop23/037
+Duál - Fehér - Magenta,Vezető,-,Fehér + Magenta Vezető,-,-,Szintlépés: Amikor 2 Karaktered átjutott a Portálon,-,-,,Kezdőpakli,dop23/038
+Fehér + Kék,Vezető,,Subject: B.W. d-14,,,Szintlépés: Ha 9 vagy több lap van a kezedben,,,,Kezdőpakli,dop23/040
+Sárga + Kék,Vezető,,Subject: B.Y. d-24,,,Szintlépés: Ha eldobsz a kezedből 2 azonos nevű Aurát a temetődbe,,,,Kiegészítő,dop23/041
+Kék + Magenta,Vezető,,Subject: M.B. d-43,,,Szintlépés: Ha 5 Karakter van a játékban,,,,Kiegészítő,dop23/042
+Duál - Fekete - Piros,Vezető,-,Fekete + Piros Vezető,-,-,Szintlépés: Ha legalább 4 lapja van Száműzve az ellenfelednek,-,-,,Kezdőpakli,dop23/043
+Duál - Fekete - Zöld,Vezető,-,Fekete + Zöld Vezető,-,-,Szintlépés: Amikor aktiválódik az első Portál Csapdád,-,-,,Kezdőpakli,dop23/044
+Fekete + Lila,Vezető,,Subject: P.B. d-58,,,Szintlépés: Ha 20 vagy kevesebb Életerőd van ,,,,Kezdőpakli,dop23/046
+Lila + Piros,Vezető,,Subject: R.P. d-86,,,Szintlépés: Ha Száműzöl egy Zóna lapot a játékból,,,,Kiegészítő,dop23/047
+Lila + Zöld,Vezető,,Subject: G.P. d-87,,,Szintlépés: Ha egy 2-es kijátszású Karaktered átjut a Portálon,,,,Kiegészítő,dop23/048
+Duál - Fehér - Sárga,Karakter,-,Armored Tempest,2 F 2 S,3 / 5,"Amikor meghal, a temetődből egy Spirit 2-es lapot a paklid aljára tehetsz",1 F 1 S,1,3,Kezdőpakli,dop23/049
+Duál - Fehér - Magenta,Karakter,-,Soul Guardian,1 F 3 M,3 / 4,"Amikor meghal, egy Spirit 3-as Karaktered +1 +1 Erősítést kaphat",1 F 1 M,1,2,Kezdőpakli,dop23/050
+Fehér + Kék,Karakter,,Sky Spearfalcon,2 F 1 K,2 / 3,"Amikor meghal, ellenfeled temetőjéből egy lapot Száműzhetsz",1 F 1 K,1,2,Nyeremény,dop23/052
+Sárga + Kék,Karakter,-,Metal Disaster,2 S 1 K,3 / 2,"Amikor meghal, megnézheted az ellenfeled kézben tartott lapjait",1 S 1 K,1,3,Kiegészítő,dop23/053
+Kék + Magenta,Karakter,-,Spectral Protector,2 K 1 M,4 / 1,"Amikor meghal, kezedbe veheted az egyik Laphúzó lapodat, ha legalább 2 lapod van ott",1 K 1 M,1,1,Kiegészítő,dop23/054
+Duál - Fekete - Piros,Karakter,-,S'god Extinction,3 F 1 P,4 / 3,"Amikor meghal, sebezhetsz 2-t egy Spirit 1 vagy 2-es Karakterbe",1 F 1 P,1,1,Kezdőpakli,dop23/055
+Duál - Fekete - Zöld,Karakter,-,Arised Arachnid,2 F 2 Z,5 / 3,"Amikor meghal, egy Spirit 1-es Zóna lapot kikereshetsz a paklidból",1 F 1 Z,1,2,Kezdőpakli,dop23/056
+Fekete + Lila,Karakter,,Plague Feeder,2 F 1 L,3 / 2,"Amikor meghal, egy Horror Karaktered +0 +2 Erősítést kaphat",1 F 1 L,1,2,Nyeremény,dop23/058
+Lila + Piros,Karakter,-,Soulbound Wraith,2 L 1 P,3 / 2,"Amikor meghal, Száműzheted az egyik Mana lapodat, majd ellenfeled egyik Mana lapját is",1 L 1 P,1,1,Kiegészítő,dop23/059
+Lila + Zöld,Karakter,,Steelclaw Alpha,1 L 2 Z,4 / 1,"Amikor meghal, megölheted az ellenfeled összes Token Karakterét",1 L 1 Z,1,3,Kiegészítő,dop23/060
+Fehér,Level Up 2,-,-,-,-,Állandó: Amikor játékba kerül egy Karaktered +0+1 Erősítést kap ,-,-,-,Kezdőpakli,dop23/061
+Fehér,Karakter,Veterán,Dominic the Emperor,3 F,2 / 4,"A temetődből 2 lapot a paklid aljára tehetsz. Amíg játékban van, minden Fear Karakter -1 Támadás",2 F,1,1,Nyeremény,dop23/062
+Fehér,Karakter,Elit,Eris the Diviner,5 F,3 / 5,A temetődből 4 lapot a paklid aljára tehetsz,1 F,2,1,Kiegészítő,dop23/063
+Fehér,Karakter,-,Snow Griffin,1 F,1 / 2,A temetődből 2 lapot a paklid aljára tehetsz,1 F,1,3,Kezdőpakli,dop23/064
+Fehér,Karakter,Calm,Serenity Knight,2 F,2 / 2,A temetődből 2 lapot a paklid aljára tehetsz,1 F,1,2,Kiegészítő,dop23/065
+Fehér,Karakter,Calm,Wise Librarian,3 F,1 / 5,A temetődből 2 lapot a paklid aljára tehetsz,1 F,1,1,Kezdőpakli,dop23/066
+Fehér,Karakter ,-,Unknown Warrior,4 F,3 / 4,A temetődből 2 lapot a paklid aljára tehetsz,1 F,1,2,Kiegészítő,dop23/067
+Fehér,Varázslat,Sima,Material Creation,2 F,-,"Visszavehetsz egy Aura vagy Zóna lapot a temetődből a kezedbe. Ha szeretnéd, megkeverheted a paklid",1 F,1,3,Kezdőpakli,dop23/069
+Fehér,Varázslat,Instant,Reactive Protection,2 F,-,Aktivizálhatod egy Karaktered az egyik Zónában és +3 Védelmet kap a kör végéig,1 F,1,1,Kezdőpakli,dop23/070
+Fehér,Varázslat,Instant,Godspeed,4 F,-,Maximum két Fehér vagy Calm Karaktered +2 +1-et kap a kör végéig,1 F,1,2,Kiegészítő,dop23/074
+Fehér,Varázslat,Sima,Genesis,6 F,-,"Minden játékos az összes játékban lévő lapját keverje vissza a paklijába, kivétel a Laphúzókat. A játék további részében Genesis-t már nem játszhatsz ki",1 F,1,1,Nyeremény,dop23/075
+Fehér,Aura,-,Sword of Judgment,2 F, +1 +1,Lejövetelkor egy Fear Karakter -1-0-ás Gyengítést kap,1 F,1,3,Nyeremény,dop23/076
+Fehér,Aura,-,Frozen Heart,3 F, 0 +1,A Karaktered maximumra Gyógyul minden köröd elején,1 F,1,1,Kezdőpakli,dop23/077
+Fehér,Zóna,-,Holy Ground,3 F,-,"Amikor játékba kerül egy Fehér vagy Calm Karaktered, a temetődből egy lapot a paklid aljára tehetsz",1 F,1,3,Nyeremény,dop23/079
+Sárga,Karakter,Veterán,#Cake37 the Famous,3 S,3 / 2,"Nézd meg a paklid legfelső lapját, ha akarod, a paklid aljára teheted. Amíg játékban van, ingyen rakhatsz rá Aura lapot.",2 S,1,1,Nyeremény,dop23/082
+Sárga,Karakter,Elit,#b3n1 the Player,5 S,4 / 3,"Nézd meg a paklid legfelső 2 lapját, ha akarod, a paklid aljára teheted",1 S,2,1,Kiegészítő,dop23/083
+Sárga,Karakter,Calm,Thinker Amber,2 S,2 / 2,"Nézd meg a paklid legfelső lapját, ha akarod, a paklid aljára teheted",1 S,1,2,Kezdőpakli,dop23/084
+Sárga,Karakter,-,Young Genius,3 S,2 / 3,"Nézd meg a paklid legfelső lapját, ha akarod, a paklid aljára teheted",1 S,1,3,Kiegészítő,dop23/085
+Sárga,Karakter,-,S-37 Assembler,4 S,4 / 3,"Nézd meg a paklid legfelső lapját, ha akarod, a paklid aljára teheted",1 S,1,2,Kezdőpakli,dop23/087
+Sárga,Karakter,Calm,Race Hostess,4 S,3 / 4,"Nézd meg a paklid legfelső lapját, ha akarod, a paklid aljára teheted",1 S,1,3,Kiegészítő,dop23/088
+Sárga,Varázslat,Instant,Security Update,1 S,-,"Egy Calm Karaktered +1 Védelmet kap a kör végéig. Ha elköltesz +1 Sárga Manát, ezt a lapot a paklid aljára teheted",1 S,1,2,Kiegészítő,dop23/089
+Sárga,Varázslat,Sima,Overload,3 S,-,Egy Aurád +2 +1 Erősítést kap,1 S,1,1,Kezdőpakli,dop23/092
+Sárga,Varázslat,Sima,Supervision,4 S,-,"Nézd meg a paklid felső 3 lapját: Ha van köztük Aura, Száműzd és egy Portálkapuban lévő Karakter a temetőbe kerül",1 S,1,1,Nyeremény,dop23/095
+Sárga,Aura,-,Enlightment,1 S, +1 +0,"Ha Calm Karakterre teszed, kaphatsz 2 bármilyen Manát",1 S,1,1,Kezdőpakli,dop23/096
+Sárga,Aura,-,Ascension,2 S, +1 +1,"Ha meghal, vagy Portálkapuba kerül a Karaktered, kikereshetsz egy Sárga lapot a paklidból",1 S,1,1,Kezdőpakli,dop23/097
+Sárga,Zóna,-,Beacon,2 S,-,"Amikor Aurát játszol ki a Karakteredre, húzhatsz egy lapot",1 S,1,2,Kezdőpakli,dop23/099
+Magenta,Karakter,Veterán,Doorah the Fairy,4 M,4 / 3,"Ellenfél körében is kijátszhatod. Amíg játékban van, a paklidból és a kezedből nem dobathatnak lapokat Képességgel",2 M,1,1,Nyeremény,dop23/102
+Magenta,Karakter,Elit,Hao the Peaceful,5 M,3 / 4,Ellenfél körében is kijátszhatod. Aktívan jön,1 M,2,1,Kiegészítő,dop23/103
+Magenta,Karakter,-,Guardian Owl,2 M,2 / 1,Ellenfél körében is kijátszhatod,1 M,1,3,Kezdőpakli,dop23/104
+Magenta,Karakter,Calm,Surprised Trifle,2 M,2 / 2,Ellenfél körében is kijátszhatod,1 M,1,1,Kiegészítő,dop23/105
+Magenta,Karakter,Calm,Cute Little Things,3 M,3 / 2,Ellenfél körében is kijátszhatod,1 M,1,2,Kezdőpakli,dop23/106
+Magenta,Karakter,-,Dreamwalker,4 M,3 / 3,Ellenfél körében is kijátszhatod,1 M,1,3,Kiegészítő,dop23/107
+Magenta,Varázslat,Sima,Curse of Oak,2 M,-,Minden Token sebződik 3-at,1 M,1,2,Nyeremény,dop23/109
+Magenta,Varázslat,Instant,Puppet Making,3 M,-,Rakj 1 vagy 2 Tokent a játékba,1 M,1,2,Kezdőpakli,dop23/112
+Magenta,Varázslat,Instant,Short Peace,4 M,-,Egy Calm Karaktered Életereje nem csökkenhet 1 alá ebben a körben,1 M,1,1,Kiegészítő,dop23/114
+Magenta,Aura,-,Imaginary Friend,2 M, 0 +2,"Ha aktív Karakterre teszed, húzhatsz egy lapot",1 M,1,3,Kezdőpakli,dop23/116
+Magenta,Aura,-,Happily Ever After,2 M, +1  0,"Amikor játékba kerül, kezedbe vehetsz egy Magenta lapot a temetődből",1 M,1,2,Kezdőpakli,dop23/117
+Magenta,Zóna,-,Midnight Flowering,1 M,-,"Ha meghal egy Magenta Karaktered vagy egy Tokened, kaphatsz egy Magenta Manát",1 M,1,1,Kezdőpakli,dop23/119
+Kék,Lvl Up 2,-,-,-,-,"Állandó: Amikor Laphúzó lapot játszol ki, egy Karaktered +1 +1 Erősítést kaphat",-,-,,,dop23/121
+Kék,Karakter,Veterán,Misty the Prophetess,3,3 / 3,"Húzhatsz egy lapot. Amíg játékban van, az ellenfelednek minden húzott lapját meg kell mutatnia neked",2 K,1,1,,dop23/122
+Kék,Karakter,Elit,Val the Frostweaver,5,4 / 3,Húzhatsz 2 lapot,1 K,2,1,,dop23/123
+Kék,Karakter,Calm,Sea Lullaby,1,1 / 1,Húzhatsz egy lapot,1 K,1,1,,dop23/124
+Kék,Karakter,-,Archmage Oracle,2,2 / 2,Húzhatsz egy lapot,1 K,1,2,,dop23/125
+Kék,Karakter,-,Guardian Dreadwing,3,3 / 2,Húzhatsz egy lapot,1 K,1,3,,dop23/126
+Kék,Karakter,Calm,Serene Apologist,3,2 / 3,Húzhatsz egy lapot,1 K,1,2,,dop23/127
+Kék,Karakter,Calm,Abyssal Whisperer,4,3 / 3,Húzhatsz egy lapot,1 K,1,2,,dop23/128
+Kék,Varázslat,Sima,Arcane Calling,1,,"Ha kevesebb Laphúzód van játékban mint ellenfelednek, kikereshetsz egy Kék vagy Calm Karaktert a paklidból, ezt pedig Száműzd",1 K,1,3,,dop23/129
+Kék,Varázslat,Sima,Fearless Anima,2,,"Hozz játékba egy Tokent. Ha ellenfele Fear Karakter, +2 +0-át kap a kör végéig",1 K,1,2,,dop23/130
+Kék,Varázslat,Sima,Drawback,3,-,"Egy Laphúzónak lerakott Karakteredet ingyen játékba hozhatod, ha legalább 2 lapod van ott",1 K,1,1,,dop23/131
+Kék,Varázslat,Sima,Reservoir of Insight,3,,"Húzz 3 lapot. Ha van köztük Kék Karakter, kaphatsz 2 bármilyen Manát",1 K,1,1,,dop23/132
+Kék,Varázslat,Instant,Augmented Allies,3,,"Egyik Karaktered +1 +1 Erősítést kap. Ha nincs altípusa, további +1 +1 Erősítést adhatsz neki, utána Száműzd ezt a lapot.",1 K,1,2,,dop23/133
+Kék,Varázslat,Instant,Devouring Summon,4,,"Száműzd az egyik Laphúzódat: Ellenfél egyik Karaktere sebződik annyit, amennyi a Laphúzód Mana költsége volt",1 K,1,2,,dop23/134
+Kék,Varázslat,Instant,Aetherway Acces,5,,A kezedből 3 lapot tegyél vissza a paklid aljára: Egy Portálkapuban lévő Karaktert azonnal átjuttathatsz  a Portálon,1 K,1,1,,dop23/135
+Kék,Aura,,Infinity Pendant,2, +1 +1,"Amíg játékban van, nem kell Száműznöd a kezedből lapokat",1 K,1,1,,dop23/136
+Kék,Aura,,Evolving Frostblade,3, +1  0,"Ha 5 vagy több lap van a kezedben, a Karaktered támadáskor +2 +0-át kap a kör végéig",1 K,1,3,,dop23/137
+Kék,Aura,,Enchanted Spellbook,4, +2  0,Lejövetelkor ha eldobsz 2 lapot a kezedből a temetődbe: Egy 3 Manás Kék Varázslatot ingyen kijátszhatsz a kezedből,1 K,1,2,,dop23/138
+Kék,Zóna,,Mystic Vitality,2,,"Minden köröd végén, ha 7 vagy több lap van a kezedben, a Karaktered +1 +1-es Erősítést kaphat",1 K,1,3,,dop23/139
+Kék,Zóna,,Arcane Nexus,4,,"Amíg van Karaktered ebben a Zónában, minden laphúzás után egy lapot a paklid aljára tehetsz a kezedből",1 K,1,2,,dop23/140
+Fekete,Level Up 2,-,-,-,-,"Állandó: Ha Horror Karaktert hozol játékba, kaphatsz egy bármilyen Manát ",-,-,-,Kezdőpakli,dop23/141
+Fekete,Karakter,Veterán,Mortis the Harvester,4 F,3 / 5,"A temetődből egy lapodat a kezedbe veheted. Amíg játékban van, a Tokeneid nem támadhatóak",2 F,1,1,Nyeremény,dop23/142
+Fekete,Karakter,Elit,Baldr the Raven,5 F,4 / 4,A temetődből 2 lapodat a kezedbe veheted,1 F ,2,1,Kiegészítő,dop23/143
+Fekete,Karakter,-,Rotten Guard,1 F,1 / 2,A temetődből egy lapodat a kezedbe veheted,1 F,1,3,Kiegészítő,dop23/144
+Fekete,Karakter,-,Shadowbone Lord,2 F,2 / 1,A temetődből egy lapodat a kezedbe veheted,1 F,1,3,Kezdőpakli,dop23/145
+Fekete,Karakter,Horror,Death Knight,3 F,3 / 3,A temetődből egy lapodat a kezedbe veheted,1 F,1,1,Kiegészítő,dop23/147
+Fekete,Karakter,Horror,Wolfskin Shifter,4 F,3 / 4,A temetődből egy lapodat a kezedbe veheted,1 F,1,2,Kezdőpakli,dop23/148
+Fekete,Varázslat,Sima,Arise,1 F,-,Ebben a körben a temetődből is kijátszhatsz lapokat,1 F,1,2,Nyeremény,dop23/149
+Fekete,Varázslat,Instant,Shapeshifting,2 F,-,"Száműzd egy Horror Karaktered az egyik Zónából, a helyére egy maximum azonos kijátszású Karaktert hozhatsz passzívan a temetődből",1 F,1,1,Kiegészítő,dop23/150
+Fekete,Varázslat,Sima,Misfortune,3 F,-,"Dobj egy 6 oldalú kockával. Húzz annyit, majd utána az ellenfeled is húzzon annyit, amennyit dobtál",1 F,1,1,Kezdőpakli,dop23/153
+Fekete,Varázslat,Sima,Riot of the Dead,3 F,-,"Ha kevesebb életed van, mint ellenfelednek, visszakeverhetsz a kezedből maximum 4 lapot a paklidba, ezt pedig Száműzd",1 F,1,2,Kezdőpakli,dop23/154
+Fekete,Aura,-,Electric Field,2 F, +1  0,"Ha meghal a Karaktered és a temetődbe kerülne, helyette visszakeverheted a paklidba",1 F,1,2,Kezdőpakli,dop23/156
+Fekete,Aura,-,Fear of Death,3 F, +1 +1,Lejövetelkor passzivizálhatsz egy Faith Karaktert,1 F,1,3,Nyeremény,dop23/157
+Fekete,Zóna,-,Ancient Sewer,2 F,-,"Fekete vagy Horror Karaktered +1+0 Erősítést kap, amíg a Zónában van",1 F,1,1,Nyeremény,dop23/160
+Piros,Karakter,Veterán,Mato the Skinshifter,2 P,2 / 2,"Eldobathatod az ellenfél paklijának felső lapját a temetőjébe. Amíg játékban van, minden Karaktered Horror Karakternek számít",2 P,1,1,Nyeremény,dop23/162
+Piros,Karakter,Elit,Ria the Madness,5 P,4 / 3,Eldobathatod az ellenfél paklijának felső 2 lapját a temetőjébe,1 P,2,1,Kiegészítő,dop23/163
+Piros,Karakter,-,Msahm  Impulse,1 P,2 / 1,Eldobathatod az ellenfél paklijának felső lapját a temetőjébe,1 P,1,3,Kezdőpakli,dop23/164
+Piros,Karakter,Horror,Nvxdas Arachnid,2 P,3 / 1,Eldobathatod az ellenfél paklijának felső lapját a temetőjébe,1 P,1,2,Kezdőpakli,dop23/165
+Piros,Karakter,-,Jirsz Coronary,3 P,4 / 2,Eldobathatod az ellenfél paklijának felső lapját a temetőjébe,1 P,1,1,Kiegészítő,dop23/166
+Piros,Karakter,Horror,Root of Regret,4 P,5 / 2,Eldobathatod az ellenfél paklijának felső lapját a temetőjébe,1 P,1,2,Kiegészítő,dop23/168
+Piros,Varázslat,Instant,Sacrifice,2 P,-,"Száműzd az egyik kézben lévő lapod, egy Karaktered +2 +1-et kap a kör végéig",1 P,1,1,Kezdőpakli,dop23/169
+Piros,Varázslat,Sima,Awakening of Terror,2 P,-,"Minden Zónában lévő Horror Karaktered, aminek nincs ellenfele, +1+0-ás Erősítést kap",1 P,1,3,Kiegészítő,dop23/170
+Piros,Varázslat,Sima,Cataclysm,2 P,-,"Áldozd fel egy Zóna lapod: Az ellenfelednek egyik Laphúzó és Mana lapját a temetőjébe kell tennie, amikből legalább 2 van neki",1 P,1,2,Nyeremény,dop23/171
+Piros,Aura,-,Initiation,2 P, +1 +1,"Ha Portálkapuba jut a Karaktered, kaphatsz egy Tokent a helyére",1 P,1,2,Kezdőpakli,dop23/176
+Piros,Aura,-,Metamorphosis,3 P, 0 +1,"Lejövetelkor aktivizálhatod a Karaktered, ha van ellenfele",1 P,1,1,Kezdőpakli,dop23/177
+Piros,Zóna,-,Eyehole Cave,2 P,-,Amikor aktivizálódik egy Karaktered: Az ellenfeled Száműzze egy lapját a temetőjéből,1 P,1,2,Kezdőpakli,dop23/179
+Zöld,Karakter,Veterán,Slassth the Hunter,3 Z,2 / 3,"-1-1-el Gyengíthetsz egy ellenséges Karaktert. Amíg játékban van, ellenfeled minden Varázslata +1 bármilyen Manába kerül",2 Z,1,1,Nyeremény,dop23/182
+Zöld,Karakter,Elit,Lhaiss the Primer,5 Z,3 / 3,-2-2-vel Gyengíthetsz egy ellenséges Karaktert,1 Z,2,1,Kiegészítő,dop23/183
+Zöld,Karakter,-,Ancient Predator,2 Z,1 / 2,-1 -1-el Gyengíthetsz egy ellenséges Karaktert,1 Z,1,3,Kezdőpakli,dop23/184
+Zöld,Karakter,Horror,Venomous Arachnid,3 Z,3 / 2,-1 -1-el Gyengíthetsz egy ellenséges Karaktert,1 Z,1,1,Kezdőpakli,dop23/186
+Zöld,Karakter,-,Leaf Arachnids,4 Z,4 / 2,-1 -1-el Gyengíthetsz egy ellenséges Karaktert,1 Z,1,2,Kiegészítő,dop23/187
+Zöld,Karakter,Horror,Florescence,4 Z,2 / 4,-1 -1-el Gyengíthetsz egy ellenséges Karaktert,1 Z,1,1,Kiegészítő,dop23/188
+Zöld,Varázslat,Sima,Regression,2 Z,-,Áldozd fel egy Karakteredet: Kapsz két Zöld Manát,1 Z,1,3,Nyeremény,dop23/190
+Zöld,Varázslat,Instant,Tendril of Vitality,3 Z,-,"Egyik Karaktered annyit Gyógyul, ahány Karakter van a játékban",1 Z,1,2,Kezdőpakli,dop23/191
+Zöld,Varázslat,Sima,Absorption,3 Z,-,"Áldozd fel az egyik Horror Karakteredet, majd ellenfeled is áldozza fel egyik Zónájában lévő Karakterét",1 Z,1,1,Kiegészítő,dop23/192
+Zöld,Aura,-,Dominance,3 Z, +1 +1,"Amikor játékba hozod, ellenfél egyik Auráját visszaküldheted a kezébe",1 Z,1,2,Kezdőpakli,dop23/196
+Zöld,Aura,-,Evaporation,4 Z, +2 +1,"Ha Horror Karakterre teszed, sebezhetsz 1-et egy Karakterbe",1 Z,1,1,Kezdőpakli,dop23/197
+Zöld,Zóna,-,Deep Jungle,3 Z,-,"Ha van játékban Karaktered, az ellenfél csak egy Mana elköltése után támadhat meg",1 Z,1,1,Kezdőpakli,dop23/199
+Lila,Lvl Up 2,-,-,-,-,"Állandó: Ha az ellenfél Karakterére Aura lap kerül, kaphatsz 2 Lila Manát",-,-,,Kezdőpakli,dop23/201
+Lila,Karakter,Veterán,Myra the Merciless,4,4 / 2,"Csökkentheted 1-gyel ellenfeled bármelyik Manáját. Amíg játékban van, minden Lila Karaktered +1+0 Erősítéssel kerül játékba",2 L,1,1,Nyeremény,dop23/202
+Lila,Karakter,Elit,Orion the Shadow,5,2 / 4,Csökkentheted 2-vel ellenfeled bármelyik Manáját,1 L,2,1,Kiegészítő,dop23/203
+Lila,Karakter,-,Cybermage Enigma,2,2 / 1,Csökkentheted 1-gyel ellenfeled bármelyik Manáját,1 L,1,2,Kezdőpakli,dop23/204
+Lila,Karakter,Horror,Techmancer Expert,2,1 / 1,Csökkentheted 1-gyel ellenfeled bármelyik Manáját,1 L,1,2,Kiegészítő,dop23/205
+Lila,Karakter,-,Rapid Striker,3,1 / 4,Csökkentheted 1-gyel ellenfeled bármelyik Manáját,1 L,1,3,Kezdőpakli,dop23/206
+Lila,Karakter,Horror,Colossal Technoid,3,3 / 2,Csökkentheted 1-gyel ellenfeled bármelyik Manáját,1 L,1,1,Kezdőpakli,dop23/207
+Lila,Karakter,Horror,Gadget Warbot,4,3 / 3,Csökkentheted 1-gyel ellenfeled bármelyik Manáját,1 L,1,2,Kezdőpakli,dop23/208
+Lila,Varázslat,Sima,Data Breach,1,,Dobj 2 lapot a paklid tetejéről a temetőbe: Egyik Laphúzó vagy Mana lapodat a kezedbe veheted,1 L,1,3,Kezdőpakli,dop23/209
+Lila,Varázslat,Sima,Power of Forgetting,2,,"Ha 9 vagy több lap van a temetődben, húzhatsz 2 lapot",1 L,1,2,Nyeremény,dop23/210
+Lila,Varázslat,Sima,Soulshatters,3,,"Sebezz 1-et ellenfél egyik Karakterébe. Ha nincs Manája, helyette sebezz 3-at",1 L,1,2,Kezdőpakli,dop23/211
+Lila,Varázslat,Instant,Agony,3,,"Ha ellenfeled Karaktere támad, és nincs előtte aktív Karaktered, csökkentsd 2-re a sebzését a kör végéig, majd Száműzd ezt a lapot",1 L,1,1,Kiegészítő,dop23/212
+Lila,Varázslat,Sima,Supplied Memory,3,,"Keress ki a paklidból egy Instant és egy Sima Varázslatot, ezt pedig Száműzd",1 L,1,1,Kezdőpakli,dop23/213
+Lila,Varázslat,Instant,Uprising,4,,Áldozd fel egy Fear Karaktered: Ellenfelednek egyik Faith Karakterét vissza kell vennie a kezébe,1 L,1,1,Nyeremény,dop23/214
+Lila,Varázslat,Sima,Unidentified Poison,5,,Ellenfeled Száműzze 2 lapját a temetőjéből és csökkentsd 2-vel az egyik Manáját.,1 L,1,1,Kiegészítő,dop23/215
+Lila,Aura,-,Limitless Mind,3, +1 +1,"Minden köröd végén, ha 3 vagy kevesebb Manája van ellenfelednek, ez az Aura +1 +1 Erősítést kap",1 L,1,2,Kezdőpakli,dop23/216
+Lila,Aura,-,Unnafected Veil,3,  0 +2,"Ha altípus nélküli Karakterre teszed, a temetőbe küldhetsz egy Zóna lapot",1 L,1,3,Kiegészítő,dop23/217
+Lila,Aura,-,Energy Plunder,4, +2  0,"Lejövetelkor, ha ellenfelednek 3 vagy kevesebb Manája van, kaphatsz 2 bármilyen Manát",1 L,1,1,Kezdőpakli,dop23/218
+Lila,Zóna,-,Vision Spot,2,-,"Ha Horror karaktert játszol ki, a temetődből egy Lila Aurát a kezedbe vehetsz",1 L,1,2,Kezdőpakli,dop23/219
+Lila,Zóna,-,Panoptic Domain,3,-,Az altípus nélküli Karaktereid +1 +1-et kapnak támadáskor a kör végéig,1 L,1,1,Nyeremény,dop23/220
