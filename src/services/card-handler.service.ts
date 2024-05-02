@@ -25,9 +25,24 @@ export class CardHandlerService {
   selectedColors = new BehaviorSubject<string[]>([]);
   selectedColorsObs = this.selectedColors.asObservable();
 
+  selectedTypes = new BehaviorSubject<string[]>([]);
+  selectedTypesObs = this.selectedTypes.asObservable();
+
+  selectedSubTypes = new BehaviorSubject<string[]>([]);
+  selectedSubTypesObs = this.selectedSubTypes.asObservable();
+
+  selectedReleases = new BehaviorSubject<string[]>([]);
+  selectedReleasesObs = this.selectedReleases.asObservable();
+
+  selectedManaCosts = new BehaviorSubject<string[]>([]);
+  selectedManaCostsObs = this.selectedManaCosts.asObservable();
+
+  selectedSpirits = new BehaviorSubject<string[]>([]);
+  selectedSpiritsObs = this.selectedSpirits.asObservable();
+
   // allCards = new BehaviorSubject<{ id: string, data: any }[]>([]);
   // allCardsObservable = this.allCards.asObservable();
-  
+
   // for data of all
   cards = new BehaviorSubject<{ id: string, data: any }[]>([]);
   cardsObservable = this.cards.asObservable();
@@ -36,7 +51,7 @@ export class CardHandlerService {
   cardInstancesOBSVAL = new BehaviorSubject<CardInstance[]>([]);
   cardInstancesOBSOBS = this.cardInstancesOBSVAL.asObservable();
 
-  
+
   constructor(private databaseHandlerService: DatabaseHandlerService) { }
 
   async getAllCards(): Promise<{ id: string, data: any }[]> {
@@ -58,9 +73,9 @@ export class CardHandlerService {
   }
 
   // Update the shown cards based on the ones in the db
-  async updateShownCards(): Promise<CardInstance[]>{
+  async updateShownCards(): Promise<CardInstance[]> {
     // Filling up with all the cards
-    if(this.cardInstanceNum === 0) {
+    if (this.cardInstanceNum === 0) {
       console.log("fetching");
       await this.getCardsLength().then(num => this.cardInstanceNum = num);
     }
@@ -82,35 +97,114 @@ export class CardHandlerService {
         ImagePath: this.cards.value[i].id,
       };
       // Filtering by name
-      if(this.matchesNameFilter(newCard.Name) && this.matchesColorFilter(newCard.Color)){
+      if (this.matchesNameFilter(newCard.Name) && this.matchesColorFilter(newCard.Color) && this.matchesTypeFilter(newCard.CardType) && this.matchesSubTypeFilter(newCard.Subtype) && this.matchesReleasesFilter(newCard.Release) && this.matchesManaCostsFilter(newCard.ManaCost) && this.matchesSpiritFilter(newCard.Spirit)) {
         this.cardInstances.push(new CardInstance(newCard));
       }
     }
-    
+
     this.cardInstancesOBSVAL.next(this.cardInstances);
     return this.cardInstancesOBSVAL.value;
   }
 
   matchesNameFilter(cardName?: string): boolean {
-    if(!cardName)
-      return false;    
     // if no filter then it matches it
-    if(!this.inputValueMsg.value || this.inputValueMsg.value === "")
+    if (!this.inputValueMsg.value || this.inputValueMsg.value === "")
       return true;
+    if (!cardName)
+      return false;
     return cardName.toLowerCase().includes(this.inputValueMsg.value.toLowerCase());
   }
-  
+
   matchesColorFilter(colorName?: string): boolean {
-    if(!colorName)
-      return false;    
     // if no filter then it matches it
-    if(!this.selectedColors.value || this.selectedColors.value.length === 0)
+    if (!this.selectedColors.value || this.selectedColors.value.length === 0)
       return true;
+    if (!colorName)
+      return false;
     const removeAccents = (str: string) => {
       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     };
     // console.log(colorName, " : ", this.selectedColors.value);
     return this.selectedColors.value.includes(removeAccents(colorName.toLowerCase()));
   }
-}
 
+  matchesTypeFilter(type?: string): boolean {
+    // console.log(type, " : ", this.selectedTypes.value);
+    // if no filter then it matches it
+    if (!this.selectedTypes.value || this.selectedTypes.value.length === 0)
+      return true;
+    if (!type)
+      return false;
+    const removeAccents = (str: string) => {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    };
+    return this.selectedTypes.value.includes(removeAccents(type.toLowerCase()));
+  }
+
+  matchesSubTypeFilter(input?: string): boolean {
+    // console.log(input, " : ", this.selectedSubTypes.value);
+    // Ha nincs megadva filter de a "nincs" van kijelölve akkor is listázzon
+    if (!input && this.selectedSubTypes.value.includes("-"))
+      return true;
+    // if no filter then it matches it
+    if (!this.selectedSubTypes.value || this.selectedSubTypes.value.length === 0)
+      return true;
+    // Ha ezen felul nincs input akkor false
+    if (!input)
+      return false;
+    const removeAccents = (str: string) => {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    };
+    return this.selectedSubTypes.value.includes(removeAccents(input.toLowerCase()));
+  }
+
+  matchesReleasesFilter(input?: string): boolean {
+    // console.log(input, " : ", this.selectedReleases.value);
+    if (!input && this.selectedReleases.value.includes("-"))
+      return true;
+    // if no filter then it matches it
+    if (!this.selectedReleases.value || this.selectedReleases.value.length === 0)
+      return true;
+    // Ha ezen felul nincs input akkor false
+    if (!input)
+      return false;
+    const removeAccents = (str: string) => {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    };
+    return this.selectedReleases.value.includes(removeAccents(input.toLowerCase()));
+  }
+
+  matchesManaCostsFilter(input?: number): boolean {
+    // console.log(input, " : ", this.selectedReleases.value);
+    // if (!input && this.selectedManaCosts.value.includes("-"))
+    //   return true;
+    // if no filter then it matches it
+    if (!this.selectedManaCosts.value || this.selectedManaCosts.value.length === 0)
+      return true;
+    // Ha ezen felul nincs input akkor false
+    if (!input)
+      return false;
+    const inputStr = input?.toString();
+    const removeAccents = (str: string) => {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    };
+    return this.selectedManaCosts.value.includes(removeAccents(inputStr.toLowerCase())) || (this.selectedManaCosts.value.includes("8") && removeAccents(inputStr.toLowerCase()) == "9");
+  }
+
+  matchesSpiritFilter(input?: string): boolean {
+    // console.log(input, " : ", this.selectedReleases.value);
+    // if (!input && this.selectedManaCosts.value.includes("-"))
+    //   return true;
+    // if no filter then it matches it
+    if (!this.selectedSpirits.value || this.selectedSpirits.value.length === 0)
+      return true;
+    // Ha ezen felul nincs input akkor false
+    if (!input)
+      return false;
+    const inputStr = input?.toString();
+    const removeAccents = (str: string) => {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    };
+    return this.selectedSpirits.value.includes(removeAccents(inputStr.toLowerCase()));
+  }
+}

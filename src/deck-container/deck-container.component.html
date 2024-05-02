@@ -21,27 +21,27 @@
             <mat-form-field>
                 <mat-label>Típus</mat-label>
                 <mat-select multiple>
-                    <mat-option>Karakter</mat-option>
-                    <mat-option>Varázslat</mat-option>
-                    <mat-option>Spirit</mat-option>
-                    <mat-option>Portál Csapda</mat-option>
-                    <mat-option>Vezető</mat-option>
-                    <mat-option>Level Up</mat-option>
-                    <mat-option>Aura</mat-option>
-                    <mat-option>Zóna</mat-option>
+                    <mat-option (click)="onTypeChanges('karakter')">Karakter</mat-option>
+                    <mat-option (click)="onTypeChanges('varazslat')">Varázslat</mat-option>
+                    <mat-option (click)="onTypeChanges('spirit')">Spirit</mat-option>
+                    <mat-option (click)="onTypeChanges('portal csapda')">Portál Csapda</mat-option>
+                    <mat-option (click)="onTypeChanges('vezeto')">Vezető</mat-option>
+                    <mat-option (click)="onTypeChanges('lvl up 2')">Level Up</mat-option>
+                    <mat-option (click)="onTypeChanges('aura')">Aura</mat-option>
+                    <mat-option (click)="onTypeChanges('zona')">Zóna</mat-option>
                 </mat-select>
             </mat-form-field>
 
             <!-- Altípus -->
             <h4>Altípus</h4>
             <mat-chip-listbox multiple>
-                <mat-chip-option>Nincs</mat-chip-option>
-                <mat-chip-option>Sima</mat-chip-option>
-                <mat-chip-option>Instant</mat-chip-option>
-                <mat-chip-option>Veterán</mat-chip-option>
-                <mat-chip-option>Elit</mat-chip-option>
-                <mat-chip-option>Calm</mat-chip-option>
-                <mat-chip-option>Horror</mat-chip-option>
+                <mat-chip-option (click)="onSubTypeChanges('-')">Nincs</mat-chip-option>
+                <mat-chip-option (click)="onSubTypeChanges('sima')">Sima</mat-chip-option>
+                <mat-chip-option (click)="onSubTypeChanges('instant')">Instant</mat-chip-option>
+                <mat-chip-option (click)="onSubTypeChanges('veteran')">Veterán</mat-chip-option>
+                <mat-chip-option (click)="onSubTypeChanges('elit')">Elit</mat-chip-option>
+                <mat-chip-option (click)="onSubTypeChanges('calm')">Calm</mat-chip-option>
+                <mat-chip-option (click)="onSubTypeChanges('horror')">Horror</mat-chip-option>
             </mat-chip-listbox>
 
             <!-- Altípus -->
@@ -75,10 +75,10 @@
             <!-- Megjelenés -->
             <h4>Megjelenés</h4>
             <mat-chip-listbox multiple>
-                <mat-chip-option>Sima</mat-chip-option>
-                <mat-chip-option>Kezdőpakli</mat-chip-option>
-                <mat-chip-option>Nyeremény</mat-chip-option>
-                <mat-chip-option>Kiegészítő</mat-chip-option>
+                <mat-chip-option (click)="onReleaseChanges('-')">Sima</mat-chip-option>
+                <mat-chip-option (click)="onReleaseChanges('kezdopakli')">Kezdőpakli</mat-chip-option>
+                <mat-chip-option (click)="onReleaseChanges('nyeremeny')">Nyeremény</mat-chip-option>
+                <mat-chip-option (click)="onReleaseChanges('kiegeszito')">Kiegészítő</mat-chip-option>
             </mat-chip-listbox>
 
             <!-- Mana -->
@@ -88,15 +88,15 @@
 
             <div id="mana-list-container">
                 <mat-chip-listbox multiple>
-                    <mat-chip-option>0</mat-chip-option>
-                    <mat-chip-option>1</mat-chip-option>
-                    <mat-chip-option>2</mat-chip-option>
-                    <mat-chip-option>3</mat-chip-option>
-                    <mat-chip-option>4</mat-chip-option>
-                    <mat-chip-option>5</mat-chip-option>
-                    <mat-chip-option>6</mat-chip-option>
-                    <mat-chip-option>7</mat-chip-option>
-                    <mat-chip-option>8+</mat-chip-option>
+                    <mat-chip-option (click)="onManaCostChanges('0')">0</mat-chip-option>
+                    <mat-chip-option (click)="onManaCostChanges('1')">1</mat-chip-option>
+                    <mat-chip-option (click)="onManaCostChanges('2')">2</mat-chip-option>
+                    <mat-chip-option (click)="onManaCostChanges('3')">3</mat-chip-option>
+                    <mat-chip-option (click)="onManaCostChanges('4')">4</mat-chip-option>
+                    <mat-chip-option (click)="onManaCostChanges('5')">5</mat-chip-option>
+                    <mat-chip-option (click)="onManaCostChanges('6')">6</mat-chip-option>
+                    <mat-chip-option (click)="onManaCostChanges('7')">7</mat-chip-option>
+                    <mat-chip-option (click)="onManaCostChanges('8')">8+</mat-chip-option>
                 </mat-chip-listbox>
             </div>
 
@@ -104,9 +104,9 @@
             <div>
                 <h4>Spirit</h4>
                 <mat-chip-listbox multiple>
-                    <mat-chip-option>1</mat-chip-option>
-                    <mat-chip-option>2</mat-chip-option>
-                    <mat-chip-option>3</mat-chip-option>
+                    <mat-chip-option (click)="onSpiritChanges('1')">1</mat-chip-option>
+                    <mat-chip-option (click)="onSpiritChanges('2')">2</mat-chip-option>
+                    <mat-chip-option (click)="onSpiritChanges('3')">3</mat-chip-option>
                 </mat-chip-listbox>
             </div>
 

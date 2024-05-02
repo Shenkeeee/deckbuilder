@@ -40,7 +40,7 @@ export class DatabaseHandlerService {
       this.app = initializeApp(firebaseConfig);
     }
     this.db = getFirestore();
-    console.log(getAuth());
+    // console.log(getAuth());
     this.user.next(getAuth().currentUser);
   }
 
@@ -140,7 +140,7 @@ export class DatabaseHandlerService {
       const newId = data["sorszam"].replace('/', '-');
       // Upload the data to Firestore
       await setDoc(doc(this.db, this.workDoc, newId), data);
-      console.log("Document written with ID ", newId);
+      console.log("Document written with ID ",newId);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
