@@ -14,13 +14,12 @@
                 Feltételek</a></li>
     </ul> -->
     <ul id="menu" class="menu">
-        <li><a href="https://dreamsofpurgatory.hu/">DOP Főoldal</a></li>
-        <li><a href="/admin-cards">Kártyakezelő</a></li>
-        <!-- <li><a href="/admin-users">Felhasználók</a></li> -->
-        <li><a href="/login">Bejelentkezés</a></li>
-        <li><a href="/register">Regisztráció</a></li>
-        <li><a (click)="signOut()">Kijelentkezés</a></li>
-        <!-- <li><a href="/decks">Deckjeim</a></li> -->
-        <li><a href="/">Alkotás</a></li>
+        <!-- <li><a href="https://dreamsofpurgatory.hu/">DOP Főoldal</a></li> -->
+        <li *ngIf="isGuest()"><a routerLink="/login" routerLinkActive="true">Bejelentkezés</a></li>
+        <li *ngIf="isGuest()"><a routerLink="/register" routerLinkActive="true">Regisztráció</a></li>
+        <li *ngIf="isAuthenticated()"><a (click)="signOut()">Kijelentkezés</a></li>
+        <li *ngIf="isAdmin()"><a routerLink="/admin-cards" routerLinkActive="true">Kártyakezelő</a></li>
+        <li *ngIf="isAuthenticated()"><a routerLink="/decks" routerLinkActive="true">Deckjeim</a></li>
+        <li><a routerLink="/" routerLinkActive="true">Alkotás</a></li>
     </ul>
 </div>

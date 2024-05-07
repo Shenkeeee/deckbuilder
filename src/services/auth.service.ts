@@ -23,11 +23,11 @@ export class AuthService {
   }
 
   login(email: string, password: string): Promise<any> {
-    return signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password).then(currentUser => this.user = currentUser);
   }
 
   signOut(): Promise<any>{
-    return signOut(auth);
+    return signOut(auth).then(currentUser => this.user = currentUser);
   }
 
   isLoggedIn() {
