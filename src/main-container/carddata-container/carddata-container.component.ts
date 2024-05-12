@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { CardInstance } from "./card-instance"
 import { NgFor, CommonModule } from '@angular/common';
 import { Card } from './card';
+import { CardHandlerService } from '../../services/card-handler.service';
+import { Deck } from '../../deck-container/deck';
 
 @Component({
   selector: 'app-carddata-container',
@@ -10,11 +12,22 @@ import { Card } from './card';
   standalone: true,
   imports: [CommonModule],
 })
-export class CarddataContainerComponent {
+export class CarddataContainerComponent implements OnInit {
   
   @Input() cardInstance!: CardInstance;
-  constructor() {
+  currentDeck!: Deck;
+
+  constructor(private cardHandlerService: CardHandlerService) {
   
+  }
+
+  ngOnInit() {
+    this.cardHandlerService.currentDeckObs.subscribe(deck => this.currentDeck = deck);
+  }
+
+  addToDeck(card: Card) {
+    this.currentDeck.cards.push(card);
+    this.cardHandlerService.currentDeck.next(this.currentDeck);
   }
 
   // async isFileExists(imagePath: string): Promise<boolean> {

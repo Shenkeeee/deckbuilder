@@ -10,12 +10,16 @@ import { MatLabel } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
+import { Deck } from './deck';
+
+import { CommonModule } from '@angular/common';
+import { Card } from '../main-container/carddata-container/card';
 
 
 @Component({
   selector: 'app-deck-container',
   standalone: true,
-  imports: [FormsModule, MatChipsModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule],
+  imports: [FormsModule, MatChipsModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule, CommonModule],
   templateUrl: './deck-container.component.html',
   styleUrl: './deck-container.component.scss'
 
@@ -36,6 +40,7 @@ export class DeckContainerComponent implements OnInit, OnChanges{
   selectedReleases: string[] = [];
   selectedManaCosts: string[] = [];
   selectedSpirits: string[] = [];
+  currentDeck: Deck = { cards:[] };
 
   constructor(private cardHandlerService: CardHandlerService) { }
 
@@ -47,6 +52,7 @@ export class DeckContainerComponent implements OnInit, OnChanges{
     this.cardHandlerService.selectedReleasesObs.subscribe(selectedReleases => this.selectedReleases = selectedReleases);
     this.cardHandlerService.selectedManaCostsObs.subscribe(selectedManaCosts => this.selectedManaCosts = selectedManaCosts);
     this.cardHandlerService.selectedSpiritsObs.subscribe(selectedSpirits => this.selectedSpirits = selectedSpirits);
+    this.cardHandlerService.currentDeckObs.subscribe(deck => this.currentDeck = deck);
   }
 
   ngOnChanges(): void {
@@ -55,7 +61,7 @@ export class DeckContainerComponent implements OnInit, OnChanges{
 
   updateCardNumber() {
     if(this.selectedFormat == "standard") {
-      this.cardsNum = 60;
+      this.cardsNum = 60
     }
 
     if(this.selectedFormat == "rush") {
@@ -65,7 +71,6 @@ export class DeckContainerComponent implements OnInit, OnChanges{
     if(this.selectedFormat == "dual") {
       this.cardsNum = 50;
     }
-    
   }
 
   toggleFilters() {
@@ -78,6 +83,19 @@ export class DeckContainerComponent implements OnInit, OnChanges{
     this.cardHandlerService.inputValueMsg.next(this.inputValue);
     this.updateShownCards();
     // console.log(this.inputValue);
+  }
+
+  updateDeck() {
+    this.cardHandlerService.currentDeck.next(this.currentDeck);
+    // this.updateShownCards();
+    // console.log(this.inputValue);
+  }
+
+  removeFromDeck(card: Card) {
+    let deletableIndex = this.currentDeck.cards.indexOf(card);
+    if(deletableIndex !== -1){
+      this.currentDeck.cards.splice(deletableIndex, 1);
+    }
   }
 
   onTypeChanges(type: string) {

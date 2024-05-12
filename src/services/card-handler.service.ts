@@ -3,6 +3,7 @@ import { DatabaseHandlerService } from './database-handler.service';
 import { Card } from '../main-container/carddata-container/card';
 import { CardInstance } from '../main-container/carddata-container/card-instance';
 import { BehaviorSubject } from 'rxjs';
+import { Deck } from '../deck-container/deck';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,9 @@ export class CardHandlerService {
 
   selectedSpirits = new BehaviorSubject<string[]>([]);
   selectedSpiritsObs = this.selectedSpirits.asObservable();
+
+  currentDeck = new BehaviorSubject<Deck>({ cards: [] });
+  currentDeckObs = this.currentDeck.asObservable();
 
   // allCards = new BehaviorSubject<{ id: string, data: any }[]>([]);
   // allCardsObservable = this.allCards.asObservable();

@@ -49,12 +49,14 @@ mat-label {
 }
 
 #card-list-container {
-    height: 350px;
+    min-height: 350px;
+    max-height: 350px;
+    overflow-y: auto;
 
     img {
-        height: 20px;
+        height: 30px;
         width: 94%;
-        // background-size: contain;
+        object-fit: cover;
     }
 }
 

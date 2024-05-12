@@ -1,7 +1,7 @@
 <!-- <h2>{{ cardInstance.card.Name }}</h2>
   <p>Mana Cost: {{ cardInstance.card.ManaCost }}</p> -->
 
-<img
+<img (click)="addToDeck(cardInstance.card)"
   [src]="cardInstance.card.ImagePath ? 'assets/pics/' + cardInstance.card.ImagePath + '.png' : 'assets/pics/feherszint.png_resize.jpg'"
   alt="{{cardInstance.card.ImagePath}}">
 
