@@ -44,6 +44,7 @@ export class DeckContainerComponent implements OnInit, OnChanges {
   selectedReleases: string[] = [];
   selectedManaCosts: string[] = [];
   selectedSpirits: string[] = [];
+
   currentDeck: Deck = { cards: [] };
 
   constructor(private cardHandlerService: CardHandlerService) { }
@@ -60,11 +61,15 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     this.cardHandlerService.selectedSpiritsObs.subscribe(selectedSpirits => this.selectedSpirits = selectedSpirits);
     this.cardHandlerService.selectedFormatObs.subscribe(selectedFormat => this.selectedFormat = selectedFormat);
 
+    // this.currentDeck.cards.forEach(element => {
+    //   element.
+    // });
+
     this.cardHandlerService.currentDeckObs.subscribe(deck => {
       this.currentDeck = deck;
       this.updateSelectedCards();
     });
-    this.cardHandlerService.selectedFormat.subscribe(format =>{
+    this.cardHandlerService.selectedFormat.subscribe(format => {
       this.selectedFormat = format;
       this.updateCardNumber();
     });
@@ -108,11 +113,18 @@ export class DeckContainerComponent implements OnInit, OnChanges {
   }
 
   updateSelectedCards() {
-    this.selectedCardsNum = this.currentDeck.cards.length;
+    // Initialize selectedCardsNum to 0
+    this.selectedCardsNum = 0;
+
+    // Iterate through the cards in the deck and accumulate their amounts
+    for (const card of this.currentDeck.cards) {
+      this.selectedCardsNum += card.amount;
+    }
   }
 
   removeFromDeck(card: Card) {
-    let deletableIndex = this.currentDeck.cards.indexOf(card);
+    const deletableIndex = this.currentDeck.cards.findIndex(cardo => card === cardo.card);
+
     if (deletableIndex !== -1) {
       this.currentDeck.cards.splice(deletableIndex, 1);
       this.updateDeck();

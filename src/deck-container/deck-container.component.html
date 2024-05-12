@@ -173,10 +173,11 @@
         <div id="card-list-container">
             <div *ngIf="currentDeck.cards.length !== 0">
                 <div *ngFor="let card of currentDeck.cards">
-                    <p>{{card.Name}}</p>
-                    <img (click)="removeFromDeck(card)"
-                        [src]="card.ImagePath ? 'assets/pics/' + card.ImagePath + '.png' : 'assets/pics/feherszint.png_resize.jpg'"
-                        alt="{{card.ImagePath}}">
+                    <p>{{card.card.Name}} - {{card.amount}}</p>
+                    <!-- <p>{{card[0].Name}}</p> -->
+                    <img (click)="removeFromDeck(card.card)"
+                        [src]="card.card.ImagePath ? 'assets/pics/' + card.card.ImagePath + '.png' : 'assets/pics/feherszint.png_resize.jpg'"
+                        alt="{{card.card.ImagePath}}">
                 </div>
             </div>
         </div>

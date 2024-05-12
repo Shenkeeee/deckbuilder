@@ -1,5 +1,5 @@
-import { Card } from "../main-container/carddata-container/card";
+import { CardWithAmount } from "./card-with-amount";
 
 export interface Deck {
-    cards: Card[];
+    cards: CardWithAmount[];
 }
