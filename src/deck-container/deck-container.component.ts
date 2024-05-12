@@ -122,7 +122,26 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     }
   }
 
-  removeFromDeck(card: Card) {
+  removeFromDeck(cardToRemove: Card) {
+    const indexToRemove = this.currentDeck.cards.findIndex(card => card.card === cardToRemove);
+
+    if (indexToRemove !== -1) {
+      const card = this.currentDeck.cards[indexToRemove];
+
+      // If the amount is greater than one, decrease the amount
+      if (card.amount > 1) {
+        card.amount--;
+      } else {
+        // If the amount is one, remove the card from the deck
+        this.currentDeck.cards.splice(indexToRemove, 1);
+      }
+
+      // Update the deck after modifying it
+      this.updateDeck();
+    }
+  }
+
+  removeAllFromDeck(card: Card) {
     const deletableIndex = this.currentDeck.cards.findIndex(cardo => card === cardo.card);
 
     if (deletableIndex !== -1) {

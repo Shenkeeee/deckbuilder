@@ -151,7 +151,8 @@
         <!-- Formátum -->
         <mat-form-field>
             <mat-label>Formátum</mat-label>
-            <mat-select (selectionChange)="updateSelectionFormat()" [(ngModel)]="selectedFormat" [(value)]="selectedFormat">
+            <mat-select (selectionChange)="updateSelectionFormat()" [(ngModel)]="selectedFormat"
+                [(value)]="selectedFormat">
                 <mat-option value="standard" default>Standard</mat-option>
                 <mat-option value="rush">Rush</mat-option>
                 <mat-option value="dual">Duál</mat-option>
@@ -160,7 +161,8 @@
 
         <div id="deck-info-container">
             <div id="card-count">{{selectedCardsNum}}/{{cardsNum}} Kártya</div>
-            <button mat-flat-button color="accent" id="clear-deck-button" name="clear-deck-button" (click)="clearDeck()">Deck
+            <button mat-flat-button color="accent" id="clear-deck-button" name="clear-deck-button"
+                (click)="clearDeck()">Deck
                 ürítése</button>
             <!-- <div class="class-indicator-holder">
                 <div class="class-indicator">A: 0</div>
@@ -173,7 +175,9 @@
         <div id="card-list-container">
             <div *ngIf="currentDeck.cards.length !== 0">
                 <div *ngFor="let card of currentDeck.cards">
-                    <p>{{card.card.Name}} - {{card.amount}}</p>
+                    <p>{{card.card.Name}} - {{card.amount}}<button class="removeAllButton" mat-flat-button
+                            (click)="removeAllFromDeck(card.card)">-</button></p>
+
                     <!-- <p>{{card[0].Name}}</p> -->
                     <img (click)="removeFromDeck(card.card)"
                         [src]="card.card.ImagePath ? 'assets/pics/' + card.card.ImagePath + '.png' : 'assets/pics/feherszint.png_resize.jpg'"
