@@ -23,6 +23,9 @@ export class CardHandlerService {
   inputValueMsg = new BehaviorSubject<string>("");
   inputMsgObservable = this.inputValueMsg.asObservable();
 
+  selectedFormat = new BehaviorSubject<string>("");
+  selectedFormatObs = this.selectedFormat.asObservable();
+
   selectedColors = new BehaviorSubject<string[]>([]);
   selectedColorsObs = this.selectedColors.asObservable();
 
@@ -211,4 +214,20 @@ export class CardHandlerService {
     };
     return this.selectedSpirits.value.includes(removeAccents(inputStr.toLowerCase()));
   }
+
+  updateCardNumber() {
+    if (this.selectedFormat.value === "standard") {
+      return 60;
+    }
+
+    if (this.selectedFormat.value === "rush") {
+      return 35;
+    }
+
+    if (this.selectedFormat.value === "dual") {
+      return 50;
+    }
+    return 60;
+  }
+
 }

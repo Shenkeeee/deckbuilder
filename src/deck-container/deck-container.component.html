@@ -145,13 +145,13 @@
         </div>
 
         <div id="copy-deck-container">
-            <button mat-flat-button id="copy-deck-button">Deck kód másolása</button>
+            <button mat-flat-button id="copy-deck-button" (click)="copyDeckCode()">Deck kód másolása</button>
         </div>
 
         <!-- Formátum -->
         <mat-form-field>
             <mat-label>Formátum</mat-label>
-            <mat-select (selectionChange)="updateCardNumber()" [(ngModel)]="selectedFormat" [(value)]="selectedFormat">
+            <mat-select (selectionChange)="updateSelectionFormat()" [(ngModel)]="selectedFormat" [(value)]="selectedFormat">
                 <mat-option value="standard" default>Standard</mat-option>
                 <mat-option value="rush">Rush</mat-option>
                 <mat-option value="dual">Duál</mat-option>
@@ -159,7 +159,9 @@
         </mat-form-field>
 
         <div id="deck-info-container">
-            <div id="card-count">0/{{cardsNum}} Kártya</div>
+            <div id="card-count">{{selectedCardsNum}}/{{cardsNum}} Kártya</div>
+            <button mat-flat-button color="accent" id="clear-deck-button" name="clear-deck-button" (click)="clearDeck()">Deck
+                ürítése</button>
             <!-- <div class="class-indicator-holder">
                 <div class="class-indicator">A: 0</div>
                 <div class="class-indicator">B: 0</div>
@@ -181,8 +183,14 @@
         <div id="import-deck-container">
             <mat-form-field>
                 <mat-label for="import-deck-field">Deck kód:</mat-label>
-                <input matInput type="text" id="import-deck-field" placeholder="kód">
+                <input matInput type="text" id="import-deck-field" placeholder="kód" [(ngModel)]="importedCode">
+                <!-- Paste icon button with custom class -->
+                <button mat-icon-button matSuffix class="custom-icon-button" aria-label="Paste from clipboard"
+                    (click)="pasteFromClipboard()">
+                    <mat-icon [ngStyle]="{'color':'grey'}">content_paste</mat-icon>
+                </button>
             </mat-form-field>
-            <button mat-flat-button id="import-deck-button" name="import-deck-button">Deck importálása</button>
+            <button mat-flat-button id="import-deck-button" name="import-deck-button" (click)="importDeck()">Deck
+                importálása</button>
         </div>
     </div>

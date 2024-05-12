@@ -1,4 +1,4 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CardInstance } from "./card-instance"
 import { NgFor, CommonModule } from '@angular/common';
 import { Card } from './card';
@@ -13,21 +13,37 @@ import { Deck } from '../../deck-container/deck';
   imports: [CommonModule],
 })
 export class CarddataContainerComponent implements OnInit {
-  
+
   @Input() cardInstance!: CardInstance;
   currentDeck!: Deck;
+  selectedFormat!: string;
+  cardsNum!: number;
 
   constructor(private cardHandlerService: CardHandlerService) {
-  
+
   }
 
   ngOnInit() {
+    this.updateCardNumber();
     this.cardHandlerService.currentDeckObs.subscribe(deck => this.currentDeck = deck);
+    this.cardHandlerService.selectedFormat.subscribe(format => {
+      this.selectedFormat = format;
+      this.updateCardNumber();
+    });
+  }
+
+  updateCardNumber() {
+    this.cardsNum = this.cardHandlerService.updateCardNumber();
   }
 
   addToDeck(card: Card) {
-    this.currentDeck.cards.push(card);
-    this.cardHandlerService.currentDeck.next(this.currentDeck);
+    if (this.cardsNum > this.currentDeck.cards.length) {
+      this.currentDeck.cards.push(card);
+      this.cardHandlerService.currentDeck.next(this.currentDeck);
+    }
+    else {
+      alert("Telepakoltad a decked!");
+    }
   }
 
   // async isFileExists(imagePath: string): Promise<boolean> {
