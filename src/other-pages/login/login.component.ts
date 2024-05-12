@@ -27,7 +27,7 @@ export class LoginComponent {
     this.authService.login(this.email, this.password)
       .then(() => {
         console.log('Login successful');
-        this.router.navigate(['/']);
+        this.router.navigate(['/create']);
       }),
       (error: any) => {
         console.error('Login failed:', error);
