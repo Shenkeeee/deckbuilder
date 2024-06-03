@@ -1,12 +1,5 @@
 # Details
-
-Admin user:
-email: mate.subicz@gmail.com
-psw: 222222
-A custom téma: stratégiai kártyajáték online paklikészítő szoftvere
-
-
-
+Stratégiai kártyajáték online paklikészítő szoftvere
 
 # Deckbuilder
 
