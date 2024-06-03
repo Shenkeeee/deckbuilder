@@ -13,7 +13,6 @@ export class GuestAuthGuard implements CanActivate {
     if (!this.authService.isLoggedIn()) {
       return true;
     } else {
-      this.router.navigate(['/']);
       return false;
     }
   }

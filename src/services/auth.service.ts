@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private databaseHandlerService: DatabaseHandlerService) {
     //  this.databaseHandlerService.initializeApp();
     this.databaseHandlerService.userObs.subscribe(user => this.user = user);
-    console.log(this.user);
+    // console.log(this.user);
    }
 
   register(email: string, password: string): Promise<any> {
@@ -23,15 +23,15 @@ export class AuthService {
   }
 
   login(email: string, password: string): Promise<any> {
-    return signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password).then(currentUser => this.user = currentUser);
   }
 
   signOut(): Promise<any>{
-    return signOut(auth);
+    return signOut(auth).then(currentUser => this.user = currentUser);
   }
 
   isLoggedIn() {
-    console.log(auth.currentUser);
+    // console.log(auth.currentUser);
     return this.user ? true : false;
   }
 

@@ -28,9 +28,9 @@
 // }
 
 mat-label {
-  color: gray;
-//   background: none;
-  height: 0px;
+    color: gray;
+    //   background: none;
+    height: 0px;
 }
 
 #deck-info-container {
@@ -49,12 +49,14 @@ mat-label {
 }
 
 #card-list-container {
-    height: 350px;
+    min-height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
 
     img {
-        height: 20px;
+        height: 30px;
         width: 94%;
-        // background-size: contain;
+        object-fit: cover;
     }
 }
 
@@ -64,6 +66,9 @@ mat-label {
     }
 }
 
+.removeAllButton{
+    margin-left: 10px;
+}
 
 // Slide in animation
 
@@ -123,7 +128,16 @@ mat-label {
     }
 }
 
-#mana-list-container{
+#mana-list-container {
     display: flex;
     padding-top: 0;
+}
+
+// .custom-icon-button {
+//     color: black;
+//     /* Change color to black */
+// }
+
+#clear-deck-button {
+    margin-left: 10px;
 }
