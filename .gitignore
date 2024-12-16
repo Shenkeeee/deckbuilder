@@ -45,3 +45,6 @@ firebase-debug.log
 .firebase/hosting.LmZpcmViYXNlXGFnaWxpc2RlY2tidWlsZGVyXGhvc3Rpbmc.cache
 
 .angular/
+
+src/environments/environment.ts
+src/environments/environment.prod.ts

@@ -4,18 +4,11 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc, setDoc } from 'firebase/firestore';
 import * as Papa from 'papaparse'; // Import PapaParse library for CSV parsing
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../environments/environment'; // Update the path if necessary
 
 
 // web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDHIzSaMt-nvYBaF6ONTT8hSGNwjt97XB4",
-  authDomain: "agilisdeckbuilder.firebaseapp.com",
-  projectId: "agilisdeckbuilder",
-  storageBucket: "agilisdeckbuilder.appspot.com",
-  messagingSenderId: "314364670997",
-  appId: "1:314364670997:web:77051ac4961f66afb68a1c",
-  hostingSite: "agilisdeckbuilder"
-};
+const firebaseConfig = environment.firebase;
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
