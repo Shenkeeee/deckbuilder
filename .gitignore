@@ -36,10 +36,12 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+.env
 
 # System files
 .DS_Store
 Thumbs.db
 firebase-debug.log
 .firebase/hosting.LmZpcmViYXNlXGFnaWxpc2RlY2tidWlsZGVyXGhvc3Rpbmc.cache
-.firebase/hosting.LmZpcmViYXNlXGFnaWxpc2RlY2tidWlsZGVyXGhvc3Rpbmc.cache
+
+.angular/
