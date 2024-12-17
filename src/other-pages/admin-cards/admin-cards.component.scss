@@ -1,11 +1,15 @@
 #admin-cards-wrapper {
     display: flex;
-    // justify-content: center;
     flex-direction: column;
-    align-items: center;
     height: calc(100vh - 70px);
     overflow-y: auto;
     color: white;
+}
+
+.center-aligned {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 mat-spinner { 
@@ -96,29 +100,29 @@ td {
 }
 
 // Responsivity
-@media screen and (max-width: 1500px) {
+// @media screen and (max-width: 1500px) {
 
-    .tamado-vedo,
-    .kepesseg {
-        display: none;
-    }
-}
+//     .tamado-vedo,
+//     .kepesseg {
+//         display: none;
+//     }
+// }
 
-@media screen and (max-width: 1140px) {
+// @media screen and (max-width: 1140px) {
 
-    .spirit,
-    .megjelenes {
-        display: none;
-    }
-}
+//     .spirit,
+//     .megjelenes {
+//         display: none;
+//     }
+// }
 
-@media screen and (max-width: 900px) {
+// @media screen and (max-width: 900px) {
 
-    .manaplusz,
-    .laphuzoplusz {
-        display: none;
-    }
-}
+//     .manaplusz,
+//     .laphuzoplusz {
+//         display: none;
+//     }
+// }
 
 // @media screen and (max-width: 700px) {
 // //    table{

@@ -1,12 +1,14 @@
 <div class="bgHolder"></div>
 <div id="admin-cards-wrapper">
+    <div class="center-aligned">
     <h2>Kártyák kezelése</h2>
     <!-- <h3>Feltöltés</h3> -->
     <!-- <input type="file" accept=".csv" (change)="onFileSelected($event)"> -->
 
     <button type="button" id="file-button" mat-flat-button color="primary" (click)="fileInput.click()">Feltöltés</button>
     <input hidden (change)="onFileSelected($event)" #fileInput accept=".csv" type="file" id="file">
-
+    </div>
+    
     <table>
         <tr>
             <th>Szín</th>
