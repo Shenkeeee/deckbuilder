@@ -21,7 +21,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -41,6 +41,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+.firebase/
 firebase-debug.log
 .firebase/hosting.LmZpcmViYXNlXGFnaWxpc2RlY2tidWlsZGVyXGhvc3Rpbmc.cache
 
