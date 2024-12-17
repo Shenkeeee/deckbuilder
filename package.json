@@ -1,6 +1,6 @@
 {
   "name": "deckbuilder",
-  "version": "0.0.0",
+  "version": "0.1.8",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^17.2.0",
     "@angular/cdk": "^17.3.6",
     "@angular/common": "^17.2.0",
     "@angular/compiler": "^17.2.0",
@@ -20,7 +19,6 @@
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
-    "browserify-zlib": "^0.2.0",
     "firebase": "^10.11.0",
     "pako": "^2.1.0",
     "papaparse": "^5.4.1",
@@ -32,15 +30,13 @@
     "@angular-devkit/build-angular": "^17.2.1",
     "@angular/cli": "^17.2.1",
     "@angular/compiler-cli": "^17.2.0",
-    "@types/jasmine": "~5.1.0",
     "@types/pako": "^2.0.3",
     "@types/papaparse": "^5.3.14",
-    "jasmine-core": "~5.1.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.3.2"
+  },
+  "overrides": {
+    "http-proxy-middleware": "^2.x.x",
+    "vite": "^5.x.x",
+    "webpack": "^5.x.x"
   }
 }

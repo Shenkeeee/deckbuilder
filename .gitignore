@@ -36,7 +36,7 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
-.env
+.angular/
 
 # System files
 .DS_Store
@@ -44,7 +44,6 @@ Thumbs.db
 firebase-debug.log
 .firebase/hosting.LmZpcmViYXNlXGFnaWxpc2RlY2tidWlsZGVyXGhvc3Rpbmc.cache
 
-.angular/
-
+# Environment variables
 src/environments/environment.ts
 src/environments/environment.prod.ts
