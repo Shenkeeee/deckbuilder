@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [FormsModule, MatInputModule, MatFormFieldModule, MatIconModule, MatButtonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: '../../assets/styles/auth.scss'
 })
 
 export class LoginComponent {

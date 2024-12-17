@@ -6,7 +6,7 @@ import { NavbarContainerComponent } from "../navbar-container/navbar-container.c
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, NavbarContainerComponent, ],
+  imports: [RouterOutlet, NavbarContainerComponent, ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

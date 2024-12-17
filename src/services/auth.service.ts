@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, Auth} from 'firebase/auth';
 import { DatabaseHandlerService } from './database-handler.service';
+import { environment } from '../environments/environment';
 
 const auth = getAuth();
 
@@ -9,7 +10,6 @@ const auth = getAuth();
 })
 
 export class AuthService {
-
   user: any;
 
   constructor(private databaseHandlerService: DatabaseHandlerService) {
@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   isAdmin() {
-    if(this.isLoggedIn() && auth.currentUser?.email === "mate.subicz@gmail.com"){
+    if(this.isLoggedIn() && auth.currentUser?.email === environment.adminEmail) {
       return true
     }
     return false

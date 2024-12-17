@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
 import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc, setDoc } from 'firebase/firestore';
-import * as Papa from 'papaparse'; // Import PapaParse library for CSV parsing
+import * as Papa from 'papaparse'; // library for CSV parsing from file
 import { BehaviorSubject } from 'rxjs';
-import { environment } from '../environments/environment'; // Update the path if necessary
+import { environment } from '../environments/environment';
 
 
 // web app's Firebase configuration

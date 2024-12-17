@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [FormsModule, MatInputModule, MatFormField, MatIcon, MatButtonModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrl: '../../assets/styles/auth.scss'
 })
 
 export class RegisterComponent {
