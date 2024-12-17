@@ -3,16 +3,12 @@
     padding: 4px;
 }
 
-#deck-container {
+#deck-container {    
     position: relative;
     width: 350px;
     background-color: rgba($color: #000000, $alpha: 0.8);
     border-radius: 10px;
     padding: 5px;
-}
-
-#deck-list-container {
-    padding: 0;
 }
 
 // #search-filter-container {
@@ -29,8 +25,6 @@
 
 mat-label {
     color: gray;
-    //   background: none;
-    height: 0px;
 }
 
 #deck-info-container {
@@ -49,8 +43,7 @@ mat-label {
 }
 
 #card-list-container {
-    min-height: 400px;
-    max-height: 400px;
+    height: 400px;
     overflow-y: auto;
 
     img {
@@ -81,9 +74,8 @@ mat-label {
     background-color: rgba($color: #000000, $alpha: 0.9);
     border: 1px white solid;
     border-radius: 10px;
-    /* Adjust as needed */
     padding: 10px;
-    z-index: 10;
+    z-index: 2;
 }
 
 /* Define Angular animation */
@@ -99,7 +91,7 @@ mat-label {
 .hidden {
     animation: slideOut 0.2s ease-out;
     animation-fill-mode: forwards;
-
+    
 }
 
 @keyframes slideIn {

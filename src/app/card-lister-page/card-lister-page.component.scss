@@ -1,7 +1,6 @@
-#app-deck-builder{
-    width: 100wv;
-    height: calc(100vh - 90px);
-    overflow-y: hidden;
-    display:flex;
-    padding: 10px 10px;
+#app-deck-builder {
+  height: calc(100svh - 90px);
+  overflow-y: hidden;
+  display: flex;
+  padding: 10px;
 }

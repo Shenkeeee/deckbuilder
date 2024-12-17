@@ -1,11 +1,10 @@
 #card-holder-container{
-    margin-top: 0;
     // position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     flex: 1;
-    min-width: calc(100vw - 445px);  
+    min-width: calc(100dvw - 445px);  
     margin-left: 30px;
     margin-top: 30px;
     margin-bottom: 30px;
