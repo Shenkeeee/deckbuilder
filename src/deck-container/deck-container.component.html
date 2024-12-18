@@ -1,51 +1,76 @@
 <div id="deck-container">
-    <div id="search-filter-container">
-        <mat-form-field>
-            <mat-label for="search-field">Kártyanév:</mat-label>
-            <input type="text" matInput id="search-field" [(ngModel)]="inputValue" (input)="updateAvailableCards()"
-                placeholder="Doppelganger">
-        </mat-form-field>
-        <button mat-flat-button id="filter-button" (click)="toggleFilters()">Szűrők</button>
-    </div>
+  <div id="search-filter-container">
+    <mat-form-field>
+      <mat-label for="search-field">Kártyanév:</mat-label>
+      <input
+        type="text"
+        matInput
+        id="search-field"
+        [(ngModel)]="inputValue"
+        (input)="updateAvailableCards()"
+        placeholder="Doppelganger"
+      />
+    </mat-form-field>
+    <button
+      mat-flat-button
+      color="primary"
+      id="filter-button"
+      class="ml-3"
+      (click)="toggleFilters()"
+    >
+      <mat-icon>filter_list</mat-icon>
+    </button>
+  </div>
 
-    <div>
+  <div>
+    <!-- Filters -->
+    <div id="filters-container" [class]="filtersContainerClass">
+      <!-- Típus -->
+      <!-- <h4>Típus</h4> -->
+      <mat-form-field>
+        <mat-label>Típus</mat-label>
+        <mat-select multiple>
+          <mat-option (click)="onTypeChanges('karakter')">Karakter</mat-option>
+          <mat-option (click)="onTypeChanges('varazslat')"
+            >Varázslat</mat-option
+          >
+          <mat-option (click)="onTypeChanges('spirit')">Spirit</mat-option>
+          <mat-option (click)="onTypeChanges('portal csapda')"
+            >Portál Csapda</mat-option
+          >
+          <mat-option (click)="onTypeChanges('vezeto')">Vezető</mat-option>
+          <mat-option (click)="onTypeChanges('lvl up 2')">Level Up</mat-option>
+          <mat-option (click)="onTypeChanges('aura')">Aura</mat-option>
+          <mat-option (click)="onTypeChanges('zona')">Zóna</mat-option>
+        </mat-select>
+      </mat-form-field>
 
+      <!-- Altípus -->
+      <h4>Altípus</h4>
+      <mat-chip-listbox multiple>
+        <mat-chip-option (click)="onSubTypeChanges('-')">Nincs</mat-chip-option>
+        <mat-chip-option (click)="onSubTypeChanges('sima')"
+          >Sima</mat-chip-option
+        >
+        <mat-chip-option (click)="onSubTypeChanges('instant')"
+          >Instant</mat-chip-option
+        >
+        <mat-chip-option (click)="onSubTypeChanges('veteran')"
+          >Veterán</mat-chip-option
+        >
+        <mat-chip-option (click)="onSubTypeChanges('elit')"
+          >Elit</mat-chip-option
+        >
+        <mat-chip-option (click)="onSubTypeChanges('calm')"
+          >Calm</mat-chip-option
+        >
+        <mat-chip-option (click)="onSubTypeChanges('horror')"
+          >Horror</mat-chip-option
+        >
+      </mat-chip-listbox>
 
-
-
-        <!-- Filters -->
-        <div id="filters-container" [class]="filtersContainerClass">
-
-            <!-- Típus -->
-            <!-- <h4>Típus</h4> -->
-            <mat-form-field>
-                <mat-label>Típus</mat-label>
-                <mat-select multiple>
-                    <mat-option (click)="onTypeChanges('karakter')">Karakter</mat-option>
-                    <mat-option (click)="onTypeChanges('varazslat')">Varázslat</mat-option>
-                    <mat-option (click)="onTypeChanges('spirit')">Spirit</mat-option>
-                    <mat-option (click)="onTypeChanges('portal csapda')">Portál Csapda</mat-option>
-                    <mat-option (click)="onTypeChanges('vezeto')">Vezető</mat-option>
-                    <mat-option (click)="onTypeChanges('lvl up 2')">Level Up</mat-option>
-                    <mat-option (click)="onTypeChanges('aura')">Aura</mat-option>
-                    <mat-option (click)="onTypeChanges('zona')">Zóna</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <!-- Altípus -->
-            <h4>Altípus</h4>
-            <mat-chip-listbox multiple>
-                <mat-chip-option (click)="onSubTypeChanges('-')">Nincs</mat-chip-option>
-                <mat-chip-option (click)="onSubTypeChanges('sima')">Sima</mat-chip-option>
-                <mat-chip-option (click)="onSubTypeChanges('instant')">Instant</mat-chip-option>
-                <mat-chip-option (click)="onSubTypeChanges('veteran')">Veterán</mat-chip-option>
-                <mat-chip-option (click)="onSubTypeChanges('elit')">Elit</mat-chip-option>
-                <mat-chip-option (click)="onSubTypeChanges('calm')">Calm</mat-chip-option>
-                <mat-chip-option (click)="onSubTypeChanges('horror')">Horror</mat-chip-option>
-            </mat-chip-listbox>
-
-            <!-- Altípus -->
-            <!-- <mat-form-field>
+      <!-- Altípus -->
+      <!-- <mat-form-field>
                 <mat-label>Altípus</mat-label>
                 <mat-select multiple>
                     <mat-option>Nincs</mat-option>
@@ -58,8 +83,8 @@
                 </mat-select>
             </mat-form-field> -->
 
-            <!-- Szín -->
-            <!-- <h4>Szín</h4>
+      <!-- Szín -->
+      <!-- <h4>Szín</h4>
             <mat-chip-listbox multiple>
                 <mat-chip-option>Multicolor</mat-chip-option>
                 <mat-chip-option>Sárga</mat-chip-option>
@@ -72,46 +97,52 @@
                 <mat-chip-option>Kék</mat-chip-option>
             </mat-chip-listbox> -->
 
-            <!-- Megjelenés -->
-            <h4>Megjelenés</h4>
-            <mat-chip-listbox multiple>
-                <mat-chip-option (click)="onReleaseChanges('-')">Sima</mat-chip-option>
-                <mat-chip-option (click)="onReleaseChanges('kezdopakli')">Kezdőpakli</mat-chip-option>
-                <mat-chip-option (click)="onReleaseChanges('nyeremeny')">Nyeremény</mat-chip-option>
-                <mat-chip-option (click)="onReleaseChanges('kiegeszito')">Kiegészítő</mat-chip-option>
-            </mat-chip-listbox>
+      <!-- Megjelenés -->
+      <h4>Megjelenés</h4>
+      <mat-chip-listbox multiple>
+        <mat-chip-option (click)="onReleaseChanges('-')">Sima</mat-chip-option>
+        <mat-chip-option (click)="onReleaseChanges('kezdopakli')"
+          >Kezdőpakli</mat-chip-option
+        >
+        <mat-chip-option (click)="onReleaseChanges('nyeremeny')"
+          >Nyeremény</mat-chip-option
+        >
+        <mat-chip-option (click)="onReleaseChanges('kiegeszito')"
+          >Kiegészítő</mat-chip-option
+        >
+      </mat-chip-listbox>
 
-            <!-- Mana -->
-            <div>
-                <h4>Mana</h4>
-            </div>
+      <!-- Mana -->
+      <div>
+        <h4>Mana</h4>
+      </div>
 
-            <div id="mana-list-container">
-                <mat-chip-listbox multiple>
-                    <mat-chip-option (click)="onManaCostChanges('0')">0</mat-chip-option>
-                    <mat-chip-option (click)="onManaCostChanges('1')">1</mat-chip-option>
-                    <mat-chip-option (click)="onManaCostChanges('2')">2</mat-chip-option>
-                    <mat-chip-option (click)="onManaCostChanges('3')">3</mat-chip-option>
-                    <mat-chip-option (click)="onManaCostChanges('4')">4</mat-chip-option>
-                    <mat-chip-option (click)="onManaCostChanges('5')">5</mat-chip-option>
-                    <mat-chip-option (click)="onManaCostChanges('6')">6</mat-chip-option>
-                    <mat-chip-option (click)="onManaCostChanges('7')">7</mat-chip-option>
-                    <mat-chip-option (click)="onManaCostChanges('8')">8+</mat-chip-option>
-                </mat-chip-listbox>
-            </div>
+      <div id="mana-list-container">
+        <mat-chip-listbox multiple>
+          <mat-chip-option (click)="onManaCostChanges('0')">0</mat-chip-option>
+          <mat-chip-option (click)="onManaCostChanges('1')">1</mat-chip-option>
+          <mat-chip-option (click)="onManaCostChanges('2')">2</mat-chip-option>
+          <mat-chip-option (click)="onManaCostChanges('3')">3</mat-chip-option>
+          <mat-chip-option (click)="onManaCostChanges('4')">4</mat-chip-option>
+          <mat-chip-option (click)="onManaCostChanges('5')">5</mat-chip-option>
+          <mat-chip-option (click)="onManaCostChanges('6')">6</mat-chip-option>
+          <mat-chip-option (click)="onManaCostChanges('7')">7</mat-chip-option>
+          <mat-chip-option (click)="onManaCostChanges('8')">8+</mat-chip-option>
+        </mat-chip-listbox>
+      </div>
 
-            <!-- Spirit -->
-            <div>
-                <h4>Spirit</h4>
-                <mat-chip-listbox multiple>
-                    <mat-chip-option (click)="onSpiritChanges('1')">1</mat-chip-option>
-                    <mat-chip-option (click)="onSpiritChanges('2')">2</mat-chip-option>
-                    <mat-chip-option (click)="onSpiritChanges('3')">3</mat-chip-option>
-                </mat-chip-listbox>
-            </div>
+      <!-- Spirit -->
+      <div>
+        <h4>Spirit</h4>
+        <mat-chip-listbox multiple>
+          <mat-chip-option (click)="onSpiritChanges('1')">1</mat-chip-option>
+          <mat-chip-option (click)="onSpiritChanges('2')">2</mat-chip-option>
+          <mat-chip-option (click)="onSpiritChanges('3')">3</mat-chip-option>
+        </mat-chip-listbox>
+      </div>
 
-            <!-- Mana+ -->
-            <!-- <div>
+      <!-- Mana+ -->
+      <!-- <div>
                 <h4>Mana+</h4>
                 <mat-chip-listbox>
                     <mat-chip-option>1</mat-chip-option>
@@ -120,8 +151,8 @@
                 </mat-chip-listbox>
             </div> -->
 
-            <!-- Laphúzó+ -->
-            <!-- <div>
+      <!-- Laphúzó+ -->
+      <!-- <div>
                 <h4>Laphúzó+</h4>
                 <mat-chip-listbox>
                     <mat-chip-option>1</mat-chip-option>
@@ -129,73 +160,122 @@
                     <mat-chip-option>3</mat-chip-option>
                 </mat-chip-listbox>
             </div> -->
+    </div>
 
-        </div>
-
-
-
-
-
-
-        <!-- <div id="deck-name-container">
+    <!-- <div id="deck-name-container">
             <mat-form-field>
                 <mat-label for="deck-name-field">Deck Név:</mat-label>
                 <input matInput type="text" id="deck-name-field" placeholder="Deck 1">
             </mat-form-field>
         </div> -->
 
-        <div id="copy-deck-container">
-            <button mat-flat-button id="copy-deck-button" (click)="copyDeckCode()">Deck kód másolása</button>
-        </div>
+    <!-- <div id="copy-deck-container">
+            <button mat-flat-button id="copy-deck-button" (click)="copyDeckCode()"><mat-icon>save</mat-icon></button>
+        </div> -->
 
-        <!-- Formátum -->
-        <mat-form-field>
-            <mat-label>Formátum</mat-label>
-            <mat-select (selectionChange)="updateSelectionFormat()" [(ngModel)]="selectedFormat"
-                [(value)]="selectedFormat">
-                <mat-option value="standard" default>Standard</mat-option>
-                <mat-option value="rush">Rush</mat-option>
-                <mat-option value="dual">Duál</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <!-- Formátum -->
+    <mat-form-field>
+      <mat-label>Formátum</mat-label>
+      <mat-select
+        (selectionChange)="updateSelectionFormat()"
+        [(ngModel)]="selectedFormat"
+        [(value)]="selectedFormat"
+      >
+        <mat-option value="standard" default>Standard</mat-option>
+        <mat-option value="rush">Rush</mat-option>
+        <mat-option value="dual">Duál</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <div id="deck-info-container">
-            <div id="card-count">{{selectedCardsNum}}/{{cardsNum}} Kártya</div>
-            <button mat-flat-button color="accent" id="clear-deck-button" name="clear-deck-button"
-                (click)="clearDeck()">Deck
-                ürítése</button>
-            <!-- <div class="class-indicator-holder">
+    <div id="deck-info-container" class="mb-2">
+      <div id="card-count">{{ selectedCardsNum }}/{{ cardsNum }} Kártya</div>
+      <button
+        mat-flat-button
+        color="primary"
+        id="copy-deck-button"
+        class="ml-4 "
+        (click)="copyDeckCode()"
+      >
+        <mat-icon>save</mat-icon>
+      </button>
+      <button
+        mat-flat-button
+        color="accent"
+        id="clear-deck-button"
+        class="ml-4"
+        name="clear-deck-button"
+        (click)="clearDeck()"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+      <!-- <div class="class-indicator-holder">
                 <div class="class-indicator">A: 0</div>
                 <div class="class-indicator">B: 0</div>
                 <div class="class-indicator">C: 0</div>
                 <div class="class-indicator">D: 0</div>
                 <div class="class-indicator">E: 0</div>
             </div> -->
-        </div>
-        <div id="card-list-container">
-            <div *ngIf="currentDeck.cards.length !== 0">
-                <div *ngFor="let card of currentDeck.cards">
-                    <p>{{card.card.Name}} - {{card.amount}}<button class="removeAllButton" mat-flat-button
-                            (click)="removeAllFromDeck(card.card)">-</button></p>
-
-                    <!-- <p>{{card[0].Name}}</p> -->
-                    <img (click)="removeFromDeck(card.card)"
-                        [src]="card.card.ImagePath ? 'assets/pics/' + card.card.ImagePath + '.png' : 'assets/pics/feherszint.png_resize.jpg'"
-                        alt="{{card.card.ImagePath}}">
-                </div>
-            </div>
-        </div>
-        <div id="import-deck-container">
-            <mat-form-field>
-                <mat-label for="import-deck-field">Deck kód:</mat-label>
-                <input matInput type="text" id="import-deck-field" placeholder="kód" [(ngModel)]="importedCode">
-                <!-- Paste icon button with custom class -->
-                <button mat-icon-button matSuffix class="custom-icon-button" aria-label="Paste from clipboard"
-                    (click)="pasteFromClipboard()">
-                    <mat-icon [ngStyle]="{'color':'grey'}">content_paste</mat-icon>
-                </button>
-            </mat-form-field>
-            <button mat-flat-button id="import-deck-button" name="import-deck-button" (click)="importDeck()">Deck
-                importálása</button>
-        </div>
     </div>
+    <div id="card-list-container">
+      <div *ngIf="currentDeck.cards.length !== 0">
+        <div *ngFor="let card of currentDeck.cards">
+          <div class="cardContainerInDeck my-2">
+            <p class="flex justify-between w-5/6">
+              {{ card.card.Name }} - {{ card.amount
+              }}
+              <button
+                class="removeAllButton"
+                mat-flat-button
+                (click)="removeAllFromDeck(card.card)"
+              >
+                -
+              </button>
+            </p>
+
+            <!-- <p>{{card[0].Name}}</p> -->
+            <img
+              class="mt-2"
+              (click)="removeFromDeck(card.card)"
+              [src]="
+                card.card.ImagePath
+                  ? 'assets/pics/' + card.card.ImagePath + '.png'
+                  : 'assets/pics/feherszint.png_resize.jpg'
+              "
+              alt="{{ card.card.ImagePath }}"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="import-deck-container">
+      <mat-form-field>
+        <mat-label for="import-deck-field">Deck kód:</mat-label>
+        <input
+          matInput
+          type="text"
+          id="import-deck-field"
+          placeholder="kód"
+          [(ngModel)]="importedCode"
+        />
+        <!-- Paste icon button with custom class -->
+        <button
+          mat-icon-button
+          matSuffix
+          class="custom-icon-button"
+          aria-label="Paste from clipboard"
+          (click)="pasteFromClipboard()"
+        >
+          <mat-icon [ngStyle]="{ color: 'grey' }">content_paste</mat-icon>
+        </button>
+      </mat-form-field>
+      <button
+        mat-flat-button
+        id="import-deck-button"
+        name="import-deck-button"
+        (click)="importDeck()"
+      >
+        Deck importálása
+      </button>
+    </div>
+  </div>
+</div>
