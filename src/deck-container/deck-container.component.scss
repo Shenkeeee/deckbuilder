@@ -46,7 +46,7 @@ mat-label {
 
 #card-list-container {
     // height: 400px;
-    height: calc(100dvh - 420px);
+    height: calc(100dvh - 380px);
     overflow-y: auto;
 
     img {
@@ -137,3 +137,11 @@ mat-label {
 // #clear-deck-button {
 //     margin-left: 10px;
 // }
+
+#import-deck-container {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
