@@ -10,7 +10,7 @@ import { AdminAuthGuard } from '../services/authGuards/auth-guard-admin';
 import { GuestAuthGuard } from '../services/authGuards/auth-guard-guest';
 
 export const routes: Routes = [
-    {path: '', component: LoginComponent, canActivate: [GuestAuthGuard]},
+    {path: '', component: LoginComponent},
     {path: 'create', component: CardListerPageComponent, canActivate: [AuthGuard]},
     {path: 'login', component: LoginComponent, canActivate: [GuestAuthGuard]},
     {path: 'register', component: RegisterComponent, canActivate: [GuestAuthGuard]},
