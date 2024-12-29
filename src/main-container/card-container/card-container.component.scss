@@ -1,79 +1,93 @@
-#card-holder-container{
-    // position: relative;
-    // min-width: calc(100dvw - 445px);
-    display: flex;
-    flex-wrap: wrap;
-    // justify-content: space-around;  
-    margin-left: 30px;
-    margin-bottom: 30px;
-    
+#card-holder-container {
+  // position: relative;
+  // min-width: calc(100dvw - 445px);
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: space-around;
+  margin-left: 30px;
+  margin-bottom: 30px;
 }
 
 .card-container {
-    margin: 0 8px;
-    margin-top: 15px;
+  margin: 0 8px;
+  margin-top: 15px;
 }
 
-
 #cards-navbar-container {
-    position: sticky;
-    top: 0;
-    width: 97%;
-    display: flex;
-    justify-content: center;
-    z-index: 0;
-    background-color: rgba($color: #111, $alpha: 0.9);
-    border-radius: 5px;
-    padding: 2px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  z-index: 0;
+  background-color: rgba($color: #232323, $alpha: 0.9);
+  border-radius: 4px;
+  padding: 3px 5px;
+}
+
+mat-chip-listbox {
+    margin-left: 40px;
 }
 
 .mat-chip-option {
-    position: relative;
-    margin-left: 10px;
-    margin-right: 10px;
-    // padding: 6px 9px;
-    border: 1px white solid;
-    // color: white !important;
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px;
+  // padding: 6px 9px;
+  // border: 1px white solid;
+  box-shadow: 0 0 1px 1px white;
+  border-radius: 4px;
+  // color: white !important;
 }
 
 #multicolor {
-    background: linear-gradient(45deg, #ff0000, #ff7700, #ffff00, #00ff00, #0000ff, #ff00ff);
-    background-size: 150% 150%;
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7700,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #ff00ff
+  );
+  background-size: 150% 150%;
 }
 
 #dual {
-    background: linear-gradient(0deg, #000000, #ff0000);
-    // background-size: 150% 150%;
+  background: linear-gradient(0deg, #000000, #ff0000);
+  // background-size: 150% 150%;
 }
 
 #sarga {
-    background-color: #FFFF00; /* sárga */
+  background-color: #ffff00; /* sárga */
 }
 
 #piros {
-    background-color: #FF0000; /* piros */
+  background-color: #ff0000; /* piros */
 }
 
 #magenta {
-    background-color: #FF00FF; /* rózsaszín */
+  background-color: #ff00ff; /* rózsaszín */
 }
 
 #zold {
-    background-color: #008000; /* zöld */
+  background-color: #008000; /* zöld */
 }
 
 #feher {
-    background-color: #FFFFFF; /* fehér */
+  background-color: #ffffff; /* fehér */
 }
 
 #fekete {
-    background-color: #000000; /* fekete */
+  background-color: black;
 }
 
 #lila {
-    background-color: #800080; /* lila */
+  background-color: #800080; /* lila */
 }
 
 #kek {
-    background-color: #0000FF; /* kék */
+  background-color: #0000ff; /* kék */
+}
+
+.mat-mdc-standard-chip#fekete,#zold,#lila,#kek,#magenta,#piros {
+  --mdc-chip-label-text-color: white;
 }
