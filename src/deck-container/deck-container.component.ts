@@ -26,7 +26,7 @@ import { CommonModule } from '@angular/common';
 import { Card } from '../main-container/carddata-container/card';
 import * as pako from 'pako';
 import { MatIcon } from '@angular/material/icon';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-deck-container',
@@ -70,7 +70,8 @@ export class DeckContainerComponent implements OnInit, OnChanges {
 
   constructor(
     private cardHandlerService: CardHandlerService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -112,6 +113,8 @@ export class DeckContainerComponent implements OnInit, OnChanges {
       this.selectedFormat = format;
       this.updateCardNumber();
     });
+
+    this.getDeckCodeFromUrl();
   }
 
   setDefaultSliderFromCardSize() {
@@ -265,6 +268,7 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     try {
       const deckData = this.decodeDeck(this.importedCode);
       if (deckData) {
+        this.addDeckCodeToUrl();
         this.currentDeck = deckData;
         this.updateDeck();
         this.importedCode = '';
@@ -272,6 +276,33 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     } catch (error) {
       return;
     }
+  }
+
+  addDeckCodeToUrl() {
+    this.router.navigate([], {
+      queryParams: {
+        deckCode: this.importedCode,
+      },
+    });
+  }
+
+  getDeckCodeFromUrl() {
+    this.route.queryParamMap.subscribe((params) => {
+      this.importedCode = params.get("deckCode") ?? this.importedCode;
+      
+      let deckData = null;
+      if(this.importedCode && this.importedCode !== '') {
+        deckData = this.decodeDeck(this.importedCode);
+      }
+  
+      if (deckData) {
+        this.addDeckCodeToUrl();
+        this.currentDeck = deckData;
+        this.updateDeck();
+        this.importedCode = '';
+      }
+    }
+    )
   }
 
   onTypeChanges(type: string) {
