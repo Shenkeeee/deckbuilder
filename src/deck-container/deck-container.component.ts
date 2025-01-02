@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatLabel } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
+import { MatSliderModule } from '@angular/material/slider'
 import { MatSelectModule } from '@angular/material/select';
 import { Deck } from './deck';
 
@@ -20,7 +21,7 @@ import { MatIcon } from '@angular/material/icon';
 @Component({
   selector: 'app-deck-container',
   standalone: true,
-  imports: [FormsModule, MatChipsModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule, CommonModule, MatIcon],
+  imports: [FormsModule, MatChipsModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule, CommonModule, MatIcon, MatSliderModule],
   templateUrl: './deck-container.component.html',
   styleUrl: './deck-container.component.scss'
 
@@ -31,6 +32,7 @@ export class DeckContainerComponent implements OnInit, OnChanges {
   // Name filter
   inputValueMsg = ""
   inputValue: string = '';
+  defaultCardSize = 300;
 
   selectedFormat = "standard";
   cardsNum!: number;
@@ -50,6 +52,7 @@ export class DeckContainerComponent implements OnInit, OnChanges {
   constructor(private cardHandlerService: CardHandlerService) { }
 
   ngOnInit(): void {
+    this.setDefaultSliderFromCardSize();
     this.selectedFormat = "standard";
     this.updateSelectedFormat();
     this.cardHandlerService.inputMsgObservable.subscribe(inputValueMsg => this.inputValueMsg = inputValueMsg)
@@ -74,6 +77,12 @@ export class DeckContainerComponent implements OnInit, OnChanges {
       this.updateCardNumber();
     });
 
+  }
+
+  setDefaultSliderFromCardSize() {
+    this.defaultCardSize = parseInt(getComputedStyle(document.documentElement)
+    .getPropertyValue('--card-width')
+    .trim());
   }
 
   ngOnChanges(): void {
@@ -339,6 +348,11 @@ export class DeckContainerComponent implements OnInit, OnChanges {
       console.error('Clipboard API not supported');
       // Optionally provide fallback method for reading from clipboard
     }
+  }
+
+  updateCardWidth(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    document.documentElement.style.setProperty(`--${"card-width"}`, `${value}`);
   }
 
 

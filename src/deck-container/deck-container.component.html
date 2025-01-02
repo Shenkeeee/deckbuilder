@@ -187,6 +187,16 @@
       </mat-select>
     </mat-form-field>
 
+    <mat-slider
+      min="220"
+      max="450"
+      step="10"
+      
+      (change)="updateCardWidth($event)"
+      >
+      <input matSliderThumb [(ngModel)]="defaultCardSize" #slider>
+    </mat-slider>
+
     <div id="deck-info-container" class="mb-2">
       <div id="card-count">{{ selectedCardsNum }}/{{ cardsNum }} Kártya</div>
       <button

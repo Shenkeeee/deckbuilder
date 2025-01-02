@@ -4,6 +4,10 @@
 
 $base-color:  rgba(0, 0, 0, 0.7);
 
+:root{
+    --card-width: 300;
+}
+
 *,
 html {
     padding: 0;
