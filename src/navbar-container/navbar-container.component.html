@@ -16,7 +16,7 @@
     <ul id="menu" class="menu">
         <!-- <li><a href="https://dreamsofpurgatory.hu/">DOP Főoldal</a></li> -->
         <li *ngIf="isGuest()"><a routerLink="/login" routerLinkActive="true">Bejelentkezés</a></li>
-        <li *ngIf="isGuest()"><a routerLink="/register" routerLinkActive="true">Regisztráció</a></li>
+        <!-- <li *ngIf="isGuest()"><a routerLink="/register" routerLinkActive="true">Regisztráció</a></li> -->
         <li *ngIf="isAuthenticated()"><a (click)="signOut()">Kijelentkezés</a></li>
         <li *ngIf="isAdmin()"><a routerLink="/admin-cards" routerLinkActive="true">Kártyakezelő</a></li>
         <!-- <li *ngIf="isAuthenticated()"><a routerLink="/decks" routerLinkActive="true">Deckjeim</a></li> -->
