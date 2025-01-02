@@ -11,12 +11,19 @@ import { GuestAuthGuard } from '../services/authGuards/auth-guard-guest';
 import { RootAuthGuard } from '../services/authGuards/auth-guard-root';
 
 export const routes: Routes = [
-    {path: 'create', component: CardListerPageComponent, canActivate: [AuthGuard]},
-    {path: 'login', component: LoginComponent, canActivate: [GuestAuthGuard]},
-    {path: 'register', component: RegisterComponent, canActivate: [GuestAuthGuard]},
-    {path: 'decks', component: DecksComponent, canActivate: [AuthGuard]},
+    // {path: 'create', component: CardListerPageComponent, canActivate: [AuthGuard]},
+    {path: 'create', component: CardListerPageComponent},
+    // {path: 'login', component: LoginComponent, canActivate: [GuestAuthGuard]},
+    // {path: 'register', component: RegisterComponent, canActivate: [GuestAuthGuard]},
+    // {path: 'decks', component: DecksComponent, canActivate: [AuthGuard]},
     {path: 'admin-cards', component: AdminCardsComponent, canActivate: [AdminAuthGuard]},
-    {path: 'admin-users', component: AdminUsersComponent, canActivate: [AdminAuthGuard]},
-    {path: '', canActivate: [RootAuthGuard], component: LoginComponent}, // example component, routing happens in navigation
-    {path: '**', canActivate: [RootAuthGuard], component: LoginComponent }
+    // {path: 'admin-users', component: AdminUsersComponent, canActivate: [AdminAuthGuard]},
+
+
+    // {path: '', canActivate: [RootAuthGuard], component: LoginComponent}, // example component, routing happens in navigation
+    // {path: '**', canActivate: [RootAuthGuard], component: LoginComponent },
+
+
+    {path: '', redirectTo: "/create", pathMatch: 'full'},
+    {path: '**', redirectTo: "/create", pathMatch: 'full' }
 ];
