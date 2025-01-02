@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,26 +21,32 @@ import { GuestAuthGuard } from '../../services/authGuards/auth-guard-guest';
   templateUrl: './login.component.html',
   styleUrl: '../../assets/styles/auth.scss',
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent {
   @Input() email!: string;
   @Input() password!: string;
+  deckCodeParam = '';
 
   constructor(
     private authService: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
     private guestAuthGuard: GuestAuthGuard
-  ) {}
-
-  ngOnInit(): void {
-    if (!this.guestAuthGuard.canActivate()) {
-      this.router.navigate(['/create'])
-    }
+  ) {
+    this.route.queryParamMap.subscribe((params) => {
+      console.log(params.get('deckCode'));
+      console.log(params);
+      this.deckCodeParam = params.get('deckCode') ?? this.deckCodeParam;
+    });
   }
 
   login(): void {
     this.authService.login(this.email, this.password).then(() => {
       console.log('Login successful');
-      this.router.navigate(['/create']);
+      this.router.navigate(['/create'], {
+        queryParams: {
+          deckCode: this.deckCodeParam
+        },
+      });
     }),
       (error: any) => {
         console.error('Login failed:', error);
