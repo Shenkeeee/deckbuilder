@@ -142,11 +142,14 @@ mat-label {
 // }
 
 #import-deck-container {
-    padding-top: 10px;
+    padding-top: 5px;
+    background-color: #000000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
+    position: sticky;
+    bottom: 0;
 }
 
 .mat-mdc-standard-chip {
