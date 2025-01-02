@@ -296,7 +296,6 @@ export class DeckContainerComponent implements OnInit, OnChanges {
       }
   
       if (deckData) {
-        this.addDeckCodeToUrl();
         this.currentDeck = deckData;
         this.updateDeck();
         this.importedCode = '';
