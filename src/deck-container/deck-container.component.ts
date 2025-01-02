@@ -1,4 +1,13 @@
-import { Component, Output, EventEmitter, OnInit, Input, OnChanges, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  OnInit,
+  Input,
+  OnChanges,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { CardHandlerService } from '../services/card-handler.service';
 import { FormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
@@ -9,7 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatLabel } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
-import { MatSliderModule } from '@angular/material/slider'
+import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { Deck } from './deck';
 
@@ -17,24 +26,34 @@ import { CommonModule } from '@angular/common';
 import { Card } from '../main-container/carddata-container/card';
 import * as pako from 'pako';
 import { MatIcon } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-deck-container',
   standalone: true,
-  imports: [FormsModule, MatChipsModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule, CommonModule, MatIcon, MatSliderModule],
+  imports: [
+    FormsModule,
+    MatChipsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    CommonModule,
+    MatIcon,
+    MatSliderModule,
+  ],
   templateUrl: './deck-container.component.html',
-  styleUrl: './deck-container.component.scss'
-
+  styleUrl: './deck-container.component.scss',
 })
 export class DeckContainerComponent implements OnInit, OnChanges {
   showFilters: boolean = false;
   filtersContainerClass: string = 'hidden';
   // Name filter
-  inputValueMsg = ""
+  inputValueMsg = '';
   inputValue: string = '';
   defaultCardSize = 300;
 
-  selectedFormat = "standard";
+  selectedFormat = 'standard';
   cardsNum!: number;
   selectedCardsNum: number = 0;
 
@@ -49,40 +68,58 @@ export class DeckContainerComponent implements OnInit, OnChanges {
 
   currentDeck: Deck = { cards: [] };
 
-  constructor(private cardHandlerService: CardHandlerService) { }
+  constructor(
+    private cardHandlerService: CardHandlerService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.setDefaultSliderFromCardSize();
-    this.selectedFormat = "standard";
+    this.selectedFormat = 'standard';
     this.updateSelectedFormat();
-    this.cardHandlerService.inputMsgObservable.subscribe(inputValueMsg => this.inputValueMsg = inputValueMsg)
+    this.cardHandlerService.inputMsgObservable.subscribe(
+      (inputValueMsg) => (this.inputValueMsg = inputValueMsg)
+    );
     this.updateCardNumber();
-    this.cardHandlerService.selectedTypesObs.subscribe(selectedTypes => this.selectedTypes = selectedTypes);
-    this.cardHandlerService.selectedSubTypesObs.subscribe(selectedSubTypes => this.selectedSubTypes = selectedSubTypes);
-    this.cardHandlerService.selectedReleasesObs.subscribe(selectedReleases => this.selectedReleases = selectedReleases);
-    this.cardHandlerService.selectedManaCostsObs.subscribe(selectedManaCosts => this.selectedManaCosts = selectedManaCosts);
-    this.cardHandlerService.selectedSpiritsObs.subscribe(selectedSpirits => this.selectedSpirits = selectedSpirits);
-    this.cardHandlerService.selectedFormatObs.subscribe(selectedFormat => this.selectedFormat = selectedFormat);
+    this.cardHandlerService.selectedTypesObs.subscribe(
+      (selectedTypes) => (this.selectedTypes = selectedTypes)
+    );
+    this.cardHandlerService.selectedSubTypesObs.subscribe(
+      (selectedSubTypes) => (this.selectedSubTypes = selectedSubTypes)
+    );
+    this.cardHandlerService.selectedReleasesObs.subscribe(
+      (selectedReleases) => (this.selectedReleases = selectedReleases)
+    );
+    this.cardHandlerService.selectedManaCostsObs.subscribe(
+      (selectedManaCosts) => (this.selectedManaCosts = selectedManaCosts)
+    );
+    this.cardHandlerService.selectedSpiritsObs.subscribe(
+      (selectedSpirits) => (this.selectedSpirits = selectedSpirits)
+    );
+    this.cardHandlerService.selectedFormatObs.subscribe(
+      (selectedFormat) => (this.selectedFormat = selectedFormat)
+    );
 
     // this.currentDeck.cards.forEach(element => {
     //   element.
     // });
 
-    this.cardHandlerService.currentDeckObs.subscribe(deck => {
+    this.cardHandlerService.currentDeckObs.subscribe((deck) => {
       this.currentDeck = deck;
       this.updateSelectedCards();
     });
-    this.cardHandlerService.selectedFormat.subscribe(format => {
+    this.cardHandlerService.selectedFormat.subscribe((format) => {
       this.selectedFormat = format;
       this.updateCardNumber();
     });
-
   }
 
   setDefaultSliderFromCardSize() {
-    this.defaultCardSize = parseInt(getComputedStyle(document.documentElement)
-    .getPropertyValue('--card-width')
-    .trim());
+    this.defaultCardSize = parseInt(
+      getComputedStyle(document.documentElement)
+        .getPropertyValue('--card-width')
+        .trim()
+    );
   }
 
   ngOnChanges(): void {
@@ -132,7 +169,9 @@ export class DeckContainerComponent implements OnInit, OnChanges {
   }
 
   removeFromDeck(cardToRemove: Card) {
-    const indexToRemove = this.currentDeck.cards.findIndex(card => card.card === cardToRemove);
+    const indexToRemove = this.currentDeck.cards.findIndex(
+      (card) => card.card === cardToRemove
+    );
 
     if (indexToRemove !== -1) {
       const card = this.currentDeck.cards[indexToRemove];
@@ -151,7 +190,9 @@ export class DeckContainerComponent implements OnInit, OnChanges {
   }
 
   removeAllFromDeck(card: Card) {
-    const deletableIndex = this.currentDeck.cards.findIndex(cardo => card === cardo.card);
+    const deletableIndex = this.currentDeck.cards.findIndex(
+      (cardo) => card === cardo.card
+    );
 
     if (deletableIndex !== -1) {
       this.currentDeck.cards.splice(deletableIndex, 1);
@@ -181,7 +222,9 @@ export class DeckContainerComponent implements OnInit, OnChanges {
   // Decode deck data
   decodeDeck(encodedData: string): any {
     // Decode Base64 string
-    const compressedData = Uint8Array.from(atob(encodedData), c => c.charCodeAt(0));
+    const compressedData = Uint8Array.from(atob(encodedData), (c) =>
+      c.charCodeAt(0)
+    );
 
     // Decompress data
     const decompressedData = pako.inflate(compressedData, { to: 'string' });
@@ -198,9 +241,11 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     // Check if the browser supports the clipboard API
     if (navigator.clipboard) {
       // Use the clipboard API to copy the deck code to the clipboard
-      navigator.clipboard.writeText(deckCode).then(result => {
-        alert("Deck kód másolva");
-      })
+      navigator.clipboard
+        .writeText(deckCode)
+        .then((result) => {
+          alert('Deck kód másolva');
+        })
         .catch((error) => {
           console.error('Failed to copy deck code:', error);
           // Optionally handle error if copying fails
@@ -212,7 +257,6 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     }
   }
 
-
   importDeck() {
     if (!this.importedCode) {
       return;
@@ -223,7 +267,7 @@ export class DeckContainerComponent implements OnInit, OnChanges {
       if (deckData) {
         this.currentDeck = deckData;
         this.updateDeck();
-        this.importedCode = "";
+        this.importedCode = '';
       }
     } catch (error) {
       return;
@@ -242,7 +286,6 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     // console.log(this.selectedTypes);
     this.changeTypes();
   }
-
 
   onSubTypeChanges(input: string) {
     const index = this.selectedSubTypes.indexOf(input);
@@ -296,7 +339,6 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     this.changeSpirits();
   }
 
-
   changeTypes() {
     this.cardHandlerService.selectedTypes.next(this.selectedTypes);
     // console.log("this.selectedTypes:", this.selectedTypes);
@@ -336,13 +378,16 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     // Check if the browser supports the clipboard API
     if (navigator.clipboard) {
       // Use the clipboard API to read content from the clipboard
-      navigator.clipboard.readText().then((clipboardContent) => {
-        // Set the content from the clipboard to the importedCode property
-        this.importedCode = clipboardContent;
-      }).catch((error) => {
-        console.error('Failed to read content from clipboard:', error);
-        // Optionally handle error if reading from clipboard fails
-      });
+      navigator.clipboard
+        .readText()
+        .then((clipboardContent) => {
+          // Set the content from the clipboard to the importedCode property
+          this.importedCode = clipboardContent;
+        })
+        .catch((error) => {
+          console.error('Failed to read content from clipboard:', error);
+          // Optionally handle error if reading from clipboard fails
+        });
     } else {
       // Fallback for browsers that do not support the clipboard API
       console.error('Clipboard API not supported');
@@ -352,9 +397,6 @@ export class DeckContainerComponent implements OnInit, OnChanges {
 
   updateCardWidth(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
-    document.documentElement.style.setProperty(`--${"card-width"}`, `${value}`);
+    document.documentElement.style.setProperty(`--${'card-width'}`, `${value}`);
   }
-
-
 }
-
