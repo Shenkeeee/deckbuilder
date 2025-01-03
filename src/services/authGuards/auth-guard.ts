@@ -14,9 +14,9 @@ export class AuthGuard implements CanActivate {
     private route: ActivatedRoute
   ) {
     this.route.queryParamMap.subscribe((params) => {
-      console.log(this.route.url);
-      console.log(params.get('deckCode'));
-      console.log(params);
+      // console.log(this.route.url);
+      // console.log(params.get('deckCode'));
+      // console.log(params);
       this.deckCodeParam = params.get('deckCode') ?? this.deckCodeParam;
     });
   }
