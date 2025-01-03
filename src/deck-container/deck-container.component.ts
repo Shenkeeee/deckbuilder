@@ -47,7 +47,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DeckContainerComponent implements OnInit, OnChanges {
   showFilters: boolean = false;
-  filtersContainerClass: string = 'hidden';
+  filtersContainerClass: string = 'none';
   // Name filter
   inputValueMsg = '';
   inputValue: string = '';
