@@ -27,6 +27,7 @@ import { Card } from '../main-container/carddata-container/card';
 import * as pako from 'pako';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CardWithAmount } from './card-with-amount';
 
 @Component({
   selector: 'app-deck-container',
@@ -45,7 +46,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './deck-container.component.html',
   styleUrl: './deck-container.component.scss',
 })
-export class DeckContainerComponent implements OnInit, OnChanges {
+export class DeckContainerComponent implements OnInit {
   showFilters: boolean = false;
   filtersContainerClass: string = 'none';
   // Name filter
@@ -125,10 +126,6 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     );
   }
 
-  ngOnChanges(): void {
-    console.log(this.cardsNum);
-  }
-
   updateCardNumber() {
     this.cardsNum = this.cardHandlerService.updateCardNumber();
     // this.cardHandlerService
@@ -153,6 +150,8 @@ export class DeckContainerComponent implements OnInit, OnChanges {
 
   updateDeck() {
     this.cardHandlerService.currentDeck.next(this.currentDeck);
+    // console.log('currentDeckUpdated \n' + JSON.stringify(this.currentDeck));
+
     // this.updateShownCards();
     // console.log(this.inputValue);
   }
@@ -208,32 +207,84 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     this.updateDeck();
   }
 
+  compactCards(cards: { [key: string]: number }[]): string {
+    return cards
+      .map((card) => {
+        const [id, amount] = Object.entries(card)[0];
+        return `${id}:${amount}`;
+      })
+      .join(',');
+  }
+
+  async searchCardsByCompressedID(
+    parsedData: { id: number; amount: number }[]
+  ) {
+    const availableCards = await this.cardHandlerService.getAllCards(); // Get the list of all available cards
+    // console.log('availableCards ' + JSON.stringify(availableCards));
+
+    return parsedData.map((item) => {
+      // console.log('item.id ' + item.id);
+      // console.log('card id ' + +availableCards[0]?.data["sorszam"].slice(6));
+      const matchingCard = availableCards.find(
+        (card) => +card.data['sorszam'].slice(6) === item.id
+      );
+      if (matchingCard) {
+        return { card: matchingCard, amount: item.amount };
+      } else {
+        return { error: `Card with ID ${item.id} not found` };
+      }
+    });
+  }
+
+  parseCompressedData(data: string) {
+    return data.split(',').map((entry) => {
+      const [id, amount] = entry.split(':');
+      return { id: parseInt(id), amount: parseInt(amount) };
+    });
+  }
+
   // Encode deck data
   encodeDeck(deckData: any): string {
-    // Compress deck data
-    const compressedData = pako.deflate(JSON.stringify(deckData));
+    // console.log(deckData);
+    // console.log(deckData.cards[0]?.card.CardNumber);
 
-    // Convert Uint8Array to array of numbers
-    const dataArray = Array.from(compressedData); // or Array.prototype.slice.call(compressedData);
+    // have only a compressed id instead of the entire card object
+    let compressed = deckData.cards.map(
+      (card: { amount: any; card: { CardNumber: any } }) => {
+        return { [+card.card.CardNumber.slice(6)]: card.amount };
+      }
+    );
+    // console.log('compressed ' + JSON.stringify(compressed));
 
-    // Encode compressed data using Base64
-    const encodedData = btoa(String.fromCharCode.apply(null, dataArray));
+    // making a string-like object instead of a json-like one
+    let compacted = this.compactCards(compressed);
+    // console.log('compacted ' + JSON.stringify(compacted));
+
+    const encodedData = btoa(JSON.stringify(compacted));
+    // console.log('encodedData ' + encodedData);
 
     return encodedData;
   }
 
   // Decode deck data
-  decodeDeck(encodedData: string): any {
+  async decodeDeck(encodedData: string) {
     // Decode Base64 string
-    const compressedData = Uint8Array.from(atob(encodedData), (c) =>
-      c.charCodeAt(0)
+    let decompressedData = atob(encodedData);
+    // console.log('decompressedData ' + JSON.stringify(decompressedData));
+
+    // remove the url safe characters
+    decompressedData = decompressedData.slice(1, decompressedData.length - 1);
+    // console.log('url safe data ' + JSON.stringify(decompressedData));
+
+    const parsedData = this.parseCompressedData(decompressedData);
+    // console.log('Parsed Data:', parsedData);
+
+    let deckData = await this.searchCardsByCompressedID(parsedData).then(
+      (result) => {
+        return result;
+      }
     );
-
-    // Decompress data
-    const decompressedData = pako.inflate(compressedData, { to: 'string' });
-
-    // Parse JSON to retrieve original deck data
-    const deckData = JSON.parse(decompressedData);
+    // console.log('deckData ' + JSON.stringify(deckData));
 
     return deckData;
   }
@@ -260,16 +311,25 @@ export class DeckContainerComponent implements OnInit, OnChanges {
     }
   }
 
-  importDeck() {
+  async importDeck() {
     if (!this.importedCode) {
       return;
     }
 
     try {
-      const deckData = this.decodeDeck(this.importedCode);
+      const deckData = await this.decodeDeck(this.importedCode);
       if (deckData) {
         this.addDeckCodeToUrl();
-        this.currentDeck = deckData;
+
+        // removing the 'error' entries came from promise
+        const validCards = deckData.filter(
+          (item: any) => !item.error
+        ) as CardWithAmount[];
+
+        // this.currentDeck = deckData;
+        // Assign to `currentDeck`
+        this.currentDeck = this.normalizeDeckFormat(validCards);
+
         this.updateDeck();
         this.importedCode = '';
       }
@@ -287,21 +347,29 @@ export class DeckContainerComponent implements OnInit, OnChanges {
   }
 
   getDeckCodeFromUrl() {
-    this.route.queryParamMap.subscribe((params) => {
-      this.importedCode = params.get("deckCode") ?? this.importedCode;
-      
+    this.route.queryParamMap.subscribe(async (params) => {
+      this.importedCode = params.get('deckCode') ?? this.importedCode;
+
       let deckData = null;
-      if(this.importedCode && this.importedCode !== '') {
-        deckData = this.decodeDeck(this.importedCode);
+      if (this.importedCode && this.importedCode !== '') {
+        deckData = await this.decodeDeck(this.importedCode);
       }
-  
+
       if (deckData) {
-        this.currentDeck = deckData;
+        // removing the 'error' entries came from promise
+        const validCards = deckData.filter(
+          (item: any) => !item.error
+        ) as CardWithAmount[];
+
+        // normalize cards to the second -"deck" format
+        this.currentDeck = this.normalizeDeckFormat(validCards);
+
+        // console.log('currentDeckURLLoad \n' + JSON.stringify(this.currentDeck));
+        // this.currentDeck = deckData;
         this.updateDeck();
         this.importedCode = '';
       }
-    }
-    )
+    });
   }
 
   onTypeChanges(type: string) {
@@ -428,5 +496,38 @@ export class DeckContainerComponent implements OnInit, OnChanges {
   updateCardWidth(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
     document.documentElement.style.setProperty(`--${'card-width'}`, `${value}`);
+  }
+
+  normalizeDeckFormat(deck: any): Deck {
+    // console.log('deck ' + JSON.stringify(deck));
+    return {
+      cards: deck.map((cardWithAmount: any) => {
+        const { card, amount } = cardWithAmount;
+
+        // Check if the card is in the first format
+        if (card.data && card.id) {
+          // Transform to the second format
+          const normalizedCard = {
+            Color: card.data.szin || '',
+            CardType: card.data.laptipus || '',
+            Subtype: card.data.altipus || '',
+            Name: card.data.nev || '',
+            ManaCost: card.data['mana-koltseg'] || '',
+            PowerToughness: card.data['tamado-vedo'] || '',
+            Ability: card.data.kepesseg || '',
+            PlusMana: card.data['mana+'] || '',
+            PlusCardDraw: card.data['laphuzo+'] || '',
+            Spirit: card.data.spirit || '',
+            Release: card.data.megjelenes || '',
+            CardNumber: card.data.sorszam || '',
+            ImagePath: card.id || '',
+          };
+          return { card: normalizedCard, amount };
+        }
+
+        // If it's already in the second format, return as is
+        return cardWithAmount;
+      }),
+    };
   }
 }
