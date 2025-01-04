@@ -203,6 +203,11 @@ export class DeckContainerComponent implements OnInit {
   }
 
   clearDeck() {
+    // remove all the url params - deckCode
+    this.router.navigate([], {
+      queryParams: {},
+    });
+
     this.currentDeck.cards = [];
     this.updateDeck();
   }
@@ -291,6 +296,8 @@ export class DeckContainerComponent implements OnInit {
 
   copyDeckCode() {
     const deckCode = this.encodeDeck(this.currentDeck);
+
+    this.importedCode = deckCode;
 
     // Check if the browser supports the clipboard API
     if (navigator.clipboard) {
