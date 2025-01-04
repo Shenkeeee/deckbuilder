@@ -40,7 +40,7 @@ export class CarddataContainerComponent implements OnInit {
   addToDeck(cardToAdd: Card) {
     if (this.cardsNum > this.calculateLengthOfDeck()) {
       // Check if the card is already in the deck
-      const existingCard = this.currentDeck.cards.find(card => card.card === cardToAdd);
+      const existingCard = this.currentDeck.cards.find(card => card.card.CardNumber === cardToAdd.CardNumber);
 
       if (existingCard) {
         // If the card exists in the deck, increment its amount
