@@ -51,6 +51,7 @@ mat-label {
   // height: 400px;
   height: calc(100dvh - 380px);
   overflow-y: auto;
+  padding-bottom: 25px;
 
   img {
     height: 30px;
@@ -59,9 +60,9 @@ mat-label {
   }
 }
 
-@media screen and (max-width: 600px) {
-  * {
-    display: none;
+@media screen and (max-width: 570px) {
+  #deck-container {
+    width: 100dvw;
   }
 }
 
