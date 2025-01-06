@@ -35,8 +35,8 @@ export class CardHandlerService {
   selectedSubTypes = new BehaviorSubject<string[]>([]);
   selectedSubTypesObs = this.selectedSubTypes.asObservable();
 
-  selectedReleases = new BehaviorSubject<string[]>([]);
-  selectedReleasesObs = this.selectedReleases.asObservable();
+  // selectedReleases = new BehaviorSubject<string[]>([]);
+  // selectedReleasesObs = this.selectedReleases.asObservable();
 
   selectedManaCosts = new BehaviorSubject<string[]>([]);
   selectedManaCostsObs = this.selectedManaCosts.asObservable();
@@ -99,12 +99,12 @@ export class CardHandlerService {
         PlusMana: this.cards.value[i].data["mana+"],
         PlusCardDraw: this.cards.value[i].data["laphuzo+"],
         Spirit: this.cards.value[i].data["spirit"],
-        Release: this.cards.value[i].data["megjelenes"],
+        // Release: this.cards.value[i].data["megjelenes"],
         CardNumber: this.cards.value[i].data["sorszam"],
         ImagePath: this.cards.value[i].id,
       };
       // Filtering by name
-      if (this.matchesNameFilter(newCard.Name) && this.matchesColorFilter(newCard.Color) && this.matchesTypeFilter(newCard.CardType) && this.matchesSubTypeFilter(newCard.Subtype) && this.matchesReleasesFilter(newCard.Release) && this.matchesManaCostsFilter(newCard.ManaCost) && this.matchesSpiritFilter(newCard.Spirit)) {
+      if (this.matchesNameFilter(newCard.Name) && this.matchesColorFilter(newCard.Color) && this.matchesTypeFilter(newCard.CardType) && this.matchesSubTypeFilter(newCard.Subtype) && this.matchesManaCostsFilter(newCard.ManaCost) && this.matchesSpiritFilter(newCard.Spirit)) {
         this.cardInstances.push(new CardInstance(newCard));
       }
     }
@@ -165,24 +165,23 @@ export class CardHandlerService {
     return this.selectedSubTypes.value.includes(removeAccents(input.toLowerCase()));
   }
 
-  matchesReleasesFilter(input?: string): boolean {
-    // console.log(input, " : ", this.selectedReleases.value);
-    if (!input && this.selectedReleases.value.includes("-"))
-      return true;
-    // if no filter then it matches it
-    if (!this.selectedReleases.value || this.selectedReleases.value.length === 0)
-      return true;
-    // Ha ezen felul nincs input akkor false
-    if (!input)
-      return false;
-    const removeAccents = (str: string) => {
-      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    };
-    return this.selectedReleases.value.includes(removeAccents(input.toLowerCase()));
-  }
+  // matchesReleasesFilter(input?: string): boolean {
+  //   // console.log(input, " : ", this.selectedReleases.value);
+  //   if (!input && this.selectedReleases.value.includes("-"))
+  //     return true;
+  //   // if no filter then it matches it
+  //   if (!this.selectedReleases.value || this.selectedReleases.value.length === 0)
+  //     return true;
+  //   // Ha ezen felul nincs input akkor false
+  //   if (!input)
+  //     return false;
+  //   const removeAccents = (str: string) => {
+  //     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  //   };
+  //   return this.selectedReleases.value.includes(removeAccents(input.toLowerCase()));
+  // }
 
   matchesManaCostsFilter(input?: number): boolean {
-    // console.log(input, " : ", this.selectedReleases.value);
     // if (!input && this.selectedManaCosts.value.includes("-"))
     //   return true;
     // if no filter then it matches it
@@ -199,7 +198,6 @@ export class CardHandlerService {
   }
 
   matchesSpiritFilter(input?: string): boolean {
-    // console.log(input, " : ", this.selectedReleases.value);
     // if (!input && this.selectedManaCosts.value.includes("-"))
     //   return true;
     // if no filter then it matches it

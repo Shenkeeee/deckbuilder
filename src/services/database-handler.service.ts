@@ -152,8 +152,9 @@ export class DatabaseHandlerService {
       'mana+': row[7],
       'laphuzo+': row[8],
       spirit: row[9],
-      megjelenes: row[10],
-      sorszam: row[11],
+      sorszam: row[10],
+      // megjelenes: row[10],
+      // sorszam: row[11] || null,
     };
   }
 

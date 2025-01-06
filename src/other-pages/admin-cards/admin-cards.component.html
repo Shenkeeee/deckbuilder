@@ -21,7 +21,7 @@
             <th class="manaplusz">Mana+</th>
             <th class="laphuzoplusz">Laphúzó+</th>
             <th class="spirit">Spririt</th>
-            <th class="megjelenes">Megjelenés</th>
+            <!-- <th class="megjelenes">Megjelenés</th> -->
             <th>Sorszám</th>
             <th>Módosítás</th>
         </tr>
@@ -38,7 +38,7 @@
                 <td class="manaplusz">{{ card.data["mana+"] !== "null" ? card.data["mana+"] : '' }}</td>
                 <td class="laphuzoplusz">{{ card.data["laphuzo+"] !== "null" ? card.data["laphuzo+"] : '' }}</td>
                 <td class="spirit">{{ card.data["spirit"] !== "null" ? card.data["spirit"] : '' }}</td>
-                <td class="megjelenes">{{ card.data["megjelenes"] !== "null" ? card.data["megjelenes"] : '' }}</td>
+                <!-- <td class="megjelenes">{{ card.data["megjelenes"] !== "null" ? card.data["megjelenes"] : '' }}</td> -->
                 <td>{{ card.data["sorszam"] !== "null" ? card.data["sorszam"] : '' }}</td>
                 <td><button (click)="openEditPopup(card)" mat-flat-button color="primary"> <mat-icon
                             matSuffix>edit</mat-icon></button>

@@ -63,7 +63,7 @@ export class DeckContainerComponent implements OnInit {
   // Filters
   selectedTypes: string[] = [];
   selectedSubTypes: string[] = [];
-  selectedReleases: string[] = [];
+  // selectedReleases: string[] = [];
   selectedManaCosts: string[] = [];
   selectedSpirits: string[] = [];
 
@@ -89,9 +89,9 @@ export class DeckContainerComponent implements OnInit {
     this.cardHandlerService.selectedSubTypesObs.subscribe(
       (selectedSubTypes) => (this.selectedSubTypes = selectedSubTypes)
     );
-    this.cardHandlerService.selectedReleasesObs.subscribe(
-      (selectedReleases) => (this.selectedReleases = selectedReleases)
-    );
+    // this.cardHandlerService.selectedReleasesObs.subscribe(
+    //   (selectedReleases) => (this.selectedReleases = selectedReleases)
+    // );
     this.cardHandlerService.selectedManaCostsObs.subscribe(
       (selectedManaCosts) => (this.selectedManaCosts = selectedManaCosts)
     );
@@ -405,18 +405,18 @@ export class DeckContainerComponent implements OnInit {
     this.changeSubTypes();
   }
 
-  onReleaseChanges(input: string) {
-    const index = this.selectedReleases.indexOf(input);
-    if (index === -1) {
-      // Ha még nincs a tömbben, akkor hozzáadjuk
-      this.selectedReleases.push(input);
-    } else {
-      // Ha már benne van a tömbben, akkor kivesszük
-      this.selectedReleases.splice(index, 1);
-    }
-    // console.log(this.selectedSubTypes);
-    this.changeReleases();
-  }
+  // onReleaseChanges(input: string) {
+  //   const index = this.selectedReleases.indexOf(input);
+  //   if (index === -1) {
+  //     // Ha még nincs a tömbben, akkor hozzáadjuk
+  //     this.selectedReleases.push(input);
+  //   } else {
+  //     // Ha már benne van a tömbben, akkor kivesszük
+  //     this.selectedReleases.splice(index, 1);
+  //   }
+  //   // console.log(this.selectedSubTypes);
+  //   this.changeReleases();
+  // }
 
   onManaCostChanges(input: string) {
     const index = this.selectedManaCosts.indexOf(input);
@@ -456,11 +456,11 @@ export class DeckContainerComponent implements OnInit {
     this.updateShownCards();
   }
 
-  changeReleases() {
-    this.cardHandlerService.selectedReleases.next(this.selectedReleases);
-    // console.log("this.selectedSubTypes:", this.selectedSubTypes);
-    this.updateShownCards();
-  }
+  // changeReleases() {
+  //   this.cardHandlerService.selectedReleases.next(this.selectedReleases);
+  //   // console.log("this.selectedSubTypes:", this.selectedSubTypes);
+  //   this.updateShownCards();
+  // }
 
   changeManaCosts() {
     this.cardHandlerService.selectedManaCosts.next(this.selectedManaCosts);
@@ -525,7 +525,7 @@ export class DeckContainerComponent implements OnInit {
             PlusMana: card.data['mana+'] || '',
             PlusCardDraw: card.data['laphuzo+'] || '',
             Spirit: card.data.spirit || '',
-            Release: card.data.megjelenes || '',
+            // Release: card.data.megjelenes || '',
             CardNumber: card.data.sorszam || '',
             ImagePath: card.id || '',
           };
