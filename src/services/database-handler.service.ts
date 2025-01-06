@@ -95,10 +95,12 @@ export class DatabaseHandlerService {
       const docRef = doc(this.db, this.workDoc, cardId);
       await updateDoc(docRef, newData.data);
       // console.log(newData);
-      await this.syncIndexedDbToFirestore();
       console.log(`Card ${cardId} successfully modified.`);
     } catch (error) {
       console.error('Error modifying card:', error);
+    }
+    finally {
+      await this.syncIndexedDbToFirestore();
     }
   }
 
@@ -114,6 +116,7 @@ export class DatabaseHandlerService {
   }
 
   async syncIndexedDbToFirestore() {
+    await this.dbDexieService.deleteAllCards();
     await this.dbDexieService.updateCards(await this.getCards(true));
   }
 
@@ -121,6 +124,7 @@ export class DatabaseHandlerService {
   async uploadDataFromCSV(file: File): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       const parseConfig = {
+        delimiter: "", // Let PapaParse auto-detect the delimiter
         complete: async (results: any) => {
           try {
             for (let row of results.data) {
@@ -162,6 +166,7 @@ export class DatabaseHandlerService {
   async uploadData(data: any): Promise<void> {
     try {
       const newId = data['sorszam'].replace('/', '-');
+
       // Upload the data to Firestore
       await setDoc(doc(this.db, this.workDoc, newId), data);
       console.log('Document written with ID ', newId);

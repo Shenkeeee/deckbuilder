@@ -80,18 +80,19 @@ export class AdminCardsComponent implements OnInit, OnChanges {
             disableClose: true, // Prevent closing the spinner dialog
             panelClass: 'spinner-overlay' // Apply custom styles for the overlay
           });
+          
           this.databaseHandlerService.uploadDataFromCSV(file).then(
-            () => {
+            (resolve) => {
               // Hide the spinner once the upload is complete
               spinnerRef.close();
-              window.location.reload();
+              // window.location.reload();
             },
             (error: any) => {
               // Handle error if upload fails
               console.error('Error uploading file:', error);
               spinnerRef.close(); // Close the spinner in case of error
             }
-          );;
+          );
         }
         else {
           event.target.value = null;
