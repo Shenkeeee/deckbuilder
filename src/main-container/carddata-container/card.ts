@@ -9,7 +9,7 @@ export interface Card {
     PlusMana?: string;
     PlusCardDraw?: string;
     Spirit?: string;
-    Release?: string;
+    // Release?: string;
     CardNumber?: string;
     ImagePath?: string;
 }
