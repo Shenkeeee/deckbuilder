@@ -52,7 +52,7 @@ export class DeckContainerComponent implements OnInit {
   // Name filter
   inputValueMsg = '';
   inputValue: string = '';
-  defaultCardSize = 300;
+  defaultCardSize = 0;
 
   selectedFormat = 'standard';
   cardsNum!: number;
