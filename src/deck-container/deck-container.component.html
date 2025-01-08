@@ -98,19 +98,18 @@
             </mat-chip-listbox> -->
 
       <!-- Megjelenés -->
-      <!-- <h4>Megjelenés</h4>
+      <h4>Megjelenés</h4>
       <mat-chip-listbox multiple>
-        <mat-chip-option (click)="onReleaseChanges('-')">Sima</mat-chip-option>
-        <mat-chip-option (click)="onReleaseChanges('kezdopakli')"
-          >Kezdőpakli</mat-chip-option
+        <mat-chip-option (click)="onReleaseChanges('23')"
+          >2023</mat-chip-option
         >
-        <mat-chip-option (click)="onReleaseChanges('nyeremeny')"
-          >Nyeremény</mat-chip-option
+        <mat-chip-option (click)="onReleaseChanges('24')"
+          >2024</mat-chip-option
         >
-        <mat-chip-option (click)="onReleaseChanges('kiegeszito')"
-          >Kiegészítő</mat-chip-option
+        <mat-chip-option (click)="onReleaseChanges('25')"
+          >2025</mat-chip-option
         >
-      </mat-chip-listbox> -->
+      </mat-chip-listbox>
 
       <!-- Mana -->
       <div>
@@ -191,10 +190,9 @@
       min="220"
       max="450"
       step="10"
-      
       (change)="updateCardWidth($event)"
-      >
-      <input matSliderThumb [(ngModel)]="defaultCardSize" #slider>
+    >
+      <input matSliderThumb [(ngModel)]="defaultCardSize" #slider />
     </mat-slider>
 
     <div id="deck-info-container" class="mb-2">
