@@ -26,24 +26,29 @@
     <!-- Filters -->
     <div class="filters-container" [class]="filtersContainerClass">
       <!-- Típus -->
-      <!-- <h4>Típus</h4> -->
-      <mat-form-field>
-        <mat-label>Típus</mat-label>
-        <mat-select multiple>
-          <mat-option (click)="onTypeChanges('karakter')">Karakter</mat-option>
-          <mat-option (click)="onTypeChanges('varazslat')"
-            >Varázslat</mat-option
-          >
-          <mat-option (click)="onTypeChanges('spirit')">Spirit</mat-option>
-          <mat-option (click)="onTypeChanges('portal csapda')"
-            >Portál Csapda</mat-option
-          >
-          <mat-option (click)="onTypeChanges('vezeto')">Vezető</mat-option>
-          <mat-option (click)="onTypeChanges('lvl up 2')">Level Up</mat-option>
-          <mat-option (click)="onTypeChanges('aura')">Aura</mat-option>
-          <mat-option (click)="onTypeChanges('zona')">Zóna</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <h4>Típus</h4>
+      <mat-chip-listbox multiple>
+        <mat-chip-option (click)="onTypeChanges('karakter')"
+          >Karakter</mat-chip-option
+        >
+        <mat-chip-option (click)="onTypeChanges('varazslat')"
+          >Varázslat</mat-chip-option
+        >
+        <mat-chip-option (click)="onTypeChanges('spirit')"
+          >Spirit</mat-chip-option
+        >
+        <mat-chip-option (click)="onTypeChanges('portal csapda')"
+          >Portál Csapda</mat-chip-option
+        >
+        <mat-chip-option (click)="onTypeChanges('vezeto')"
+          >Vezető</mat-chip-option
+        >
+        <mat-chip-option (click)="onTypeChanges('lvl up 2')"
+          >Level Up</mat-chip-option
+        >
+        <mat-chip-option (click)="onTypeChanges('aura')">Aura</mat-chip-option>
+        <mat-chip-option (click)="onTypeChanges('zona')">Zóna</mat-chip-option>
+      </mat-chip-listbox>
 
       <!-- Altípus -->
       <h4>Altípus</h4>
@@ -100,15 +105,9 @@
       <!-- Megjelenés -->
       <h4>Megjelenés</h4>
       <mat-chip-listbox multiple>
-        <mat-chip-option (click)="onReleaseChanges('23')"
-          >2023</mat-chip-option
-        >
-        <mat-chip-option (click)="onReleaseChanges('24')"
-          >2024</mat-chip-option
-        >
-        <mat-chip-option (click)="onReleaseChanges('25')"
-          >2025</mat-chip-option
-        >
+        <mat-chip-option (click)="onReleaseChanges('23')">2023</mat-chip-option>
+        <mat-chip-option (click)="onReleaseChanges('24')">2024</mat-chip-option>
+        <mat-chip-option (click)="onReleaseChanges('25')">2025</mat-chip-option>
       </mat-chip-listbox>
 
       <!-- Mana -->
