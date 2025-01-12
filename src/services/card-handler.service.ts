@@ -134,17 +134,69 @@ export class CardHandlerService {
   }
 
   matchesColorFilter(colorName?: string): boolean {
-    // if no filter then it matches it
-    if (!this.selectedColors.value || this.selectedColors.value.length === 0)
+    if (!this.selectedColors.value || this.selectedColors.value.length === 0) {
       return true;
+    }
     if (!colorName) return false;
+
     const removeAccents = (str: string) => {
       return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     };
-    // console.log(colorName, " : ", this.selectedColors.value);
-    return this.selectedColors.value.includes(
-      removeAccents(colorName.toLowerCase())
+
+    // -----
+    // if dual is selected we handle it as a + sign
+    const selectedColors = this.selectedColors.value.map((color) =>
+      color === 'dual' ? '+' : color
     );
+
+    // Check for dual color logic
+    // if searchable has + then it has multiple colors.
+    // but if we also have dual selected then we set it to isDual.
+    const hasDual = colorName.includes('+');
+    const isDual = colorName.includes('+') && selectedColors.includes('+');
+    const colorNameLower = removeAccents(colorName.toLowerCase());
+
+    const colorArray: any[] = hasDual
+      ? colorNameLower.split('+').map((color) => color.trim())
+      : [null];
+
+    // Count how many selected colors match the colorArray
+    const matchingCount = selectedColors.filter((color) =>
+      colorArray.includes(color)
+    ).length;
+
+    // if at least 2 colors match and they are both in the card colors
+    const matchesSelectedColors = selectedColors.some(
+      (color) => colorArray.includes(color) && selectedColors.length > 1
+    );
+
+    // If dual is selected or any selected color matches the colorName
+    if (matchesSelectedColors && matchingCount >= 2) {
+      // console.log(
+      //   'Matching Count: ' +
+      //     matchingCount +
+      //     '   colorArray: ' +
+      //     [...colorArray] +
+      //     ' \nSelectedColors: ' +
+      //     this.selectedColors.value
+      // );
+
+      return true;
+    }
+
+    // If dual is selected or both selected colors are in the colorName
+    if (isDual) {
+      // console.log(
+      //   'colorArray  ' +
+      //     [...colorArray] +
+      //     ' \nSelectedColors ' +
+      //     this.selectedColors.value
+      // );
+      return true;
+    }
+
+    // Regular color matching
+    return selectedColors.includes(removeAccents(colorNameLower));
   }
 
   matchesTypeFilter(type?: string): boolean {
