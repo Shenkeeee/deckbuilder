@@ -269,8 +269,10 @@ export class CardHandlerService {
       this.selectedManaCosts.value.includes(
         removeAccents(inputStr.toLowerCase())
       ) ||
-      (this.selectedManaCosts.value.includes('8') &&
-        removeAccents(inputStr.toLowerCase()) == '9')
+      (this.selectedManaCosts.value.includes('7') && 
+        removeAccents(inputStr.toLowerCase()) == '8') || // if 7 is selected, it can also be 8
+      (this.selectedManaCosts.value.includes('7') &&
+        removeAccents(inputStr.toLowerCase()) == '9') // if 7 is selected, it can also be 9
     );
   }
 
