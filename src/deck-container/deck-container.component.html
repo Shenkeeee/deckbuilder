@@ -241,12 +241,36 @@
             <img
               class="mt-2"
               (click)="removeFromDeck(card.card)"
+              (mouseover)="
+                card.card.ImagePath && showHoveredCard(card.card.ImagePath);
+                hovered = card.card.ImagePath ? card.card.ImagePath : null
+              "
+              (mouseout)="hideHoveredCard(); hovered = null"
+              [ngStyle]="{
+                filter:
+                  hovered === card.card.ImagePath
+                    ? 'brightness(2.5)'
+                    : 'brightness(1)',
+                transition: 'filter 0.1s ease'
+              }"
               [src]="
                 card.card.ImagePath
                   ? 'assets/pics/' + card.card.ImagePath + '.webp'
                   : 'assets/pics/feherszint.png_resize.webp'
               "
               alt="{{ card.card.ImagePath }}"
+            />
+            <img
+              *ngIf="hoveredImagePath === card.card.ImagePath"
+              [ngStyle]="{ position: 'absolute', top: '140px', left: '330px' }"
+              style="
+                width: 460px;
+                max-width: 460px;
+                height: auto;
+                z-index: 3;
+              "
+              [src]="'assets/pics/' + hoveredImagePath + '.webp'"
+              alt="{{ hoveredImagePath }}"
             />
           </div>
         </div>

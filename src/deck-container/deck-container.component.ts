@@ -67,6 +67,9 @@ export class DeckContainerComponent implements OnInit {
   selectedManaCosts: string[] = [];
   selectedSpirits: string[] = [];
 
+  hoveredImagePath: string | null = null;
+  hovered: string | null = null;
+
   currentDeck: Deck = { cards: [] };
 
   constructor(
@@ -231,7 +234,9 @@ export class DeckContainerComponent implements OnInit {
       // console.log('item.id ' + item.id);
       // console.log('card id ' + +availableCards[0]?.data["sorszam"].slice(6));
       const matchingCard = availableCards.find(
-        (card) => ((card.data['sorszam'].slice(0,1)) + +card.data['sorszam'].slice(6)) === item.id
+        (card) =>
+          card.data['sorszam'].slice(0, 1) + +card.data['sorszam'].slice(6) ===
+          item.id
       );
       if (matchingCard) {
         return { card: matchingCard, amount: item.amount };
@@ -256,7 +261,10 @@ export class DeckContainerComponent implements OnInit {
     // have only a compressed id instead of the entire card object
     let compressed = deckData.cards.map(
       (card: { amount: any; card: { CardNumber: any } }) => {
-        return { [card.card.CardNumber.slice(0,1) + +card.card.CardNumber.slice(6)]: card.amount };
+        return {
+          [card.card.CardNumber.slice(0, 1) + +card.card.CardNumber.slice(6)]:
+            card.amount,
+        };
       }
     );
     // console.log('compressed ' + JSON.stringify(compressed));
@@ -536,5 +544,13 @@ export class DeckContainerComponent implements OnInit {
         return cardWithAmount;
       }),
     };
+  }
+
+  showHoveredCard(cardImagePath: any) {
+    this.hoveredImagePath = cardImagePath;
+  }
+
+  hideHoveredCard() {
+    this.hoveredImagePath = null;
   }
 }
