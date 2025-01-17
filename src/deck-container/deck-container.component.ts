@@ -134,8 +134,7 @@ export class DeckContainerComponent implements OnInit {
         'Extra lapok: 1 vezető - kötelező, 1 spirit, 2 szintlépés kártya';
     }
     if (this.selectedFormat === 'rush') {
-      this.formatAdditionalHint =
-        'Extra lap: 1 vezető - kötelező';
+      this.formatAdditionalHint = 'Extra lap: 1 vezető - kötelező';
     }
   }
 
@@ -337,26 +336,52 @@ export class DeckContainerComponent implements OnInit {
 
   copyDeckCode() {
     const deckCode = this.encodeDeck(this.currentDeck);
-
     this.importedCode = deckCode;
 
-    // Check if the browser supports the clipboard API
+    // Add the shortened deck code to the URL
+    const shortenedUrl = this.addDeckCodeToUrl(deckCode);
+
+    // Use the Clipboard API if supported
     if (navigator.clipboard) {
-      // Use the clipboard API to copy the deck code to the clipboard
       navigator.clipboard
-        .writeText(deckCode)
-        .then((result) => {
-          alert('Deck kód másolva');
+        .writeText(shortenedUrl)
+        .then(() => {
+          alert('Deck link másolva');
         })
         .catch((error) => {
-          console.error('Failed to copy deck code:', error);
-          // Optionally handle error if copying fails
+          // console.error('Failed to copy deck code:', error);
+          this.fallbackCopyToClipboard(shortenedUrl);
         });
     } else {
-      // Fallback for browsers that do not support the clipboard API
+      // Fallback for unsupported browsers
       console.error('Clipboard API not supported');
-      // Optionally provide fallback method for copying to clipboard
+      this.fallbackCopyToClipboard(shortenedUrl);
     }
+
+    this.router.navigate([], {
+      queryParams: {},
+    });
+  }
+
+  // Fallback function for copying to the clipboard
+  fallbackCopyToClipboard(text: string) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed'; // Prevent scrolling to bottom of the page
+    textArea.style.left = '-9999px'; // Move it off-screen
+    document.body.appendChild(textArea);
+
+    textArea.focus();
+    textArea.select();
+
+    try {
+      document.execCommand('copy');
+      alert('Deck link másolva');
+    } catch (error) {
+      console.error('Fallback copy failed:', error);
+    }
+
+    document.body.removeChild(textArea);
   }
 
   async importDeck() {
@@ -386,12 +411,17 @@ export class DeckContainerComponent implements OnInit {
     }
   }
 
-  addDeckCodeToUrl() {
+  addDeckCodeToUrl(deckCode: string | null = null) {
+    const baseUrl = window.location.origin + window.location.pathname; // Current domain + path
+    const fullUrl = `${baseUrl}?deckCode=${this.importedCode}`;
+
     this.router.navigate([], {
       queryParams: {
         deckCode: this.importedCode,
       },
     });
+
+    return fullUrl;
   }
 
   getDeckCodeFromUrl() {

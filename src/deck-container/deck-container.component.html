@@ -194,10 +194,7 @@
     </mat-slider>
 
     <div id="deck-info-container" class="mb-2">
-      <div
-        id="card-count"
-        title={{formatAdditionalHint}}
-      >
+      <div id="card-count" title="{{ formatAdditionalHint }}">
         {{ selectedCardsNum }}/{{ cardsNum }} + {{ selectedCardsAdditional }}/{{
           selectedFormatAdditionalLimit
         }}
@@ -285,37 +282,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div id="import-deck-container">
-      <mat-form-field>
-        <mat-label for="import-deck-field">Deck kód:</mat-label>
-        <input
-          matInput
-          type="text"
-          id="import-deck-field"
-          placeholder="kód"
-          [(ngModel)]="importedCode"
-        />
-        <!-- Paste icon button with custom class -->
-        <button
-          mat-icon-button
-          matSuffix
-          class="custom-icon-button"
-          aria-label="Paste from clipboard"
-          (click)="pasteFromClipboard()"
-        >
-          <mat-icon [ngStyle]="{ color: 'grey' }">content_paste</mat-icon>
-        </button>
-      </mat-form-field>
-      <button
-        mat-flat-button
-        color="primary"
-        id="import-deck-button"
-        name="import-deck-button"
-        (click)="importDeck()"
-      >
-        <mat-icon>publish</mat-icon>
-      </button>
     </div>
   </div>
 </div>
