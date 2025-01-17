@@ -180,7 +180,7 @@
       >
         <mat-option value="standard" default>Standard</mat-option>
         <mat-option value="rush">Rush</mat-option>
-        <mat-option value="dual">Duál</mat-option>
+        <mat-option value="profi">Profi</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -194,7 +194,15 @@
     </mat-slider>
 
     <div id="deck-info-container" class="mb-2">
-      <div id="card-count">{{ selectedCardsNum }}/{{ cardsNum }} Kártya</div>
+      <div
+        id="card-count"
+        title={{formatAdditionalHint}}
+      >
+        {{ selectedCardsNum }}/{{ cardsNum }} + {{ selectedCardsAdditional }}/{{
+          selectedFormatAdditionalLimit
+        }}
+        Kártya
+      </div>
       <button
         mat-flat-button
         color="primary"

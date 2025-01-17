@@ -57,6 +57,9 @@ export class DeckContainerComponent implements OnInit {
   selectedFormat = 'standard';
   cardsNum!: number;
   selectedCardsNum: number = 0;
+  selectedFormatAdditionalLimit = 0;
+  selectedCardsAdditional: number = 0;
+  formatAdditionalHint = '';
 
   importedCode: string = '';
 
@@ -101,9 +104,9 @@ export class DeckContainerComponent implements OnInit {
     this.cardHandlerService.selectedSpiritsObs.subscribe(
       (selectedSpirits) => (this.selectedSpirits = selectedSpirits)
     );
-    this.cardHandlerService.selectedFormatObs.subscribe(
-      (selectedFormat) => (this.selectedFormat = selectedFormat)
-    );
+    this.cardHandlerService.selectedFormatObs.subscribe((selectedFormat) => {
+      this.selectedFormat = selectedFormat;
+    });
 
     // this.currentDeck.cards.forEach(element => {
     //   element.
@@ -115,10 +118,25 @@ export class DeckContainerComponent implements OnInit {
     });
     this.cardHandlerService.selectedFormat.subscribe((format) => {
       this.selectedFormat = format;
+
       this.updateCardNumber();
+      this.selectedFormatAdditionalLimit =
+        this.cardHandlerService.selectedFormatAdditionalLimit;
+      this.updateFormatAdditionalHint();
     });
 
     this.getDeckCodeFromUrl();
+  }
+
+  updateFormatAdditionalHint() {
+    if (this.selectedFormat === 'standard' || this.selectedFormat === 'profi') {
+      this.formatAdditionalHint =
+        'Extra lapok: 1 vezető - kötelező, 1 spirit, 2 szintlépés kártya';
+    }
+    if (this.selectedFormat === 'rush') {
+      this.formatAdditionalHint =
+        'Extra lap: 1 vezető - kötelező';
+    }
   }
 
   setDefaultSliderFromCardSize() {
@@ -152,6 +170,7 @@ export class DeckContainerComponent implements OnInit {
   }
 
   updateDeck() {
+    this.updateSelectedCards();
     this.cardHandlerService.currentDeck.next(this.currentDeck);
     // console.log('currentDeckUpdated \n' + JSON.stringify(this.currentDeck));
 
@@ -166,11 +185,25 @@ export class DeckContainerComponent implements OnInit {
   updateSelectedCards() {
     // Initialize selectedCardsNum to 0
     this.selectedCardsNum = 0;
+    this.selectedCardsAdditional = 0;
 
     // Iterate through the cards in the deck and accumulate their amounts
     for (const card of this.currentDeck.cards) {
-      this.selectedCardsNum += card.amount;
+      if (
+        card.card.CardType === 'Vezető' ||
+        card.card.CardType === 'Szintlépés' ||
+        card.card.CardType === 'Spirit'
+      ) {
+        this.handleAdditionalAdded(card);
+      } else {
+        // Goes to normal deck
+        this.selectedCardsNum += card.amount;
+      }
     }
+  }
+
+  handleAdditionalAdded(card: CardWithAmount) {
+    this.selectedCardsAdditional += card.amount;
   }
 
   removeFromDeck(cardToRemove: Card) {

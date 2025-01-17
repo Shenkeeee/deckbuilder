@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CardInstance } from "./card-instance"
+import { CardInstance } from './card-instance';
 import { NgFor, CommonModule } from '@angular/common';
 import { Card } from './card';
 import { CardHandlerService } from '../../services/card-handler.service';
@@ -13,21 +13,21 @@ import { Deck } from '../../deck-container/deck';
   imports: [CommonModule],
 })
 export class CarddataContainerComponent implements OnInit {
-
   @Input() cardInstance!: CardInstance;
   currentDeck!: Deck;
   selectedFormat!: string;
   cardsNum!: number;
   selectedCardsNum!: number;
+  selectedCardsAdditional = 0;
 
-  constructor(private cardHandlerService: CardHandlerService) {
-
-  }
+  constructor(private cardHandlerService: CardHandlerService) {}
 
   ngOnInit() {
     this.updateCardNumber();
-    this.cardHandlerService.currentDeckObs.subscribe(deck => this.currentDeck = deck);
-    this.cardHandlerService.selectedFormat.subscribe(format => {
+    this.cardHandlerService.currentDeckObs.subscribe(
+      (deck) => (this.currentDeck = deck)
+    );
+    this.cardHandlerService.selectedFormat.subscribe((format) => {
       this.selectedFormat = format;
       this.updateCardNumber();
     });
@@ -38,45 +38,90 @@ export class CarddataContainerComponent implements OnInit {
   }
 
   addToDeck(cardToAdd: Card) {
-    if (this.cardsNum > this.calculateLengthOfDeck()) {
-      // Check if the card is already in the deck
-      const existingCard = this.currentDeck.cards.find(card => card.card.CardNumber === cardToAdd.CardNumber);
+    this.calculateLengthOfDeck();
+    let selectedFormatAdditionalLimit =
+      this.cardHandlerService.selectedFormatAdditionalLimit;
 
-      if (existingCard) {
-        // If the card exists in the deck, increment its amount
-        existingCard.amount++;
+    if (!this.isAdditionalCard(cardToAdd)) {
+      // Normál paklihoz tartozó kártya ellenőrzése
+      if (this.selectedCardsNum < this.cardsNum) {
+        this.addOrUpdateCard(cardToAdd);
       } else {
-        // If the card doesn't exist in the deck, add it with an amount of 1
-        this.currentDeck.cards.push({ card: cardToAdd, amount: 1 });
+        alert('Elérted az alap pakli maximális számát!');
       }
+    } else {
+      // Extra kártyákhoz tartozó ellenőrzés
+      const additionalLimits = this.calculateAdditionalLimits();
 
-      // Notify subscribers of the updated deck
-      this.cardHandlerService.currentDeck.next(this.currentDeck);
+      if (
+        (cardToAdd.CardType === 'Vezető' && additionalLimits.leader < 1) ||
+        (selectedFormatAdditionalLimit !== 1 && // ha nem rush módban vagyunk
+          cardToAdd.CardType === 'Szintlépés' &&
+          additionalLimits.levelUp < 2) ||
+        (selectedFormatAdditionalLimit !== 1 && // ha nem rush módban vagyunk
+          cardToAdd.CardType === 'Spirit' &&
+          additionalLimits.spirit < 1)
+      ) {
+        this.addOrUpdateCard(cardToAdd);
+      } else {
+        alert(`${cardToAdd.CardType}ből nem adhatsz hozzá többet!`);
+      }
     }
-    else {
-      alert("Telepakoltad a decked!");
-    }
-
-    // async isFileExists(imagePath: string): Promise<boolean> {
-    //   return new Promise<boolean>((resolve, reject) => {
-    //     const img = new Image();
-    //     img.onload = () => console.log("yes"); resolve(true); // Image loaded successfully
-    //     img.onerror = () => console.log("no"); resolve(false); // Error loading image (file does not exist)
-    //     img.src = `assets/pics/${imagePath}.png`; // Try to load the image
-    //   });
-    // }
   }
-  
-  // this is also implemented in the deck container component ts
-  calculateLengthOfDeck() {
-    // Initialize selectedCardsNum to 0
-    this.selectedCardsNum = 0;
 
-    // Iterate through the cards in the deck and accumulate their amounts
+  // Segédfüggvény kártya hozzáadására vagy frissítésére
+  private addOrUpdateCard(cardToAdd: Card) {
+    const existingCard = this.currentDeck.cards.find(
+      (card) => card.card.CardNumber === cardToAdd.CardNumber
+    );
+
+    if (existingCard) {
+      existingCard.amount++;
+    } else {
+      this.currentDeck.cards.push({ card: cardToAdd, amount: 1 });
+    }
+
+    this.cardHandlerService.currentDeck.next(this.currentDeck);
+  }
+
+  // Segédfüggvény az extra kártyák elosztásának ellenőrzésére
+  private calculateAdditionalLimits() {
+    let leader = 0;
+    let levelUp = 0;
+    let spirit = 0;
+
     for (const card of this.currentDeck.cards) {
-      this.selectedCardsNum += card.amount;
+      if (card.card.CardType === 'Vezető') {
+        leader += card.amount;
+      } else if (card.card.CardType === 'Szintlépés') {
+        levelUp += card.amount;
+      } else if (card.card.CardType === 'Spirit') {
+        spirit += card.amount;
+      }
     }
-    return this.selectedCardsNum;
+
+    return { leader, levelUp, spirit };
   }
 
+  // Segédfüggvény a kártyatípus ellenőrzésére
+  isAdditionalCard(card: Card): boolean {
+    return (
+      card.CardType === 'Vezető' ||
+      card.CardType === 'Szintlépés' ||
+      card.CardType === 'Spirit'
+    );
+  }
+
+  calculateLengthOfDeck() {
+    this.selectedCardsNum = 0;
+    this.selectedCardsAdditional = 0;
+
+    for (const card of this.currentDeck.cards) {
+      if (this.isAdditionalCard(card.card)) {
+        this.selectedCardsAdditional += card.amount;
+      } else {
+        this.selectedCardsNum += card.amount;
+      }
+    }
+  }
 }

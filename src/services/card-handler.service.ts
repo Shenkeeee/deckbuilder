@@ -23,6 +23,7 @@ export class CardHandlerService {
 
   selectedFormat = new BehaviorSubject<string>('');
   selectedFormatObs = this.selectedFormat.asObservable();
+  selectedFormatAdditionalLimit = 0;
 
   selectedColors = new BehaviorSubject<string[]>([]);
   selectedColorsObs = this.selectedColors.asObservable();
@@ -295,16 +296,19 @@ export class CardHandlerService {
 
   updateCardNumber() {
     if (this.selectedFormat.value === 'standard') {
-      return 60;
+      this.selectedFormatAdditionalLimit = 4;
+      return 50;
     }
 
     if (this.selectedFormat.value === 'rush') {
+      this.selectedFormatAdditionalLimit = 1;
       return 35;
     }
 
-    if (this.selectedFormat.value === 'dual') {
-      return 50;
+    if (this.selectedFormat.value === 'profi') {
+      this.selectedFormatAdditionalLimit = 4;
+      return 65;
     }
-    return 60;
+    return 50;
   }
 }
