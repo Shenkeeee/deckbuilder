@@ -16,7 +16,8 @@ export const routes: Routes = [
     // {path: 'login', component: LoginComponent, canActivate: [GuestAuthGuard]},
     // {path: 'register', component: RegisterComponent, canActivate: [GuestAuthGuard]},
     // {path: 'decks', component: DecksComponent, canActivate: [AuthGuard]},
-    {path: 'admin-cards', component: AdminCardsComponent, canActivate: [AdminAuthGuard]},
+    // {path: 'admin-cards', component: AdminCardsComponent, canActivate: [AdminAuthGuard]},
+    // {path: 'admin-cards', component: AdminCardsComponent},
     // {path: 'admin-users', component: AdminUsersComponent, canActivate: [AdminAuthGuard]},
 
 
