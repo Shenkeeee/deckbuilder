@@ -245,7 +245,7 @@ export class DeckContainerComponent implements OnInit {
   }
 
   clearDeck() {
-    if (!window.confirm('Biztosan törölni szeretnéd a paklit?')) {
+    if (!window.confirm('Biztosan kiüríted a paklit?')) {
       return;
     }
     // remove all the url params - deckCode
