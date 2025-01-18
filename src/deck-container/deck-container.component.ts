@@ -73,6 +73,8 @@ export class DeckContainerComponent implements OnInit {
   hoveredImagePath: string | null = null;
   hovered: string | null = null;
 
+  cardInstancesOBSVALCHILD = 0;
+
   currentDeck: Deck = { cards: [] };
 
   constructor(
@@ -126,6 +128,11 @@ export class DeckContainerComponent implements OnInit {
     });
 
     this.getDeckCodeFromUrl();
+
+    this.cardHandlerService.cardInstancesOBSOBS.subscribe(
+      (cardInstancesOBSVAL) =>
+        (this.cardInstancesOBSVALCHILD = cardInstancesOBSVAL.length)
+    );
   }
 
   updateFormatAdditionalHint() {
