@@ -245,6 +245,9 @@ export class DeckContainerComponent implements OnInit {
   }
 
   clearDeck() {
+    if (!window.confirm('Biztosan törölni szeretnéd a paklit?')) {
+      return;
+    }
     // remove all the url params - deckCode
     this.router.navigate([], {
       queryParams: {},
@@ -274,7 +277,7 @@ export class DeckContainerComponent implements OnInit {
       // console.log('card id ' + +availableCards[0]?.data["sorszam"].slice(6));
       const matchingCard = availableCards.find(
         (card) =>
-          card.data['sorszam'].slice(0, 1) + +card.data['sorszam'].slice(6) ===
+          card.data['sorszam'].slice(0, 1) + +card.data['sorszam'].slice(5) ===
           item.id
       );
       if (matchingCard) {
@@ -301,7 +304,7 @@ export class DeckContainerComponent implements OnInit {
     let compressed = deckData.cards.map(
       (card: { amount: any; card: { CardNumber: any } }) => {
         return {
-          [card.card.CardNumber.slice(0, 1) + +card.card.CardNumber.slice(6)]:
+          [card.card.CardNumber.slice(0, 1) + +card.card.CardNumber.slice(5)]:
             card.amount,
         };
       }
