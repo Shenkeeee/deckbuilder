@@ -275,11 +275,18 @@ export class DeckContainerComponent implements OnInit {
     return parsedData.map((item) => {
       // console.log('item.id ' + item.id);
       // console.log('card id ' + +availableCards[0]?.data["sorszam"].slice(6));
-      const matchingCard = availableCards.find(
-        (card) =>
-          card.data['sorszam'].slice(0, 1) + +card.data['sorszam'].slice(5) ===
-          item.id
-      );
+      const matchingCard = availableCards.find((card) => {
+        let sorszam = card.data['sorszam'];
+
+        // Check if the first 3 characters are 3 chars long and "messed up"
+        if (sorszam.slice(0, 3) === "dop") {
+          // Remove the 3rd character
+          sorszam = sorszam.slice(0, 2) + sorszam.slice(3);
+        }
+
+        // Continue with the rest of the logic
+        return sorszam.slice(0, 1) + +sorszam.slice(5) === item.id;
+      });
       if (matchingCard) {
         return { card: matchingCard, amount: item.amount };
       } else {
@@ -303,9 +310,17 @@ export class DeckContainerComponent implements OnInit {
     // have only a compressed id instead of the entire card object
     let compressed = deckData.cards.map(
       (card: { amount: any; card: { CardNumber: any } }) => {
+        let cardNumber = card.card.CardNumber;
+
+        // Check if the first 3 characters are 3 chars long and "messed up"
+        if (cardNumber.slice(0, 3) === "dop") {
+          // Remove the 3rd character
+          cardNumber = cardNumber.slice(0, 2) + cardNumber.slice(3);
+        }
+
+        // Continue with the decoding logic
         return {
-          [card.card.CardNumber.slice(0, 1) + +card.card.CardNumber.slice(5)]:
-            card.amount,
+          [cardNumber.slice(0, 1) + +cardNumber.slice(5)]: card.amount,
         };
       }
     );
