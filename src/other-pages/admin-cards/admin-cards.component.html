@@ -7,9 +7,10 @@
 
     <button type="button" id="file-button" mat-flat-button color="primary" (click)="fileInput.click()">Feltöltés</button>
     <input hidden (change)="onFileSelected($event)" #fileInput accept=".csv" type="file" id="file">
+    <button type="button" class="my-4" mat-flat-button color="secondary" (click)="updateFirebase()">Firebase frissítése</button>
+    <button *ngIf="!cardsShown" type="button" mat-flat-button color="primary" (click)="showCards()">Mutasd a kártyákat</button>
     </div>
-    
-    <table>
+    <table *ngIf="cardsShown">
         <tr>
             <th>Szín</th>
             <th>Laptípus</th>
@@ -40,9 +41,9 @@
                 <td class="spirit">{{ card.data["spirit"] !== "null" ? card.data["spirit"] : '' }}</td>
                 <!-- <td class="megjelenes">{{ card.data["megjelenes"] !== "null" ? card.data["megjelenes"] : '' }}</td> -->
                 <td>{{ card.data["sorszam"] !== "null" ? card.data["sorszam"] : '' }}</td>
-                <td><button (click)="openEditPopup(card)" mat-flat-button color="primary"> <mat-icon
+                <td><button class="action-button" (click)="openEditPopup(card)" mat-flat-button color="primary"> <mat-icon
                             matSuffix>edit</mat-icon></button>
-                    <button mat-flat-button color="warn" (click)="openDeletePopup(card)"><mat-icon
+                    <button class="action-button" mat-flat-button color="warn" (click)="openDeletePopup(card)"><mat-icon
                             matSuffix>delete</mat-icon></button>
                 </td>
             </tr>

@@ -33,15 +33,19 @@ mat-spinner::before {
 
 h2 {
     margin: 20px 0;
+    font-size: large;
 }
 
 input {
     min-height: 20px;
 }
 
+button {
+    margin: 5px;
+}
 
 // button
-button {
+.action-button {
     height: 30px;
     width: 30px;
     margin: 2px;

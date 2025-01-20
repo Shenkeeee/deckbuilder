@@ -1,39 +1,44 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialog } from '@angular/material/dialog'
+import { MatDialog } from '@angular/material/dialog';
 import { CardHandlerService } from '../../services/card-handler.service';
 import { DatabaseHandlerService } from '../../services/database-handler.service';
 import { CardEditPopupComponent } from './card-edit-popup/card-edit-popup.component';
 import { ConfirmPopupComponent } from './confirm-popup/confirm-popup.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatProgressSpinnerModule, MatProgressSpinner } from '@angular/material/progress-spinner';
+import {
+  MatProgressSpinnerModule,
+  MatProgressSpinner,
+} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-admin-cards',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule, MatProgressSpinner],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressSpinner,
+  ],
   templateUrl: './admin-cards.component.html',
-  styleUrl: './admin-cards.component.scss'
+  styleUrl: './admin-cards.component.scss',
 })
+export class AdminCardsComponent {
+  cards?: { id: string; data: any }[];
+  cardsShown = false;
 
-export class AdminCardsComponent implements OnInit, OnChanges {
-  cards?: { id: string; data: any; }[];
-
-  constructor(private cardHandlerService: CardHandlerService, private dialog: MatDialog, private databaseHandlerService: DatabaseHandlerService) { }
-
-  async ngOnInit() {
-    this.cardHandlerService.cardsObservable.subscribe(cards => this.cards = cards);
-    await this.cardHandlerService.updateCardsData();
-  }
-  async ngOnChanges() {
-    await this.cardHandlerService.updateCardsData();
-  }
+  constructor(
+    private cardHandlerService: CardHandlerService,
+    private dialog: MatDialog,
+    private databaseHandlerService: DatabaseHandlerService
+  ) {}
 
   modifyCard(cardId: string, updatedData: any): void {
-    // change cards in table - even though it would be changed by database too 
+    // change cards in table - even though it would be changed by database too
     if (this.cards) {
-      const cardIndex = this.cards.findIndex(card => card.id === cardId);
+      const cardIndex = this.cards.findIndex((card) => card.id === cardId);
       if (cardIndex !== -1 && this.cards) {
         // Ha találtunk egyezést, akkor frissítjük az adatokat
         this.cards[cardIndex].data = updatedData.data;
@@ -42,7 +47,6 @@ export class AdminCardsComponent implements OnInit, OnChanges {
       }
     }
 
-
     // change cards in database
     this.databaseHandlerService.modifyCard(cardId, updatedData);
   }
@@ -50,7 +54,7 @@ export class AdminCardsComponent implements OnInit, OnChanges {
   deleteCard(cardId: string) {
     // delete cards in table - even though it would be changed by database too - just for the instant update
     if (this.cards) {
-      const cardIndex = this.cards.findIndex(card => card.id === cardId);
+      const cardIndex = this.cards.findIndex((card) => card.id === cardId);
       if (cardIndex !== -1 && this.cards) {
         // Ha találtunk egyezést, akkor töröljük az adatokat
         this.cards.splice(cardIndex, 1);
@@ -71,16 +75,16 @@ export class AdminCardsComponent implements OnInit, OnChanges {
     const file: File = event.target.files[0];
     if (file) {
       const dialogRef = this.dialog.open(ConfirmPopupComponent, {
-        data: file
+        data: file,
       });
 
       dialogRef.afterClosed().subscribe((uploadable: any) => {
         if (uploadable) {
           const spinnerRef = this.dialog.open(MatProgressSpinner, {
             disableClose: true, // Prevent closing the spinner dialog
-            panelClass: 'spinner-overlay' // Apply custom styles for the overlay
+            panelClass: 'spinner-overlay', // Apply custom styles for the overlay
           });
-          
+
           this.databaseHandlerService.uploadDataFromCSV(file).then(
             (resolve) => {
               // Hide the spinner once the upload is complete
@@ -93,8 +97,7 @@ export class AdminCardsComponent implements OnInit, OnChanges {
               spinnerRef.close(); // Close the spinner in case of error
             }
           );
-        }
-        else {
+        } else {
           event.target.value = null;
         }
       });
@@ -107,7 +110,7 @@ export class AdminCardsComponent implements OnInit, OnChanges {
 
   openEditPopup(card: any): void {
     const dialogRef = this.dialog.open(CardEditPopupComponent, {
-      data: card
+      data: card,
     });
 
     dialogRef.afterClosed().subscribe((updatedData: any) => {
@@ -119,7 +122,7 @@ export class AdminCardsComponent implements OnInit, OnChanges {
 
   openDeletePopup(card: any): void {
     const dialogRef = this.dialog.open(ConfirmPopupComponent, {
-      data: card
+      data: card,
     });
 
     dialogRef.afterClosed().subscribe((deletedData: any) => {
@@ -131,7 +134,7 @@ export class AdminCardsComponent implements OnInit, OnChanges {
 
   openDeleteAllPopup(card: any): void {
     const dialogRef = this.dialog.open(ConfirmPopupComponent, {
-      data: card
+      data: card,
     });
 
     dialogRef.afterClosed().subscribe((deletedData: any) => {
@@ -151,8 +154,23 @@ export class AdminCardsComponent implements OnInit, OnChanges {
             console.error('Error deleting cards:', error);
             spinnerRef.close(); // Close the spinner in case of error
           }
-        );;
+        );
       }
+    });
+  }
+
+  async showCards() {
+    this.cardsShown = true;
+
+    this.cardHandlerService.cardsObservable.subscribe(
+      (cards) => (this.cards = cards)
+    );
+    // await this.cardHandlerService.updateCardsData();
+  }
+
+  updateFirebase() {
+    this.databaseHandlerService.updateFirebaseToCurrent().then(() => {
+      alert('Firebase frissítve!');
     });
   }
 }
