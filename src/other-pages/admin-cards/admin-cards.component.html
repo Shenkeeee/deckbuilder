@@ -7,7 +7,7 @@
 
     <button type="button" id="file-button" mat-flat-button color="primary" (click)="fileInput.click()">Feltöltés</button>
     <input hidden (change)="onFileSelected($event)" #fileInput accept=".csv" type="file" id="file">
-    <button type="button" class="my-4" mat-flat-button color="secondary" (click)="updateFirebase()">Firebase frissítése</button>
+    <button type="button" class="my-4" mat-flat-button color="secondary" (click)="downloadFlat()">Flat file letöltése</button>
     <button *ngIf="!cardsShown" type="button" mat-flat-button color="primary" (click)="showCards()">Mutasd a kártyákat</button>
     </div>
     <table *ngIf="cardsShown">

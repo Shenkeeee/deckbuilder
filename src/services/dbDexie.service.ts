@@ -13,7 +13,7 @@ export class DbDexieService extends Dexie {
     this.db.version(1).stores({
       cards: '++id, name, age',
       fetched: 'date',
-      remoteChecked: 'lastRemoteCheckedDate'
+      // remoteChecked: 'lastRemoteCheckedDate'
     });
   }
 
@@ -63,27 +63,27 @@ export class DbDexieService extends Dexie {
     }
   }
 
-  async updateLastFetched(firebaseLastFetched: number | null) {
-    console.log("local last fetched updated to " + firebaseLastFetched);
-    return await this.db.fetched.put({ date: firebaseLastFetched }, 0);
+  async updateLastFetched(flatLastFetched: number | null) {
+    console.log("local last fetched updated to " + flatLastFetched);
+    return await this.db.fetched.put({ date: flatLastFetched }, 0);
   }
 
-  async getLastRemoteChecked() {
-    let lastRemoteChecked = await this.db.remoteChecked.toArray();
-    if (lastRemoteChecked.length === 0) {
-      // If no entry exists, create it with the current time
-      await this.db.remoteChecked.put({ lastRemoteCheckedDate: Date.now() }, 0);
-      return Date.now(); // Return the current timestamp
-    } else {
-      lastRemoteChecked = lastRemoteChecked.splice(lastRemoteChecked.length-1);
+  // async getLastRemoteChecked() {
+  //   let lastRemoteChecked = await this.db.remoteChecked.toArray();
+  //   if (lastRemoteChecked.length === 0) {
+  //     // If no entry exists, create it with the current time
+  //     await this.db.remoteChecked.put({ lastRemoteCheckedDate: Date.now() }, 0);
+  //     return Date.now(); // Return the current timestamp
+  //   } else {
+  //     lastRemoteChecked = lastRemoteChecked.splice(lastRemoteChecked.length-1);
       
-      // If entry exists, return the date value
-      return lastRemoteChecked[0].lastRemoteCheckedDate;
-    }
-  }
+  //     // If entry exists, return the date value
+  //     return lastRemoteChecked[0].lastRemoteCheckedDate;
+  //   }
+  // }
 
-  async updateLastRemoteChecked(firebaselastRemoteChecked: number | null) {
-    console.log("local last checked updated to " + firebaselastRemoteChecked);
-    return await this.db.remoteChecked.put({ lastRemoteCheckedDate: firebaselastRemoteChecked }, 0);
-  }
+  // async updateLastRemoteChecked(firebaselastRemoteChecked: number | null) {
+  //   console.log("local last checked updated to " + firebaselastRemoteChecked);
+  //   return await this.db.remoteChecked.put({ lastRemoteCheckedDate: firebaselastRemoteChecked }, 0);
+  // }
 }

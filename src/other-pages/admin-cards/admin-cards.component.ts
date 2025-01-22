@@ -168,9 +168,9 @@ export class AdminCardsComponent {
     await this.cardHandlerService.updateCardsData();
   }
 
-  updateFirebase() {
-    this.databaseHandlerService.updateFirebaseToCurrent().then(() => {
-      alert('Firebase frissítve!');
+  downloadFlat() {
+    this.databaseHandlerService.downloadFlatToCurrent().then(() => {
+      alert('Flat file letöltés alatt!');
     });
   }
 }
