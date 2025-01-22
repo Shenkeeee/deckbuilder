@@ -160,12 +160,12 @@ export class DatabaseHandlerService {
     }
     console.log('dexie: ' + (await this.dbDexieService.getLastFetched()));
 
-    // if the 2 dates are not matching
+    // if firebase has newer content
     if (
       docSnapshot.exists() &&
       docSnapshot.data() &&
       'date' in docSnapshot.data() &&
-      (await this.dbDexieService.getLastFetched()) !==
+      (await this.dbDexieService.getLastFetched()) <
         +docSnapshot.data()['date']
     ) {
       return {
