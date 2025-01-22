@@ -209,59 +209,70 @@
       >
         <mat-icon>delete</mat-icon>
       </button>
-      <!-- <div class="class-indicator-holder">
-                <div class="class-indicator">A: 0</div>
-                <div class="class-indicator">B: 0</div>
-                <div class="class-indicator">C: 0</div>
-                <div class="class-indicator">D: 0</div>
-                <div class="class-indicator">E: 0</div>
-            </div> -->
     </div>
-    <div id="card-list-container">
-      <div *ngIf="currentDeck.cards.length !== 0">
-        <div *ngFor="let card of currentDeck.cards">
-          <div class="cardContainerInDeck my-2">
-            <p class="flex justify-between w-5/6">
-              {{ card.card.Name }} - {{ card.amount }}
-              <button
-                class="removeAllButton"
-                mat-flat-button
-                (click)="removeAllFromDeck(card.card)"
-              >
-                -
-              </button>
-            </p>
 
-            <!-- <p>{{card[0].Name}}</p> -->
+    <!-- card list -->
+    <div id="card-list-container">
+      <div
+        *ngIf="currentDeck.cards.length !== 0"
+        cdkDropList
+        (cdkDropListDropped)="onDrop($event)"
+      >
+        @for (card of currentDeck.cards; track card) {
+        <div
+          class="cardContainerInDeck my-2"
+          cdkDrag
+          (cdkDragStarted)="onDragStart()"
+          (cdkDragEnded)="onDragEnd()"
+        >
+          <p class="flex justify-between w-5/6">
+            {{ card.card.Name }} - {{ card.amount }}
+            <button
+              class="removeAllButton"
+              mat-flat-button
+              (click)="removeAllFromDeck(card.card)"
+            >
+              -
+            </button>
+          </p>
+
+          <img
+            class="mt-2"
+            (click)="removeFromDeck(card.card)"
+            (mouseenter)="
+              card.card.ImagePath && showHoveredCard(card.card.ImagePath);
+              hovered = card.card.ImagePath ? card.card.ImagePath : null
+            "
+            (mouseout)="hideHoveredCard()"
+            [ngStyle]="{
+              filter:
+                hovered === card.card.ImagePath
+                  ? 'brightness(2.5)'
+                  : 'brightness(1)',
+              transition: 'filter 0.1s ease'
+            }"
+            [src]="
+              card.card.ImagePath
+                ? 'assets/pics/' + card.card.ImagePath + '.webp'
+                : 'assets/pics/feherszint.png_resize.webp'
+            "
+            alt="{{ card.card.ImagePath }}"
+          />
+
+          <!-- hover picture - hidden in css when dragging happens -->
+          <div *ngIf="hoveredImagePath === card.card.ImagePath">
             <img
-              class="mt-2"
-              (click)="removeFromDeck(card.card)"
-              (mouseover)="
-                card.card.ImagePath && showHoveredCard(card.card.ImagePath);
-                hovered = card.card.ImagePath ? card.card.ImagePath : null
-              "
-              (mouseout)="hideHoveredCard(); hovered = null"
               [ngStyle]="{
-                filter:
-                  hovered === card.card.ImagePath
-                    ? 'brightness(2.5)'
-                    : 'brightness(1)',
-                transition: 'filter 0.1s ease'
+                position: 'absolute',
+                top: '140px',
+                left: '330px',
+                display: 'block'
               }"
-              [src]="
-                card.card.ImagePath
-                  ? 'assets/pics/' + card.card.ImagePath + '.webp'
-                  : 'assets/pics/feherszint.png_resize.webp'
-              "
-              alt="{{ card.card.ImagePath }}"
-            />
-            <img
-              *ngIf="hoveredImagePath === card.card.ImagePath"
-              [ngStyle]="{ position: 'absolute', top: '140px', left: '330px' }"
               style="
                 width: 460px;
                 max-width: 460px;
                 height: auto;
+                display: none;
                 z-index: 3;
                 box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.3);
                 border-radius: 25px;
@@ -271,6 +282,7 @@
             />
           </div>
         </div>
+        }
       </div>
     </div>
   </div>

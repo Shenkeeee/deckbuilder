@@ -28,6 +28,12 @@ import * as pako from 'pako';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CardWithAmount } from './card-with-amount';
+import {
+  CdkDragDrop,
+  CdkDropList,
+  CdkDrag,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-deck-container',
@@ -42,6 +48,8 @@ import { CardWithAmount } from './card-with-amount';
     CommonModule,
     MatIcon,
     MatSliderModule,
+    CdkDropList,
+    CdkDrag,
   ],
   templateUrl: './deck-container.component.html',
   styleUrl: './deck-container.component.scss',
@@ -76,6 +84,7 @@ export class DeckContainerComponent implements OnInit {
   cardInstancesOBSVALCHILD = 0;
 
   currentDeck: Deck = { cards: [] };
+  isCardDragged = false;
 
   constructor(
     private cardHandlerService: CardHandlerService,
@@ -279,7 +288,7 @@ export class DeckContainerComponent implements OnInit {
         let sorszam = card.data['sorszam'];
 
         // Check if the first 3 characters are 3 chars long and "messed up"
-        if (sorszam.slice(0, 3) === "dop") {
+        if (sorszam.slice(0, 3) === 'dop') {
           // Remove the 3rd character
           sorszam = sorszam.slice(0, 2) + sorszam.slice(3);
         }
@@ -313,7 +322,7 @@ export class DeckContainerComponent implements OnInit {
         let cardNumber = card.card.CardNumber;
 
         // Check if the first 3 characters are 3 chars long and "messed up"
-        if (cardNumber.slice(0, 3) === "dop") {
+        if (cardNumber.slice(0, 3) === 'dop') {
           // Remove the 3rd character
           cardNumber = cardNumber.slice(0, 2) + cardNumber.slice(3);
         }
@@ -635,10 +644,31 @@ export class DeckContainerComponent implements OnInit {
   }
 
   showHoveredCard(cardImagePath: any) {
+    // if any card is being dragged, do not show any hovered card
+    if (this.isCardDragged) {
+      return;
+    }
     this.hoveredImagePath = cardImagePath;
   }
 
   hideHoveredCard() {
     this.hoveredImagePath = null;
+    this.hovered = null;
+  }
+
+  onDrop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(
+      this.currentDeck.cards,
+      event.previousIndex,
+      event.currentIndex
+    );
+  }
+
+  onDragStart() {
+    this.isCardDragged = true;
+  }
+
+  onDragEnd() {
+    this.isCardDragged = false;
   }
 }
