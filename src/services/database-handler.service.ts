@@ -16,6 +16,7 @@ import * as Papa from 'papaparse'; // library for CSV parsing from file
 import { BehaviorSubject } from 'rxjs';
 import { environment } from '../environments/environment';
 import { DbDexieService } from './dbDexie.service';
+import { saveAs } from 'file-saver'; // Install this package for file saving
 
 // web app's Firebase configuration
 const firebaseConfig = environment.firebase;
@@ -92,6 +93,8 @@ export class DatabaseHandlerService {
       await this.updateIndexedDbCards(cards, firebaseLastFetched);
     }
 
+    // // // if firebase data is needed to be downloaded:
+    // // // await this.exportFirebaseToJson(this.db, this.workDoc);
     return cards;
   }
 
@@ -193,6 +196,27 @@ export class DatabaseHandlerService {
 
     await Promise.all(deletePromises);
   }
+
+  async exportFirebaseToJson(db: any, collectionName: string) {
+    const data2: { id: string; data: DocumentData }[] = [];
+    const cardsCollection = collection(db, collectionName);
+
+    // Fetch all documents from the collection
+    const querySnapshot = await getDocs(cardsCollection);
+    querySnapshot.forEach((doc) => {
+      data2.push({ id: doc.id, data: doc.data() });
+    });
+
+    // Convert data to JSON
+    const jsonData = JSON.stringify(data2, null, 2);
+
+    // Save JSON to a file
+    const blob = new Blob([jsonData], { type: 'application/json' });
+    saveAs(blob, `${collectionName}.json`);
+
+    console.log('Data exported successfully!');
+  }
+
 
   // to be tested - it adds an ID field (maybe)
   async modifyCard(cardId: string, newData: any): Promise<void> {
