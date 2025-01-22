@@ -124,25 +124,18 @@
         </mat-chip-listbox>
       </div>
 
-      <!-- Mana+ -->
-      <!-- <div>
-                <h4>Mana+</h4>
-                <mat-chip-listbox>
-                    <mat-chip-option>1</mat-chip-option>
-                    <mat-chip-option>2</mat-chip-option>
-                    <mat-chip-option>3</mat-chip-option>
-                </mat-chip-listbox>
-            </div> -->
-
-      <!-- Laphúzó+ -->
-      <!-- <div>
-                <h4>Laphúzó+</h4>
-                <mat-chip-listbox>
-                    <mat-chip-option>1</mat-chip-option>
-                    <mat-chip-option>2</mat-chip-option>
-                    <mat-chip-option>3</mat-chip-option>
-                </mat-chip-listbox>
-            </div> -->
+      <!-- Dupla -->
+      <div>
+        <h4>Dupla</h4>
+        <mat-chip-listbox multiple>
+          <mat-chip-option (click)="onManaPlusChanges('2')"
+            >Mana</mat-chip-option
+          >
+          <mat-chip-option (click)="onLaphuzasPlusChanges('2')"
+            >Laphúzás</mat-chip-option
+          >
+        </mat-chip-listbox>
+      </div>
     </div>
 
     <!-- <div id="deck-name-container">

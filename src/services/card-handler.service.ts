@@ -43,6 +43,12 @@ export class CardHandlerService {
   selectedSpirits = new BehaviorSubject<string[]>([]);
   selectedSpiritsObs = this.selectedSpirits.asObservable();
 
+  selectedManaPlus = new BehaviorSubject<string[]>([]);
+  selectedManaPlusObs = this.selectedManaPlus.asObservable();
+
+  selectedLaphuzoPlus = new BehaviorSubject<string[]>([]);
+  selectedLaphuzoPlusObs = this.selectedLaphuzoPlus.asObservable();
+
   currentDeck = new BehaviorSubject<Deck>({ cards: [] });
   currentDeckObs = this.currentDeck.asObservable();
 
@@ -102,7 +108,7 @@ export class CardHandlerService {
         Spirit: this.cards.value[i].data['spirit'],
         Release: this.cards.value[i].data['sorszam'].startsWith('dop')
           ? this.cards.value[i].data['sorszam'].slice(3, 5) // If 'dop', slice from index 3 to 5
-          : this.cards.value[i].data['sorszam'].slice(2, 4), // Otherwise, slice from index 2 to 5
+          : this.cards.value[i].data['sorszam'].slice(2, 4), // Otherwise, slice from index 2 to 4
         CardNumber: this.cards.value[i].data['sorszam'],
         ImagePath: this.cards.value[i].id,
       };
@@ -114,7 +120,9 @@ export class CardHandlerService {
         this.matchesSubTypeFilter(newCard.Subtype) &&
         this.matchesManaCostsFilter(newCard.ManaCost) &&
         this.matchesReleasesFilter(newCard.Release) &&
-        this.matchesSpiritFilter(newCard.Spirit)
+        this.matchesSpiritFilter(newCard.Spirit) && 
+        this.matchesManaPlusFilter(newCard.PlusMana) &&
+        this.matchesLaphuzoPlusFilter(newCard.PlusCardDraw)
       ) {
         this.cardInstances.push(new CardInstance(newCard));
       }
@@ -270,7 +278,7 @@ export class CardHandlerService {
       this.selectedManaCosts.value.includes(
         removeAccents(inputStr.toLowerCase())
       ) ||
-      (this.selectedManaCosts.value.includes('7') && 
+      (this.selectedManaCosts.value.includes('7') &&
         removeAccents(inputStr.toLowerCase()) == '8') || // if 7 is selected, it can also be 8
       (this.selectedManaCosts.value.includes('7') &&
         removeAccents(inputStr.toLowerCase()) == '9') // if 7 is selected, it can also be 9
@@ -290,6 +298,42 @@ export class CardHandlerService {
       return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     };
     return this.selectedSpirits.value.includes(
+      removeAccents(inputStr.toLowerCase())
+    );
+  }
+
+  matchesManaPlusFilter(input?: string): boolean {
+    // if no filter then it matches it
+    if (
+      !this.selectedManaPlus.value ||
+      this.selectedManaPlus.value.length === 0
+    )
+      return true;
+    // Ha ezen felul nincs input akkor false
+    if (!input) return false;
+    const inputStr = input?.toString();
+    const removeAccents = (str: string) => {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    };
+    return this.selectedManaPlus.value.includes(
+      removeAccents(inputStr.toLowerCase())
+    );
+  }
+
+  matchesLaphuzoPlusFilter(input?: string): boolean {
+    // if no filter then it matches it
+    if (
+      !this.selectedLaphuzoPlus.value ||
+      this.selectedLaphuzoPlus.value.length === 0
+    )
+      return true;
+    // Ha ezen felul nincs input akkor false
+    if (!input) return false;
+    const inputStr = input?.toString();
+    const removeAccents = (str: string) => {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    };
+    return this.selectedLaphuzoPlus.value.includes(
       removeAccents(inputStr.toLowerCase())
     );
   }

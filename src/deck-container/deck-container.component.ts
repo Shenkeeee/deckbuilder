@@ -77,6 +77,8 @@ export class DeckContainerComponent implements OnInit {
   selectedReleases: string[] = [];
   selectedManaCosts: string[] = [];
   selectedSpirits: string[] = [];
+  selectedManaPlus: string[] = [];
+  selectedLaphuzoPlus: string[] = [];
 
   hoveredImagePath: string | null = null;
   hovered: string | null = null;
@@ -114,6 +116,12 @@ export class DeckContainerComponent implements OnInit {
     );
     this.cardHandlerService.selectedSpiritsObs.subscribe(
       (selectedSpirits) => (this.selectedSpirits = selectedSpirits)
+    );
+    this.cardHandlerService.selectedManaPlusObs.subscribe(
+      (selectedManaPlus) => (this.selectedManaPlus = selectedManaPlus)
+    );
+    this.cardHandlerService.selectedLaphuzoPlusObs.subscribe(
+      (selectedLaphuzoPlus) => (this.selectedLaphuzoPlus = selectedLaphuzoPlus)
     );
     this.cardHandlerService.selectedFormatObs.subscribe((selectedFormat) => {
       this.selectedFormat = selectedFormat;
@@ -549,6 +557,32 @@ export class DeckContainerComponent implements OnInit {
     this.changeSpirits();
   }
 
+  onManaPlusChanges(input: string) {
+    const index = this.selectedManaCosts.indexOf(input);
+    if (index === -1) {
+      // Ha még nincs a tömbben, akkor hozzáadjuk
+      this.selectedManaCosts.push(input);
+    } else {
+      // Ha már benne van a tömbben, akkor kivesszük
+      this.selectedManaCosts.splice(index, 1);
+    }
+    // console.log(this.selectedSubTypes);
+    this.changeSpirits();
+  }
+
+  onLaphuzasPlusChanges(input: string) {
+    const index = this.selectedLaphuzoPlus.indexOf(input);
+    if (index === -1) {
+      // Ha még nincs a tömbben, akkor hozzáadjuk
+      this.selectedLaphuzoPlus.push(input);
+    } else {
+      // Ha már benne van a tömbben, akkor kivesszük
+      this.selectedLaphuzoPlus.splice(index, 1);
+    }
+    // console.log(this.selectedSubTypes);
+    this.changeSpirits();
+  }
+
   changeTypes() {
     this.cardHandlerService.selectedTypes.next(this.selectedTypes);
     // console.log("this.selectedTypes:", this.selectedTypes);
@@ -575,6 +609,18 @@ export class DeckContainerComponent implements OnInit {
 
   changeSpirits() {
     this.cardHandlerService.selectedSpirits.next(this.selectedSpirits);
+    // console.log("this.selectedSubTypes:", this.selectedSubTypes);
+    this.updateShownCards();
+  }
+
+  changePlusMana() {
+    this.cardHandlerService.selectedManaPlus.next(this.selectedManaPlus);
+    // console.log("this.selectedSubTypes:", this.selectedSubTypes);
+    this.updateShownCards();
+  }
+  
+  changePlusLaphuzo() {
+    this.cardHandlerService.selectedLaphuzoPlus.next(this.selectedLaphuzoPlus);
     // console.log("this.selectedSubTypes:", this.selectedSubTypes);
     this.updateShownCards();
   }
