@@ -558,16 +558,16 @@ export class DeckContainerComponent implements OnInit {
   }
 
   onManaPlusChanges(input: string) {
-    const index = this.selectedManaCosts.indexOf(input);
+    const index = this.selectedManaPlus.indexOf(input);
     if (index === -1) {
       // Ha még nincs a tömbben, akkor hozzáadjuk
-      this.selectedManaCosts.push(input);
+      this.selectedManaPlus.push(input);
     } else {
       // Ha már benne van a tömbben, akkor kivesszük
-      this.selectedManaCosts.splice(index, 1);
+      this.selectedManaPlus.splice(index, 1);
     }
     // console.log(this.selectedSubTypes);
-    this.changeSpirits();
+    this.changePlusMana();
   }
 
   onLaphuzasPlusChanges(input: string) {
@@ -580,7 +580,7 @@ export class DeckContainerComponent implements OnInit {
       this.selectedLaphuzoPlus.splice(index, 1);
     }
     // console.log(this.selectedSubTypes);
-    this.changeSpirits();
+    this.changePlusLaphuzo();
   }
 
   changeTypes() {
