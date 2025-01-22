@@ -165,7 +165,7 @@ export class AdminCardsComponent {
     this.cardHandlerService.cardsObservable.subscribe(
       (cards) => (this.cards = cards)
     );
-    // await this.cardHandlerService.updateCardsData();
+    await this.cardHandlerService.updateCardsData();
   }
 
   updateFirebase() {
