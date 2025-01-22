@@ -149,7 +149,7 @@ export class CardHandlerService {
     if (!colorName) return false;
 
     const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
     };
 
     // -----
@@ -215,7 +215,7 @@ export class CardHandlerService {
       return true;
     if (!type) return false;
     const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
     };
     return this.selectedTypes.value.includes(removeAccents(type.toLowerCase()));
   }
@@ -233,7 +233,7 @@ export class CardHandlerService {
     // Ha ezen felul nincs input akkor false
     if (!input) return false;
     const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
     };
     return this.selectedSubTypes.value.includes(
       removeAccents(input.toLowerCase())
@@ -252,7 +252,7 @@ export class CardHandlerService {
     // Ha ezen felul nincs input akkor false
     if (!input) return false;
     const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
     };
     return this.selectedReleases.value.includes(
       removeAccents(input.toLowerCase())
@@ -272,7 +272,7 @@ export class CardHandlerService {
     if (!input) return false;
     const inputStr = input?.toString();
     const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
     };
     return (
       this.selectedManaCosts.value.includes(
@@ -295,7 +295,7 @@ export class CardHandlerService {
     if (!input) return false;
     const inputStr = input?.toString();
     const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
     };
     return this.selectedSpirits.value.includes(
       removeAccents(inputStr.toLowerCase())
@@ -313,7 +313,7 @@ export class CardHandlerService {
     if (!input) return false;
     const inputStr = input?.toString();
     const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
     };
     return this.selectedManaPlus.value.includes(
       removeAccents(inputStr.toLowerCase())
@@ -331,7 +331,7 @@ export class CardHandlerService {
     if (!input) return false;
     const inputStr = input?.toString();
     const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
     };
     return this.selectedLaphuzoPlus.value.includes(
       removeAccents(inputStr.toLowerCase())
