@@ -39,6 +39,21 @@ mat-chip-listbox {
   // color: white !important;
 }
 
+.logo {
+  width: 5rem;
+  z-index: 3;
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  transition: opacity 0.3s ease;
+  animation-fill-mode: backwards;
+  opacity: 0.3;
+}
+
+.logo:hover {
+  opacity: 1;
+}
+
 #multicolor {
   background: linear-gradient(
     45deg,
