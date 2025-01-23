@@ -85,61 +85,86 @@ export class CardHandlerService {
     return this.cards.value.length;
   }
 
+  // Utility function to remove accents and trim whitespace
+  private removeAccents(str: string): string {
+    return str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .trim();
+  }
+
+  // Utility function to check if a filter is applied
+  private isFilterApplied(
+    filterValue: any[],
+    input?: string | number | null
+  ): boolean {
+    return !filterValue || filterValue.length === 0 || !input;
+  }
+
   // Update the shown cards based on the ones in the db
   async updateShownCards(): Promise<CardInstance[]> {
-    // Filling up with all the cards
     if (this.cardInstanceNum === 0) {
       console.log('fetching');
-      await this.getCardsLength().then((num) => (this.cardInstanceNum = num));
+      this.cardInstanceNum = await this.getCardsLength();
     }
-    this.cardInstances = [];
 
-    for (let i = 0; i < this.cardInstanceNum; i++) {
-      let newCard: Card = {
-        Color: this.cards.value[i].data['szin'],
-        CardType: this.cards.value[i].data['laptipus'],
-        Subtype: this.cards.value[i].data['altipus'],
-        Name: this.cards.value[i].data['nev'],
-        ManaCost: this.cards.value[i].data['mana-koltseg'],
-        PowerToughness: this.cards.value[i].data['tamado-vedo'],
-        Ability: this.cards.value[i].data['kepesseg'],
-        PlusMana: this.cards.value[i].data['mana+'],
-        PlusCardDraw: this.cards.value[i].data['laphuzo+'],
-        Spirit: this.cards.value[i].data['spirit'],
-        Release: this.cards.value[i].data['sorszam'].startsWith('dop')
-          ? this.cards.value[i].data['sorszam'].slice(3, 5) // If 'dop', slice from index 3 to 5
-          : this.cards.value[i].data['sorszam'].slice(2, 4), // Otherwise, slice from index 2 to 4
-        CardNumber: this.cards.value[i].data['sorszam'],
-        ImagePath: this.cards.value[i].id,
-      };
-      // Filtering by name
-      if (
-        this.matchesNameFilter(newCard.Name) &&
-        this.matchesColorFilter(newCard.Color) &&
-        this.matchesTypeFilter(newCard.CardType) &&
-        this.matchesSubTypeFilter(newCard.Subtype) &&
-        this.matchesManaCostsFilter(newCard.ManaCost) &&
-        this.matchesReleasesFilter(newCard.Release) &&
-        this.matchesSpiritFilter(newCard.Spirit) && 
-        this.matchesManaPlusFilter(newCard.PlusMana) &&
-        this.matchesLaphuzoPlusFilter(newCard.PlusCardDraw)
-      ) {
-        this.cardInstances.push(new CardInstance(newCard));
-      }
-    }
+    this.cardInstances = this.cards.value
+      .slice(0, this.cardInstanceNum)
+      .map((card) => this.createCardInstance(card))
+      .filter((cardInstance) => this.isCardVisible(cardInstance.card));
 
     this.cardInstancesOBSVAL.next(this.cardInstances);
     return this.cardInstancesOBSVAL.value;
   }
 
+  // Create a CardInstance from card data
+  private createCardInstance(cardInput: any): CardInstance {
+    let data = cardInput.data;
+    const card = {
+      Color: data['szin'],
+      CardType: data['laptipus'],
+      Subtype: data['altipus'],
+      Name: data['nev'],
+      ManaCost: data['mana-koltseg'],
+      PowerToughness: data['tamado-vedo'],
+      Ability: data['kepesseg'],
+      PlusMana: data['mana+'],
+      PlusCardDraw: data['laphuzo+'],
+      Spirit: data['spirit'],
+      Release: data['sorszam'].startsWith('dop')
+        ? data['sorszam'].slice(3, 5)
+        : data['sorszam'].slice(2, 4),
+      CardNumber: data['sorszam'],
+      ImagePath: cardInput.id,
+    };
+
+    return new CardInstance(card); // Return a new CardInstance
+  }
+
+  // Check if the card should be visible based on filters
+  private isCardVisible(card: Card): boolean {
+    return (
+      this.matchesNameFilter(card.Name) &&
+      this.matchesColorFilter(card.Color) &&
+      this.matchesTypeFilter(card.CardType) &&
+      this.matchesSubTypeFilter(card.Subtype) &&
+      this.matchesManaCostsFilter(card.ManaCost) &&
+      this.matchesReleasesFilter(card.Release) &&
+      this.matchesSpiritFilter(card.Spirit) &&
+      this.matchesManaPlusFilter(card.PlusMana) &&
+      this.matchesLaphuzoPlusFilter(card.PlusCardDraw)
+    );
+  }
+
+  // Filters
   matchesNameFilter(cardName?: string): boolean {
-    // if no filter then it matches it
-    if (!this.inputValueMsg.value || this.inputValueMsg.value === '')
-      return true;
-    if (!cardName) return false;
-    return cardName
-      .toLowerCase()
-      .includes(this.inputValueMsg.value.toLowerCase());
+    const inputValue = this.inputValueMsg.value.toLowerCase();
+
+    // Check if the filter is applied or if cardName is defined and includes the input value
+    return (
+      this.isFilterApplied([inputValue], cardName) ||
+      (cardName?.toLowerCase().includes(inputValue) ?? false)
+    );
   }
 
   matchesColorFilter(colorName?: string): boolean {
@@ -147,10 +172,6 @@ export class CardHandlerService {
       return true;
     }
     if (!colorName) return false;
-
-    const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-    };
 
     // -----
     // if dual is selected we handle it as a + sign
@@ -163,7 +184,7 @@ export class CardHandlerService {
     // but if we also have dual selected then we set it to isDual.
     const hasDual = colorName.includes('+');
     const isDual = colorName.includes('+') && selectedColors.includes('+');
-    const colorNameLower = removeAccents(colorName.toLowerCase());
+    const colorNameLower = this.removeAccents(colorName.toLowerCase());
 
     const colorArray: any[] = hasDual
       ? colorNameLower.split('+').map((color) => color.trim())
@@ -205,7 +226,7 @@ export class CardHandlerService {
     }
 
     // Regular color matching
-    return selectedColors.includes(removeAccents(colorNameLower));
+    return selectedColors.includes(this.removeAccents(colorNameLower));
   }
 
   matchesTypeFilter(type?: string): boolean {
@@ -214,10 +235,10 @@ export class CardHandlerService {
     if (!this.selectedTypes.value || this.selectedTypes.value.length === 0)
       return true;
     if (!type) return false;
-    const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-    };
-    return this.selectedTypes.value.includes(removeAccents(type.toLowerCase()));
+
+    return this.selectedTypes.value.includes(
+      this.removeAccents(type.toLowerCase())
+    );
   }
 
   matchesSubTypeFilter(input?: string): boolean {
@@ -232,11 +253,9 @@ export class CardHandlerService {
       return true;
     // Ha ezen felul nincs input akkor false
     if (!input) return false;
-    const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-    };
+
     return this.selectedSubTypes.value.includes(
-      removeAccents(input.toLowerCase())
+      this.removeAccents(input.toLowerCase())
     );
   }
 
@@ -251,11 +270,9 @@ export class CardHandlerService {
       return true;
     // Ha ezen felul nincs input akkor false
     if (!input) return false;
-    const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-    };
+
     return this.selectedReleases.value.includes(
-      removeAccents(input.toLowerCase())
+      this.removeAccents(input.toLowerCase())
     );
   }
 
@@ -270,18 +287,13 @@ export class CardHandlerService {
       return true;
     // Ha ezen felul nincs input akkor false
     if (!input) return false;
+
     const inputStr = input?.toString();
-    const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-    };
+    const properInput = this.removeAccents(inputStr.toLowerCase());
     return (
-      this.selectedManaCosts.value.includes(
-        removeAccents(inputStr.toLowerCase())
-      ) ||
-      (this.selectedManaCosts.value.includes('7') &&
-        removeAccents(inputStr.toLowerCase()) == '8') || // if 7 is selected, it can also be 8
-      (this.selectedManaCosts.value.includes('7') &&
-        removeAccents(inputStr.toLowerCase()) == '9') // if 7 is selected, it can also be 9
+      this.selectedManaCosts.value.includes(properInput) ||
+      (this.selectedManaCosts.value.includes('7') && properInput === '8') || // if 7 is selected, it can also be 8
+      (this.selectedManaCosts.value.includes('7') && properInput === '9') // if 7 is selected, it can also be 9
     );
   }
 
@@ -294,11 +306,9 @@ export class CardHandlerService {
     // Ha ezen felul nincs input akkor false
     if (!input) return false;
     const inputStr = input?.toString();
-    const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-    };
+
     return this.selectedSpirits.value.includes(
-      removeAccents(inputStr.toLowerCase())
+      this.removeAccents(inputStr.toLowerCase())
     );
   }
 
@@ -312,11 +322,9 @@ export class CardHandlerService {
     // Ha ezen felul nincs input akkor false
     if (!input) return false;
     const inputStr = input?.toString();
-    const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-    };
+
     return this.selectedManaPlus.value.includes(
-      removeAccents(inputStr.toLowerCase())
+      this.removeAccents(inputStr.toLowerCase())
     );
   }
 
@@ -330,11 +338,9 @@ export class CardHandlerService {
     // Ha ezen felul nincs input akkor false
     if (!input) return false;
     const inputStr = input?.toString();
-    const removeAccents = (str: string) => {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-    };
+
     return this.selectedLaphuzoPlus.value.includes(
-      removeAccents(inputStr.toLowerCase())
+      this.removeAccents(inputStr.toLowerCase())
     );
   }
 
