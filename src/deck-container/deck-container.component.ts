@@ -365,16 +365,47 @@ export class DeckContainerComponent implements OnInit {
     let compacted = this.compactCards(compressed);
     // console.log('compacted ' + JSON.stringify(compacted));
 
-    const encodedData = btoa(JSON.stringify(compacted));
+    const encodedCardData = btoa(JSON.stringify(compacted));
     // console.log('encodedData ' + encodedData);
+
+    const encodedData = this.addFormatToEncoded(encodedCardData);
 
     return encodedData;
   }
 
+  addFormatToEncoded(encodedCardData: string): string {
+    if (!this.selectedFormat.length) {
+      return encodedCardData;
+    }
+  
+    const formattedData = this.selectedFormat[0] + encodedCardData; // Concatenate format and data
+    return formattedData;
+  }
+
+  getFormatFromEncoded(encodedData: string): string {
+    const formatMap: { [key: string]: string } = {
+      's': 'standard',
+      'r': 'rush',
+      'p': 'profi'
+    };
+  
+    const formatKey = encodedData.charAt(0); // Get the first character
+    this.selectedFormat = formatMap[formatKey] || 'standard'; // Set format based on the key
+  
+    this.updateSelectedFormat();
+  
+    // Remove the format character from the encoded data
+    const encodedCardData = encodedData.slice(1);
+    return encodedCardData;
+  }
+
   // Decode deck data
   async decodeDeck(encodedData: string) {
+    // this also removes the first character
+    const encodedCardData = this.getFormatFromEncoded(encodedData);
+
     // Decode Base64 string
-    let decompressedData = atob(encodedData);
+    let decompressedData = atob(encodedCardData);
     // console.log('decompressedData ' + JSON.stringify(decompressedData));
 
     // remove the url safe characters
