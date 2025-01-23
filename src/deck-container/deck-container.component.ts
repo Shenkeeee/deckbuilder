@@ -89,6 +89,9 @@ export class DeckContainerComponent implements OnInit {
   currentDeck: Deck = { cards: [] };
   isCardDragged = false;
 
+  clickedOnPicture = false;
+  clickedImagePath = '';
+
   constructor(
     private cardHandlerService: CardHandlerService,
     private router: Router,
@@ -248,13 +251,27 @@ export class DeckContainerComponent implements OnInit {
   }
 
   removeFromDeck(cardToRemove: Card) {
+    this.changeCardAmount(cardToRemove, false);
+  }
+
+  addToDeck(cardToAdd: Card) {
+    this.changeCardAmount(cardToAdd, true);
+  }
+
+  changeCardAmount(cardToChange: Card, increase: boolean) {
     const indexToRemove = this.currentDeck.cards.findIndex(
-      (card) => card.card === cardToRemove
+      (card) => card.card === cardToChange
     );
 
-    if (indexToRemove !== -1) {
-      const card = this.currentDeck.cards[indexToRemove];
+    if (indexToRemove === -1) {
+      return;
+    }
 
+    const card = this.currentDeck.cards[indexToRemove];
+
+    if (increase) {
+      card.amount++;
+    } else {
       // If the amount is greater than one, decrease the amount
       if (card.amount > 1) {
         card.amount--;
@@ -262,10 +279,10 @@ export class DeckContainerComponent implements OnInit {
         // If the amount is one, remove the card from the deck
         this.currentDeck.cards.splice(indexToRemove, 1);
       }
-
-      // Update the deck after modifying it
-      this.updateDeck();
     }
+
+    // Update the deck after modifying it
+    this.updateDeck();
   }
 
   removeAllFromDeck(card: Card) {
@@ -377,23 +394,23 @@ export class DeckContainerComponent implements OnInit {
     if (!this.selectedFormat.length) {
       return encodedCardData;
     }
-  
+
     const formattedData = this.selectedFormat[0] + encodedCardData; // Concatenate format and data
     return formattedData;
   }
 
   getFormatFromEncoded(encodedData: string): string {
     const formatMap: { [key: string]: string } = {
-      's': 'standard',
-      'r': 'rush',
-      'p': 'profi'
+      s: 'standard',
+      r: 'rush',
+      p: 'profi',
     };
-  
+
     const formatKey = encodedData.charAt(0); // Get the first character
     this.selectedFormat = formatMap[formatKey] || 'standard'; // Set format based on the key
-  
+
     this.updateSelectedFormat();
-  
+
     // Remove the format character from the encoded data
     const encodedCardData = encodedData.slice(1);
     return encodedCardData;
@@ -765,5 +782,16 @@ export class DeckContainerComponent implements OnInit {
 
   onDragEnd() {
     this.isCardDragged = false;
+  }
+
+  clickOnPicture(path?: string) {
+    this.hoveredImagePath = '';
+    if (!path) {
+      this.clickedOnPicture = false;
+      this.clickedImagePath = '';
+      return;
+    }
+    this.clickedOnPicture = !this.clickedOnPicture;
+    this.clickedImagePath = path;
   }
 }

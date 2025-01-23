@@ -221,39 +221,57 @@
           (cdkDragStarted)="onDragStart()"
           (cdkDragEnded)="onDragEnd()"
         >
-          <p class="flex justify-between w-5/6">
-            {{ card.card.Name }} - {{ card.amount }}
-            <button
+          <p class="flex justify-between w-11/12 items-center">
+            <span class="cursor-default">
+              {{ card.card.Name }} - {{ card.amount }}
+            </span>
+            <!-- <button
               class="removeAllButton"
               mat-flat-button
               (click)="removeAllFromDeck(card.card)"
             >
-              -
-            </button>
+          </button> -->
+            <mat-icon
+              (click)="removeAllFromDeck(card.card)"
+              class="cursor-pointer"
+              >delete</mat-icon
+            >
           </p>
 
-          <img
-            class="mt-2"
-            (click)="removeFromDeck(card.card)"
-            (mouseenter)="
-              card.card.ImagePath && showHoveredCard(card.card.ImagePath);
-              hovered = card.card.ImagePath ? card.card.ImagePath : null
-            "
-            (mouseout)="hideHoveredCard()"
-            [ngStyle]="{
-              filter:
-                hovered === card.card.ImagePath
-                  ? 'brightness(2.5)'
-                  : 'brightness(1)',
-              transition: 'filter 0.1s ease'
-            }"
-            [src]="
-              card.card.ImagePath
-                ? 'assets/pics/' + card.card.ImagePath + '.webp'
-                : 'assets/pics/feherszint.png_resize.webp'
-            "
-            alt="{{ card.card.ImagePath }}"
-          />
+          <div class="relative w-full inline-block mt-2">
+            <img
+              class="mt-2"
+              (mouseenter)="
+                card.card.ImagePath && showHoveredCard(card.card.ImagePath);
+                hovered = card.card.ImagePath ? card.card.ImagePath : null
+              "
+              (mouseout)="hideHoveredCard()"
+              (click)="clickOnPicture(card.card.ImagePath)"
+              [ngStyle]="{
+                filter:
+                  hovered === card.card.ImagePath
+                    ? 'brightness(2.5)'
+                    : 'brightness(1)',
+                transition: 'filter 0.1s ease'
+              }"
+              [src]="
+                card.card.ImagePath
+                  ? 'assets/pics/' + card.card.ImagePath + '.webp'
+                  : 'assets/pics/feherszint.png_resize.webp'
+              "
+              alt="{{ card.card.ImagePath }}"
+            />
+            <button id="cardAddModifier" class="amountModifier right-32">
+              <mat-icon class="h-full" (click)="addToDeck(card.card)"
+                >add</mat-icon
+              >
+            </button>
+            <button id="cardRemoveModifier" class="amountModifier right-20">
+              <mat-icon class="h-full" (click)="removeFromDeck(card.card)"
+                >remove</mat-icon
+              >
+            </button>
+          </div>
 
           <!-- hover picture - hidden in css when dragging happens -->
           <div *ngIf="hoveredImagePath === card.card.ImagePath">
@@ -275,6 +293,34 @@
               "
               [src]="'assets/pics/' + hoveredImagePath + '.webp'"
               alt="{{ hoveredImagePath }}"
+            />
+          </div>
+
+          <!-- click picture - hidden in css when dragging happens -->
+          <div
+            *ngIf="clickedOnPicture && clickedImagePath === card.card.ImagePath"
+            (click)="clickOnPicture()"
+            class="block sm:hidden"
+          >
+            <img
+              [ngStyle]="{
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                display: 'block'
+              }"
+              style="
+                width: 92vw;
+                max-width: 92vw;
+                height: auto;
+                display: none;
+                z-index: 3;
+                box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.3);
+                border-radius: 25px;
+              "
+              [src]="'assets/pics/' + clickedImagePath + '.webp'"
+              alt="{{ clickedImagePath }}"
             />
           </div>
         </div>
