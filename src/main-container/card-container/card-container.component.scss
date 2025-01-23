@@ -25,7 +25,7 @@
 }
 
 mat-chip-listbox {
-    margin-left: 40px;
+  margin-left: 50px;
 }
 
 .mat-chip-option {
@@ -93,11 +93,20 @@ mat-chip-listbox {
   background-color: #0000ff; /* kék */
 }
 
-.mat-mdc-standard-chip#fekete,#zold,#lila,#kek,#magenta,#piros,#dual {
+.mat-mdc-standard-chip#fekete,
+#zold,
+#lila,
+#kek,
+#magenta,
+#piros,
+#dual {
   --mdc-chip-label-text-color: white;
 }
 
-.mdc-evolution-chip--selected#feher,#sarga,#narancs,#multicolor {
+.mdc-evolution-chip--selected#feher,
+#sarga,
+#narancs,
+#multicolor {
   --mdc-chip-selected-label-text-color: black;
   --mdc-chip-with-icon-selected-icon-color: black;
 }
