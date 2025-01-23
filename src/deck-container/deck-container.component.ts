@@ -7,6 +7,7 @@ import {
   OnChanges,
   ElementRef,
   ViewChild,
+  HostListener,
 } from '@angular/core';
 import { CardHandlerService } from '../services/card-handler.service';
 import { FormsModule } from '@angular/forms';
@@ -168,6 +169,23 @@ export class DeckContainerComponent implements OnInit {
         .getPropertyValue('--card-width')
         .trim()
     );
+  }
+
+  // makes sure the filters close after you click out of them
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    // if filters are not even on, just return
+    if (!this.showFilters) {
+      return;
+    }
+    const target = event.target as HTMLElement;
+    const isFilterButton = target.closest('#filter-button'); // If the filter button is pressed
+    const isFilterContainer = target.closest('.filters-container'); // If they select sg in the filter container
+
+    if (!isFilterButton && !isFilterContainer && this.showFilters) {
+      this.showFilters = false;
+      this.filtersContainerClass = 'hidden';
+    }
   }
 
   updateCardNumber() {
@@ -618,7 +636,7 @@ export class DeckContainerComponent implements OnInit {
     // console.log("this.selectedSubTypes:", this.selectedSubTypes);
     this.updateShownCards();
   }
-  
+
   changePlusLaphuzo() {
     this.cardHandlerService.selectedLaphuzoPlus.next(this.selectedLaphuzoPlus);
     // console.log("this.selectedSubTypes:", this.selectedSubTypes);
