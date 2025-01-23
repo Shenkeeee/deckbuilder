@@ -63,7 +63,7 @@ export class DatabaseHandlerService {
 
     // just use the flat file for now
     await this.useFlatFile(cards);
-    await this.updateIndexedDbCards(cards, currentTime);
+    // await this.updateIndexedDbCards(cards, currentTime);
 
     // If the IndexedDB has no cards, fetch from the flat source regardless of cooldown
     // const indexedDbCards = await this.getIndexedDbCards();
