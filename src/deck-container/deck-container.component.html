@@ -167,14 +167,17 @@
       cardInstancesOBSVALCHILD
     }}</mat-label>
 
-    <mat-slider
-      min="220"
-      max="520"
-      step="10"
-      (change)="updateCardWidth($event)"
-    >
-      <input matSliderThumb [(ngModel)]="defaultCardSize" #slider />
-    </mat-slider>
+    <div class="flex items-center">
+      <mat-slider
+        min="220"
+        max="520"
+        step="10"
+        (change)="updateCardWidth($event)"
+      >
+        <input matSliderThumb [(ngModel)]="defaultCardSize" #slider />
+      </mat-slider>
+      <mat-icon class="ml-3">zoom_in</mat-icon>
+    </div>
 
     <div id="deck-info-container" class="mb-2">
       <div id="card-count" title="{{ formatAdditionalHint }}">
