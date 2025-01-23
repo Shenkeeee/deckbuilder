@@ -19,6 +19,7 @@ export class CarddataContainerComponent implements OnInit {
   cardsNum!: number;
   selectedCardsNum!: number;
   selectedCardsAdditional = 0;
+  clickedCardId: string | null = null;
 
   constructor(private cardHandlerService: CardHandlerService) {}
 
@@ -123,5 +124,15 @@ export class CarddataContainerComponent implements OnInit {
         this.selectedCardsNum += card.amount;
       }
     }
+  }
+
+  highlightCard(cardId?: string) {
+    if (!cardId) {
+      return;
+    }
+    this.clickedCardId = cardId;
+    setTimeout(() => {
+      this.clickedCardId = null; // Remove the highlight after 0.1 seconds
+    }, 100); // 0.1 seconds = 100 milliseconds
   }
 }

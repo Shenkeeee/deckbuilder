@@ -1,12 +1,23 @@
 <!-- <h2>{{ cardInstance.card.Name }}</h2>
   <p>Mana Cost: {{ cardInstance.card.ManaCost }}</p> -->
 
-<img (click)="addToDeck(cardInstance.card)"
-  [src]="cardInstance.card.ImagePath ? 'assets/pics/' + cardInstance.card.ImagePath + '.webp' : 'assets/pics/feherszint.png_resize.webp'"
-  alt="{{cardInstance.card.ImagePath}}">
+<div
+  (click)="
+    addToDeck(cardInstance.card); highlightCard(cardInstance.card.CardNumber)
+  "
+>
+  <img
+    [class.clicked]="clickedCardId === cardInstance.card.CardNumber"
+    [src]="
+      cardInstance.card.ImagePath
+        ? 'assets/pics/' + cardInstance.card.ImagePath + '.webp'
+        : 'assets/pics/feherszint.png_resize.webp'
+    "
+    alt="{{ cardInstance.card.ImagePath }}"
+  />
+</div>
 
-
-  <!-- Ellenőrizzük, hogy az image path értéke nem üres és a fájl létezik -->
+<!-- Ellenőrizzük, hogy az image path értéke nem üres és a fájl létezik -->
 <!-- <img *ngIf="cardInstance.card.ImagePath && isFileExists(cardInstance.card.ImagePath)" [src]="'assets/pics/' + cardInstance.card.ImagePath + '.png'" alt=""> -->
 <!-- Ha nincs megadva képfájl vagy nem létezik, akkor használjuk az alapértelmezett képet -->
 <!-- <img *ngIf="!cardInstance.card.ImagePath || !isFileExists(cardInstance.card.ImagePath)" src="assets/pics/feherszint.png_resize.jpg" alt=""> -->
