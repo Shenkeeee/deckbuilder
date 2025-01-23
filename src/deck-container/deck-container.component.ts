@@ -270,6 +270,38 @@ export class DeckContainerComponent implements OnInit {
     const card = this.currentDeck.cards[indexToRemove];
 
     if (increase) {
+      // if main deck would be full
+      if (
+        this.selectedCardsNum >= this.cardsNum &&
+        !this.isAdditional(cardToChange)
+      ) {
+        alert('Elérted az alap pakli maximális számát!');
+        return;
+      }
+
+      // if additional deck would be full
+
+      // Extra kártyákhoz tartozó ellenőrzés
+      const additionalLimits = this.calculateAdditionalLimits();
+
+      if (
+        this.isAdditional(cardToChange) &&
+        // if these are not true, then throw alert. if they are, card is good
+        !(
+          (cardToChange.CardType === 'Vezető' && additionalLimits.leader < 1) ||
+          (this.selectedFormatAdditionalLimit !== 1 && // ha nem rush módban vagyunk
+            cardToChange.CardType === 'Szintlépés' &&
+            additionalLimits.levelUp < 2) ||
+          (this.selectedFormatAdditionalLimit !== 1 && // ha nem rush módban vagyunk
+            cardToChange.CardType === 'Spirit' &&
+            additionalLimits.spirit < 1)
+        )
+      ) {
+        alert(cardToChange.CardType + `ből nem adhatsz hozzá többet!`);
+        return;
+      }
+
+      // no problem, increase
       card.amount++;
     } else {
       // If the amount is greater than one, decrease the amount
@@ -283,6 +315,33 @@ export class DeckContainerComponent implements OnInit {
 
     // Update the deck after modifying it
     this.updateDeck();
+  }
+
+  isAdditional(card: Card): boolean {
+    return (
+      card.CardType === 'Vezető' ||
+      card.CardType === 'Szintlépés' ||
+      card.CardType === 'Spirit'
+    );
+  }
+
+  // Segédfüggvény az extra kártyák elosztásának ellenőrzésére
+  private calculateAdditionalLimits() {
+    let leader = 0;
+    let levelUp = 0;
+    let spirit = 0;
+
+    for (const card of this.currentDeck.cards) {
+      if (card.card.CardType === 'Vezető') {
+        leader += card.amount;
+      } else if (card.card.CardType === 'Szintlépés') {
+        levelUp += card.amount;
+      } else if (card.card.CardType === 'Spirit') {
+        spirit += card.amount;
+      }
+    }
+
+    return { leader, levelUp, spirit };
   }
 
   removeAllFromDeck(card: Card) {
