@@ -57,9 +57,12 @@ mat-chip-listbox {
 
 @media screen and (max-width: 570px) {
   .logo {
-    top: 1rem;
+    position: absolute;
+    top: 0.66rem;
     width: 2rem;
-    right: 1rem;
+    right: auto;
+    left: 0.6rem;
+    bottom: auto;
   }
 }
 
