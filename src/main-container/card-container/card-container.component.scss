@@ -40,11 +40,12 @@ mat-chip-listbox {
 }
 
 .logo {
-  width: 5rem;
   z-index: 3;
+  width: 5rem;
   position: fixed;
-  right: 1.5rem;
+  top: auto;
   bottom: 1.5rem;
+  right: 1.5rem;
   transition: opacity 0.3s ease;
   animation-fill-mode: backwards;
   opacity: 0.3;
@@ -52,6 +53,14 @@ mat-chip-listbox {
 
 .logo:hover {
   opacity: 1;
+}
+
+@media screen and (max-width: 570px) {
+  .logo {
+    top: 1rem;
+    width: 2rem;
+    right: 1rem;
+  }
 }
 
 #multicolor {
