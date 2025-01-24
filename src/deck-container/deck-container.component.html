@@ -261,16 +261,28 @@
               "
               alt="{{ card.card.ImagePath }}"
             />
-            <button id="cardAddModifier" class="amountModifier right-32">
+            <button
+              id="cardAddModifier"
+              class="modifier amountModifier right-32"
+            >
               <mat-icon class="h-full" (click)="addToDeck(card.card)"
                 >add</mat-icon
               >
             </button>
-            <button id="cardRemoveModifier" class="amountModifier right-20">
+            <button
+              id="cardRemoveModifier"
+              class="modifier amountModifier right-20"
+            >
               <mat-icon class="h-full" (click)="removeFromDeck(card.card)"
                 >remove</mat-icon
               >
             </button>
+
+            <div cdkDragHandle class="modifier dragModifier">
+              <mat-icon class="h-full" (click)="addToDeck(card.card)"
+                >drag_indicator</mat-icon
+              >
+            </div>
           </div>
 
           <!-- hover picture - hidden in css when dragging happens -->

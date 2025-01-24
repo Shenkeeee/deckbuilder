@@ -33,6 +33,7 @@ import {
   CdkDragDrop,
   CdkDropList,
   CdkDrag,
+  CdkDragHandle,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 
@@ -51,6 +52,7 @@ import {
     MatSliderModule,
     CdkDropList,
     CdkDrag,
+    CdkDragHandle,
   ],
   templateUrl: './deck-container.component.html',
   styleUrl: './deck-container.component.scss',
