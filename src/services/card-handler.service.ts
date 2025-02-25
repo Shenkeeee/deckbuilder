@@ -131,9 +131,10 @@ export class CardHandlerService {
       PlusMana: data['mana+'],
       PlusCardDraw: data['laphuzo+'],
       Spirit: data['spirit'],
-      Release: data['sorszam'].startsWith('dop')
-        ? data['sorszam'].slice(3, 5)
-        : data['sorszam'].slice(2, 4),
+      Release:
+        data['sorszam'].startsWith('dop') | data['sorszam'].startsWith('Equ')
+          ? data['sorszam'].slice(3, 5)
+          : data['sorszam'].slice(2, 4),
       CardNumber: data['sorszam'],
       ImagePath: cardInput.id,
     };
