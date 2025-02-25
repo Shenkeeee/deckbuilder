@@ -7,7 +7,8 @@
 
     <button type="button" id="file-button" mat-flat-button color="primary" (click)="fileInput.click()">Feltöltés</button>
     <input hidden (change)="onFileSelected($event)" #fileInput accept=".csv" type="file" id="file">
-    <button type="button" class="my-4" mat-flat-button color="secondary" (click)="downloadFlat()">Flat file letöltése</button>
+    <button type="button" class="my-4" mat-flat-button color="secondary" (click)="downloadFlat()">File letöltése - local</button>
+    <button type="button" class="my-4" mat-flat-button color="secondary" (click)="downloadFirebaseFileAsJson()">File letöltése - from firebase</button>
     <button *ngIf="!cardsShown" type="button" mat-flat-button color="primary" (click)="showCards()">Mutasd a kártyákat</button>
     </div>
     <table *ngIf="cardsShown">
@@ -49,6 +50,8 @@
             </tr>
         </ng-container>
     </table>
+    <button mat-flat-button color="warn" id="delete-all-button" (click)="openDeletePopupForIdDeletion(cards)">Csomag törlése ID szerint<mat-icon
+        matSuffix>delete_forever</mat-icon></button>
     <button mat-flat-button color="warn" id="delete-all-button" (click)="openDeleteAllPopup(cards)">Összes törlése<mat-icon
         matSuffix>delete_forever</mat-icon></button>
 </div>

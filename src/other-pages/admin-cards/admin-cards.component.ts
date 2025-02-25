@@ -108,6 +108,10 @@ export class AdminCardsComponent {
     await this.databaseHandlerService.deleteAllCards();
   }
 
+  async deleteDocumentsWithId(id: string) {
+    await this.databaseHandlerService.deleteDocumentsWithId(id);
+  }
+
   openEditPopup(card: any): void {
     const dialogRef = this.dialog.open(CardEditPopupComponent, {
       data: card,
@@ -159,6 +163,41 @@ export class AdminCardsComponent {
     });
   }
 
+  openDeletePopupForIdDeletion(card: any): void {
+    const idToDelete: string | null = prompt(
+      'Which ID of cards do you want to delete? ',
+      '...'
+    );
+    if (!idToDelete) {
+      return;
+    }
+
+    const dialogRef = this.dialog.open(ConfirmPopupComponent, {
+      data: card,
+    });
+
+    dialogRef.afterClosed().subscribe((deletedData: any) => {
+      if (deletedData) {
+        const spinnerRef = this.dialog.open(MatProgressSpinner, {
+          disableClose: true, // Prevent closing the spinner dialog
+          panelClass: 'primary-spinner-overlay', // Apply custom styles for the overlay
+        });
+        this.deleteDocumentsWithId(idToDelete).then(
+          () => {
+            // Hide the spinner once the upload is complete
+            spinnerRef.close();
+            window.location.reload();
+          },
+          (error: any) => {
+            // Handle error if upload fails
+            console.error('Error deleting cards:', error);
+            spinnerRef.close(); // Close the spinner in case of error
+          }
+        );
+      }
+    });
+  }
+
   async showCards() {
     this.cardsShown = true;
 
@@ -171,6 +210,12 @@ export class AdminCardsComponent {
   downloadFlat() {
     this.databaseHandlerService.downloadFlatToCurrent().then(() => {
       alert('Flat file letöltés alatt!');
+    });
+  }
+
+  downloadFirebaseFileAsJson() {
+    this.databaseHandlerService.exportFirebaseToJson().then(() => {
+      alert('Firebase file letöltés alatt!');
     });
   }
 }

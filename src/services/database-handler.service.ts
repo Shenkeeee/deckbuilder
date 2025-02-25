@@ -227,7 +227,21 @@ export class DatabaseHandlerService {
     await Promise.all(deletePromises);
   }
 
-  async exportFirebaseToJson(db: any, collectionName: string) {
+  async deleteDocumentsWithId(id: string): Promise<void> {
+    const cardsCollection = collection(this.db, this.workDoc);
+    const querySnapshot = await getDocs(cardsCollection);
+    const deletePromises: Promise<void>[] = [];
+
+    querySnapshot.forEach((doc) => {
+      if (doc.id === id || doc.id.includes(id)) {
+        deletePromises.push(this.deleteCard(doc.id));
+      }
+    });
+
+    await Promise.all(deletePromises);
+  }
+
+  async exportFirebaseToJson(db: any = this.db, collectionName: string = this.workDoc) {
     const data2: { id: string; data: DocumentData }[] = [];
     const cardsCollection = collection(db, collectionName);
 
