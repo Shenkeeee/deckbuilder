@@ -223,7 +223,27 @@
         >
           <p class="flex justify-between w-11/12 items-center">
             <span class="cursor-default">
-              {{ card.card.Name }} - {{ card.amount }}
+              <span [title]="card.card.CardType">
+                <span *ngIf="card.card.CardType === 'Vezető'">
+                  <mat-icon style="vertical-align: bottom"
+                    >stars</mat-icon
+                  >
+                </span>
+                <span *ngIf="card.card.CardType === 'Spirit'">
+                  <mat-icon style="vertical-align: bottom"
+                    >brightness_7  </mat-icon
+                  >
+                </span>
+                <span *ngIf="card.card.CardType === 'Szintlépés'">
+                  <mat-icon style="vertical-align: bottom"
+                    >arrow_circle_up </mat-icon
+                  >
+                </span>
+              </span>
+              <span>
+                {{ card.card.Name }}
+                - {{ card.amount }}
+              </span>
             </span>
             <!-- <button
               class="removeAllButton"
