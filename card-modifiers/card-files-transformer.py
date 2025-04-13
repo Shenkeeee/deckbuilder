@@ -108,14 +108,14 @@ def rename_and_compress_files(input_path, output_path, file_prefix, file_extensi
 
 
 if __name__ == "__main__":
-    input_folder = r"C:\Users\ASUS\Downloads\2025-2Lapok\basePics"  # Folder to search for .jpg files
-    output_folder = r"C:\Users\ASUS\Downloads\2025-2Lapok\basePics-fixed"  # Folder to save renamed files
-    prefix = "Equ25-"  # Prefix for the new filenames
+    input_folder = r"C:\Users\ASUS\Downloads\2025Lapok\ob25jav"  # Folder to search for .jpg files
+    output_folder = input_folder + "-fixed"  # Folder to save renamed files
+    prefix = "Ob25-"  # Prefix for the new filenames
     extension = "webp"  # Desired file extension for the output (e.g., "png")
     image_quality = 80  # Compression quality (1-100). Lower means more compression.
     resize_to = (800, 800)  # Resize images to fit within x times x while maintaining aspect ratio. Set to None for no resizing.
     crop_borders = True  # Enable border cropping
-    border_range = (127, 132)  # Specify the border range (inclusive)
+    border_range = (88, 133)  # Specify the border range (inclusive)
     corner_radius = 35  # Radius for rounded corners
 
     # Rename and compress files with border cropping and rounded corners
