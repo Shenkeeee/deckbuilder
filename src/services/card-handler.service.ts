@@ -230,15 +230,15 @@ export class CardHandlerService {
     return selectedColors.includes(this.removeAccents(colorNameLower));
   }
 
-  matchesTypeFilter(type?: string): boolean {
+  matchesTypeFilter(input?: string): boolean {
     // console.log(type, " : ", this.selectedTypes.value);
     // if no filter then it matches it
     if (!this.selectedTypes.value || this.selectedTypes.value.length === 0)
       return true;
-    if (!type) return false;
+    if (!input) return false;
 
-    return this.selectedTypes.value.includes(
-      this.removeAccents(type.toLowerCase())
+    return this.selectedTypes.value.some((type) =>    
+      this.removeAccents(input.toLowerCase()).includes(this.removeAccents(type.toLowerCase()))
     );
   }
 
@@ -255,8 +255,8 @@ export class CardHandlerService {
     // Ha ezen felul nincs input akkor false
     if (!input) return false;
 
-    return this.selectedSubTypes.value.includes(
-      this.removeAccents(input.toLowerCase())
+    return this.selectedSubTypes.value.some((subtype) =>    
+      this.removeAccents(input.toLowerCase()).includes(this.removeAccents(subtype.toLowerCase()))
     );
   }
 
