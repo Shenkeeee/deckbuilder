@@ -10,6 +10,7 @@ export interface Card {
     PlusCardDraw?: string;
     Spirit?: string;
     Release?: string;
+    Winnable?: string;
     CardNumber?: string;
     ImagePath?: string;
 }

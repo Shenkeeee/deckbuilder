@@ -82,6 +82,7 @@ export class DeckContainerComponent implements OnInit {
   selectedSpirits: string[] = [];
   selectedManaPlus: string[] = [];
   selectedLaphuzoPlus: string[] = [];
+  selectedWinnable: string[] = [];
 
   hoveredImagePath: string | null = null;
   hovered: string | null = null;
@@ -128,6 +129,9 @@ export class DeckContainerComponent implements OnInit {
     );
     this.cardHandlerService.selectedLaphuzoPlusObs.subscribe(
       (selectedLaphuzoPlus) => (this.selectedLaphuzoPlus = selectedLaphuzoPlus)
+    );
+    this.cardHandlerService.selectedWinnableObs.subscribe(
+      (selectedWinnable) => (this.selectedWinnable = selectedWinnable)
     );
     this.cardHandlerService.selectedFormatObs.subscribe((selectedFormat) => {
       this.selectedFormat = selectedFormat;
@@ -710,6 +714,19 @@ export class DeckContainerComponent implements OnInit {
     this.changePlusLaphuzo();
   }
 
+  onWinnableChanges(input: string) {
+    const index = this.selectedWinnable.indexOf(input);
+    if (index === -1) {
+      // Ha még nincs a tömbben, akkor hozzáadjuk
+      this.selectedWinnable.push(input);
+    } else {
+      // Ha már benne van a tömbben, akkor kivesszük
+      this.selectedWinnable.splice(index, 1);
+    }
+    // console.log(this.selectedWinnable);
+    this.changePlusWinnable();
+  }
+
   changeTypes() {
     this.cardHandlerService.selectedTypes.next(this.selectedTypes);
     // console.log("this.selectedTypes:", this.selectedTypes);
@@ -749,6 +766,11 @@ export class DeckContainerComponent implements OnInit {
   changePlusLaphuzo() {
     this.cardHandlerService.selectedLaphuzoPlus.next(this.selectedLaphuzoPlus);
     // console.log("this.selectedSubTypes:", this.selectedSubTypes);
+    this.updateShownCards();
+  }
+
+  changePlusWinnable() {
+    this.cardHandlerService.selectedWinnable.next(this.selectedWinnable);
     this.updateShownCards();
   }
 
@@ -803,6 +825,7 @@ export class DeckContainerComponent implements OnInit {
             PlusMana: card.data['mana+'] || '',
             PlusCardDraw: card.data['laphuzo+'] || '',
             Spirit: card.data.spirit || '',
+            Winnable: card.data.nyeremeny || '',
             // Release: card.data.megjelenes || '',
             CardNumber: card.data.sorszam || '',
             ImagePath: card.id || '',

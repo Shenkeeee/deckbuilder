@@ -136,6 +136,15 @@
           >
         </mat-chip-listbox>
       </div>
+      
+      <!-- Nyeremény -->
+      <div>
+        <h4>Nyeremény</h4>
+        <mat-chip-listbox multiple>
+          <mat-chip-option (click)="onWinnableChanges('')">Sima</mat-chip-option>
+          <mat-chip-option (click)="onWinnableChanges('1')">Nyeremény</mat-chip-option>
+        </mat-chip-listbox>
+      </div>
     </div>
 
     <!-- <div id="deck-name-container">

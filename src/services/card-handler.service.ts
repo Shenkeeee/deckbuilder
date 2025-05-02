@@ -49,6 +49,9 @@ export class CardHandlerService {
   selectedLaphuzoPlus = new BehaviorSubject<string[]>([]);
   selectedLaphuzoPlusObs = this.selectedLaphuzoPlus.asObservable();
 
+  selectedWinnable = new BehaviorSubject<string[]>([]);
+  selectedWinnableObs = this.selectedWinnable.asObservable();
+
   currentDeck = new BehaviorSubject<Deck>({ cards: [] });
   currentDeckObs = this.currentDeck.asObservable();
 
@@ -131,6 +134,7 @@ export class CardHandlerService {
       PlusMana: data['mana+'],
       PlusCardDraw: data['laphuzo+'],
       Spirit: data['spirit'],
+      Winnable: data['nyeremeny'],
       Release:
         data['sorszam'].startsWith('dop') | data['sorszam'].startsWith('Equ')
           ? data['sorszam'].slice(3, 5)
@@ -153,7 +157,8 @@ export class CardHandlerService {
       this.matchesReleasesFilter(card.Release) &&
       this.matchesSpiritFilter(card.Spirit) &&
       this.matchesManaPlusFilter(card.PlusMana) &&
-      this.matchesLaphuzoPlusFilter(card.PlusCardDraw)
+      this.matchesLaphuzoPlusFilter(card.PlusCardDraw) &&
+      this.matchesWinnableFilter(card.Winnable)
     );
   }
 
@@ -341,6 +346,23 @@ export class CardHandlerService {
     const inputStr = input?.toString();
 
     return this.selectedLaphuzoPlus.value.includes(
+      this.removeAccents(inputStr.toLowerCase())
+    );
+  }
+
+  matchesWinnableFilter(input?: string): boolean {
+    // if no filter then it matches it
+    if (
+      !this.selectedWinnable.value ||
+      this.selectedWinnable.value.length === 0
+    )
+      return true;
+
+    // Ha ezen felul nincs input akkor false
+    if (input == undefined) return false;
+    const inputStr = input?.toString();
+
+    return this.selectedWinnable.value.includes(
       this.removeAccents(inputStr.toLowerCase())
     );
   }
