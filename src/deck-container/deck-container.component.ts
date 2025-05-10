@@ -36,6 +36,7 @@ import {
   CdkDragHandle,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
+import { ShowcaseImage } from "./showcase-image/showcase-image.component";
 
 @Component({
   selector: 'app-deck-container',
@@ -53,7 +54,8 @@ import {
     CdkDropList,
     CdkDrag,
     CdkDragHandle,
-  ],
+    ShowcaseImage
+],
   templateUrl: './deck-container.component.html',
   styleUrl: './deck-container.component.scss',
 })
@@ -94,6 +96,8 @@ export class DeckContainerComponent implements OnInit {
 
   clickedOnPicture = false;
   clickedImagePath = '';
+
+  isShowcaseVisible = false;
 
   constructor(
     private cardHandlerService: CardHandlerService,
@@ -877,5 +881,36 @@ export class DeckContainerComponent implements OnInit {
     }
     this.clickedOnPicture = !this.clickedOnPicture;
     this.clickedImagePath = path;
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if(event.key === "Escape") {
+      this.isShowcaseVisible = false;
+    }
+  } 
+  
+  pressedKeys = new Set<string>();
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    this.pressedKeys.add(event.key.toLowerCase());
+
+    if (this.pressedKeys.has('j') && this.pressedKeys.has('l') && this.pressedKeys.has('i')) {
+      this.toggleShowcase();
+    }
+
+    if (event.key === 'Escape') {
+      this.isShowcaseVisible = false;
+    }
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  handleKeyUp(event: KeyboardEvent) {
+    this.pressedKeys.delete(event.key.toLowerCase());
+  }
+
+  toggleShowcase() {
+    this.isShowcaseVisible = !this.isShowcaseVisible;
   }
 }
