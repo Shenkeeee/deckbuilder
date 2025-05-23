@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MainContainerComponent } from "../../main-container/main-container.component"
-import { DeckContainerComponent } from "../../deck-container/deck-container.component"
+import { MainContainerComponent } from '../main-container/main-container.component';
+import { DeckContainerComponent } from "../deck-container/deck-container.component"
 
 @Component({
   selector: 'app-card-lister-page',

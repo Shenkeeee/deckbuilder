@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { DatabaseHandlerService } from './database-handler.service';
-import { Card } from '../main-container/carddata-container/card';
-import { CardInstance } from '../main-container/carddata-container/card-instance';
+import { Card } from '../assets/model/carddata-container/card';
+import { Deck } from '../assets/model/deck-container/deck';
+import { CardInstance } from '../assets/model/carddata-container/card-instance';
 import { BehaviorSubject } from 'rxjs';
-import { Deck } from '../deck-container/deck';
 
 @Injectable({
   providedIn: 'root',

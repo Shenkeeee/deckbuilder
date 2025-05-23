@@ -1,9 +1,8 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
-import { CarddataContainerComponent } from "../carddata-container/carddata-container.component"
+import { Component, OnInit } from '@angular/core';
+import { CarddataContainerComponent } from '../carddata-container/carddata-container.component';
 import { CommonModule } from '@angular/common';
-import { CardInstance } from "../carddata-container/card-instance";
-import { Card } from "../carddata-container/card";
-import { CardHandlerService } from '../../services/card-handler.service';
+import { CardInstance } from '../../../assets/model/carddata-container/card-instance';
+import { CardHandlerService } from '../../../services/card-handler.service';
 
 import { MatChipsModule } from '@angular/material/chips';
 

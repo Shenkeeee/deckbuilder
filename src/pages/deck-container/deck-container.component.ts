@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { CardHandlerService } from '../services/card-handler.service';
+import { CardHandlerService } from '../../services/card-handler.service';
 import { FormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,13 +8,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
-import { Deck } from './deck';
+import { Deck } from '../../assets/model/deck-container/deck';
 
 import { CommonModule } from '@angular/common';
-import { Card } from '../main-container/carddata-container/card';
+import { Card } from '../../assets/model/carddata-container/card';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CardWithAmount } from './card-with-amount';
+import { CardWithAmount } from '../../assets/model/deck-container/card-with-amount';
 import {
   CdkDragDrop,
   CdkDropList,
@@ -22,7 +22,7 @@ import {
   CdkDragHandle,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
-import { ShowcaseImage } from './showcase-image/showcase-image.component';
+import { ShowcaseImage } from '../../components/showcase-image/showcase-image.component';
 
 @Component({
   selector: 'app-deck-container',

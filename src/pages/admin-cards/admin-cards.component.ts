@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { CardHandlerService } from '../../services/card-handler.service';
 import { DatabaseHandlerService } from '../../services/database-handler.service';
-import { CardEditPopupComponent } from './card-edit-popup/card-edit-popup.component';
-import { ConfirmPopupComponent } from './confirm-popup/confirm-popup.component';
+import { CardEditPopupComponent } from '../../components/admin-cards/card-edit-popup/card-edit-popup.component';
+import { ConfirmPopupComponent } from '../../components/admin-cards/confirm-popup/confirm-popup.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {

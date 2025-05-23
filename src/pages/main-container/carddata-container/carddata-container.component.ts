@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CardInstance } from './card-instance';
-import { NgFor, CommonModule } from '@angular/common';
-import { Card } from './card';
-import { CardHandlerService } from '../../services/card-handler.service';
-import { Deck } from '../../deck-container/deck';
+import { CardInstance } from '../../../assets/model/carddata-container/card-instance';
+import { CommonModule } from '@angular/common';
+import { Card } from '../../../assets/model/carddata-container/card';
+import { Deck } from '../../../assets/model/deck-container/deck';
+import { CardHandlerService } from '../../../services/card-handler.service';
 
 @Component({
   selector: 'app-carddata-container',

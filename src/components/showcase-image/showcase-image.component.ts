@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CarddataContainerComponent } from '../../main-container/carddata-container/carddata-container.component';
+import { CarddataContainerComponent } from '../../pages/main-container/carddata-container/carddata-container.component';
 import { CardHandlerService } from '../../services/card-handler.service';
-import { Deck } from '../deck';
+import { Deck } from '../../assets/model/deck-container/deck';
 import { CommonModule } from '@angular/common';
 
 @Component({

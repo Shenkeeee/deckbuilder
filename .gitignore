@@ -1,5 +1,3 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
 # Compiled output
 /dist
 /tmp
@@ -46,5 +44,4 @@ firebase-debug.log
 .firebase/hosting.LmZpcmViYXNlXGFnaWxpc2RlY2tidWlsZGVyXGhvc3Rpbmc.cache
 
 # Environment variables
-src/environments/environment.ts
-src/environments/environment.prod.ts
+src/environments/
