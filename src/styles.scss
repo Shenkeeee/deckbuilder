@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/utilities";
-@import "tailwindcss/components";
+@use "tailwindcss/base";
+@use "tailwindcss/utilities";
+@use "tailwindcss/components";
 
 $base-color:  rgba(0, 0, 0, 0.7);
 
