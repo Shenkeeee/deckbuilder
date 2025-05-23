@@ -1,30 +1,22 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
 import {
   getFirestore,
   collection,
   getDocs,
-  addDoc,
   doc,
   updateDoc,
   deleteDoc,
   setDoc,
-  getDoc,
   DocumentData,
 } from 'firebase/firestore';
 import * as Papa from 'papaparse'; // library for CSV parsing from file
-import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { DbDexieService } from './dbDexie.service';
 import { saveAs } from 'file-saver'; // Install this package for file saving
 
 // web app's Firebase configuration
 const firebaseConfig = environment.firebase;
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 
 @Injectable({
   providedIn: 'root',
@@ -32,175 +24,30 @@ const app = initializeApp(firebaseConfig);
 export class DatabaseHandlerService {
   app!: any;
   private db;
-  // private workDoc = 'dop_2023';
   private workDoc = 'dop';
-  private fetchDoc = 'fetch';
   private flatFilePath = 'assets/data/dop.json';
   private flatFile: any;
 
-  // remoteFetchCooldown = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
-  // remoteFetchCooldown = 60 * 1000; // 1 minute in milliseconds
-
-  user = new BehaviorSubject<any>(getAuth().currentUser);
-  userObs = this.user.asObservable();
-
-  constructor(
-    private dbDexieService: DbDexieService,
-    private http: HttpClient
-  ) {
+  constructor(private http: HttpClient) {
     if (!this.app) {
       this.app = initializeApp(firebaseConfig);
     }
     this.db = getFirestore();
-    // console.log(getAuth());
-    this.user.next(getAuth().currentUser);
   }
 
   async getCards(): Promise<{ id: string; data: any }[]> {
     const cards: { id: string; data: any }[] = [];
-    const currentTime = Date.now();
-
 
     // just use the flat file for now
     await this.useFlatFile(cards);
-    // await this.updateIndexedDbCards(cards, currentTime);
-
-    // If the IndexedDB has no cards, fetch from the flat source regardless of cooldown
-    // const indexedDbCards = await this.getIndexedDbCards();
-    // if (!indexedDbCards || indexedDbCards.length === 0) {
-    //   // getting when flat was last fetched so that we can set the local to the same
-    //   const { isLocalUpToDate, flatLastFetched } =
-    //     await this.isIndexedDbUpToDate();
-
-    //   console.log('initial flat fetching');
-    //   await this.useFlatFile(cards);
-    //   await this.updateIndexedDbCards(cards, flatLastFetched);
-    //   return cards;
-    // }
-
-    // // // if cooldown is not over yet, dont even check if firebase lastFetchDate is the same,
-    // // // therefore not always using 1 getRequest towards firebase to check fetched date,
-    // // // just in every x hours
-    // // // const lastRemoteCheckAttempt =
-    // // //   await this.dbDexieService.getLastRemoteChecked();
-    // // // const isCooldownStillOn =
-    // // //   lastRemoteCheckAttempt &&
-    // // //   currentTime - lastRemoteCheckAttempt < this.remoteFetchCooldown;
-
-    // // // if (isCooldownStillOn) {
-    // // //   this.logRemainingCooldownTime(lastRemoteCheckAttempt, currentTime);
-    // // //   return await this.useIndexedDb(cards); // Use IndexedDB if within cooldown period
-    // // // }
-
-    // check for flat lastfetchdate === local lastfetchdate
-    // const { isLocalUpToDate, flatLastFetched } =
-    //   await this.isIndexedDbUpToDate();
-
-    // console.log('local is up to date: ' + isLocalUpToDate);
-    // if (isLocalUpToDate) {
-    //   return await this.useIndexedDb(cards);
-    // } else {
-    //   console.log('fetching flat...');
-    //   await this.useFlatFile(cards);
-    //   await this.updateIndexedDbCards(cards, flatLastFetched);
-    // }
-
-    // // // if firebase data is needed to be downloaded:
-    // // // await this.exportFirebaseToJson(this.db, this.workDoc);
     return cards;
   }
-
-  // // // logRemainingCooldownTime(lastFetchAttempt: number, currentTime: number) {
-  // // //   const cooldownRemaining =
-  // // //     lastFetchAttempt + this.remoteFetchCooldown - currentTime;
-  // // //   const hours = Math.floor(cooldownRemaining / (60 * 60 * 1000));
-  // // //   const minutes = Math.floor(
-  // // //     (cooldownRemaining % (60 * 60 * 1000)) / (60 * 1000)
-  // // //   );
-  // // //   const seconds = Math.floor((cooldownRemaining % (60 * 1000)) / 1000);
-  // // //   const milliseconds = cooldownRemaining % 1000;
-
-  // // //   console.log(
-  // // //     `Cooldown in effect. Fetch allowed after: ${hours}h ${minutes}m ${seconds}s ${milliseconds}ms`
-  // // //   );
-  // // // }
-
-  async getIndexedDbCards() {
-    return await this.dbDexieService.getCards();
-  }
-
-  async updateIndexedDbCards(
-    cards: { id: string; data: any }[],
-    flatLastFetched: number | null = Date.now()
-  ) {
-    await this.dbDexieService.deleteAllCards();
-    await this.dbDexieService.addCards(cards);
-    await this.dbDexieService.updateLastFetched(flatLastFetched);
-  }
-
-  async useIndexedDb(cards: { id: string; data: any }[]) {
-    // get data from indexedDB
-    const indexedDBCards = await this.dbDexieService.getCards();
-    if (indexedDBCards !== null && indexedDBCards.length > 0) {
-      await this.dbDexieService.getCards().then((cardListIndexedDB) => {
-        console.log('fetching IndexedDB');
-        cardListIndexedDB.forEach((card: { id: any; data: any }) => {
-          cards.push({ id: card.id, data: card.data });
-        });
-      });
-    }
-    return cards;
-  }
-  // async useFirebase(cards: { id: string; data: any }[]) {
-  //   const cardsCollection = collection(this.db, this.workDoc);
-  //   await getDocs(cardsCollection).then((querySnapshot) =>
-  //     querySnapshot.forEach((doc) => {
-  //       cards.push({ id: doc.id, data: doc.data() });
-  //     })
-  //   );
-  // }
 
   async useFlatFile(cards: { id: string; data: any }[]) {
     await this.setLocalFile();
     for (let entry of this.flatFile) {
       cards.push({ id: entry.id, data: entry.data });
     }
-  }
-
-
-  async isIndexedDbUpToDate() {
-    const docRef = doc(this.db, this.fetchDoc, '/lastFetched');
-    const docSnapshot = await getDoc(docRef);
-
-    // const lastRemoteCheck = Date.now();
-    // this.dbDexieService.updateLastRemoteChecked(lastRemoteCheck);
-
-    // log
-    const docData = docSnapshot.data();
-    if (docData && 'date' in docData) {
-      console.log('flat: ' + +docData['date']);
-    }
-    console.log('dexie: ' + (await this.dbDexieService.getLastFetched()));
-
-    // if flat has newer content
-    if (
-      docSnapshot.exists() &&
-      docSnapshot.data() &&
-      'date' in docSnapshot.data() &&
-      (await this.dbDexieService.getLastFetched()) < +docSnapshot.data()['date']
-    ) {
-      return {
-        isLocalUpToDate: false,
-        flatLastFetched: +docSnapshot.data()['date'],
-      };
-    }
-    return { isLocalUpToDate: true, flatLastFetched: null };
-  }
-
-  async updatefirebaseToCurrent() {
-    const docRef = doc(this.db, this.fetchDoc, '/lastFetched');
-    const currentTime = Date.now();
-    await setDoc(docRef, { date: currentTime });
   }
 
   async downloadFlatToCurrent() {
@@ -241,7 +88,10 @@ export class DatabaseHandlerService {
     await Promise.all(deletePromises);
   }
 
-  async exportFirebaseToJson(db: any = this.db, collectionName: string = this.workDoc) {
+  async exportFirebaseToJson(
+    db: any = this.db,
+    collectionName: string = this.workDoc
+  ) {
     const data2: { id: string; data: DocumentData }[] = [];
     const cardsCollection = collection(db, collectionName);
 
@@ -260,7 +110,6 @@ export class DatabaseHandlerService {
 
     console.log('Data exported successfully!');
   }
-
 
   // to be tested - it adds an ID field (maybe)
   async modifyCard(cardId: string, newData: any): Promise<void> {
@@ -342,12 +191,11 @@ export class DatabaseHandlerService {
     initializeApp(firebaseConfig);
   }
 
-  // initializeUser(){
-  //   initializeApp(firebaseConfig);
-  // }
-
   // Fetch the JSON data
-  async setLocalFile(){
-    await this.http.get(this.flatFilePath).toPromise().then((data) => (this.flatFile = data));
+  async setLocalFile() {
+    await this.http
+      .get(this.flatFilePath)
+      .toPromise()
+      .then((data) => (this.flatFile = data));
   }
 }

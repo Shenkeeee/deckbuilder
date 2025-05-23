@@ -1,5 +1,5 @@
 // import { Component } from '@angular/core';
-import { Component, EventEmitter, Input, Output, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import {
   MAT_DIALOG_DATA,
@@ -8,30 +8,34 @@ import {
   MatDialogContent,
   MatDialogActions,
 } from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-confirm-popup',
   standalone: true,
-  imports: [MatButtonModule, MatDialogContent, MatDialogTitle, MatDialogActions],
+  imports: [
+    MatButtonModule,
+    MatDialogContent,
+    MatDialogTitle,
+    MatDialogActions,
+  ],
   templateUrl: './confirm-popup.component.html',
-  styleUrl: './confirm-popup.component.scss'
+  styleUrl: './confirm-popup.component.scss',
 })
-
 export class ConfirmPopupComponent implements OnInit {
   editable = true;
 
   editedCardData: any;
 
-  constructor(public dialogRef: MatDialogRef<ConfirmPopupComponent>,
+  constructor(
+    public dialogRef: MatDialogRef<ConfirmPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public cardData: any
-  ) {
-  }
-  
-  ngOnInit(): void {
-    this.editedCardData = JSON.parse(JSON.stringify(this.cardData));; // Deep Clone cardData to editedCardData
-  }
+  ) {}
 
+  ngOnInit(): void {
+    // Deep Clone cardData to editedCardData
+    this.editedCardData = JSON.parse(JSON.stringify(this.cardData));
+  }
 
   onConfirm(): void {
     // A módosított adatokat visszaadom a fő komponensnek

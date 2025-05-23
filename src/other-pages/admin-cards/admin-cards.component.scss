@@ -1,136 +1,69 @@
 #admin-cards-wrapper {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 70px);
-    overflow-y: auto;
-    color: white;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+  color: white;
 }
 
 .center-aligned {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-mat-spinner { 
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-}
-
-mat-spinner::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h2 {
-    margin: 20px 0;
-    font-size: large;
+  margin: 20px 0;
+  font-size: large;
 }
 
 input {
-    min-height: 20px;
+  min-height: 20px;
 }
 
 button {
-    margin: 5px;
+  margin: 5px;
 }
 
 // button
 .action-button {
-    height: 30px;
-    width: 30px;
-    margin: 2px;
+  height: 30px;
+  width: 30px;
+  margin: 2px;
 }
 
 span {
-    width: 30px;
+  width: 30px;
 }
 
 #delete-all-button {
-    background-color: rgba(255, 5, 5, 0.5);
-    width: 200px;
-    min-height: 40px;
+  background-color: rgba(255, 5, 5, 0.5);
+  width: 200px;
+  min-height: 40px;
 }
 
 #file-button {
-    min-width: 90px;
-    min-height: 40px;
-    text-align: center;
+  min-width: 90px;
+  min-height: 40px;
+  text-align: center;
 }
-
-// .spinner-overlay {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     z-index: 9999; /* Ensure the spinner appears on top of other elements */
-//   }
-
 
 // table
 table {
-    margin: 20px 0;
-    // display: flexbox;
-    // flex: 0 0 auto;
-    background-color: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
+  margin: 20px 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
 }
 
 table th {
-    text-align: center;
+  text-align: center;
 }
 
 table tr th,
 td {
-    padding: 10px;
-    max-width: 200px;
-    overflow-x: auto;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  max-width: 200px;
+  overflow-x: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
-
-// Responsivity
-// @media screen and (max-width: 1500px) {
-
-//     .tamado-vedo,
-//     .kepesseg {
-//         display: none;
-//     }
-// }
-
-// @media screen and (max-width: 1140px) {
-
-//     .spirit,
-//     .megjelenes {
-//         display: none;
-//     }
-// }
-
-// @media screen and (max-width: 900px) {
-
-//     .manaplusz,
-//     .laphuzoplusz {
-//         display: none;
-//     }
-// }
-
-// @media screen and (max-width: 700px) {
-// //    table{
-// //     // flex-direction: column;
-// //     // columns: ;
-// //    }
-// }

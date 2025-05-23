@@ -1,6 +1,4 @@
 #card-holder-container {
-  // position: relative;
-  // min-width: calc(100dvw - 445px);
   display: flex;
   flex-wrap: wrap;
   // justify-content: space-around;
@@ -32,11 +30,8 @@ mat-chip-listbox {
   position: relative;
   margin-left: 10px;
   margin-right: 10px;
-  // padding: 6px 9px;
-  // border: 1px white solid;
   box-shadow: 0 0 2px 1px white;
   border-radius: 4px;
-  // color: white !important;
 }
 
 .logo {
@@ -81,7 +76,6 @@ mat-chip-listbox {
 
 #dual {
   background: linear-gradient(0deg, #000000, #ff0000);
-  // background-size: 150% 150%;
 }
 
 #sarga {

@@ -1,7 +1,10 @@
 <div class="showcase-wrapper">
   <div class="showcase-cards-wrapper">
     <div *ngFor="let card of currentDeckReversed.cards">
-      <div class="cards-group-wrapper" *ngFor="let _ of [].constructor(card.amount)">
+      <div
+        class="cards-group-wrapper"
+        *ngFor="let _ of [].constructor(card.amount)"
+      >
         <app-carddata-container [cardInstance]="card"></app-carddata-container>
       </div>
     </div>

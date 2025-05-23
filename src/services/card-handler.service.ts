@@ -9,8 +9,6 @@ import { Deck } from '../deck-container/deck';
   providedIn: 'root',
 })
 export class CardHandlerService {
-  // allCards: { id: string, data: any }[] = [];
-
   // for showing - we need this to update the observable when its fully filled and not fill the observable directly
   cardInstances: CardInstance[] = [];
   allcardInstances: CardInstance[] = [];
@@ -54,9 +52,6 @@ export class CardHandlerService {
 
   currentDeck = new BehaviorSubject<Deck>({ cards: [] });
   currentDeckObs = this.currentDeck.asObservable();
-
-  // allCards = new BehaviorSubject<{ id: string, data: any }[]>([]);
-  // allCardsObservable = this.allCards.asObservable();
 
   // for data of all
   cards = new BehaviorSubject<{ id: string; data: any }[]>([]);
@@ -242,8 +237,10 @@ export class CardHandlerService {
       return true;
     if (!input) return false;
 
-    return this.selectedTypes.value.some((type) =>    
-      this.removeAccents(input.toLowerCase()).includes(this.removeAccents(type.toLowerCase()))
+    return this.selectedTypes.value.some((type) =>
+      this.removeAccents(input.toLowerCase()).includes(
+        this.removeAccents(type.toLowerCase())
+      )
     );
   }
 
@@ -260,8 +257,10 @@ export class CardHandlerService {
     // Ha ezen felul nincs input akkor false
     if (!input) return false;
 
-    return this.selectedSubTypes.value.some((subtype) =>    
-      this.removeAccents(input.toLowerCase()).includes(this.removeAccents(subtype.toLowerCase()))
+    return this.selectedSubTypes.value.some((subtype) =>
+      this.removeAccents(input.toLowerCase()).includes(
+        this.removeAccents(subtype.toLowerCase())
+      )
     );
   }
 
@@ -283,8 +282,6 @@ export class CardHandlerService {
   }
 
   matchesManaCostsFilter(input?: number): boolean {
-    // if (!input && this.selectedManaCosts.value.includes("-"))
-    //   return true;
     // if no filter then it matches it
     if (
       !this.selectedManaCosts.value ||
@@ -304,8 +301,6 @@ export class CardHandlerService {
   }
 
   matchesSpiritFilter(input?: string): boolean {
-    // if (!input && this.selectedManaCosts.value.includes("-"))
-    //   return true;
     // if no filter then it matches it
     if (!this.selectedSpirits.value || this.selectedSpirits.value.length === 0)
       return true;

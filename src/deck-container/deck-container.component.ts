@@ -1,14 +1,4 @@
-import {
-  Component,
-  Output,
-  EventEmitter,
-  OnInit,
-  Input,
-  OnChanges,
-  ElementRef,
-  ViewChild,
-  HostListener,
-} from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CardHandlerService } from '../services/card-handler.service';
 import { FormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
@@ -16,16 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatLabel } from '@angular/material/form-field';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { Deck } from './deck';
 
 import { CommonModule } from '@angular/common';
 import { Card } from '../main-container/carddata-container/card';
-import * as pako from 'pako';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CardWithAmount } from './card-with-amount';
@@ -36,7 +22,7 @@ import {
   CdkDragHandle,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
-import { ShowcaseImage } from "./showcase-image/showcase-image.component";
+import { ShowcaseImage } from './showcase-image/showcase-image.component';
 
 @Component({
   selector: 'app-deck-container',
@@ -54,8 +40,8 @@ import { ShowcaseImage } from "./showcase-image/showcase-image.component";
     CdkDropList,
     CdkDrag,
     CdkDragHandle,
-    ShowcaseImage
-],
+    ShowcaseImage,
+  ],
   templateUrl: './deck-container.component.html',
   styleUrl: './deck-container.component.scss',
 })
@@ -141,10 +127,6 @@ export class DeckContainerComponent implements OnInit {
       this.selectedFormat = selectedFormat;
     });
 
-    // this.currentDeck.cards.forEach(element => {
-    //   element.
-    // });
-
     this.cardHandlerService.currentDeckObs.subscribe((deck) => {
       this.currentDeck = deck;
       this.updateSelectedCards();
@@ -203,7 +185,6 @@ export class DeckContainerComponent implements OnInit {
 
   updateCardNumber() {
     this.cardsNum = this.cardHandlerService.updateCardNumber();
-    // this.cardHandlerService
   }
 
   updateSelectionFormat() {
@@ -220,16 +201,11 @@ export class DeckContainerComponent implements OnInit {
   updateAvailableCards() {
     this.cardHandlerService.inputValueMsg.next(this.inputValue);
     this.updateShownCards();
-    // console.log(this.inputValue);
   }
 
   updateDeck() {
     this.updateSelectedCards();
     this.cardHandlerService.currentDeck.next(this.currentDeck);
-    // console.log('currentDeckUpdated \n' + JSON.stringify(this.currentDeck));
-
-    // this.updateShownCards();
-    // console.log(this.inputValue);
   }
 
   updateSelectedFormat() {
@@ -576,7 +552,6 @@ export class DeckContainerComponent implements OnInit {
           (item: any) => !item.error
         ) as CardWithAmount[];
 
-        // this.currentDeck = deckData;
         // Assign to `currentDeck`
         this.currentDeck = this.normalizeDeckFormat(validCards);
 
@@ -733,43 +708,36 @@ export class DeckContainerComponent implements OnInit {
 
   changeTypes() {
     this.cardHandlerService.selectedTypes.next(this.selectedTypes);
-    // console.log("this.selectedTypes:", this.selectedTypes);
     this.updateShownCards();
   }
 
   changeSubTypes() {
     this.cardHandlerService.selectedSubTypes.next(this.selectedSubTypes);
-    // console.log("this.selectedSubTypes:", this.selectedSubTypes);
     this.updateShownCards();
   }
 
   changeReleases() {
     this.cardHandlerService.selectedReleases.next(this.selectedReleases);
-    // console.log("this.selectedSubTypes:", this.selectedSubTypes);
     this.updateShownCards();
   }
 
   changeManaCosts() {
     this.cardHandlerService.selectedManaCosts.next(this.selectedManaCosts);
-    // console.log("this.selectedSubTypes:", this.selectedSubTypes);
     this.updateShownCards();
   }
 
   changeSpirits() {
     this.cardHandlerService.selectedSpirits.next(this.selectedSpirits);
-    // console.log("this.selectedSubTypes:", this.selectedSubTypes);
     this.updateShownCards();
   }
 
   changePlusMana() {
     this.cardHandlerService.selectedManaPlus.next(this.selectedManaPlus);
-    // console.log("this.selectedSubTypes:", this.selectedSubTypes);
     this.updateShownCards();
   }
 
   changePlusLaphuzo() {
     this.cardHandlerService.selectedLaphuzoPlus.next(this.selectedLaphuzoPlus);
-    // console.log("this.selectedSubTypes:", this.selectedSubTypes);
     this.updateShownCards();
   }
 
@@ -885,18 +853,22 @@ export class DeckContainerComponent implements OnInit {
 
   @HostListener('window:keydown', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if(event.key === "Escape") {
+    if (event.key === 'Escape') {
       this.isShowcaseVisible = false;
     }
-  } 
-  
+  }
+
   pressedKeys = new Set<string>();
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     this.pressedKeys.add(event.key.toLowerCase());
 
-    if (this.pressedKeys.has('j') && this.pressedKeys.has('l') && this.pressedKeys.has('i')) {
+    if (
+      this.pressedKeys.has('j') &&
+      this.pressedKeys.has('l') &&
+      this.pressedKeys.has('i')
+    ) {
       this.toggleShowcase();
     }
 

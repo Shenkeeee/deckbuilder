@@ -1,5 +1,5 @@
-import { CardWithAmount } from "./card-with-amount";
+import { CardWithAmount } from './card-with-amount';
 
 export interface Deck {
-    cards: CardWithAmount[];
+  cards: CardWithAmount[];
 }

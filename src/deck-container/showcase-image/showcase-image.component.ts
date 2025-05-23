@@ -20,7 +20,7 @@ export class ShowcaseImage implements OnInit {
     this.cardHandlerService.currentDeckObs.subscribe((deck) => {
       this.currentDeckReversed = {
         ...deck,
-        cards: [...deck.cards].reverse()
+        cards: [...deck.cards].reverse(),
       };
     });
   }

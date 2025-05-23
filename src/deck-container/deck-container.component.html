@@ -137,27 +137,20 @@
           >
         </mat-chip-listbox>
       </div>
-      
+
       <!-- Nyeremény -->
       <div>
         <h4>Nyeremény</h4>
         <mat-chip-listbox multiple>
-          <mat-chip-option (click)="onWinnableChanges('')">Sima</mat-chip-option>
-          <mat-chip-option (click)="onWinnableChanges('1')">Nyeremény</mat-chip-option>
+          <mat-chip-option (click)="onWinnableChanges('')"
+            >Sima</mat-chip-option
+          >
+          <mat-chip-option (click)="onWinnableChanges('1')"
+            >Nyeremény</mat-chip-option
+          >
         </mat-chip-listbox>
       </div>
     </div>
-
-    <!-- <div id="deck-name-container">
-            <mat-form-field>
-                <mat-label for="deck-name-field">Deck Név:</mat-label>
-                <input matInput type="text" id="deck-name-field" placeholder="Deck 1">
-            </mat-form-field>
-        </div> -->
-
-    <!-- <div id="copy-deck-container">
-            <button mat-flat-button id="copy-deck-button" (click)="copyDeckCode()"><mat-icon>save</mat-icon></button>
-        </div> -->
 
     <!-- Formátum -->
     <mat-form-field>
@@ -235,19 +228,17 @@
             <span class="cursor-default">
               <span [title]="card.card.CardType">
                 <span *ngIf="card.card.CardType === 'Vezető'">
-                  <mat-icon style="vertical-align: bottom"
-                    >stars</mat-icon
-                  >
+                  <mat-icon style="vertical-align: bottom">stars</mat-icon>
                 </span>
                 <span *ngIf="card.card.CardType === 'Spirit'">
                   <mat-icon style="vertical-align: bottom"
-                    >brightness_7  </mat-icon
-                  >
+                    >brightness_7
+                  </mat-icon>
                 </span>
                 <span *ngIf="card.card.CardType === 'Szintlépés'">
                   <mat-icon style="vertical-align: bottom"
-                    >arrow_circle_up </mat-icon
-                  >
+                    >arrow_circle_up
+                  </mat-icon>
                 </span>
               </span>
               <span>
@@ -255,12 +246,6 @@
                 - {{ card.amount }}
               </span>
             </span>
-            <!-- <button
-              class="removeAllButton"
-              mat-flat-button
-              (click)="removeAllFromDeck(card.card)"
-            >
-          </button> -->
             <mat-icon
               (click)="removeAllFromDeck(card.card)"
               class="cursor-pointer"

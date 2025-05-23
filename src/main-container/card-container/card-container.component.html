@@ -13,13 +13,10 @@
         <mat-chip-option class="mat-chip-option" id="lila" (click)="onColorChanges('lila')">Lila</mat-chip-option>
         <mat-chip-option class="mat-chip-option" id="narancs" (click)="onColorChanges('narancs')">Narancs</mat-chip-option>
     </mat-chip-listbox>
-    
 </nav>
 
 <div id="card-holder-container">
     <div class="card-container" *ngFor="let cardInstance of cardInstancesOBSVALCHILD">
-        <!-- <h3>Name and mana</h3> -->
         <app-carddata-container [cardInstance]="cardInstance"></app-carddata-container>
-        <!-- <button>Add to deck</button> -->
     </div>
 </div>

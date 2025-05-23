@@ -1,19 +1,19 @@
-*{
-    padding: 2px 0;
+* {
+  padding: 2px 0;
 }
 
-img{
-    max-width: calc(var(--card-width) * 1px);
-    border-radius: 4px;
-    transition: transform 0.2s ease, filter 0.2s ease;
+img {
+  max-width: calc(var(--card-width) * 1px);
+  border-radius: 4px;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-img:hover{
-    transform: scale(calc(1 - (var(--card-width) - 620) / 950));
-    filter: brightness(1.1) contrast(1.1);
+img:hover {
+  transform: scale(calc(1 - (var(--card-width) - 620) / 950));
+  filter: brightness(1.1) contrast(1.1);
 }
 
 img.clicked {
-    filter: brightness(1.32);
-    transition: filter 0.032s ease;
+  filter: brightness(1.32);
+  transition: filter 0.032s ease;
 }

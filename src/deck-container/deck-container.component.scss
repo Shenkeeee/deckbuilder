@@ -8,21 +8,8 @@
   --mat-filled-button-icon-spacing: 0;
   --mat-filled-button-icon-offset: 0;
 
-  // height: calc(100dvh - 90px);
   padding: 10px;
 }
-
-// #search-filter-container {
-//     z-index: 1;
-//     position: relative;
-//     display: flex;
-//     justify-content: space-between;
-//     margin-bottom: 10px;
-// }
-
-// #copy-deck-button {
-//     z-index: ;
-// }
 
 mat-label {
   color: gray;
@@ -125,15 +112,6 @@ mat-label {
   padding-top: 0;
 }
 
-// .custom-icon-button {
-//     color: black;
-//     /* Change color to black */
-// }
-
-// #clear-deck-button {
-//     margin-left: 10px;
-// }
-
 #import-deck-container {
   padding-top: 5px;
   background-color: #000000;
@@ -177,7 +155,7 @@ mat-slider {
   position: absolute;
   top: 0.625rem;
   height: 1.65rem;
-  
+
   // centering the icon in it
   display: flex;
   align-items: center;
@@ -190,7 +168,7 @@ mat-slider {
   background-color: #3f51b5;
   border-radius: 4px;
   transition: background-color 0.2s ease;
-  
+
   box-shadow: 0 0 3px 1px black;
 }
 
@@ -201,11 +179,3 @@ mat-slider {
 .dragModifier {
   right: 2px;
 }
-
-// #cardRemoveModifier {
-//   right: 48px;
-// }
-
-// #cardAddModifier {
-//   right: 96px;
-// }

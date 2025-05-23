@@ -20,7 +20,6 @@ import {
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatProgressSpinner,
   ],
   templateUrl: './admin-cards.component.html',
   styleUrl: './admin-cards.component.scss',
