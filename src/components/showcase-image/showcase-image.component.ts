@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarddataContainerComponent } from '../../pages/main-container/carddata-container/carddata-container.component';
+import { CardComponent } from '../card/card.component';
 import { CardHandlerService } from '../../services/card-handler.service';
 import { Deck } from '../../assets/model/deck-container/deck';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   templateUrl: './showcase-image.component.html',
   styleUrl: './showcase-image.component.scss',
-  imports: [CarddataContainerComponent, CommonModule],
+  imports: [CardComponent, CommonModule],
 })
 export class ShowcaseImage implements OnInit {
   currentDeckReversed: Deck = { cards: [] };

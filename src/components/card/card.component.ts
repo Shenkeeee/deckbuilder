@@ -1,18 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CardInstance } from '../../../assets/model/carddata-container/card-instance';
+import { CardInstance } from '../../assets/model/card/card-instance';
 import { CommonModule } from '@angular/common';
-import { Card } from '../../../assets/model/carddata-container/card';
-import { Deck } from '../../../assets/model/deck-container/deck';
-import { CardHandlerService } from '../../../services/card-handler.service';
+import { Card } from '../../assets/model/card/card';
+import { Deck } from '../../assets/model/deck-container/deck';
+import { CardHandlerService } from '../../services/card-handler.service';
 
 @Component({
-  selector: 'app-carddata-container',
-  templateUrl: './carddata-container.component.html',
-  styleUrls: ['./carddata-container.component.scss'],
+  selector: 'app-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.scss'],
   standalone: true,
   imports: [CommonModule],
 })
-export class CarddataContainerComponent implements OnInit {
+export class CardComponent implements OnInit {
   @Input() cardInstance!: CardInstance;
   currentDeck!: Deck;
   selectedFormat!: string;

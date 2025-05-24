@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { CardListerPageComponent } from '../pages/card-lister-page/card-lister-page.component';
+import { CardListerPageComponent } from '../pages/deck-builder-page/deck-builder-page.component';
 import { AdminCardsComponent } from '../pages/admin-cards/admin-cards.component';
 
 export const routes: Routes = [
   { path: 'create', component: CardListerPageComponent },
   { path: '', redirectTo: '/create', pathMatch: 'full' },
   { path: '**', redirectTo: '/create', pathMatch: 'full' },
-//   { path: 'admin-cards', component: AdminCardsComponent },
+  //   { path: 'admin-cards', component: AdminCardsComponent },
 ];

@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { CarddataContainerComponent } from '../carddata-container/carddata-container.component';
+import { CardComponent } from '../../../components/card/card.component';
 import { CommonModule } from '@angular/common';
-import { CardInstance } from '../../../assets/model/carddata-container/card-instance';
+import { CardInstance } from '../../../assets/model/card/card-instance';
 import { CardHandlerService } from '../../../services/card-handler.service';
 
 import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
-  selector: 'app-card-container',
+  selector: 'app-card-browser',
   standalone: true,
-  imports: [CarddataContainerComponent, CommonModule, MatChipsModule],
-  templateUrl: './card-container.component.html',
-  styleUrl: './card-container.component.scss'
+  imports: [CardComponent, CommonModule, MatChipsModule],
+  templateUrl: './card-browser.component.html',
+  styleUrl: './card-browser.component.scss'
 })
 
 
-export class CardContainerComponent implements OnInit {
+export class CardBrowserComponent implements OnInit {
   // cardInstances: CardInstance[] = [];
   cardInstancesOBSVALCHILD: CardInstance[] = [];
   inputValueMsg: string = "";
