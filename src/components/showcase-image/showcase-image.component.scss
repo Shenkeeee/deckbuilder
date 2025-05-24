@@ -1,3 +1,5 @@
+$background-overlay-color: rgba(0, 0, 0, 0.5);
+
 .showcase-wrapper {
   position: fixed;
   width: 100vw;
@@ -9,8 +11,22 @@
   align-content: space-evenly;
 
   z-index: 2;
-  background-color: #f7d8ba;
+
+  // background-color: #f7d8ba;
+  background-image: url("../../assets/pics/additional/bg.webp");
+  background-position: center center;
   border-radius: 4px;
+}
+
+.showcase-wrapper::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: $background-overlay-color;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
 }
 
 .showcase-cards-wrapper {
