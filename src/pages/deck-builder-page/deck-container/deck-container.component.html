@@ -271,8 +271,8 @@
               }"
               [src]="
                 card.card.ImagePath
-                  ? 'assets/pics/' + card.card.ImagePath + '.webp'
-                  : 'assets/pics/feherszint.png_resize.webp'
+                  ? 'assets/pics/cards/' + card.card.ImagePath + '.webp'
+                  : 'assets/pics/cards/feherszint.png_resize.webp'
               "
               alt="{{ card.card.ImagePath }}"
             />
@@ -316,7 +316,7 @@
                 box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.3);
                 border-radius: 25px;
               "
-              [src]="'assets/pics/' + hoveredImagePath + '.webp'"
+              [src]="'assets/pics/cards/' + hoveredImagePath + '.webp'"
               alt="{{ hoveredImagePath }}"
             />
           </div>
@@ -344,7 +344,7 @@
                 box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.3);
                 border-radius: 25px;
               "
-              [src]="'assets/pics/' + clickedImagePath + '.webp'"
+              [src]="'assets/pics/cards/' + clickedImagePath + '.webp'"
               alt="{{ clickedImagePath }}"
             />
           </div>
