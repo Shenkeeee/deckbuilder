@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
+import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { Deck } from '../../../assets/model/deck-container/deck';
 
 import { CommonModule } from '@angular/common';
@@ -41,6 +42,7 @@ import { ShowcaseImage } from '../../../components/showcase-image/showcase-image
     CdkDrag,
     CdkDragHandle,
     ShowcaseImage,
+    CdkScrollableModule
   ],
   templateUrl: './deck-container.component.html',
   styleUrl: './deck-container.component.scss',
