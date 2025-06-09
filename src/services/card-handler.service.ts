@@ -13,6 +13,7 @@ export class CardHandlerService {
   cardInstances: CardInstance[] = [];
   allcardInstances: CardInstance[] = [];
   cardInstanceNum = 0;
+  colorOrder = new Set<string>();
 
   // Observables
   // name input field

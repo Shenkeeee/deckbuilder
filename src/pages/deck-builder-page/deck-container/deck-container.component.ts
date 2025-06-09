@@ -298,6 +298,17 @@ export class DeckContainerComponent implements OnInit {
       } else {
         // If the amount is one, remove the card from the deck
         this.currentDeck.cards.splice(indexToRemove, 1);
+        
+        // Remove the color from the colors in deck if this was the last card with that color
+        // Check if any other cards of the same color remain
+        const removedColor = card.card.Color;
+        const stillExists = this.currentDeck.cards.some(
+          c => c.card.Color === removedColor
+        );
+
+        if (!stillExists && removedColor) {
+          this.cardHandlerService.colorOrder.delete(removedColor);
+        }
       }
     }
 

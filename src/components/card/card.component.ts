@@ -79,8 +79,30 @@ export class CardComponent implements OnInit {
     if (existingCard) {
       existingCard.amount++;
     } else {
-      this.currentDeck.cards.push({ card: cardToAdd, amount: 1 });
+      const newCard = { card: cardToAdd, amount: 1 };
+
+      // Track color order
+      const color = cardToAdd.Color || '';
+      if (color !== 'Multicolor' && !this.cardHandlerService.colorOrder.has(color)) {
+        this.cardHandlerService.colorOrder.add(color);
+      }
+
+      // Find the correct insert index
+      const insertIndex = this.currentDeck.cards.findIndex(existing => {
+        const cmp = this.compareSortValues(
+          this.getCardSortValue(newCard.card),
+          this.getCardSortValue(existing.card)
+        );
+        return cmp < 0;
+      });
+
+      if (insertIndex === -1) {
+        this.currentDeck.cards.push(newCard); // add to end
+      } else {
+        this.currentDeck.cards.splice(insertIndex, 0, newCard); // insert at right position
+      }
     }
+
 
     this.cardHandlerService.currentDeck.next(this.currentDeck);
   }
@@ -111,6 +133,36 @@ export class CardComponent implements OnInit {
       card.CardType === 'Szintlépés' ||
       card.CardType === 'Spirit'
     );
+  }
+
+  // 0 → Special cards (Vezető, Szintlépés 2, Szintlépés 3, Spirit)
+  // 1 → Everything else -> Then by multicolor, color appearance order, and mana cost
+  getCardSortValue(card: Card): number[] {
+    const cardType = card.CardType || '';
+    const name = card.Name || '';
+
+    // Special cards
+    if (cardType === 'Vezető') return [0, 0];
+    if (cardType === 'Szintlépés' && name === 'Szintlépés 2') return [0, 1];
+    if (cardType === 'Szintlépés' && name === 'Szintlépés 3') return [0, 2];
+    if (cardType === 'Spirit') return [0, 3];
+
+    // Regular cards
+    const color = card.Color || '';
+    const isMulticolor = color === 'Multicolor';
+    const colorIndex = isMulticolor ? -1 : [...this.cardHandlerService.colorOrder].indexOf(color);
+
+    const mana = card.ManaCost ?? Infinity;
+
+    return [1, isMulticolor ? 0 : 1, colorIndex, mana];
+  }
+
+  compareSortValues(a: number[], b: number[]): number {
+    for (let i = 0; i < Math.max(a.length, b.length); i++) {
+      const diff = (a[i] ?? 0) - (b[i] ?? 0);
+      if (diff !== 0) return diff;
+    }
+    return 0;
   }
 
   calculateLengthOfDeck() {
