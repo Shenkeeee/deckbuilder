@@ -15,6 +15,9 @@ export class CardHandlerService {
   cardInstanceNum = 0;
   colorOrder = new Set<string>();
 
+  FAITH_COLORS = ['Fehér', 'Sárga', 'Magenta', 'Kék'];
+  FEAR_COLORS = ['Fekete', 'Piros', 'Zöld', 'Lila'];
+
   // Observables
   // name input field
   inputValueMsg = new BehaviorSubject<string>('');
@@ -185,6 +188,7 @@ export class CardHandlerService {
     // if searchable has + then it has multiple colors.
     // but if we also have dual selected then we set it to isDual.
     const hasDual = colorName.includes('+');
+    const isDualSelected = selectedColors.includes('+');
     const isDual = colorName.includes('+') && selectedColors.includes('+');
     const colorNameLower = this.removeAccents(colorName.toLowerCase());
 
@@ -202,7 +206,7 @@ export class CardHandlerService {
       (color) => colorArray.includes(color) && selectedColors.length > 1
     );
 
-    // If dual is selected or any selected color matches the colorName
+    // If any selected color matches the colorName
     if (matchesSelectedColors && matchingCount >= 2) {
       // console.log(
       //   'Matching Count: ' +
@@ -215,20 +219,39 @@ export class CardHandlerService {
 
       return true;
     }
-
+    
     // If dual is selected or both selected colors are in the colorName
     if (isDual) {
-      // console.log(
-      //   'colorArray  ' +
-      //     [...colorArray] +
-      //     ' \nSelectedColors ' +
-      //     this.selectedColors.value
-      // );
-      return true;
+      // If only dual or one more color is selected
+      if(selectedColors.length === 1) {
+        return true;
+      }
+
+      // If only dual or one more color is selected
+      if(selectedColors.length === 2) {
+        return selectedColors.filter((color) => colorArray.includes(color)).length !== 0;
+      }
+        
+      // Are the colors selected in the same class (Fear / Faith?) 
+      // -> e.g dual + black + red are selected, show the dual black red cards only. 
+      // -> e.g dual + black + red + green are selected, show the permutation of those cards.
+
+      // Split selectedColors by class
+      const selectedFaith = selectedColors.filter(c => this.FAITH_COLORS.includes(c));
+      const selectedFear = selectedColors.filter(c => this.FEAR_COLORS.includes(c));
+
+      const allInFaith = selectedColors.length === selectedFaith.length;
+      const allInFear = selectedColors.length === selectedFear.length;
+
+      // If they are in the same class AND not only dual is selected
+      if (allInFaith || allInFear) {
+        // All selected colors are in one class -> require intersection
+        return selectedColors.every(color => colorName.includes(color));
+      }
     }
 
-    // Regular color matching
-    return selectedColors.includes(this.removeAccents(colorNameLower));
+    // Regular color matching - if dual is not selected
+    return !isDualSelected && selectedColors.includes(this.removeAccents(colorNameLower));
   }
 
   matchesTypeFilter(input?: string): boolean {
