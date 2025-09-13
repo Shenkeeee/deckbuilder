@@ -135,7 +135,9 @@ export class CardHandlerService {
       Spirit: data['spirit'],
       Winnable: data['nyeremeny'],
       Release:
-        data['sorszam'].startsWith('dop') | data['sorszam'].startsWith('Equ')
+        data['sorszam'].startsWith('dop') |
+        data['sorszam'].startsWith('Equ') |
+        data['sorszam'].startsWith('Phy')
           ? data['sorszam'].slice(3, 5)
           : data['sorszam'].slice(2, 4),
       CardNumber: data['sorszam'],
@@ -219,26 +221,33 @@ export class CardHandlerService {
 
       return true;
     }
-    
+
     // If dual is selected or both selected colors are in the colorName
     if (isDual) {
       // If only dual or one more color is selected
-      if(selectedColors.length === 1) {
+      if (selectedColors.length === 1) {
         return true;
       }
 
       // If only dual or one more color is selected
-      if(selectedColors.length === 2) {
-        return selectedColors.filter((color) => colorArray.includes(color)).length !== 0;
+      if (selectedColors.length === 2) {
+        return (
+          selectedColors.filter((color) => colorArray.includes(color))
+            .length !== 0
+        );
       }
-        
-      // Are the colors selected in the same class (Fear / Faith?) 
-      // -> e.g dual + black + red are selected, show the dual black red cards only. 
+
+      // Are the colors selected in the same class (Fear / Faith?)
+      // -> e.g dual + black + red are selected, show the dual black red cards only.
       // -> e.g dual + black + red + green are selected, show the permutation of those cards.
 
       // Split selectedColors by class
-      const selectedFaith = selectedColors.filter(c => this.FAITH_COLORS.includes(c));
-      const selectedFear = selectedColors.filter(c => this.FEAR_COLORS.includes(c));
+      const selectedFaith = selectedColors.filter((c) =>
+        this.FAITH_COLORS.includes(c)
+      );
+      const selectedFear = selectedColors.filter((c) =>
+        this.FEAR_COLORS.includes(c)
+      );
 
       const allInFaith = selectedColors.length === selectedFaith.length;
       const allInFear = selectedColors.length === selectedFear.length;
@@ -246,12 +255,15 @@ export class CardHandlerService {
       // If they are in the same class AND not only dual is selected
       if (allInFaith || allInFear) {
         // All selected colors are in one class -> require intersection
-        return selectedColors.every(color => colorName.includes(color));
+        return selectedColors.every((color) => colorName.includes(color));
       }
     }
 
     // Regular color matching - if dual is not selected
-    return !isDualSelected && selectedColors.includes(this.removeAccents(colorNameLower));
+    return (
+      !isDualSelected &&
+      selectedColors.includes(this.removeAccents(colorNameLower))
+    );
   }
 
   matchesTypeFilter(input?: string): boolean {
