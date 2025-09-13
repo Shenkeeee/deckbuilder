@@ -1,5 +1,5 @@
 [
-    {
+  {
     "id": "Phy26-001",
     "data": {
       "kepesseg": "Aktívan jön. Amikor játékba kerül, Szintet léphet a Vezetőd",
@@ -84,6 +84,38 @@
     }
   },
   {
+    "id": "Phy26-006",
+    "data": {
+      "mana+": "",
+      "tamado-vedo": "",
+      "szin": "Multicolor",
+      "laptipus": "Spirit",
+      "mana-koltseg": "0",
+      "spirit": "",
+      "altipus": "",
+      "sorszam": "Phy26/006",
+      "nev": "Blink Hydrangea",
+      "laphuzo+": "",
+      "kepesseg": "Ha aktiválódik egy Portál Csapda                                 3: Kikereshetsz 2 Portál Csapdát a paklidból                                                                         9: Ellenfeled egyik játékban lévő Karakterét, ami egyezik a Vezetője színével, a Portálkapuba teheted"
+    }
+  },
+  {
+    "id": "Phy26-007",
+    "data": {
+      "kepesseg": "Ha altípussal rendelkező Karakterrel támadsz                                  3: Egy altípussal rendelkező Karaktered +0 +2 Erősítést kap                                                                                             9: Ha 3 Karaktered van a Portálban, a következő körben nem támadhatóak az altípussal rendelkező Karaktereid",
+      "nev": "Erior Lilium",
+      "szin": "Multicolor",
+      "sorszam": "Phy26/007",
+      "laphuzo+": "",
+      "altipus": "",
+      "laptipus": "Spirit",
+      "mana+": "",
+      "tamado-vedo": "",
+      "mana-koltseg": "0",
+      "spirit": ""
+    }
+  },
+  {
     "id": "Phy26-008",
     "data": {
       "laphuzo+": "1",
@@ -101,6 +133,119 @@
     }
   },
   {
+    "id": "Phy26-009",
+    "data": {
+      "sorszam": "Phy26/009",
+      "altipus": "Sima",
+      "szin": "Multicolor",
+      "mana-koltseg": "1",
+      "nev": "Buried Signals",
+      "tamado-vedo": "",
+      "spirit": "1",
+      "mana+": "2",
+      "laptipus": "Varázslat",
+      "kepesseg": "A temetődből 2 Portál Csapdát tegyél a paklid aljára. Ha ellenfelednek több, mint 5 lap van a kezében, Száműzheted egy játékban lévő Zóna lapját",
+      "laphuzo+": "1"
+    }
+  },
+  {
+    "id": "Phy26-010",
+    "data": {
+      "altipus": "Instant",
+      "szin": "Multicolor",
+      "tamado-vedo": "",
+      "mana-koltseg": "1",
+      "kepesseg": "Vedd a kezedbe egy Mana és egy Laphúzó lapod, majd tegyél le egy lapot Manának. Ha van már Karakter az Oltárodban: Ellenfeled Száműzze a paklija felső lapját",
+      "nev": "Chromatic Claim",
+      "sorszam": "Phy26/010",
+      "laphuzo+": "1",
+      "laptipus": "Varázslat",
+      "mana+": "2",
+      "spirit": "1"
+    }
+  },
+  {
+    "id": "Phy26-011",
+    "data": {
+      "nev": "Dueling",
+      "szin": "Multicolor",
+      "mana+": "1",
+      "laptipus": "Varázslat",
+      "laphuzo+": "1",
+      "sorszam": "Phy26/011",
+      "altipus": "Instant",
+      "mana-koltseg": "2",
+      "kepesseg": "Dobj két lapot a kezedből a temetődbe: Száműzhetsz két maximum 2 Manás lapot ellenfeled temetőjéből. Ha van már Karakter az Oltárodban, ingyen játszhatod ezt ki",
+      "spirit": "2",
+      "tamado-vedo": ""
+    }
+  },
+  {
+    "id": "Phy26-012",
+    "data": {
+      "szin": "Multicolor",
+      "laptipus": "Varázslat",
+      "laphuzo+": "1",
+      "mana-koltseg": "2",
+      "kepesseg": "Ha már elvégezted a Szertartást az Oltáron: Egy maximum 2-es és egy maximum 4-es Karaktert játékba hozhatsz ingyen az Oltárból",
+      "sorszam": "Phy26/012",
+      "spirit": "2",
+      "tamado-vedo": "",
+      "mana+": "2",
+      "altipus": "Instant",
+      "nev": "Benediction"
+    }
+  },
+  {
+    "id": "Phy26-013",
+    "data": {
+      "laphuzo+": "1",
+      "kepesseg": "Ellenfél egyik Karakterére -2 -0 Gyengítést tehetsz. Ha már szintet lépett a Vezetőd, további -1 -1-et tehetsz rá",
+      "altipus": "Sima",
+      "szin": "Multicolor",
+      "sorszam": "Phy26/013",
+      "mana-koltseg": "2",
+      "laptipus": "Varázslat",
+      "spirit": "1",
+      "tamado-vedo": "",
+      "nev": "Fading Edge",
+      "mana+": "1"
+    }
+  },
+  {
+    "id": "Phy26-014",
+    "data": {
+      "laptipus": "Varázslat",
+      "szin": "Multicolor",
+      "sorszam": "Phy26/014",
+      "nev": "Ascendra",
+      "tamado-vedo": "",
+      "kepesseg": "A paklidból kikereshetsz 2 Shard lapot, és dobd a temetődbe. Ha már aktív a Szintlépés 2, kaphatsz 2 Spirit pontot. Ha már aktív a Szintlépés 3, kaphatsz további 2 Spirit pontot",
+      "mana-koltseg": "2",
+      "mana+": "1",
+      "laphuzo+": "1",
+      "spirit": "2",
+      "altipus": "Sima",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-015",
+    "data": {
+      "nev": "Fracture",
+      "szin": "Multicolor",
+      "laptipus": "Varázslat",
+      "altipus": "Instant",
+      "tamado-vedo": "",
+      "spirit": "2",
+      "sorszam": "Phy26/015",
+      "laphuzo+": "1",
+      "kepesseg": "Aktiváld maximum 2 Portál Csapda lapod a kezedből, mint ha most került volna Portálkapuba az ellenfeled, majd dobd a temetődbe ",
+      "mana+": "1",
+      "mana-koltseg": "3"
+    }
+  },
+  {
     "id": "Phy26-016",
     "data": {
       "altipus": "Instant",
@@ -114,6 +259,38 @@
       "nev": "Pulse",
       "tamado-vedo": "",
       "mana+": "1"
+    }
+  },
+  {
+    "id": "Phy26-017",
+    "data": {
+      "mana-koltseg": "4",
+      "szin": "Multicolor",
+      "tamado-vedo": "",
+      "nev": "Bygone ",
+      "mana+": "2",
+      "kepesseg": "Ellenfeled vegye vissza a kezébe az egyik Karakterén lévő Auráját, majd sebezhetsz abba a Karakterbe 2-t. Ha már aktív a Szintlépés 3, ingyen játszhatod ki ezt a lapot",
+      "sorszam": "Phy26/017",
+      "spirit": "2",
+      "laphuzo+": "1",
+      "altipus": "Sima",
+      "laptipus": "Varázslat"
+    }
+  },
+  {
+    "id": "Phy26-018",
+    "data": {
+      "mana-koltseg": "4",
+      "szin": "Multicolor",
+      "laphuzo+": "1",
+      "altipus": "Sima",
+      "nev": "Crystalline",
+      "sorszam": "Phy26/018",
+      "spirit": "2",
+      "mana+": "2",
+      "laptipus": "Varázslat",
+      "kepesseg": "Ha már legalább 2 Karaktered van az Oltárodban: Kikereshetsz a paklidból 2 Shard lapot, majd tedd a paklid tetejére. Ha még nem tettél Karaktert az Oltárodba ebben a körben, a temetődből oda tehetsz egyet",
+      "tamado-vedo": ""
     }
   },
   {
@@ -165,6 +342,39 @@
     }
   },
   {
+    "id": "Phy26-022",
+    "data": {
+      "laphuzo+": "1",
+      "mana-koltseg": "3",
+      "nev": "Lockdown Agent",
+      "sorszam": "Phy26/022",
+      "altipus": "",
+      "szin": "Multicolor",
+      "tamado-vedo": "2 / 1",
+      "mana+": "1",
+      "spirit": "2",
+      "laptipus": "Karakter",
+      "kepesseg": "Aktívan jön. Ha már aktív a Szintlépés 3 amikor játékba kerül, módosíthatod véglegesen ellenfél egyik Karakternének vagy Aurájának a védelmét 2-re",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-023",
+    "data": {
+      "altipus": "",
+      "mana-koltseg": "3",
+      "tamado-vedo": "3 / 1",
+      "szin": "Multicolor",
+      "nev": "Last Martyr",
+      "laptipus": "Karakter",
+      "spirit": "3",
+      "mana+": "1",
+      "sorszam": "Phy26/023",
+      "laphuzo+": "1",
+      "kepesseg": "Aktívan jön. Amikor meghal, Száműzheted egy Karaktered az Oltárodból, és kaphatsz annyi bármilyen Manát, amennyi annak a kijátszási költsége volt"
+    }
+  },
+  {
     "id": "Phy26-024",
     "data": {
       "spirit": "1",
@@ -198,6 +408,56 @@
     }
   },
   {
+    "id": "Phy26-026",
+    "data": {
+      "altipus": "",
+      "sorszam": "Phy26/026",
+      "mana-koltseg": "0",
+      "szin": "Fehér",
+      "nev": "Altar of Blessing",
+      "tamado-vedo": "",
+      "spirit": "",
+      "laptipus": "Oltár",
+      "mana+": "",
+      "laphuzo+": "",
+      "kepesseg": "(1)Temetődből egy lapot a paklid aljára tehetsz . (2) Minden Fehér karakteren lévő aura +2 +2 Erősítést kap"
+    }
+  },
+  {
+    "id": "Phy26-027",
+    "data": {
+      "spirit": "1",
+      "mana-koltseg": "4",
+      "laptipus": "Karakter",
+      "szin": "Fehér",
+      "kepesseg": "A temetődből 2 lapot a paklid aljára tehetsz. Passzivizáld a saját körödben: Ingyen kijátszhatsz a kezedből egy Trinity Peace Varázslatot",
+      "tamado-vedo": "3 / 3",
+      "laphuzo+": "1",
+      "mana+": "1",
+      "altipus": "Specialista",
+      "nev": "Curious Bookworm",
+      "sorszam": "Phy26/027",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-028",
+    "data": {
+      "altipus": "Specialista",
+      "sorszam": "Phy26/028",
+      "laphuzo+": "1",
+      "mana+": "1",
+      "spirit": "1",
+      "tamado-vedo": "2 / 4",
+      "nev": "Hope Caller",
+      "kepesseg": "Egy másik Faith Karakterednek +1 +0 Erősítést adhatsz. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Revitalization  Varázslatot",
+      "mana-koltseg": "4",
+      "laptipus": "Karakter",
+      "szin": "Fehér",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-029",
     "data": {
       "tamado-vedo": "0 / 3",
@@ -214,6 +474,88 @@
     }
   },
   {
+    "id": "Phy26-030",
+    "data": {
+      "szin": "Fehér",
+      "mana-koltseg": "0",
+      "kepesseg": "Csak a temetődből játszhatod ki, utána Száműzd. Dobj 2 Karaktert a temetődbe az Oltárból: Egy Portálkapuban lévő Karakter azonnal átjut a Portálba",
+      "laptipus": "Varázslat",
+      "mana+": "1",
+      "sorszam": "Phy26/030",
+      "tamado-vedo": "",
+      "altipus": "Shard",
+      "spirit": "3",
+      "laphuzo+": "1",
+      "nev": "Pure Quartz"
+    }
+  },
+  {
+    "id": "Phy26-031",
+    "data": {
+      "laptipus": "Varázslat",
+      "mana+": "1",
+      "altipus": "Instant",
+      "laphuzo+": "1",
+      "tamado-vedo": "",
+      "mana-koltseg": "1",
+      "szin": "Fehér",
+      "nev": "Weak Force",
+      "sorszam": "Phy26/031",
+      "spirit": "2",
+      "kepesseg": "Minden maximum 2-es Faith Karaktered annyi +0 +1 Erősítést kap, ahány Spirit 1-es Karaktered van az Oltárban"
+    }
+  },
+  {
+    "id": "Phy26-032",
+    "data": {
+      "mana+": "1",
+      "spirit": "1",
+      "laptipus": "Varázslat",
+      "tamado-vedo": "",
+      "sorszam": "Phy26/032",
+      "mana-koltseg": "2",
+      "nev": "Verdict",
+      "laphuzo+": "1",
+      "altipus": "Sima",
+      "kepesseg": "Száműzd minden Spirit 1-es Karaktered az Oltárból: Ellenfél egyik Karakterébe sebezhetsz annyit, amennyi Karaktert Száműztél",
+      "szin": "Fehér"
+    }
+  },
+  {
+    "id": "Phy26-033",
+    "data": {
+      "szin": "Fehér",
+      "mana-koltseg": "3",
+      "kepesseg": "Ha már szintet lépett a Vezetőd: Kikereshetsz a paklidból három, maximum 2-es Fehér Varázslatot, ezt pedig tedd a paklid aljára",
+      "tamado-vedo": "",
+      "nev": "Sanctum",
+      "mana+": "1",
+      "spirit": "2",
+      "laptipus": "Varázslat",
+      "altipus": "Sima",
+      "laphuzo+": "1",
+      "sorszam": "Phy26/033",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-034",
+    "data": {
+      "altipus": "Sima",
+      "tamado-vedo": "",
+      "kepesseg": "Dobj 4 lapot a paklid tetejéről a temetődbe, majd minden maximum 3-as Calm Karaktert a paklid aljára tehetsz onnan",
+      "nev": "Trinity Peace",
+      "mana+": "1",
+      "spirit": "3",
+      "laphuzo+": "1",
+      "szin": "Fehér",
+      "sorszam": "Phy26/034",
+      "mana-koltseg": "4",
+      "laptipus": "Varázslat",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-035",
     "data": {
       "nev": "Lord's Grace",
@@ -227,6 +569,22 @@
       "szin": "Fehér",
       "mana+": "2",
       "altipus": ""
+    }
+  },
+  {
+    "id": "Phy26-036",
+    "data": {
+      "tamado-vedo": "1 / 0",
+      "szin": "Fehér",
+      "laptipus": "Aura",
+      "spirit": "2",
+      "altipus": "",
+      "laphuzo+": "1",
+      "sorszam": "Phy26/036",
+      "kepesseg": "Ha már elvégezted a Szertartást az Oltáron: Kijátszáskor a Faith Karaktered maximum Életerőre Gyógyul",
+      "mana-koltseg": "1",
+      "nev": "Adoration",
+      "mana+": "1"
     }
   },
   {
@@ -262,6 +620,56 @@
     }
   },
   {
+    "id": "Phy26-039",
+    "data": {
+      "nev": "altar of science",
+      "spirit": "",
+      "kepesseg": "(1) Nézd meg a paklid felső lapját (2) Minden játékban lévő Karakteredre azonos színű Aurát ingyen kijátszhatsz a temetődből",
+      "mana+": "",
+      "mana-koltseg": "0",
+      "szin": "Sárga",
+      "tamado-vedo": "",
+      "altipus": "",
+      "laptipus": "Oltár",
+      "sorszam": "Phy26/039",
+      "laphuzo+": ""
+    }
+  },
+  {
+    "id": "Phy26-040",
+    "data": {
+      "sorszam": "Phy26/040",
+      "tamado-vedo": "2 / 4",
+      "laptipus": "Karakter",
+      "mana-koltseg": "4",
+      "kepesseg": "Nézd meg a paklid legfelső lapját, ha akarod, a paklid aljára teheted. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Supervision Varázslatot",
+      "laphuzo+": "1",
+      "altipus": "Specialista",
+      "mana+": "1",
+      "szin": "Sárga",
+      "nev": "Chief Inspector",
+      "spirit": "1",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-041",
+    "data": {
+      "spirit": "1",
+      "mana+": "1",
+      "sorszam": "Phy26/041",
+      "mana-koltseg": "4",
+      "szin": "Sárga",
+      "laphuzo+": "1",
+      "altipus": "Specialista",
+      "nev": "Drone Aviator",
+      "laptipus": "Karakter",
+      "tamado-vedo": "4 / 2",
+      "kepesseg": "A temetődből egy Sárga Aurát a paklid tetejére tehetsz. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Observation Varázslatot",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-042",
     "data": {
       "altipus": "",
@@ -278,6 +686,71 @@
     }
   },
   {
+    "id": "Phy26-043",
+    "data": {
+      "szin": "Sárga",
+      "laptipus": "Varázslat",
+      "tamado-vedo": "",
+      "nev": "Tainted Citrin",
+      "spirit": "1",
+      "altipus": "Shard",
+      "laphuzo+": "1",
+      "mana+": "1",
+      "kepesseg": "Csak a temetődből játszhatod ki, utána Számüzd. Egy Karaktered tedd a temetődbe az Oltárból: Száműzd ellenfél egyik Auráját az összes játékban lévő lapja közül",
+      "sorszam": "Phy26/043",
+      "mana-koltseg": "0"
+    }
+  },
+  {
+    "id": "Phy26-044",
+    "data": {
+      "nev": "Replay",
+      "kepesseg": "Ebben a körben minden Karaktered kijátszása annyi Manával kevesebbe kerül, ahány velük azonos nevű Karaktered van az Oltárban",
+      "mana-koltseg": "1",
+      "laptipus": "Varázslat",
+      "spirit": "1",
+      "laphuzo+": "1",
+      "mana+": "1",
+      "szin": "Sárga",
+      "altipus": "Sima",
+      "sorszam": "Phy26/044",
+      "tamado-vedo": ""
+    }
+  },
+  {
+    "id": "Phy26-045",
+    "data": {
+      "mana-koltseg": "2",
+      "laptipus": "Varázslat",
+      "nev": "Disable",
+      "szin": "Sárga",
+      "altipus": "Instant",
+      "kepesseg": "Dobj oltárból egy lapot a temetőbe. Cseréld meg egy aura értékeit. Ebben a körben az aura nem kaphat sem gyengitést sem erősitést.",
+      "laphuzo+": "1",
+      "spirit": "3",
+      "tamado-vedo": "",
+      "sorszam": "Phy26/045",
+      "mana+": "1"
+    }
+  },
+  {
+    "id": "Phy26-046",
+    "data": {
+      "altipus": "Sima",
+      "laptipus": "Varázslat",
+      "sorszam": "Phy26/046",
+      "laphuzo+": "1",
+      "mana-koltseg": "3",
+      "kepesseg": "A temetődből egy 1-es és egy 4-es F.A.M.E. Pilot Karaktert kijátszhatsz ingyen azokba a zónákba, ahol van játékban Zóna lapod",
+      "spirit": "2",
+      "mana+": "1",
+      "tamado-vedo": "",
+      "nev": "F.A.M.E. #Emulation",
+      "szin": "Sárga",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-047",
     "data": {
       "tamado-vedo": "",
@@ -291,6 +764,39 @@
       "mana-koltseg": "4",
       "laphuzo+": "1",
       "szin": "Sárga"
+    }
+  },
+  {
+    "id": "Phy26-048",
+    "data": {
+      "sorszam": "Phy26/048",
+      "nev": "/Spent Charge/",
+      "kepesseg": "Ha már szintet lépett a Vezetőd: Száműzd két Aura lapod a temetődből. Ellenfél egyik passzív Karakterébe sebezhetsz annyit, amennyi az Aurák kijátszási költsége volt",
+      "szin": "Sárga",
+      "laptipus": "Varázslat",
+      "altipus": "Instant",
+      "mana+": "1",
+      "mana-koltseg": "6",
+      "laphuzo+": "1",
+      "tamado-vedo": "",
+      "spirit": "1",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-049",
+    "data": {
+      "mana-koltseg": "3",
+      "spirit": "3",
+      "laptipus": "Aura",
+      "tamado-vedo": "1 / 1",
+      "nev": "Observer",
+      "laphuzo+": "1",
+      "altipus": "",
+      "sorszam": "Phy26/049",
+      "mana+": "1",
+      "szin": "Sárga",
+      "kepesseg": "Ha már elvégezted a Szertartást az Oltáron: Ha Sárga Karakterre teszed, egy azonos nevű Karaktered ingyen kijátszhatod az Oltárból"
     }
   },
   {
@@ -326,6 +832,56 @@
     }
   },
   {
+    "id": "Phy26-052",
+    "data": {
+      "laptipus": "Oltár",
+      "mana-koltseg": "0",
+      "sorszam": "Phy26/052",
+      "spirit": "",
+      "nev": "Altar of Memories",
+      "tamado-vedo": "",
+      "kepesseg": "(1) Vegyél kezedbe a temetödből egy azonos kijátszású Karaktert (2) Játsz  ki  az ellenfél szabad zonájába karaktert az ellenfél temetőjéből ingyen",
+      "altipus": "",
+      "szin": "Magenta",
+      "laphuzo+": "",
+      "mana+": ""
+    }
+  },
+  {
+    "id": "Phy26-053",
+    "data": {
+      "szin": "Magenta",
+      "mana-koltseg": "4",
+      "spirit": "1",
+      "sorszam": "Phy26/053",
+      "mana+": "1",
+      "altipus": "Specialista",
+      "laphuzo+": "1",
+      "tamado-vedo": "2 / 4",
+      "kepesseg": "Ellenfél körében is kijátszhatod. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Hero Quest Varázslatot",
+      "nev": "Tale Teller",
+      "laptipus": "Karakter",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-054",
+    "data": {
+      "altipus": "Specialista",
+      "laptipus": "Karakter",
+      "laphuzo+": "1",
+      "spirit": "1",
+      "mana-koltseg": "4",
+      "kepesseg": "Egy ugyanilyen Karaktert a kezedbe vehetsz a temetődből. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Bunny Power Varázslatot",
+      "sorszam": "Phy26/054",
+      "tamado-vedo": "3 / 3",
+      "nev": "\r\nRabbit Summoner",
+      "szin": "Magenta",
+      "mana+": "1",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-055",
     "data": {
       "sorszam": "Phy26/055",
@@ -339,6 +895,72 @@
       "mana+": "1",
       "mana-koltseg": "3",
       "laphuzo+": "1"
+    }
+  },
+  {
+    "id": "Phy26-056",
+    "data": {
+      "mana+": "1",
+      "mana-koltseg": "0",
+      "sorszam": "Phy26/056",
+      "tamado-vedo": "",
+      "szin": "Magenta",
+      "spirit": "1",
+      "altipus": "Shard",
+      "laphuzo+": "1",
+      "kepesseg": "Csak a temetődből játszhatod ki. Vedd vissza a kezedbe 2 Karaktered az Oltárból: Egyiket Száműzd, a másikat Aktívan kijátszhatod",
+      "nev": "Crystallized Agate",
+      "laptipus": "Varázslat"
+    }
+  },
+  {
+    "id": "Phy26-057",
+    "data": {
+      "laphuzo+": "1",
+      "mana+": "1",
+      "mana-koltseg": "3",
+      "kepesseg": "Tedd az Oltárba az egyik játékban lévő Faith Karaktered",
+      "altipus": "Instant",
+      "nev": "Favor",
+      "szin": "Magenta",
+      "laptipus": "Varázslat",
+      "sorszam": "Phy26/057",
+      "spirit": "2",
+      "tamado-vedo": ""
+    }
+  },
+  {
+    "id": "Phy26-058",
+    "data": {
+      "mana+": "1",
+      "tamado-vedo": "",
+      "kepesseg": "Maximum 2 Magenta Karaktered, aminek van altípusa, +0 +2 Erősítést kap. Ha van játékban Zóna lapod: Kaphatsz 2 bármilyen Manát",
+      "spirit": "2",
+      "sorszam": "Phy26/058",
+      "szin": "Magenta",
+      "altipus": "Sima",
+      "laptipus": "Varázslat",
+      "mana-koltseg": "4",
+      "nev": "\r\nBunny Power",
+      "laphuzo+": "1",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-059",
+    "data": {
+      "laptipus": "Varázslat",
+      "kepesseg": "Egy Tokened +2 +1 Erősítést kap és nem csökkenhet 1 alá az Életereje ebben a körben",
+      "spirit": "1",
+      "szin": "Magenta",
+      "nev": "Hero Quest",
+      "mana+": "1",
+      "mana-koltseg": "5",
+      "sorszam": "Phy26/059",
+      "tamado-vedo": "",
+      "laphuzo+": "1",
+      "altipus": "Instant",
+      "nyeremeny": "1"
     }
   },
   {
@@ -358,6 +980,22 @@
     }
   },
   {
+    "id": "Phy26-061",
+    "data": {
+      "laptipus": "Varázslat",
+      "szin": "Magenta",
+      "spirit": "2",
+      "tamado-vedo": "",
+      "altipus": "Sima",
+      "sorszam": "Phy26/061",
+      "nev": "Whisperlink",
+      "mana+": "1",
+      "kepesseg": "Ha már van 3 Karaktered az Oltárban: Minden játékban lévő Silent Karakteredre csatolhatsz a temetődből ingyen egy maximum 3-as Magenta Aurát",
+      "mana-koltseg": "6",
+      "laphuzo+": "1"
+    }
+  },
+  {
     "id": "Phy26-062",
     "data": {
       "szin": "Magenta",
@@ -371,6 +1009,22 @@
       "laphuzo+": "1",
       "tamado-vedo": " +0 +1",
       "spirit": "1"
+    }
+  },
+  {
+    "id": "Phy26-063",
+    "data": {
+      "nev": "Grown Up",
+      "tamado-vedo": " +2 +1",
+      "mana+": "1",
+      "szin": "Magenta",
+      "kepesseg": "Ha már elvégezted a Szertartást az Oltáron: Tokenre ingyen játszhatod ki ezt az Aurát",
+      "altipus": "",
+      "mana-koltseg": "3",
+      "spirit": "3",
+      "sorszam": "Phy26/063",
+      "laphuzo+": "1",
+      "laptipus": "Aura"
     }
   },
   {
@@ -390,6 +1044,56 @@
     }
   },
   {
+    "id": "Phy26-065",
+    "data": {
+      "altipus": "",
+      "nev": "altar of travels",
+      "kepesseg": "(1) Ellenfeled húzzon egy lapot (2) Minden játékban lévő Karakter sérül annyit, ahány lapja van kézben az ellenfelednek",
+      "laphuzo+": "",
+      "szin": "Kék",
+      "laptipus": "Oltár",
+      "spirit": "",
+      "sorszam": "Phy26/065",
+      "mana+": "",
+      "tamado-vedo": "",
+      "mana-koltseg": "0"
+    }
+  },
+  {
+    "id": "Phy26-066",
+    "data": {
+      "laptipus": "Karakter",
+      "altipus": "Specialista",
+      "laphuzo+": "1",
+      "mana+": "1",
+      "kepesseg": "Húzhatsz egy lapot. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Aetherway Acces Varázslatot",
+      "sorszam": "Phy26/066",
+      "tamado-vedo": "3 / 3",
+      "mana-koltseg": "4",
+      "nev": "Fate Siren",
+      "szin": "Kék",
+      "spirit": "1",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-067",
+    "data": {
+      "laphuzo+": "1",
+      "kepesseg": "Lerakhatsz egy Mana lapot, ha eldobsz a kezedből egy Kék lapot a temetődbe. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Naval Siege Varázslatot",
+      "spirit": "1",
+      "nev": "Storm Bender",
+      "tamado-vedo": "2 / 4",
+      "mana-koltseg": "4",
+      "mana+": "1",
+      "szin": "Kék",
+      "sorszam": "Phy26/067",
+      "altipus": "Specialista",
+      "laptipus": "Karakter",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-068",
     "data": {
       "szin": "Kék",
@@ -403,6 +1107,71 @@
       "mana+": "1",
       "laphuzo+": "1",
       "mana-koltseg": "4"
+    }
+  },
+  {
+    "id": "Phy26-069",
+    "data": {
+      "spirit": "3",
+      "laphuzo+": "1",
+      "nev": "Broken sapphire",
+      "mana-koltseg": "0",
+      "tamado-vedo": "",
+      "kepesseg": "Csak a temetődből játszhatod ki, utána Száműzd. Két Karaktered Száműzd az Oltárból: Nézd meg és válassz egy lapot ellenfeled kezéből. Ebben a körben nem játszhatja ki",
+      "szin": "Kék",
+      "laptipus": "Varázslat",
+      "sorszam": "Phy26/069",
+      "altipus": "Shard",
+      "mana+": "1"
+    }
+  },
+  {
+    "id": "Phy26-070",
+    "data": {
+      "szin": "Kék",
+      "kepesseg": "Száműzd egy Karaktered az Oltárból: Száműzd ellenfél egy lapját a temetőjéből, majd egy azonos nevű lapját dobja a kezéből a temetőjébe. Ha nincs neki, mutassa meg a kézben tartott lapjait",
+      "altipus": "Sima",
+      "nev": "mind eye",
+      "laptipus": "Varázslat",
+      "tamado-vedo": "",
+      "mana+": "1",
+      "laphuzo+": "1",
+      "sorszam": "Phy26/070",
+      "mana-koltseg": "1",
+      "spirit": "1"
+    }
+  },
+  {
+    "id": "Phy26-071",
+    "data": {
+      "nev": "recovery",
+      "laphuzo+": "1",
+      "spirit": "2",
+      "kepesseg": "Egyik Karaktered vedd a kezedbe az Oltárból: Ha az ellenfélnek van a Karaktereddel azonos kijátszású Mana lapja, tegye az egyiket a temetőjébe",
+      "szin": "Kék",
+      "mana-koltseg": "2",
+      "laptipus": "Varázslat",
+      "mana+": "1",
+      "tamado-vedo": "",
+      "altipus": "",
+      "sorszam": "Phy26/071"
+    }
+  },
+  {
+    "id": "Phy26-072",
+    "data": {
+      "mana+": "1",
+      "kepesseg": "Ha van 2 Zóna lapod az összes játékban lévő lapod között: Ebben a körben minden, maximum 3-as Silent Karaktered Aktívan jön játékba +1 +0 Erősítéssel.",
+      "nev": "Silent Resonance",
+      "laptipus": "Varázslat",
+      "sorszam": "Phy26/072",
+      "laphuzo+": "1",
+      "szin": "Kék",
+      "altipus": "Sima",
+      "mana-koltseg": "3",
+      "spirit": "1",
+      "tamado-vedo": "",
+      "nyeremeny": "1"
     }
   },
   {
@@ -422,6 +1191,23 @@
     }
   },
   {
+    "id": "Phy26-074",
+    "data": {
+      "spirit": "2",
+      "mana+": "1",
+      "laptipus": "Varázslat",
+      "sorszam": "Phy26/074",
+      "szin": "Kék",
+      "laphuzo+": "1",
+      "kepesseg": "Ha legalább 2 Karaktered átjutott már a Portálon: Egy altípussal rendelkező Karakteredet Aktivizálhatod és kaphatsz 9 bármilyen Manát, majd Száműzd ezt a lapot",
+      "mana-koltseg": "6",
+      "tamado-vedo": "",
+      "nev": "Distancing",
+      "altipus": "Instant",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-075",
     "data": {
       "mana+": "1",
@@ -434,6 +1220,22 @@
       "spirit": "2",
       "tamado-vedo": " +0 +2",
       "kepesseg": "Lejövetelkor, ha egy minimum 3-as Calm Karakterre teszed: Egy másik Faith Karaktered +2 Támadást kap a kör végéig",
+      "laptipus": "Aura"
+    }
+  },
+  {
+    "id": "Phy26-076",
+    "data": {
+      "mana-koltseg": "2",
+      "altipus": "",
+      "tamado-vedo": "1 / 1",
+      "kepesseg": "Ha már elvégezted a szertartást az oltáron: Amíg Faith Karakteren van, nem kaphat Gyengítést az Aura és a Karakter sem",
+      "szin": "Kék",
+      "sorszam": "Phy26/076",
+      "nev": "Scutum Pre",
+      "laphuzo+": "1",
+      "spirit": "2",
+      "mana+": "1",
       "laptipus": "Aura"
     }
   },
@@ -454,6 +1256,56 @@
     }
   },
   {
+    "id": "Phy26-078",
+    "data": {
+      "altipus": "",
+      "laptipus": "Oltár",
+      "mana+": "",
+      "laphuzo+": "",
+      "kepesseg": "(1) Visszavehet egy karaktert a temetödből (2) Minden karaktered aktivan jön és 2 mannával kevesebbe kerül ebben a körben",
+      "sorszam": "Phy26/078",
+      "tamado-vedo": "",
+      "mana-koltseg": "0",
+      "nev": "Altar of Another",
+      "szin": "Fekete",
+      "spirit": ""
+    }
+  },
+  {
+    "id": "Phy26-079",
+    "data": {
+      "laptipus": "Karakter",
+      "kepesseg": "A temetődből egy lapodat a kezedbe veheted. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Soul Harvesting Varázslatot",
+      "szin": "Fekete",
+      "altipus": "Specialista",
+      "tamado-vedo": "3 / 3",
+      "sorszam": "Phy26/079",
+      "mana-koltseg": "4",
+      "laphuzo+": "1",
+      "spirit": "1",
+      "nev": "Hex Propeth",
+      "mana+": "1",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-080",
+    "data": {
+      "szin": "Fekete",
+      "sorszam": "Phy26/080",
+      "tamado-vedo": "2 / 4",
+      "spirit": "1",
+      "nev": "Fallen Countess",
+      "mana+": "1",
+      "kepesseg": "Aktívan jön, ha Száműzöd egy Fear Karaktered a kezedből. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Eternal Pact Varázslatot",
+      "mana-koltseg": "4",
+      "laphuzo+": "1",
+      "laptipus": "Karakter",
+      "altipus": "Specialista",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-081",
     "data": {
       "nev": "Os Possessed",
@@ -470,6 +1322,71 @@
     }
   },
   {
+    "id": "Phy26-082",
+    "data": {
+      "mana+": "1",
+      "mana-koltseg": "0",
+      "spirit": "1",
+      "tamado-vedo": "",
+      "szin": "Fekete",
+      "laptipus": "Varázslat",
+      "kepesseg": "Csak temetőből játszhatod ki. Egy Soundwave Karaktered tedd a temetődbe az Oltárból: Ingyen kijátszhatsz egy másik Soundwave Karaktert a temetődből",
+      "nev": "\r\nReflective Onyx",
+      "altipus": "Shard",
+      "sorszam": "Phy26/082",
+      "laphuzo+": "1"
+    }
+  },
+  {
+    "id": "Phy26-083",
+    "data": {
+      "szin": "Fekete",
+      "laphuzo+": "1",
+      "laptipus": "Varázslat",
+      "sorszam": "Phy26/083",
+      "mana-koltseg": "1",
+      "nev": "Grave Howl",
+      "tamado-vedo": "",
+      "mana+": "1",
+      "altipus": "",
+      "kepesseg": "Ha már szintet lépett a Vezetőd: Minden 1-es és 2-es Scream Karaktered +1 Támadást kap a kör végéig",
+      "spirit": "2",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-084",
+    "data": {
+      "sorszam": "Phy26/084",
+      "nev": "proscription",
+      "mana+": "1",
+      "kepesseg": "Ha már van 4 Karaktered az Oltárban: Száműzd onnan az egyiket, majd ellenfeled is Száműzze egy azonos kijátszású lapját az Oltárból, vagy az összes játékban lévő lapja közül, ha van neki",
+      "tamado-vedo": "",
+      "szin": "Fekete",
+      "altipus": "Instant",
+      "mana-koltseg": "2",
+      "spirit": "2",
+      "laptipus": "Varázslat",
+      "laphuzo+": "1"
+    }
+  },
+  {
+    "id": "Phy26-085",
+    "data": {
+      "nev": "Innocent victim",
+      "mana+": "1",
+      "sorszam": "Phy26/085",
+      "spirit": "2",
+      "kepesseg": "Dobj egy hatoldalu kockával,  Tegyél egy ugyanolyan kijátszású lapot az oltárra a paklidból. Ha ellenfélnek van oltára ő is tegye meg ugyanezt.",
+      "mana-koltseg": "2",
+      "laptipus": "Varázslat",
+      "laphuzo+": "1",
+      "tamado-vedo": "",
+      "szin": "Fekete",
+      "altipus": "Sima"
+    }
+  },
+  {
     "id": "Phy26-086",
     "data": {
       "spirit": "2",
@@ -483,6 +1400,39 @@
       "mana-koltseg": "4",
       "laphuzo+": "1",
       "tamado-vedo": ""
+    }
+  },
+  {
+    "id": "Phy26-087",
+    "data": {
+      "nev": "Eternal Pact",
+      "mana+": "1",
+      "szin": "Fekete",
+      "kepesseg": "Kikereshetsz három, maximum 2-es Karaktert a paklidból, majd Száműzd ezt a lapot. Ha az három Scream Karakter: Kaphatsz 2 bármilyen Manát",
+      "laphuzo+": "1",
+      "spirit": "3",
+      "mana-koltseg": "5",
+      "sorszam": "Phy26/087",
+      "laptipus": "Varázslat",
+      "altipus": "Sima",
+      "tamado-vedo": "",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-088",
+    "data": {
+      "mana+": "1",
+      "laphuzo+": "1",
+      "nev": "Dust procession",
+      "sorszam": "Phy26/088",
+      "altipus": "",
+      "mana-koltseg": "3",
+      "spirit": "3",
+      "szin": "Fekete",
+      "tamado-vedo": "0 / 2",
+      "kepesseg": "Ha már elvégezted a Szertartást az Oltáron: Amikor meghal a Karaktered, a helyére ingyen kijátszhatsz egy azonos kijátszású Karaktert az Oltárból",
+      "laptipus": "Aura"
     }
   },
   {
@@ -518,6 +1468,56 @@
     }
   },
   {
+    "id": "Phy26-091",
+    "data": {
+      "spirit": "",
+      "mana+": "",
+      "szin": "Piros",
+      "kepesseg": "(1)Számüzz az ellenfél temetőjéből egy Varázslatot (2) Dobja el az ellenfél a felső 5 lapját a temetőbe, ha van közötte karakter azt számüzze.",
+      "tamado-vedo": "",
+      "mana-koltseg": "0",
+      "altipus": "",
+      "nev": "altar of  uɐɯǝlǝss",
+      "laphuzo+": "",
+      "laptipus": "Oltár",
+      "sorszam": "Phy26/091"
+    }
+  },
+  {
+    "id": "Phy26-092",
+    "data": {
+      "mana-koltseg": "4",
+      "mana+": "1",
+      "laptipus": "Karakter",
+      "kepesseg": "Ellenfeled temetőjéből egy lapot Száműzhetsz. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Lifesurge Varázslatot",
+      "altipus": "Specialista",
+      "laphuzo+": "1",
+      "sorszam": "Phy26/092",
+      "spirit": "1",
+      "szin": "Piros",
+      "tamado-vedo": "3 / 3",
+      "nev": "YtimRone",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-093",
+    "data": {
+      "laptipus": "Karakter",
+      "tamado-vedo": "4 / 2",
+      "mana-koltseg": "4",
+      "laphuzo+": "1",
+      "mana+": "1",
+      "kepesseg": "Eldobathatod az ellenfél paklijának felső lapját a temetőjébe. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Seed of Oblivion Varázslatot",
+      "sorszam": "Phy26/093",
+      "nev": " Rem Grower",
+      "szin": "Piros",
+      "spirit": "1",
+      "altipus": "Specialista",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-094",
     "data": {
       "laphuzo+": "1",
@@ -531,6 +1531,71 @@
       "mana-koltseg": "1",
       "nev": "Gorira",
       "laptipus": "Karakter"
+    }
+  },
+  {
+    "id": "Phy26-095",
+    "data": {
+      "kepesseg": "Csak temetőből játszhatod ki, utána Száműzd. Tedd a temetődbe 5 Karaktered az Oltárból: Ha már elvégezted a Szertartást, visszafordíthatod az Oltárt",
+      "mana+": "1",
+      "laptipus": "Varázslat",
+      "laphuzo+": "1",
+      "sorszam": "Phy26/095",
+      "nev": "Twisted Obsidian",
+      "altipus": "Shard",
+      "spirit": "1",
+      "tamado-vedo": "",
+      "szin": "Piros",
+      "mana-koltseg": "0"
+    }
+  },
+  {
+    "id": "Phy26-096",
+    "data": {
+      "sorszam": "Phy26/096",
+      "altipus": "Instant",
+      "mana-koltseg": "2",
+      "kepesseg": "Ha már szintet lépett a Vezetőd: Két különböző Scream Karaktert vegyél a kezedbe a temetődből, majd ellenfél egyik Aurájára -1 -1-es Gyengítést tehetsz",
+      "spirit": "2",
+      "nev": "Oscillation",
+      "tamado-vedo": "",
+      "szin": "Piros",
+      "laptipus": "Varázslat",
+      "mana+": "1",
+      "laphuzo+": "1",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-097",
+    "data": {
+      "spirit": "3",
+      "tamado-vedo": "",
+      "mana+": "1",
+      "kepesseg": "Ha védekezésben hal meg egy minimum 3-as Piros Karaktered, temető helyett az Oltárba teheted",
+      "szin": "Piros",
+      "laptipus": "Varázslat",
+      "laphuzo+": "1",
+      "nev": "Redemption",
+      "sorszam": "Phy26/097",
+      "altipus": "Instant",
+      "mana-koltseg": "3"
+    }
+  },
+  {
+    "id": "Phy26-098",
+    "data": {
+      "sorszam": "Phy26/098",
+      "mana+": "",
+      "tamado-vedo": "",
+      "spirit": "",
+      "kepesseg": "Egy Manaként lerakott, maximum 3-as Fear Karaktered az Oltárba teheted. Ha van ellenfelednél Oltár, Száműzze onnan egy maximum 3-as Karakterét",
+      "altipus": "Sima",
+      "mana-koltseg": "3",
+      "szin": "Piros",
+      "laptipus": "Varázslat",
+      "nev": "essence flows\r\n",
+      "laphuzo+": ""
     }
   },
   {
@@ -550,6 +1615,23 @@
     }
   },
   {
+    "id": "Phy26-100",
+    "data": {
+      "szin": "Piros",
+      "sorszam": "Phy26/100",
+      "laptipus": "Varázslat",
+      "altipus": "Sima",
+      "spirit": "3",
+      "kepesseg": "Ha ebben a körben két Horror Karaktered is megölt támadással ellenséges Karaktert, a temetődből 6 Piros lapot visszakeverhetsz a paklidba. A játék további részében ilyet már nem játszhatsz ki",
+      "tamado-vedo": "",
+      "nev": "Crimson Rite",
+      "laphuzo+": "1",
+      "mana+": "1",
+      "mana-koltseg": "6",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-101",
     "data": {
       "laphuzo+": "1",
@@ -563,6 +1645,22 @@
       "laptipus": "Aura",
       "altipus": "Soundwave",
       "kepesseg": "Ha Portálkapuba kerül a Karaktered: Az Aura aktuális értékeivel Gyengítheted ellenfél egyik Karakterét, majd Száműzd ezt a lapot "
+    }
+  },
+  {
+    "id": "Phy26-102",
+    "data": {
+      "szin": "Piros",
+      "tamado-vedo": "1 / 2",
+      "kepesseg": "Ha már van 3 Karaktered az Oltárban: Lejövetelkor, ha Piros Karakterre teszed, kijátszhatsz egy Zónát a temetődből 2 Manával kevesebbért",
+      "sorszam": "Phy26/102",
+      "altipus": "",
+      "nev": "Red prevalence",
+      "mana+": "1",
+      "laptipus": "Aura",
+      "laphuzo+": "1",
+      "spirit": "1",
+      "mana-koltseg": "3"
     }
   },
   {
@@ -582,6 +1680,56 @@
     }
   },
   {
+    "id": "Phy26-104",
+    "data": {
+      "laptipus": "Oltár",
+      "sorszam": "Phy26/104",
+      "mana-koltseg": "0",
+      "mana+": "",
+      "kepesseg": "(1) Egy Karakterre -1 -0 Gyengítést tehetsz (2) Egy altípussal rendelkező Karaktered +4 +4 Erősítést kap",
+      "tamado-vedo": "",
+      "altipus": "",
+      "nev": "altar of ages",
+      "spirit": "",
+      "szin": "Zöld",
+      "laphuzo+": ""
+    }
+  },
+  {
+    "id": "Phy26-105",
+    "data": {
+      "kepesseg": "-1 -1-gyel Gyengíthetsz egy ellenséges Karaktert. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Jungle Roar Varázslatot",
+      "altipus": "Specialista",
+      "sorszam": "Phy26/105",
+      "nev": "Sound Huntress",
+      "mana-koltseg": "4",
+      "mana+": "1",
+      "laphuzo+": "1",
+      "spirit": "1",
+      "tamado-vedo": "3 / 3",
+      "laptipus": "Karakter",
+      "szin": "Zöld",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-106",
+    "data": {
+      "kepesseg": "Ha elköltesz egy Spirit pontot, +0 +1 Erősítést kap lejövetelkor. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Terrify Varázslatot",
+      "tamado-vedo": "2 / 4",
+      "spirit": "1",
+      "szin": "Zöld",
+      "sorszam": "Phy26/106",
+      "nev": "Caring Mateln",
+      "laphuzo+": "1",
+      "mana-koltseg": "4",
+      "mana+": "1",
+      "laptipus": "Karakter",
+      "altipus": "Specialista",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-107",
     "data": {
       "nev": "Root Born",
@@ -598,6 +1746,54 @@
     }
   },
   {
+    "id": "Phy26-108",
+    "data": {
+      "spirit": "3",
+      "laphuzo+": "1",
+      "kepesseg": "Csak a temetődből játszhatod ki, utána számüzd. Tedd a temetődbe 4 Karaktered az Oltárból: Ellenfél egyik Karakterébe sebezhetsz 1-et, egy másik Karakterébe pedig 3-at",
+      "tamado-vedo": "",
+      "sorszam": "Phy26/108",
+      "mana-koltseg": "0",
+      "szin": "Zöld",
+      "laptipus": "Varázslat",
+      "altipus": "Shard",
+      "nev": "Lizard Emerald",
+      "mana+": "1"
+    }
+  },
+  {
+    "id": "Phy26-109",
+    "data": {
+      "nev": "scarecrow toxin",
+      "mana-koltseg": "2",
+      "spirit": "2",
+      "sorszam": "Phy26/109",
+      "szin": "Zöld",
+      "laphuzo+": "1",
+      "altipus": "Sima",
+      "tamado-vedo": "",
+      "kepesseg": "Tedd a temetődbe egy Horror Karaktered az Oltárból: Minden játékban lévő Karakter sebződik 1-et, kivétel a Horror Karakterek, majd Száműzd ezt a lapot",
+      "mana+": "1",
+      "laptipus": "Varázslat"
+    }
+  },
+  {
+    "id": "Phy26-110",
+    "data": {
+      "kepesseg": "Ha már szintet lépett a Vezetőd: Egy Különleges Karaktered kijátszhatod az Oltárból +1 +1 Erősítéssel",
+      "nev": "live prey\r\n",
+      "szin": "Zöld",
+      "laphuzo+": "1",
+      "tamado-vedo": "",
+      "mana+": "1",
+      "laptipus": "Varázslat",
+      "sorszam": "Phy26/110",
+      "altipus": "Instant",
+      "spirit": "1",
+      "mana-koltseg": "4"
+    }
+  },
+  {
     "id": "Phy26-111",
     "data": {
       "nev": "Old Invasion",
@@ -611,6 +1807,56 @@
       "laphuzo+": "1",
       "mana+": "2",
       "spirit": "1"
+    }
+  },
+  {
+    "id": "Phy26-112",
+    "data": {
+      "sorszam": "Phy26/112",
+      "laphuzo+": "1",
+      "spirit": "3",
+      "mana-koltseg": "4",
+      "altipus": "Sima",
+      "szin": "Zöld",
+      "nev": "Jungle Roar",
+      "kepesseg": "Aktivizálhatod egy Scream Karaktered és aktiválhatod a Kasztképességét. Egy Zöld Aurát a kezedbe vehetsz a temetődből, ha van játékban Zóna lapod",
+      "tamado-vedo": "",
+      "mana+": "1",
+      "laptipus": "Varázslat",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-113",
+    "data": {
+      "nev": "Terrify",
+      "laptipus": "Varázslat",
+      "tamado-vedo": "",
+      "mana+": "1",
+      "spirit": "2",
+      "altipus": "Instant",
+      "laphuzo+": "1",
+      "szin": "Zöld",
+      "sorszam": "Phy26/113",
+      "mana-koltseg": "5",
+      "kepesseg": "Ha legalább 2 Aktív Karaktere van ellenfelednek: Dobd a paklid felső 3 lapját a temetődbe és passzivizálhatod ellenfeled egyik Karakterét",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-114",
+    "data": {
+      "mana+": "1",
+      "tamado-vedo": "1 / 0",
+      "altipus": "",
+      "kepesseg": "Ha már elvégezted a Szertartást az Oltáron: Portálkapuban lévő ellenséges Karaktert is támadhatsz. Ha így ölsz meg Karaktert, nem kerülhetsz a Portálkapuba ezzel a Karakterrel",
+      "nev": "consumption,",
+      "spirit": "2",
+      "mana-koltseg": "2",
+      "szin": "Zöld",
+      "laphuzo+": "1",
+      "sorszam": "Phy26/114",
+      "laptipus": "Aura"
     }
   },
   {
@@ -646,6 +1892,56 @@
     }
   },
   {
+    "id": "Phy26-117",
+    "data": {
+      "mana+": "",
+      "tamado-vedo": "",
+      "altipus": "",
+      "kepesseg": "(1)Ha ellenfelednek több van, csökkentheted 1-gyel bármelyik Manáját(2) Ellenfeled tegye minden lapját az Oltárból a temetőjébe, vagy veszítse el a Spirit pontjait",
+      "spirit": "",
+      "nev": "Altar of Laws",
+      "szin": "Lila",
+      "mana-koltseg": "0",
+      "laphuzo+": "",
+      "sorszam": "Phy26/117",
+      "laptipus": "Oltár"
+    }
+  },
+  {
+    "id": "Phy26-118",
+    "data": {
+      "altipus": "Specialista",
+      "mana+": "1",
+      "szin": "Lila",
+      "mana-koltseg": "4",
+      "spirit": "1",
+      "laptipus": "Karakter",
+      "sorszam": "Phy26/118",
+      "nev": "Resistant Chemist",
+      "laphuzo+": "1",
+      "kepesseg": "Csökkentheted 1-gyel ellenfeled bármelyik Manáját. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Unidentified Poison Varázslatot",
+      "tamado-vedo": "4 / 2",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-119",
+    "data": {
+      "sorszam": "Phy26/119",
+      "tamado-vedo": "3 / 3",
+      "mana+": "1",
+      "laphuzo+": "1",
+      "szin": "Lila",
+      "laptipus": "Karakter",
+      "mana-koltseg": "4",
+      "nev": "Global Admin",
+      "kepesseg": "Ellenfeled Spirit pontját csökkentheted, vagy a sajátodat növelheted eggyel. Passzivizáld az ellenfél körében: Ingyen kijátszhatsz a kezedből egy Overwrite  Varázslatot",
+      "altipus": "Specialista",
+      "spirit": "1",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-120",
     "data": {
       "laptipus": "Karakter",
@@ -659,6 +1955,71 @@
       "szin": "Lila",
       "sorszam": "Phy26/120",
       "altipus": ""
+    }
+  },
+  {
+    "id": "Phy26-121",
+    "data": {
+      "sorszam": "Phy26/121",
+      "spirit": "",
+      "laptipus": "Varázslat",
+      "kepesseg": "Csak a temetődből játszhatod ki, vegyél a kezedbe 3 lapot az oltárról, ellenfél maximum 3 mas kijátszású lapot játszhat ki.",
+      "mana-koltseg": "0",
+      "tamado-vedo": "",
+      "laphuzo+": "",
+      "nev": "trine amethyst",
+      "altipus": "Shard",
+      "mana+": "",
+      "szin": "Lila"
+    }
+  },
+  {
+    "id": "Phy26-122",
+    "data": {
+      "nev": "Bug",
+      "szin": "Lila",
+      "altipus": "Sima",
+      "laptipus": "Varázslat",
+      "mana-koltseg": "2",
+      "sorszam": "Phy26/122",
+      "mana+": "1",
+      "laphuzo+": "1",
+      "tamado-vedo": "",
+      "kepesseg": "Ha van 3 karakter az oltárban kapsz 3 mannát.",
+      "spirit": "2"
+    }
+  },
+  {
+    "id": "Phy26-123",
+    "data": {
+      "kepesseg": "Sebezz annyit egy ellenséges Karakterbe, ahány Bug Varázslat van a temetődben, majd keverd vissza mindet a paklidba. Ha még nem végezted el a Szertartást, Száműzd egy Karaktered az Oltárból",
+      "laptipus": "Varázslat",
+      "sorszam": "Phy26/123",
+      "laphuzo+": "1",
+      "mana-koltseg": "3",
+      "szin": "Lila",
+      "altipus": "Sima",
+      "tamado-vedo": "",
+      "spirit": "1",
+      "mana+": "1",
+      "nev": "Debugging"
+    }
+  },
+  {
+    "id": "Phy26-124",
+    "data": {
+      "mana-koltseg": "4",
+      "laptipus": "Varázslat",
+      "sorszam": "Phy26/124",
+      "laphuzo+": "1",
+      "szin": "Lila",
+      "tamado-vedo": "",
+      "nev": "Retaliatory",
+      "kepesseg": "Ha már szintet lépett a Vezetőd: Amikor ellenfeled támadással megöli egy Horror Karaktered, sebezz a támadó Karakterbe annyit, amennyi a Karaktered támadása volt",
+      "spirit": "2",
+      "mana+": "1",
+      "altipus": "Instant",
+      "nyeremeny": "1"
     }
   },
   {
@@ -678,6 +2039,23 @@
     }
   },
   {
+    "id": "Phy26-126",
+    "data": {
+      "tamado-vedo": "",
+      "laptipus": "Varázslat",
+      "nev": "Overwrite",
+      "kepesseg": "Ha nincs Spirit pontja ellenfelednek: Aktívan játékba hozhatsz egy Scream Karaktert a temetődből +1 +1 Erősítéssel",
+      "altipus": "Instant",
+      "szin": "Lila",
+      "mana-koltseg": "4",
+      "sorszam": "Phy26/126",
+      "mana+": "1",
+      "laphuzo+": "1",
+      "spirit": "2",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-127",
     "data": {
       "spirit": "2",
@@ -694,6 +2072,22 @@
     }
   },
   {
+    "id": "Phy26-128",
+    "data": {
+      "laptipus": "Aura",
+      "spirit": "3",
+      "mana-koltseg": "3",
+      "altipus": "",
+      "szin": "Lila",
+      "laphuzo+": "1",
+      "nev": "triple wall",
+      "sorszam": "Phy26/128",
+      "tamado-vedo": " +1 +1",
+      "kepesseg": "Ha már elvégezted a Szertartást az Oltáron: A Karaktered 3-nál többet nem sérülhet támadástól. Ha Portálkapuba jutsz, kikereshetsz 3 maximum 3-as Varázslatot a paklidból és tedd a paklid tetejére azokat",
+      "mana+": "1"
+    }
+  },
+  {
     "id": "Phy26-129",
     "data": {
       "mana+": "1",
@@ -707,6 +2101,74 @@
       "nev": "Information Library",
       "spirit": "2",
       "kepesseg": "Scream Karaktered, ha nincs rajta Aura: Nem kaphat Gyengítést és Erősítést sem, nem sérülhet instant varázslattól"
+    }
+  },
+  {
+    "id": "Phy26-130",
+    "data": {
+      "laphuzo+": "1",
+      "laptipus": "Karakter",
+      "sorszam": "Phy26/130",
+      "tamado-vedo": "3 / 3",
+      "altipus": "Specialista",
+      "szin": "Narancs",
+      "mana-koltseg": "4",
+      "kepesseg": "Kaphatsz egy bármilyen Manát. Passzivizáld: Ingyen kijátszhatsz a kezedből egy Elimination Varázslatot",
+      "mana+": "1",
+      "nev": "Void Sniper",
+      "spirit": "1",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-131",
+    "data": {
+      "spirit": "2",
+      "mana-koltseg": "4",
+      "mana+": "1",
+      "altipus": "Soundwave",
+      "kepesseg": "Kaphatsz egy bármilyen Manát",
+      "nev": "Rapid Action Squad",
+      "laptipus": "Karakter",
+      "tamado-vedo": "4 / 3",
+      "laphuzo+": "1",
+      "sorszam": "Phy26/131",
+      "szin": "Narancs",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-132",
+    "data": {
+      "altipus": "",
+      "sorszam": "Phy26/132",
+      "mana-koltseg": "0",
+      "kepesseg": "Csak a temetődből játszhatod ki. Költs el 4 Spirit pontot vagy Száműzd az Oltárból egy 4-es Karaktered: Ha már Szintet lépett a Vezetőd, egy Karakter elveszíti minden Erősítését ebben a körben",
+      "szin": "Narancs",
+      "spirit": "3",
+      "mana+": "1",
+      "laptipus": "Shard",
+      "tamado-vedo": "",
+      "laphuzo+": "1",
+      "nev": "Recon Crystal",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-133",
+    "data": {
+      "spirit": "2",
+      "altipus": "",
+      "mana-koltseg": "4",
+      "kepesseg": "A paklidból egy altípus nélküli és egy Különleges Karaktert kikereshetsz. Ha van játékban Portál Csapdád, egyiket passzívan játékba hozhatod ingyen, majd Száműzd ezt a lapot",
+      "mana+": "2",
+      "laptipus": "Break",
+      "szin": "Narancs",
+      "laphuzo+": "1",
+      "tamado-vedo": "",
+      "sorszam": "Phy26/133",
+      "nev": "Veteran Service",
+      "nyeremeny": "1"
     }
   },
   {
