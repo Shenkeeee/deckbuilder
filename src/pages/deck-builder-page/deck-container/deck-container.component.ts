@@ -42,7 +42,7 @@ import { ShowcaseImage } from '../../../components/showcase-image/showcase-image
     CdkDrag,
     CdkDragHandle,
     ShowcaseImage,
-    CdkScrollableModule
+    CdkScrollableModule,
   ],
   templateUrl: './deck-container.component.html',
   styleUrl: './deck-container.component.scss',
@@ -298,12 +298,12 @@ export class DeckContainerComponent implements OnInit {
       } else {
         // If the amount is one, remove the card from the deck
         this.currentDeck.cards.splice(indexToRemove, 1);
-        
+
         // Remove the color from the colors in deck if this was the last card with that color
         // Check if any other cards of the same color remain
         const removedColor = card.card.Color;
         const stillExists = this.currentDeck.cards.some(
-          c => c.card.Color === removedColor
+          (c) => c.card.Color === removedColor
         );
 
         if (!stillExists && removedColor) {
@@ -389,7 +389,7 @@ export class DeckContainerComponent implements OnInit {
         let sorszam = card.data['sorszam'];
 
         // Check if the first 3 characters are 3 chars long and "messed up"
-        if (sorszam.slice(0, 3) === 'dop') {
+        if (sorszam.slice(0, 3) === 'dop' || sorszam.slice(0, 3) === 'Phy') {
           // Remove the 3rd character
           sorszam = sorszam.slice(0, 2) + sorszam.slice(3);
         }
@@ -423,7 +423,10 @@ export class DeckContainerComponent implements OnInit {
         let cardNumber = card.card.CardNumber;
 
         // Check if the first 3 characters are 3 chars long and "messed up"
-        if (cardNumber.slice(0, 3) === 'dop') {
+        if (
+          cardNumber.slice(0, 3) === 'dop' ||
+          cardNumber.slice(0, 3) === 'Phy'
+        ) {
           // Remove the 3rd character
           cardNumber = cardNumber.slice(0, 2) + cardNumber.slice(3);
         }
