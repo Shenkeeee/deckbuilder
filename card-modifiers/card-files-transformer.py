@@ -108,7 +108,7 @@ def rename_and_compress_files(input_path, output_path, file_prefix, file_extensi
 
 
 if __name__ == "__main__":
-    input_folder = r"C:\Users\ASUS\Downloads\26"  # Folder to search for .jpg files
+    input_folder = r"C:\Users\ASUS\Downloads\26-new"  # Folder to search for .jpg files
     output_folder = input_folder + "-fixed"  # Folder to save renamed files
     prefix = "Phy26-"  # Prefix for the new filenames
     extension = "webp"  # Desired file extension for the output (e.g., "png")

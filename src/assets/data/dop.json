@@ -1,5 +1,5 @@
 [
-    {
+  {
     "id": "Phy26-001",
     "data": {
       "kepesseg": "Aktívan jön. Amikor játékba kerül, Szintet léphet a Vezetőd",
@@ -101,6 +101,23 @@
     }
   },
   {
+    "id": "Phy26-014",
+    "data": {
+      "szin": "Multicolor",
+      "sorszam": "Phy26/014",
+      "kepesseg": "A paklidból kikereshetsz 2 Shard lapot, és dobd a temetődbe. Ha már aktív a Szintlépés 2, kaphatsz 2 Spirit pontot. Ha már aktív a Szintlépés 3, kaphatsz további 2 Spirit pontot",
+      "laptipus": "Varázslat",
+      "laphuzo+": "1",
+      "tamado-vedo": "",
+      "nev": "Ascendra",
+      "spirit": "2",
+      "mana-koltseg": "2",
+      "mana+": "1",
+      "altipus": "Sima",
+      "nyeremeny": "1"
+    }
+  },
+  {
     "id": "Phy26-016",
     "data": {
       "altipus": "Instant",
@@ -161,7 +178,25 @@
       "laphuzo+": "1",
       "laptipus": "Karakter",
       "sorszam": "Phy26/021",
-      "altipus": ""
+      "altipus": "",
+      "nyeremeny": "1"
+    }
+  },
+  {
+    "id": "Phy26-022",
+    "data": {
+      "sorszam": "Phy26/022",
+      "mana+": "1",
+      "szin": "Multicolor",
+      "altipus": "",
+      "tamado-vedo": "2 / 1",
+      "spirit": "2",
+      "mana-koltseg": "3",
+      "kepesseg": "Aktívan jön. Ha már aktív a Szintlépés 3 amikor játékba kerül, módosíthatod véglegesen ellenfél egyik Karakternének vagy Aurájának a védelmét 2-re",
+      "laptipus": "Karakter",
+      "nev": "Lockdown Agent",
+      "laphuzo+": "1",
+      "nyeremeny": "1"
     }
   },
   {
@@ -707,6 +742,23 @@
       "nev": "Information Library",
       "spirit": "2",
       "kepesseg": "Scream Karaktered, ha nincs rajta Aura: Nem kaphat Gyengítést és Erősítést sem, nem sérülhet instant varázslattól"
+    }
+  },
+  {
+    "id": "Phy26-132",
+    "data": {
+      "altipus": "",
+      "kepesseg": "Csak a temetődből játszhatod ki. Költs el 4 Spirit pontot vagy Száműzd az Oltárból egy 4-es Karaktered: Ha már Szintet lépett a Vezetőd, egy Karakter elveszíti minden Erősítését ebben a körben",
+      "szin": "Narancs",
+      "laphuzo+": "1",
+      "laptipus": "Shard",
+      "sorszam": "Phy26/132",
+      "mana+": "1",
+      "mana-koltseg": "0",
+      "tamado-vedo": "",
+      "spirit": "3",
+      "nev": "Recon Crystal",
+      "nyeremeny": "1"
     }
   },
   {
