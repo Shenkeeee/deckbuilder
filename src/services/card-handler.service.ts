@@ -382,20 +382,19 @@ export class CardHandlerService {
   }
 
   matchesWinnableFilter(input?: string): boolean {
-    // if no filter then it matches it
-    if (
-      !this.selectedWinnable.value ||
-      this.selectedWinnable.value.length === 0
-    )
-      return true;
+    const selected = this.selectedWinnable?.value || [];
 
-    // Ha ezen felul nincs input akkor false
-    if (input == undefined) return false;
-    const inputStr = input?.toString();
+    // If no filter selected, everything matches
+    if (selected.length === 0) return true;
 
-    return this.selectedWinnable.value.includes(
-      this.removeAccents(inputStr.toLowerCase())
-    );
+    // If input is undefined or empty, check if "Sima" ("") is selected
+    if (input === undefined || input === '') {
+      return selected.includes('');
+    }
+
+    // Otherwise, normal check
+    const inputStr = this.removeAccents(input.toString().toLowerCase());
+    return selected.includes(inputStr);
   }
 
   updateCardNumber() {
