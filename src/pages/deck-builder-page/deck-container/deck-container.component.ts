@@ -87,6 +87,9 @@ export class DeckContainerComponent implements OnInit {
 
   isShowcaseVisible = false;
 
+  tcgDeck: string = '';
+  isTcgCopySuccesful = false;
+
   constructor(
     private cardHandlerService: CardHandlerService,
     private router: Router,
@@ -888,6 +891,14 @@ export class DeckContainerComponent implements OnInit {
       this.toggleShowcase();
     }
 
+    if (
+      this.pressedKeys.has('i') &&
+      this.pressedKeys.has('m') &&
+      this.pressedKeys.has('p')
+    ) {
+      this.calculateTcgNames();
+    }
+
     if (event.key === 'Escape') {
       this.isShowcaseVisible = false;
     }
@@ -900,5 +911,45 @@ export class DeckContainerComponent implements OnInit {
 
   toggleShowcase() {
     this.isShowcaseVisible = !this.isShowcaseVisible;
+  }
+
+  calculateTcgNames() {
+    const deckNamesWithAmounts: Record<string, number> = {};
+
+    this.currentDeck.cards.forEach((cardWrapper) => {
+      if (!cardWrapper.card.Name) {
+        return;
+      }
+
+      deckNamesWithAmounts[cardWrapper.card.Name] = cardWrapper.amount;
+    });
+
+    this.tcgDeck = this.convertNamesToTcgFormat(deckNamesWithAmounts);
+  }
+
+  convertNamesToTcgFormat(cardNames: Record<string, number>) {
+    return Object.entries(cardNames)
+      .map(([name, count]) => `${count} ${name}`)
+      .join('\n');
+  }
+
+  async copyTcgDeckToClipboard() {
+    navigator.clipboard
+      .writeText(this.tcgDeck)
+      .then(() => {
+        // show response on copy
+        this.isTcgCopySuccesful = true;
+        setTimeout(() => {
+          this.isTcgCopySuccesful = false;
+        }, 2000);
+      })
+      .catch((err) => {
+        console.error('Copy failed', err);
+        this.isTcgCopySuccesful = false;
+      });
+  }
+
+  clearList() {
+    this.tcgDeck = '';
   }
 }

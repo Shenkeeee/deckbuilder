@@ -1,4 +1,30 @@
 <div id="deck-container">
+  <div id="tcg-deck" *ngIf="tcgDeck !== ''">
+    <div class="flex-wrapper">
+      <pre>{{ tcgDeck }}</pre>
+      <div class="flex-union-wrapper">
+        <button
+          mat-flat-button
+          color="primary"
+          id="copy-button"
+          (click)="copyTcgDeckToClipboard()"
+        >
+          <mat-icon>{{
+            isTcgCopySuccesful ? "check" : "content_copy"
+          }}</mat-icon>
+        </button>
+
+        <button
+          mat-flat-button
+          color="primary"
+          id="close-button"
+          (click)="clearList()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
   <div *ngIf="isShowcaseVisible"><showcase-image></showcase-image></div>
   <div id="search-filter-container">
     <mat-form-field>
