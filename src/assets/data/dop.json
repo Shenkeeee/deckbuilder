@@ -254,14 +254,14 @@
       "nev": "Lord's Grace",
       "mana-koltseg": "4",
       "tamado-vedo": "",
-      "laptipus": "Break",
+      "laptipus": "Varázslat",
       "sorszam": "Phy26/035",
       "spirit": "1",
       "kepesseg": "Húzz 2 lapot, majd maximum 4 lapot tegyél a paklid aljára a kezedből. Ha van játékban Zóna lapod: Ezt a lapot a kör végén a temető helyett a paklid tetejére teheted",
       "laphuzo+": "1",
       "szin": "Fehér",
       "mana+": "2",
-      "altipus": ""
+      "altipus": "Break"
     }
   },
   {
@@ -317,10 +317,10 @@
     "data": {
       "tamado-vedo": "",
       "nev": "Control Instruction",
-      "laptipus": "Break",
+      "laptipus": "Varázslat",
       "mana+": "2",
       "spirit": "3",
-      "altipus": "",
+      "altipus": "Break",
       "kepesseg": "Ha már szintet lépett a Vezetőd: Kijátszhatsz a temetődből ingyen egy 2-es Sárga Aurát és egy 3-as Sárga Sima Varázslatot, majd Száműzd ezt a lapot",
       "sorszam": "Phy26/047",
       "mana-koltseg": "4",
@@ -385,8 +385,8 @@
       "mana+": "2",
       "laphuzo+": "1",
       "szin": "Magenta",
-      "altipus": "",
-      "laptipus": "Break",
+      "altipus": "Break",
+      "laptipus": "Varázslat",
       "spirit": "1",
       "tamado-vedo": "",
       "kepesseg": "Egy dupla Manát adó Manalapod vedd vissza a kezedbe, majd kikereshetsz két 4-es Faith lapot a paklidból"
@@ -443,11 +443,11 @@
   {
     "id": "Phy26-073",
     "data": {
-      "laptipus": "Break",
+      "laptipus": "Varázslat",
       "kepesseg": "A temetődből passzívan játékba hozhatod az egyik Kék Különleges Karaktered ingyen. Ha nincs még 4 Mana lapod, kijátszás után lerakhatod ezt a lapot Manának",
       "mana+": "2",
       "sorszam": "Phy26/073",
-      "altipus": "",
+      "altipus": "Break",
       "spirit": "1",
       "laphuzo+": "1",
       "mana-koltseg": "4",
@@ -509,9 +509,9 @@
     "data": {
       "spirit": "2",
       "sorszam": "Phy26/086",
-      "altipus": "",
+      "altipus": "Break",
       "nev": "Critical Mass",
-      "laptipus": "Break",
+      "laptipus": "Varázslat",
       "szin": "Fekete",
       "mana+": "2",
       "kepesseg": "Száműzd egy saját, majd ellenfeled egyik Laphúzó lapját, ha legalább 2 lapja van ott. Ha így került egy Zóna lap Száműzésre: Kaphatsz 4 Spirit pontot",
@@ -572,14 +572,14 @@
     "id": "Phy26-099",
     "data": {
       "sorszam": "Phy26/099",
-      "altipus": "",
+      "altipus": "Break",
       "mana-koltseg": "4",
       "kepesseg": "Ha legalább 4 Piros lapod van már Száműzve, egyik Fear Karaktered +3 +0 Erősítést kap, majd Száműzd ezt a lapot",
       "spirit": "1",
       "nev": "Forgotten Bless",
       "szin": "Piros",
       "tamado-vedo": "",
-      "laptipus": "Break",
+      "laptipus": "Varázslat",
       "mana+": "2",
       "laphuzo+": "1"
     }
@@ -639,8 +639,8 @@
       "tamado-vedo": "",
       "sorszam": "Phy26/111",
       "mana-koltseg": "4",
-      "laptipus": "Break",
-      "altipus": "",
+      "laptipus": "Varázslat",
+      "altipus": "Break",
       "szin": "Zöld",
       "kepesseg": "Ha már legalább 2 Karaktered átjutott a Portálon, kikereshetsz a paklidból két maximum 3-as kijátszású Fear Karaktert. Ha mindkettő altípus nélküli: Sebezhetsz 3-at egy maximum 3-as Karakterbe",
       "laphuzo+": "1",
