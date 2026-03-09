@@ -76,7 +76,7 @@ def rename_and_compress_files(input_path, output_path, file_prefix, file_extensi
         for file in files:
             if file.lower().endswith('.jpg'):
                 # Extract number from filename (e.g., "135" from "135_paradoxland_500.jpg")
-                match = re.search(r'(\d+)-', file) or re.search(r'(\d+)_', file)
+                match = re.search(r'(\d+)', file)
                 if match:
                     number = match.group(1)
                     new_filename = f"{file_prefix}{int(number):03}.{file_extension}"
@@ -108,7 +108,7 @@ def rename_and_compress_files(input_path, output_path, file_prefix, file_extensi
 
 
 if __name__ == "__main__":
-    input_folder = r"C:\Users\ASUS\Downloads\26-new"  # Folder to search for .jpg files
+    input_folder = r"C:\Users\ASUS\Downloads\example"  # Folder to search for .jpg files
     output_folder = input_folder + "-fixed"  # Folder to save renamed files
     prefix = "Phy26-"  # Prefix for the new filenames
     extension = "webp"  # Desired file extension for the output (e.g., "png")
