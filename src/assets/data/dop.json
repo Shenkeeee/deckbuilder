@@ -622,7 +622,7 @@
   {
     "id": "Phy26-039",
     "data": {
-      "nev": "altar of science",
+      "nev": "Altar of science",
       "spirit": "",
       "kepesseg": "(1) Nézd meg a paklid felső lapját (2) Minden játékban lévő Karakteredre azonos színű Aurát ingyen kijátszhatsz a temetődből",
       "mana+": "",
@@ -1047,7 +1047,7 @@
     "id": "Phy26-065",
     "data": {
       "altipus": "",
-      "nev": "altar of travels",
+      "nev": "Altar of travels",
       "kepesseg": "(1) Ellenfeled húzzon egy lapot (2) Minden játékban lévő Karakter sérül annyit, ahány lapja van kézben az ellenfelednek",
       "laphuzo+": "",
       "szin": "Kék",
@@ -1477,7 +1477,7 @@
       "tamado-vedo": "",
       "mana-koltseg": "0",
       "altipus": "",
-      "nev": "altar of  uɐɯǝlǝss",
+      "nev": "Altar of  uɐɯǝlǝss",
       "laphuzo+": "",
       "laptipus": "Oltár",
       "sorszam": "Phy26/091"
@@ -1689,7 +1689,7 @@
       "kepesseg": "(1) Egy Karakterre -1 -0 Gyengítést tehetsz (2) Egy altípussal rendelkező Karaktered +4 +4 Erősítést kap",
       "tamado-vedo": "",
       "altipus": "",
-      "nev": "altar of ages",
+      "nev": "Altar of ages",
       "spirit": "",
       "szin": "Zöld",
       "laphuzo+": ""
