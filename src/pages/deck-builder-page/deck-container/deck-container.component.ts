@@ -93,7 +93,7 @@ export class DeckContainerComponent implements OnInit {
   constructor(
     private cardHandlerService: CardHandlerService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -101,32 +101,32 @@ export class DeckContainerComponent implements OnInit {
     this.selectedFormat = 'standard';
     this.updateSelectedFormat();
     this.cardHandlerService.inputMsgObservable.subscribe(
-      (inputValueMsg) => (this.inputValueMsg = inputValueMsg)
+      (inputValueMsg) => (this.inputValueMsg = inputValueMsg),
     );
     this.updateCardNumber();
     this.cardHandlerService.selectedTypesObs.subscribe(
-      (selectedTypes) => (this.selectedTypes = selectedTypes)
+      (selectedTypes) => (this.selectedTypes = selectedTypes),
     );
     this.cardHandlerService.selectedSubTypesObs.subscribe(
-      (selectedSubTypes) => (this.selectedSubTypes = selectedSubTypes)
+      (selectedSubTypes) => (this.selectedSubTypes = selectedSubTypes),
     );
     this.cardHandlerService.selectedReleasesObs.subscribe(
-      (selectedReleases) => (this.selectedReleases = selectedReleases)
+      (selectedReleases) => (this.selectedReleases = selectedReleases),
     );
     this.cardHandlerService.selectedManaCostsObs.subscribe(
-      (selectedManaCosts) => (this.selectedManaCosts = selectedManaCosts)
+      (selectedManaCosts) => (this.selectedManaCosts = selectedManaCosts),
     );
     this.cardHandlerService.selectedSpiritsObs.subscribe(
-      (selectedSpirits) => (this.selectedSpirits = selectedSpirits)
+      (selectedSpirits) => (this.selectedSpirits = selectedSpirits),
     );
     this.cardHandlerService.selectedManaPlusObs.subscribe(
-      (selectedManaPlus) => (this.selectedManaPlus = selectedManaPlus)
+      (selectedManaPlus) => (this.selectedManaPlus = selectedManaPlus),
     );
     this.cardHandlerService.selectedLaphuzoPlusObs.subscribe(
-      (selectedLaphuzoPlus) => (this.selectedLaphuzoPlus = selectedLaphuzoPlus)
+      (selectedLaphuzoPlus) => (this.selectedLaphuzoPlus = selectedLaphuzoPlus),
     );
     this.cardHandlerService.selectedWinnableObs.subscribe(
-      (selectedWinnable) => (this.selectedWinnable = selectedWinnable)
+      (selectedWinnable) => (this.selectedWinnable = selectedWinnable),
     );
     this.cardHandlerService.selectedFormatObs.subscribe((selectedFormat) => {
       this.selectedFormat = selectedFormat;
@@ -149,14 +149,14 @@ export class DeckContainerComponent implements OnInit {
 
     this.cardHandlerService.cardInstancesOBSOBS.subscribe(
       (cardInstancesOBSVAL) =>
-        (this.cardInstancesOBSVALCHILD = cardInstancesOBSVAL.length)
+        (this.cardInstancesOBSVALCHILD = cardInstancesOBSVAL.length),
     );
   }
 
   updateFormatAdditionalHint() {
     if (this.selectedFormat === 'standard' || this.selectedFormat === 'profi') {
       this.formatAdditionalHint =
-        'Extra lapok: 1 vezető - kötelező, 1 spirit, 2 szintlépés kártya';
+        'Extra lapok: 1 vezető - kötelező, 1 spirit / 1 oltár, 2 szintlépés kártya';
     }
     if (this.selectedFormat === 'rush') {
       this.formatAdditionalHint = 'Extra lap: 1 vezető - kötelező';
@@ -167,7 +167,7 @@ export class DeckContainerComponent implements OnInit {
     this.defaultCardSize = parseInt(
       getComputedStyle(document.documentElement)
         .getPropertyValue('--card-width')
-        .trim()
+        .trim(),
     );
   }
 
@@ -227,7 +227,8 @@ export class DeckContainerComponent implements OnInit {
       if (
         card.card.CardType === 'Vezető' ||
         card.card.CardType === 'Szintlépés' ||
-        card.card.CardType === 'Spirit'
+        card.card.CardType === 'Spirit' ||
+        card.card.CardType === 'Oltár'
       ) {
         this.handleAdditionalAdded(card);
       } else {
@@ -251,7 +252,7 @@ export class DeckContainerComponent implements OnInit {
 
   changeCardAmount(cardToChange: Card, increase: boolean) {
     const indexToRemove = this.currentDeck.cards.findIndex(
-      (card) => card.card === cardToChange
+      (card) => card.card === cardToChange,
     );
 
     if (indexToRemove === -1) {
@@ -284,7 +285,8 @@ export class DeckContainerComponent implements OnInit {
             cardToChange.CardType === 'Szintlépés' &&
             additionalLimits.levelUp < 2) ||
           (this.selectedFormatAdditionalLimit !== 1 && // ha nem rush módban vagyunk
-            cardToChange.CardType === 'Spirit' &&
+            (cardToChange.CardType === 'Spirit' ||
+              cardToChange.CardType === 'Oltár') &&
             additionalLimits.spirit < 1)
         )
       ) {
@@ -306,7 +308,7 @@ export class DeckContainerComponent implements OnInit {
         // Check if any other cards of the same color remain
         const removedColor = card.card.Color;
         const stillExists = this.currentDeck.cards.some(
-          (c) => c.card.Color === removedColor
+          (c) => c.card.Color === removedColor,
         );
 
         if (!stillExists && removedColor) {
@@ -323,7 +325,8 @@ export class DeckContainerComponent implements OnInit {
     return (
       card.CardType === 'Vezető' ||
       card.CardType === 'Szintlépés' ||
-      card.CardType === 'Spirit'
+      card.CardType === 'Spirit' ||
+      card.CardType === 'Oltár'
     );
   }
 
@@ -331,14 +334,14 @@ export class DeckContainerComponent implements OnInit {
   private calculateAdditionalLimits() {
     let leader = 0;
     let levelUp = 0;
-    let spirit = 0;
+    let spirit = 0; // oltar also counts here
 
     for (const card of this.currentDeck.cards) {
       if (card.card.CardType === 'Vezető') {
         leader += card.amount;
       } else if (card.card.CardType === 'Szintlépés') {
         levelUp += card.amount;
-      } else if (card.card.CardType === 'Spirit') {
+      } else if (card.card.CardType === 'Spirit' || card.card.CardType === 'Oltár') {
         spirit += card.amount;
       }
     }
@@ -348,7 +351,7 @@ export class DeckContainerComponent implements OnInit {
 
   removeAllFromDeck(card: Card) {
     const deletableIndex = this.currentDeck.cards.findIndex(
-      (cardo) => card === cardo.card
+      (cardo) => card === cardo.card,
     );
 
     if (deletableIndex !== -1) {
@@ -380,7 +383,7 @@ export class DeckContainerComponent implements OnInit {
   }
 
   async searchCardsByCompressedID(
-    parsedData: { id: string; amount: number }[]
+    parsedData: { id: string; amount: number }[],
   ) {
     const availableCards = await this.cardHandlerService.getAllCards(); // Get the list of all available cards
     // console.log('availableCards ' + JSON.stringify(availableCards));
@@ -438,7 +441,7 @@ export class DeckContainerComponent implements OnInit {
         return {
           [cardNumber.slice(0, 1) + +cardNumber.slice(5)]: card.amount,
         };
-      }
+      },
     );
     // console.log('compressed ' + JSON.stringify(compressed));
 
@@ -499,7 +502,7 @@ export class DeckContainerComponent implements OnInit {
     let deckData = await this.searchCardsByCompressedID(parsedData).then(
       (result) => {
         return result;
-      }
+      },
     );
     // console.log('deckData ' + JSON.stringify(deckData));
 
@@ -568,7 +571,7 @@ export class DeckContainerComponent implements OnInit {
 
         // removing the 'error' entries came from promise
         const validCards = deckData.filter(
-          (item: any) => !item.error
+          (item: any) => !item.error,
         ) as CardWithAmount[];
 
         // Assign to `currentDeck`
@@ -607,7 +610,7 @@ export class DeckContainerComponent implements OnInit {
       if (deckData) {
         // removing the 'error' entries came from promise
         const validCards = deckData.filter(
-          (item: any) => !item.error
+          (item: any) => !item.error,
         ) as CardWithAmount[];
 
         // normalize cards to the second -"deck" format
@@ -847,7 +850,7 @@ export class DeckContainerComponent implements OnInit {
     moveItemInArray(
       this.currentDeck.cards,
       event.previousIndex,
-      event.currentIndex
+      event.currentIndex,
     );
   }
 

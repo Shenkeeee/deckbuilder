@@ -26,7 +26,7 @@ export class CardComponent implements OnInit {
   ngOnInit() {
     this.updateCardNumber();
     this.cardHandlerService.currentDeckObs.subscribe(
-      (deck) => (this.currentDeck = deck)
+      (deck) => (this.currentDeck = deck),
     );
     this.cardHandlerService.selectedFormat.subscribe((format) => {
       this.selectedFormat = format;
@@ -60,12 +60,19 @@ export class CardComponent implements OnInit {
           cardToAdd.CardType === 'Szintlépés' &&
           additionalLimits.levelUp < 2) ||
         (selectedFormatAdditionalLimit !== 1 && // ha nem rush módban vagyunk
-          cardToAdd.CardType === 'Spirit' &&
+          (cardToAdd.CardType === 'Spirit' || cardToAdd.CardType === 'Oltár') &&
           additionalLimits.spirit < 1)
       ) {
         this.addOrUpdateCard(cardToAdd);
       } else {
-        alert(`${cardToAdd.CardType}ből nem adhatsz hozzá többet!`);
+        const additionalMessage =
+          cardToAdd.CardType === 'Oltár' || cardToAdd.CardType === 'Spirit'
+            ? '\nOltár vagy spirit csak egy lehet.'
+            : '';
+
+        alert(
+          `${cardToAdd.CardType}ből nem adhatsz hozzá többet!${additionalMessage}`,
+        );
       }
     }
   }
@@ -73,7 +80,7 @@ export class CardComponent implements OnInit {
   // Segédfüggvény kártya hozzáadására vagy frissítésére
   private addOrUpdateCard(cardToAdd: Card) {
     const existingCard = this.currentDeck.cards.find(
-      (card) => card.card.CardNumber === cardToAdd.CardNumber
+      (card) => card.card.CardNumber === cardToAdd.CardNumber,
     );
 
     if (existingCard) {
@@ -83,15 +90,18 @@ export class CardComponent implements OnInit {
 
       // Track color order
       const color = cardToAdd.Color || '';
-      if (color !== 'Multicolor' && !this.cardHandlerService.colorOrder.has(color)) {
+      if (
+        color !== 'Multicolor' &&
+        !this.cardHandlerService.colorOrder.has(color)
+      ) {
         this.cardHandlerService.colorOrder.add(color);
       }
 
       // Find the correct insert index
-      const insertIndex = this.currentDeck.cards.findIndex(existing => {
+      const insertIndex = this.currentDeck.cards.findIndex((existing) => {
         const cmp = this.compareSortValues(
           this.getCardSortValue(newCard.card),
-          this.getCardSortValue(existing.card)
+          this.getCardSortValue(existing.card),
         );
         return cmp < 0;
       });
@@ -103,7 +113,6 @@ export class CardComponent implements OnInit {
       }
     }
 
-
     this.cardHandlerService.currentDeck.next(this.currentDeck);
   }
 
@@ -111,14 +120,17 @@ export class CardComponent implements OnInit {
   private calculateAdditionalLimits() {
     let leader = 0;
     let levelUp = 0;
-    let spirit = 0;
+    let spirit = 0; // oltar also counts here
 
     for (const card of this.currentDeck.cards) {
       if (card.card.CardType === 'Vezető') {
         leader += card.amount;
       } else if (card.card.CardType === 'Szintlépés') {
         levelUp += card.amount;
-      } else if (card.card.CardType === 'Spirit') {
+      } else if (
+        card.card.CardType === 'Spirit' ||
+        card.card.CardType === 'Oltár'
+      ) {
         spirit += card.amount;
       }
     }
@@ -131,11 +143,12 @@ export class CardComponent implements OnInit {
     return (
       card.CardType === 'Vezető' ||
       card.CardType === 'Szintlépés' ||
-      card.CardType === 'Spirit'
+      card.CardType === 'Spirit' ||
+      card.CardType === 'Oltár'
     );
   }
 
-  // 0 → Special cards (Vezető, Szintlépés 2, Szintlépés 3, Spirit)
+  // 0 → Special cards (Vezető, Szintlépés 2, Szintlépés 3, Spirit, Oltár)
   // 1 → Everything else -> Then by multicolor, color appearance order, and mana cost
   getCardSortValue(card: Card): number[] {
     const cardType = card.CardType || '';
@@ -145,12 +158,14 @@ export class CardComponent implements OnInit {
     if (cardType === 'Vezető') return [0, 0];
     if (cardType === 'Szintlépés' && name === 'Szintlépés 2') return [0, 1];
     if (cardType === 'Szintlépés' && name === 'Szintlépés 3') return [0, 2];
-    if (cardType === 'Spirit') return [0, 3];
+    if (cardType === 'Spirit' || cardType === 'Oltár') return [0, 3];
 
     // Regular cards
     const color = card.Color || '';
     const isMulticolor = color === 'Multicolor';
-    const colorIndex = isMulticolor ? -1 : [...this.cardHandlerService.colorOrder].indexOf(color);
+    const colorIndex = isMulticolor
+      ? -1
+      : [...this.cardHandlerService.colorOrder].indexOf(color);
 
     const mana = card.ManaCost ?? Infinity;
 
