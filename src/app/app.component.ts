@@ -8,19 +8,20 @@ import { environment } from '../environments/environment';
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit {
+// export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'DoP Deckbuilder';
 
-  ngOnInit() {
-    this.redirectFromDefault();
-  }
+  // ngOnInit() {
+  //   this.redirectFromDefault();
+  // }
 
-  redirectFromDefault() {
-    if (
-      window.location.hostname == environment.defaultUrl ||
-      window.location.hostname == environment.secondaryDefaultUrl
-    ) {
-      window.location.href = environment.mainUrl;
-    }
-  }
+  // redirectFromDefault() {
+  //   if (
+  //     window.location.hostname == environment.defaultUrl ||
+  //     window.location.hostname == environment.secondaryDefaultUrl
+  //   ) {
+  //     window.location.href = environment.mainUrl;
+  //   }
+  // }
 }
